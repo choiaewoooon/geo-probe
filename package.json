@@ -1,0 +1,16 @@
+{
+  "name": "geo-probe",
+  "version": "0.1.0",
+  "description": "Measure how discoverable a brand is inside AI assistant answers (Generative Engine Optimization). Repeated, brand-blind, honest.",
+  "type": "module",
+  "bin": { "geo-probe": "bin/geo-probe.mjs" },
+  "scripts": {
+    "probe": "node bin/geo-probe.mjs probe",
+    "analyze": "node bin/geo-probe.mjs analyze",
+    "run": "node bin/geo-probe.mjs run"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["geo", "generative-engine-optimization", "llm", "brand", "seo", "ai-visibility", "chatgpt", "gemini", "claude"],
+  "license": "MIT",
+  "dependencies": {}
+}

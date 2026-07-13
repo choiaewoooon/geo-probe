@@ -1,0 +1,10 @@
+# secrets & local
+.env
+*.local.json
+
+# runtime output
+results/
+node_modules/
+
+# os
+.DS_Store

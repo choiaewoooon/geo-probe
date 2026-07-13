@@ -1,0 +1,14 @@
+{
+  "_comment": "API 키 대신 자기 로컬 CLI 래퍼로 모델을 부르고 싶을 때. command = [실행파일, 고정인자...]; 프롬프트가 마지막 인자로 추가됩니다.",
+  "brand": "Burson",
+  "brandAliases": ["버슨", "BCW"],
+  "repeats": 5,
+  "spacingMs": 8000,
+  "models": [
+    { "id": "chatgpt", "name": "ChatGPT", "provider": "command", "command": ["/path/to/your/gpt-cli"], "webSearch": true },
+    { "id": "gemini", "name": "Gemini", "provider": "command", "command": ["/path/to/your/gemini-cli", "pro"], "webSearch": false }
+  ],
+  "questions": [
+    { "id": "q1", "short": "글로벌 PR 추천", "prompt": "한국에서 글로벌 PR·커뮤니케이션 컨설팅 회사를 추천해줘." }
+  ]
+}

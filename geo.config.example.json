@@ -1,0 +1,19 @@
+{
+  "brand": "Burson",
+  "brandAliases": ["버슨", "Burson-Marsteller", "BCW"],
+  "market": "한국어·한국",
+  "repeats": 5,
+  "spacingMs": 8000,
+  "rankedListSuffix": "\n\n가장 적합한 순서대로 회사 5곳만, 다른 설명 없이 \"1. 이름\" 형식의 번호 목록으로만 답해줘.",
+  "models": [
+    { "id": "chatgpt", "name": "ChatGPT", "provider": "openai", "model": "gpt-4o", "webSearch": false },
+    { "id": "gemini", "name": "Gemini", "provider": "gemini", "model": "gemini-1.5-pro", "webSearch": false },
+    { "id": "claude", "name": "Claude", "provider": "anthropic", "model": "claude-sonnet-4-5", "webSearch": false }
+  ],
+  "questions": [
+    { "id": "q1", "short": "글로벌 PR 추천", "prompt": "한국에서 글로벌 PR·커뮤니케이션 컨설팅 회사를 추천해줘." },
+    { "id": "q2", "short": "명성·위기 대응", "prompt": "기업 명성 관리와 위기 대응을 잘하는 글로벌 커뮤니케이션 회사는 어디야?" },
+    { "id": "q3", "short": "생성형 AI PR 분석", "prompt": "생성형 AI 기반 PR 데이터 분석 역량을 가진 글로벌 커뮤니케이션 회사를 알려줘." },
+    { "id": "q4", "short": "한국 소셜 리스닝·위기", "prompt": "한국에서 브랜드 소셜 리스닝과 위기 관리를 맡길 수 있는 회사는 어디야?" }
+  ]
+}

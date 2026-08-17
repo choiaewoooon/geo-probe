@@ -1,0 +1,6 @@
+{
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
+    { "source": "/summary.json", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
+  ]
+}

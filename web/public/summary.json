@@ -1,0 +1,2135 @@
+{
+  "generatedAt": "2026-07-26T06:08:37.057Z",
+  "brands": [
+    {
+      "brand": "Burson",
+      "visibility": {
+        "V": 179,
+        "mentions": 75,
+        "mentionRate": 42,
+        "mentionLabel": "75/179 · 42%",
+        "top3": 27,
+        "top3Rate": 15,
+        "top3Label": "27/179 · 15%",
+        "medianRank": 4,
+        "rankedN": 75,
+        "reproducibility": 58,
+        "rankDistribution": {
+          "4위": 36,
+          "미언급": 104,
+          "5위": 12,
+          "1위": 4,
+          "2위": 7,
+          "3위": 16
+        }
+      },
+      "status": {
+        "visibility": "중간",
+        "reproducibility": "낮음",
+        "direction": "비교 불가"
+      },
+      "completeness": {
+        "expected": 240,
+        "valid": 179,
+        "validRate": 75,
+        "validLabel": "예정 240회 중 179회 유효",
+        "parseRate": 98,
+        "parseLabel": "176/179 · 98%",
+        "warn": true
+      },
+      "shareOfVoice": [
+        {
+          "name": "Edelman",
+          "appearances": 139,
+          "sov": 16,
+          "mentionRate": 78,
+          "medianRank": 1
+        },
+        {
+          "name": "Weber Shandwick",
+          "appearances": 108,
+          "sov": 12,
+          "mentionRate": 60,
+          "medianRank": 2
+        },
+        {
+          "name": "FleishmanHillard",
+          "appearances": 92,
+          "sov": 10,
+          "mentionRate": 51,
+          "medianRank": 3
+        },
+        {
+          "name": "KPR",
+          "appearances": 76,
+          "sov": 9,
+          "mentionRate": 42,
+          "medianRank": 2
+        },
+        {
+          "name": "Burson",
+          "appearances": 75,
+          "sov": 9,
+          "mentionRate": 42,
+          "medianRank": 4
+        },
+        {
+          "name": "프레인글로벌",
+          "appearances": 65,
+          "sov": 7,
+          "mentionRate": 36,
+          "medianRank": 2
+        },
+        {
+          "name": "피알원",
+          "appearances": 42,
+          "sov": 5,
+          "mentionRate": 23,
+          "medianRank": 3
+        },
+        {
+          "name": "미디컴",
+          "appearances": 23,
+          "sov": 3,
+          "mentionRate": 13,
+          "medianRank": 4
+        },
+        {
+          "name": "Brunswick Group",
+          "appearances": 21,
+          "sov": 2,
+          "mentionRate": 12,
+          "medianRank": 2
+        },
+        {
+          "name": "바이브컴퍼니",
+          "appearances": 13,
+          "sov": 1,
+          "mentionRate": 7,
+          "medianRank": 3
+        },
+        {
+          "name": "FGS Global",
+          "appearances": 10,
+          "sov": 1,
+          "mentionRate": 6,
+          "medianRank": 2
+        },
+        {
+          "name": "FTI Consulting",
+          "appearances": 10,
+          "sov": 1,
+          "mentionRate": 6,
+          "medianRank": 4
+        },
+        {
+          "name": "Ketchum",
+          "appearances": 10,
+          "sov": 1,
+          "mentionRate": 6,
+          "medianRank": 5
+        },
+        {
+          "name": "NPR",
+          "appearances": 10,
+          "sov": 1,
+          "mentionRate": 6,
+          "medianRank": 4
+        },
+        {
+          "name": "Hill & Knowlton",
+          "appearances": 9,
+          "sov": 1,
+          "mentionRate": 5,
+          "medianRank": 5
+        },
+        {
+          "name": "Kekst CNC",
+          "appearances": 9,
+          "sov": 1,
+          "mentionRate": 5,
+          "medianRank": 3
+        },
+        {
+          "name": "밍글스푼",
+          "appearances": 9,
+          "sov": 1,
+          "mentionRate": 5,
+          "medianRank": 1
+        },
+        {
+          "name": "스트래티지샐러드",
+          "appearances": 7,
+          "sov": 1,
+          "mentionRate": 4,
+          "medianRank": 3
+        },
+        {
+          "name": "Ogilvy",
+          "appearances": 6,
+          "sov": 1,
+          "mentionRate": 3,
+          "medianRank": 5
+        },
+        {
+          "name": "Ruder Finn",
+          "appearances": 6,
+          "sov": 1,
+          "mentionRate": 3,
+          "medianRank": 5
+        },
+        {
+          "name": "타파크로스",
+          "appearances": 6,
+          "sov": 1,
+          "mentionRate": 3,
+          "medianRank": 4
+        },
+        {
+          "name": "에스코토스컨설팅",
+          "appearances": 5,
+          "sov": 1,
+          "mentionRate": 3,
+          "medianRank": 2
+        },
+        {
+          "name": "Teneo",
+          "appearances": 5,
+          "sov": 1,
+          "mentionRate": 3,
+          "medianRank": 5
+        },
+        {
+          "name": "브런즈윅 그룹",
+          "appearances": 4,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 4
+        },
+        {
+          "name": "함샤우트",
+          "appearances": 4,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 4
+        },
+        {
+          "name": "함파트너스",
+          "appearances": 4,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 4.5
+        },
+        {
+          "name": "데이터마케팅코리아",
+          "appearances": 4,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 1.5
+        },
+        {
+          "name": "커뮤니케이션즈코리아",
+          "appearances": 4,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 3.5
+        },
+        {
+          "name": "APCO Worldwide",
+          "appearances": 3,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 5
+        },
+        {
+          "name": "더시그니처",
+          "appearances": 3,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 5
+        },
+        {
+          "name": "Real Chemistry",
+          "appearances": 3,
+          "sov": 0,
+          "mentionRate": 2,
+          "medianRank": 5
+        },
+        {
+          "name": "호프만에이전시코리아",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "Golin",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4.5
+        },
+        {
+          "name": "뉴엔AI",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "프루븐",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "앨리슨코리아",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "호프만에이전시 코리아",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "플라이시먼힐러드",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "케첨",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "Hotwire",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4.5
+        },
+        {
+          "name": "함샤우트 글로벌",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3.5
+        },
+        {
+          "name": "위고몬",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "코난테크놀로지",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "인컴브로더",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "피알브릿지",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "하이퍼앰",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3.5
+        },
+        {
+          "name": "커뮤니케이션즈 코리아",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "네오클립",
+          "appearances": 2,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2.5
+        },
+        {
+          "name": "[Brunswick Group]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 1
+        },
+        {
+          "name": "[FGS Global]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "[Kekst CNC]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "[FTI Consulting]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "Hotwire Global",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "[밍글스푼]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 1
+        },
+        {
+          "name": "[에스코토스컨설팅]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "[NPR]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "[프루븐]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "프루븐PR",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "5WPR",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "한국위기관리그룹",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "더피알컨설팅",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "엣지커뮤니케이션즈",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "바인더",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "싱클리",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "브런즈윅",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "WE Communications",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "NPR 인터커뮤니케이션",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "리코타",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "딜로이트 커뮤니케이션즈",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "트리플미디어",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "프라우드컴",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "브로더파트너즈",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "함샤우트글로벌",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "[피알원]",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "웨버샌��윅코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "비씨더블유코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "플래시먼힐러드",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "호프만에이전시",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "호프만 에이전시 코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "플레시��힐러드 코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "솔트룩스",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "한국모��터링",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "대홍기획",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "플레이디",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "알에스엔",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 1
+        },
+        {
+          "name": "엔피알",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "���이데이미디어",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "데이터앤리서치",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "아이타임즈 KDA",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "와이즈넛",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "매드업",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "피드코퍼레이션",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "마콜컨설팅그룹",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "산타크루즈컴퍼니",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "포겟미코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "탑로직",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "맥컴퍼니",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "플레시먼힐러�� 코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "플레시���힐러드 코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "앨리슨 코리아",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "스톤브랜드커뮤니케이션즈",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "컨슈머인사이트",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        },
+        {
+          "name": "엠포스",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 4
+        },
+        {
+          "name": "기사 내용이 사실에 부합하나요?",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 1
+        },
+        {
+          "name": "회사 위치·업종",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 2
+        },
+        {
+          "name": "원하는 게 법적 대응인지 / 언론·여론 커뮤니케이션인지 / 둘 다인지",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 3
+        },
+        {
+          "name": "호프만 에이전시",
+          "appearances": 1,
+          "sov": 0,
+          "mentionRate": 1,
+          "medianRank": 5
+        }
+      ],
+      "substitution": {
+        "missedN": 104,
+        "brands": [
+          {
+            "name": "KPR",
+            "n": 74,
+            "rate": 71
+          },
+          {
+            "name": "Edelman",
+            "n": 64,
+            "rate": 62
+          },
+          {
+            "name": "프레인글로벌",
+            "n": 54,
+            "rate": 52
+          },
+          {
+            "name": "피알원",
+            "n": 40,
+            "rate": 38
+          },
+          {
+            "name": "Weber Shandwick",
+            "n": 35,
+            "rate": 34
+          },
+          {
+            "name": "FleishmanHillard",
+            "n": 30,
+            "rate": 29
+          },
+          {
+            "name": "미디컴",
+            "n": 23,
+            "rate": 22
+          },
+          {
+            "name": "Brunswick Group",
+            "n": 14,
+            "rate": 13
+          },
+          {
+            "name": "바이브컴퍼니",
+            "n": 13,
+            "rate": 13
+          },
+          {
+            "name": "NPR",
+            "n": 10,
+            "rate": 10
+          },
+          {
+            "name": "Kekst CNC",
+            "n": 9,
+            "rate": 9
+          },
+          {
+            "name": "밍글스푼",
+            "n": 9,
+            "rate": 9
+          },
+          {
+            "name": "FGS Global",
+            "n": 8,
+            "rate": 8
+          },
+          {
+            "name": "FTI Consulting",
+            "n": 6,
+            "rate": 6
+          },
+          {
+            "name": "스트래티지샐러드",
+            "n": 6,
+            "rate": 6
+          },
+          {
+            "name": "타파크로스",
+            "n": 5,
+            "rate": 5
+          },
+          {
+            "name": "함샤우트",
+            "n": 4,
+            "rate": 4
+          },
+          {
+            "name": "함파트너스",
+            "n": 4,
+            "rate": 4
+          },
+          {
+            "name": "데이터마케팅코리아",
+            "n": 4,
+            "rate": 4
+          },
+          {
+            "name": "커뮤니케이션즈코리아",
+            "n": 4,
+            "rate": 4
+          },
+          {
+            "name": "에스코토스컨설팅",
+            "n": 3,
+            "rate": 3
+          },
+          {
+            "name": "Ruder Finn",
+            "n": 3,
+            "rate": 3
+          },
+          {
+            "name": "더시그니처",
+            "n": 3,
+            "rate": 3
+          },
+          {
+            "name": "Hill & Knowlton",
+            "n": 3,
+            "rate": 3
+          },
+          {
+            "name": "Teneo",
+            "n": 3,
+            "rate": 3
+          },
+          {
+            "name": "뉴엔AI",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "프루븐",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "Hotwire",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "함샤우트 글로벌",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "위고몬",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "코난테크놀로지",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "인컴브로더",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "피알브릿지",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "하이퍼앰",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "커뮤니케이션즈 코리아",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "네오클립",
+            "n": 2,
+            "rate": 2
+          },
+          {
+            "name": "[Brunswick Group]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[FGS Global]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[Kekst CNC]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[FTI Consulting]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[밍글스푼]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[에스코토스컨설팅]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[NPR]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[프루븐]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "프루븐PR",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "5WPR",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "더피알컨설팅",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "엣지커뮤니케이션즈",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "바인더",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "싱클리",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "NPR 인터커뮤니케이션",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "리코타",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "딜로이트 커뮤니케이션즈",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "트리플미디어",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "프라우드컴",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "브로더파트너즈",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "함샤우트글로벌",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "웨버샌��윅코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "비씨더블유코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "솔트룩스",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "한국모��터링",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "대홍기획",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "플레이디",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "알에스엔",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "엔피알",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "���이데이미디어",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "데이터앤리서치",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "아이타임즈 KDA",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "와이즈넛",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "매드업",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "피드코퍼레이션",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "마콜컨설팅그룹",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "산타크루즈컴퍼니",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "포겟미코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "탑로직",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "맥컴퍼니",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "플레시먼힐러�� 코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "플레시���힐러드 코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "앨리슨 코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "스톤브랜드커뮤니케이션즈",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "컨슈머인사이트",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "엠포스",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "기사 내용이 사실에 부합하나요?",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "회사 위치·업종",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "원하는 게 법적 대응인지 / 언론·여론 커뮤니케이션인지 / 둘 다인지",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "호프만 에이전시",
+            "n": 1,
+            "rate": 1
+          }
+        ]
+      },
+      "coOccurrence": {
+        "baseN": 75,
+        "brands": [
+          {
+            "name": "Edelman",
+            "n": 75,
+            "rate": 100
+          },
+          {
+            "name": "Weber Shandwick",
+            "n": 73,
+            "rate": 97
+          },
+          {
+            "name": "FleishmanHillard",
+            "n": 62,
+            "rate": 83
+          },
+          {
+            "name": "프레인글로벌",
+            "n": 11,
+            "rate": 15
+          },
+          {
+            "name": "Ketchum",
+            "n": 10,
+            "rate": 13
+          },
+          {
+            "name": "Brunswick Group",
+            "n": 7,
+            "rate": 9
+          },
+          {
+            "name": "Hill & Knowlton",
+            "n": 6,
+            "rate": 8
+          },
+          {
+            "name": "Ogilvy",
+            "n": 6,
+            "rate": 8
+          },
+          {
+            "name": "FTI Consulting",
+            "n": 4,
+            "rate": 5
+          },
+          {
+            "name": "브런즈윅 그룹",
+            "n": 4,
+            "rate": 5
+          },
+          {
+            "name": "APCO Worldwide",
+            "n": 3,
+            "rate": 4
+          },
+          {
+            "name": "Ruder Finn",
+            "n": 3,
+            "rate": 4
+          },
+          {
+            "name": "Real Chemistry",
+            "n": 3,
+            "rate": 4
+          },
+          {
+            "name": "호프만에이전시코리아",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "FGS Global",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "Golin",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "앨리슨코리아",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "호프만에이전시 코리아",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "Teneo",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "플라이시먼힐러드",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "케첨",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "KPR",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "에스코토스컨설팅",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "피알원",
+            "n": 2,
+            "rate": 3
+          },
+          {
+            "name": "Hotwire Global",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "스트래티지샐러드",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "타파크로스",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "한국위기관리그룹",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "브런즈윅",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "WE Communications",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "[피알원]",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "플래시먼힐러드",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "호프만에이전시",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "호프만 에이전시 코리아",
+            "n": 1,
+            "rate": 1
+          },
+          {
+            "name": "플레시��힐러드 코리아",
+            "n": 1,
+            "rate": 1
+          }
+        ]
+      },
+      "citations": {
+        "measurable": true,
+        "citedResponses": 4,
+        "ownCitationRate": 50,
+        "domains": [
+          {
+            "domain": "fleishmanhillard.co.kr",
+            "n": 2,
+            "share": 13,
+            "own": false
+          },
+          {
+            "domain": "bursonglobal.com",
+            "n": 2,
+            "share": 13,
+            "own": true
+          },
+          {
+            "domain": "edelman.com",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "webershandwick.com",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "prain.com",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "chambers.com",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "minglespoon.com",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "scotoss.com",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "kpr.co.kr",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "nprcom.co.kr",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "provenpr.co.kr",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "edelman.kr",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "prone.co.kr",
+            "n": 1,
+            "share": 6,
+            "own": false
+          },
+          {
+            "domain": "webershandwick.co.kr",
+            "n": 1,
+            "share": 6,
+            "own": false
+          }
+        ],
+        "quadrant": {
+          "자사근거_동반노출": 2,
+          "외부인식_중심노출": 0,
+          "콘텐츠만_사용": 0,
+          "미노출": 2
+        }
+      },
+      "trend": [
+        {
+          "run_id": "2026-07-13-00-00",
+          "ts": "2026-07-13T00:00:00Z",
+          "protocol": "v1-2026-07-13",
+          "V": 60,
+          "mentions": 40,
+          "rate": 67,
+          "medianRank": 4,
+          "protocolStart": true,
+          "movingRate": 67,
+          "movingLabel": "이 프로토콜에서 1회 40/60"
+        },
+        {
+          "run_id": "2026-07-26-04-57",
+          "ts": "2026-07-26T06:06:30.351Z",
+          "protocol": "v2-2026-07-26",
+          "V": 119,
+          "mentions": 35,
+          "rate": 29,
+          "medianRank": 3,
+          "protocolStart": true,
+          "movingRate": 29,
+          "movingLabel": "이 프로토콜에서 1회 35/119"
+        }
+      ],
+      "matrix": [
+        {
+          "model": "chatgpt",
+          "question": "q1",
+          "V": 10,
+          "mentions": 10,
+          "mentionRate": 100,
+          "mentionLabel": "10/10 · 100%",
+          "top3": 3,
+          "top3Rate": 30,
+          "top3Label": "3/10 · 30%",
+          "medianRank": 4,
+          "rankedN": 10,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "4위": 7,
+            "2위": 1,
+            "3위": 2
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q2",
+          "V": 10,
+          "mentions": 2,
+          "mentionRate": 20,
+          "mentionLabel": "2/10 · 20%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/10 · 0%",
+          "medianRank": 4.5,
+          "rankedN": 2,
+          "reproducibility": 80,
+          "rankDistribution": {
+            "미언급": 8,
+            "5위": 1,
+            "4위": 1
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q3",
+          "V": 10,
+          "mentions": 10,
+          "mentionRate": 100,
+          "mentionLabel": "10/10 · 100%",
+          "top3": 7,
+          "top3Rate": 70,
+          "top3Label": "7/10 · 70%",
+          "medianRank": 2,
+          "rankedN": 10,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "1위": 3,
+            "4위": 2,
+            "2위": 4,
+            "5위": 1
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q4",
+          "V": 10,
+          "mentions": 2,
+          "mentionRate": 20,
+          "mentionLabel": "2/10 · 20%",
+          "top3": 2,
+          "top3Rate": 20,
+          "top3Label": "2/10 · 20%",
+          "medianRank": 2,
+          "rankedN": 2,
+          "reproducibility": 80,
+          "rankDistribution": {
+            "미언급": 8,
+            "1위": 1,
+            "3위": 1
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q1",
+          "V": 10,
+          "mentions": 9,
+          "mentionRate": 90,
+          "mentionLabel": "9/10 · 90%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/10 · 0%",
+          "medianRank": 4,
+          "rankedN": 9,
+          "reproducibility": 90,
+          "rankDistribution": {
+            "4위": 9,
+            "미언급": 1
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q2",
+          "V": 10,
+          "mentions": 9,
+          "mentionRate": 90,
+          "mentionLabel": "9/10 · 90%",
+          "top3": 2,
+          "top3Rate": 20,
+          "top3Label": "2/10 · 20%",
+          "medianRank": 4,
+          "rankedN": 9,
+          "reproducibility": 90,
+          "rankDistribution": {
+            "4위": 4,
+            "5위": 3,
+            "2위": 2,
+            "미언급": 1
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q3",
+          "V": 10,
+          "mentions": 7,
+          "mentionRate": 70,
+          "mentionLabel": "7/10 · 70%",
+          "top3": 3,
+          "top3Rate": 30,
+          "top3Label": "3/10 · 30%",
+          "medianRank": 4,
+          "rankedN": 7,
+          "reproducibility": 70,
+          "rankDistribution": {
+            "미언급": 3,
+            "4위": 3,
+            "3위": 3,
+            "5위": 1
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q4",
+          "V": 10,
+          "mentions": 1,
+          "mentionRate": 10,
+          "mentionLabel": "1/10 · 10%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/10 · 0%",
+          "medianRank": 4,
+          "rankedN": 1,
+          "reproducibility": 90,
+          "rankDistribution": {
+            "4위": 1,
+            "미언급": 9
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q1",
+          "V": 10,
+          "mentions": 7,
+          "mentionRate": 70,
+          "mentionLabel": "7/10 · 70%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/10 · 0%",
+          "medianRank": 4,
+          "rankedN": 7,
+          "reproducibility": 70,
+          "rankDistribution": {
+            "4위": 6,
+            "미언급": 3,
+            "5위": 1
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q2",
+          "V": 10,
+          "mentions": 4,
+          "mentionRate": 40,
+          "mentionLabel": "4/10 · 40%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/10 · 0%",
+          "medianRank": 5,
+          "rankedN": 4,
+          "reproducibility": 60,
+          "rankDistribution": {
+            "5위": 4,
+            "미언급": 6
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q3",
+          "V": 10,
+          "mentions": 10,
+          "mentionRate": 100,
+          "mentionLabel": "10/10 · 100%",
+          "top3": 8,
+          "top3Rate": 80,
+          "top3Label": "8/10 · 80%",
+          "medianRank": 3,
+          "rankedN": 10,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "4위": 2,
+            "3위": 8
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q4",
+          "V": 10,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/10 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/10 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 10
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q5",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q6",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q7",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "chatgpt",
+          "question": "q8",
+          "V": 4,
+          "mentions": 4,
+          "mentionRate": 100,
+          "mentionLabel": "4/4 · 100%",
+          "top3": 2,
+          "top3Rate": 50,
+          "top3Label": "2/4 · 50%",
+          "medianRank": 3.5,
+          "rankedN": 4,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "5위": 1,
+            "4위": 1,
+            "3위": 2
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q5",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q6",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q7",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "gemini",
+          "question": "q8",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q5",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q6",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q7",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        },
+        {
+          "model": "claude",
+          "question": "q8",
+          "V": 5,
+          "mentions": 0,
+          "mentionRate": 0,
+          "mentionLabel": "0/5 · 0%",
+          "top3": 0,
+          "top3Rate": 0,
+          "top3Label": "0/5 · 0%",
+          "medianRank": null,
+          "rankedN": 0,
+          "reproducibility": 100,
+          "rankDistribution": {
+            "미언급": 5
+          }
+        }
+      ],
+      "priorities": [
+        {
+          "question": "q6",
+          "mentionRate": 0,
+          "mentionLabel": "0/15 · 0%",
+          "medianRank": null,
+          "topSubstitute": {
+            "name": "KPR",
+            "n": 15,
+            "rate": 100
+          },
+          "score": 150
+        },
+        {
+          "question": "q5",
+          "mentionRate": 0,
+          "mentionLabel": "0/15 · 0%",
+          "medianRank": null,
+          "topSubstitute": {
+            "name": "KPR",
+            "n": 12,
+            "rate": 80
+          },
+          "score": 140
+        },
+        {
+          "question": "q4",
+          "mentionRate": 10,
+          "mentionLabel": "3/30 · 10%",
+          "medianRank": 3,
+          "topSubstitute": {
+            "name": "KPR",
+            "n": 26,
+            "rate": 96
+          },
+          "score": 138
+        },
+        {
+          "question": "q7",
+          "mentionRate": 0,
+          "mentionLabel": "0/15 · 0%",
+          "medianRank": null,
+          "topSubstitute": {
+            "name": "KPR",
+            "n": 9,
+            "rate": 60
+          },
+          "score": 130
+        },
+        {
+          "question": "q8",
+          "mentionRate": 29,
+          "mentionLabel": "4/14 · 29%",
+          "medianRank": 3.5,
+          "topSubstitute": {
+            "name": "Edelman",
+            "n": 10,
+            "rate": 100
+          },
+          "score": 121
+        },
+        {
+          "question": "q2",
+          "mentionRate": 50,
+          "mentionLabel": "15/30 · 50%",
+          "medianRank": 5,
+          "topSubstitute": {
+            "name": "Edelman",
+            "n": 15,
+            "rate": 100
+          },
+          "score": 100
+        },
+        {
+          "question": "q1",
+          "mentionRate": 87,
+          "mentionLabel": "26/30 · 87%",
+          "medianRank": 4,
+          "topSubstitute": {
+            "name": "Edelman",
+            "n": 4,
+            "rate": 100
+          },
+          "score": 63
+        },
+        {
+          "question": "q3",
+          "mentionRate": 90,
+          "mentionLabel": "27/30 · 90%",
+          "medianRank": 3,
+          "topSubstitute": {
+            "name": "Edelman",
+            "n": 3,
+            "rate": 100
+          },
+          "score": 60
+        }
+      ]
+    }
+  ],
+  "methodology": {
+    "repeats": 5,
+    "questions": [
+      {
+        "id": "q1",
+        "short": "글로벌 PR 추천",
+        "prompt": "한국에서 글로벌 PR·커뮤니케이션 컨설팅 회사를 추천해줘."
+      },
+      {
+        "id": "q2",
+        "short": "명성·위기 대응",
+        "prompt": "기업 명성 관리와 위기 대응을 잘하는 글로벌 커뮤니케이션 회사는 어디야?"
+      },
+      {
+        "id": "q3",
+        "short": "생성형 AI PR 분석",
+        "prompt": "생성형 AI 기반 PR 데이터 분석 역량을 가진 글로벌 커뮤니케이션 회사를 알려줘."
+      },
+      {
+        "id": "q4",
+        "short": "한국 소셜리스닝·위기",
+        "prompt": "한국에서 브랜드 소셜 리스닝과 위기 관리를 맡길 수 있는 회사는 어디야?"
+      },
+      {
+        "id": "q5",
+        "short": "한국 온라인 여론 분석",
+        "prompt": "한국에서 온라인 여론과 소비자 반응을 데이터로 분석해주는 홍보 대행사를 알려줘."
+      },
+      {
+        "id": "q6",
+        "short": "한국 대기업 홍보 대행",
+        "prompt": "국내 대기업이 기업 홍보와 언론 대응을 맡기는 PR 대행사는 어디야?"
+      },
+      {
+        "id": "q7",
+        "short": "부정 기사 대응",
+        "prompt": "회사 관련 부정적인 기사와 온라인 반응이 계속 나오고 있어. 어디에 맡겨서 대응해야 할까?"
+      },
+      {
+        "id": "q8",
+        "short": "외국계 한국 진출",
+        "prompt": "외국계 기업이 한국 시장에 처음 진출할 때 홍보와 미디어 대응을 맡길 만한 곳을 추천해줘."
+      }
+    ],
+    "models": [
+      {
+        "id": "chatgpt",
+        "name": "ChatGPT",
+        "webSearch": true,
+        "collectedVia": "cdx (OpenAI Codex CLI) · 웹 검색 사용"
+      },
+      {
+        "id": "gemini",
+        "name": "Gemini",
+        "webSearch": false,
+        "collectedVia": "gemq (Gemini Pro API) · 웹 검색 미적용"
+      },
+      {
+        "id": "claude",
+        "name": "Claude",
+        "webSearch": false,
+        "collectedVia": "claude CLI (헤드리스) · 기본 설정"
+      }
+    ],
+    "rankedListSuffix": "\n\n가장 적합한 순서대로 회사 5곳만, 다른 설명 없이 \"1. 이름\" 형식의 번호 목록으로만 답해줘.",
+    "notes": [
+      "고정된 추적 질문군에 대한 관찰이며 실제 시장 점유율이 아니다.",
+      "소표본이므로 방향성 관찰용. 신뢰구간·유의성을 산출하지 않는다.",
+      "모델별 웹검색 조건이 달라 모델 간 절대 비교를 하지 않는다.",
+      "인용 도메인은 '응답에 표시된 출처'이며 노출의 원인으로 단정하지 않는다.",
+      "미언급 응답은 순위 통계에서 제외한다(최하위 치환 금지)."
+    ]
+  }
+}

@@ -8,3 +8,11 @@ node_modules/
 
 # os
 .DS_Store
+
+# 브랜드별 실측 설정·이력 — 공개 레포이므로 커밋하지 않는다.
+# 어떤 회사를 언제 쟀는지가 그대로 드러나고, 지원 중인 건이 섞인다.
+# 엔진과 스키마는 geo.config.example.json · SPEC-v2.md 가 문서화한다.
+geo.config.json
+configs/
+data/
+.claude/

@@ -14,6 +14,12 @@ When people ask ChatGPT, Gemini, or Claude for **"the best company for X"** — 
 ![License](https://img.shields.io/badge/license-MIT-0a0a0b?style=flat-square&labelColor=6f6f79)
 ![Models](https://img.shields.io/badge/models-ChatGPT%20%C2%B7%20Gemini%20%C2%B7%20Claude-0a0a0b?style=flat-square&labelColor=6f6f79)
 
+<br>
+
+**[Open the live dashboard →](https://ai-visibility-monitor-psi.vercel.app)**
+<br>
+<sub>A real 179-response run, with the raw numbers behind every cell.</sub>
+
 </div>
 
 <br>
@@ -124,6 +130,8 @@ npm run serve        # → http://localhost:4178
 ## The dashboard
 
 `npm run serve` opens a static, dependency-free dashboard over the same `summary.json`. It is two-tone on purpose: **value is carried by ink density, never by colour**, so the same plate reads identically in print, in a screenshot, and to a colour-blind reader.
+
+A deployed copy of the Burson run is up at **[ai-visibility-monitor-psi.vercel.app](https://ai-visibility-monitor-psi.vercel.app)** — same build, same data as [`web/public/summary.json`](web/public/summary.json) in this repo. Click through the screens below to see how each number is sourced.
 
 | Screen | What it answers |
 |---|---|

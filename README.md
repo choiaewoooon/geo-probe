@@ -9,12 +9,24 @@ When people ask ChatGPT, Gemini, or Claude for **"the best company for X"** — 
 
 <br>
 
-![Node](https://img.shields.io/badge/node-%E2%89%A518-3c873a)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Zero deps](https://img.shields.io/badge/dependencies-0-brightgreen)
-![GEO](https://img.shields.io/badge/GEO-Generative%20Engine%20Optimization-ffd400)
-![Models](https://img.shields.io/badge/models-ChatGPT%20·%20Gemini%20·%20Claude-6f42c1)
+![Node](https://img.shields.io/badge/node-%E2%89%A518-0a0a0b?style=flat-square&labelColor=6f6f79)
+![Dependencies](https://img.shields.io/badge/dependencies-0-0a0a0b?style=flat-square&labelColor=6f6f79)
+![License](https://img.shields.io/badge/license-MIT-0a0a0b?style=flat-square&labelColor=6f6f79)
+![Models](https://img.shields.io/badge/models-ChatGPT%20%C2%B7%20Gemini%20%C2%B7%20Claude-0a0a0b?style=flat-square&labelColor=6f6f79)
 
+</div>
+
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/matrix-dark.png">
+  <img alt="The density matrix: an 8-question by 3-model grid where ink density shows how often the brand was mentioned" src="docs/screenshots/matrix-light.png">
+</picture>
+
+<div align="center">
+<sub><b>The density matrix.</b> Rows are questions, columns are models. Ink density is the mention rate; the number inside is the median rank when mentioned. <b>Hatched cells were never mentioned at all</b> — <code>0/5</code> is a different fact from <em>“rarely,”</em> so it gets a different mark, not a lighter shade.
+<br>
+<sub>Screens are from a real run against the Korean market, so the UI is in Korean.</sub></sub>
 </div>
 
 ---
@@ -47,6 +59,19 @@ A reproducible matrix. Here's a real run for **Burson** (a WPP communications ag
 > **Takeaway the data hands you:** Burson is *reliably* found (~4th), but the **#1 spot is rare** (2 of 60 runs, both ChatGPT on the AI-analytics question) and it is **nearly absent for Korean social-listening** (1 of 15 runs). That last row isn't a verdict — it's your **first optimization target**.
 
 The single-shot version of this same probe *missed* the two #1 rankings entirely. That's why repetition matters.
+
+---
+
+## Who is taking your spot
+
+When your brand *doesn't* show up, someone else does. The dashboard lays every brand that appeared in the same answers on one plate — area is how often it appeared, ink density is its share.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/treemap-dark.png">
+  <img alt="Share-of-voice treemap: every brand that appeared in the same answers, sized by appearances" src="docs/screenshots/treemap-light.png">
+</picture>
+
+This is **share of the answers you tracked**, not market share — the dashboard says so on the same screen, every time.
 
 ---
 
@@ -86,7 +111,33 @@ npm run run
 
 No build step, **zero dependencies** (Node 18+ `fetch` only). Output lands in `results/<timestamp>/report.md`.
 
+Then open the dashboard:
+
+```bash
+npm run serve        # → http://localhost:4178
+```
+
 > Don't want to use API keys? Point a model at your own local CLI instead — see [`examples/command-adapter.config.json`](examples/command-adapter.config.json). Any executable that takes a prompt as its last argument works.
+
+---
+
+## The dashboard
+
+`npm run serve` opens a static, dependency-free dashboard over the same `summary.json`. It is two-tone on purpose: **value is carried by ink density, never by colour**, so the same plate reads identically in print, in a screenshot, and to a colour-blind reader.
+
+| Screen | What it answers |
+|---|---|
+| **요약** Summary | Where does this brand stand right now — rate, top-3 rate, median rank, consistency, completeness |
+| **경쟁 구도** Competition | Who took the spot when we didn't show up, and who we're always named alongside |
+| **질문·모델 진단** Diagnosis | Which exact question and model we're weak in — the density matrix above |
+| **출처** Sources | Which domains the answers cited, and how much of that was ours |
+| **원문 증거** Evidence | Where every raw response is stored, per run |
+| **측정 실행** Run | Run a measurement from the browser; keys and results never leave it |
+
+Two things the dashboard refuses to do, deliberately:
+
+- **No single composite score.** Blending mention rate, rank, and share under invented weights manufactures false precision. It shows status labels instead.
+- **No 0% for "unmeasurable."** If no model returned a citation, own-domain citation rate is reported as *not measurable* — not as `0%`. Those are different facts.
 
 ---
 
@@ -135,6 +186,7 @@ This tool is opinionated about *not lying with data*:
 - **Conditions are recorded, not hidden.** Web-search state and model id travel with every result. Different conditions → reported as such, never as an absolute comparison.
 - **The median ignores non-mentions.** A cell shows the median rank *of the runs that mentioned the brand*, plus the mention count — so a high rank on 1/5 runs can't masquerade as consistent.
 - **Ranks come only from what the model actually returned.** If a response isn't a ranked list, the run is scored *mentioned / not-mentioned* with no invented position.
+- **Changing the questions breaks the line.** The trend chart refuses to connect points measured with different question sets, because a redesign would otherwise look like progress.
 - **A snapshot is a snapshot.** Results shift with model versions, search indexes, and time. `geo-probe` gives you a repeatable observation, not a market-share claim.
 
 ---

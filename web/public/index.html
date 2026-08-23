@@ -430,6 +430,9 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
 (function(){
   var K="geoprobe-theme", v=null;
   try{ v=localStorage.getItem(K) }catch(e){}
+  // ?theme=light|dark 는 저장하지 않고 이번 화면에만 적용한다(문서용 캡처·링크 공유).
+  var q=new URLSearchParams(location.search).get("theme");
+  if(q==="light"||q==="dark") v=q;
   if(v==="light"||v==="dark") document.documentElement.setAttribute("data-theme",v);
   function sync(){
     var cur=document.documentElement.getAttribute("data-theme");

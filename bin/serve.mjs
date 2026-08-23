@@ -18,7 +18,7 @@ const WEB = path.join(ROOT, "web", "public")
 const CONFIGS = path.join(ROOT, "configs")
 const PORT = Number(process.env.PORT ?? 4178)
 
-const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".json": "application/json; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" }
+const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".mjs": "text/javascript; charset=utf-8", ".json": "application/json; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" }
 
 let job = null // { kind, config, startedAt, lines[], done, code }
 const clients = new Set()

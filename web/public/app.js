@@ -18,15 +18,16 @@ const el = (t, a = {}, ...kids) => {
 }
 const dash = (v, suffix = "") => (v === null || v === undefined ? "-" : `${v}${suffix}`)
 
+// [키, 메뉴 라벨, 묶음, 화면 부제]
 const VIEWS = [
-  ["summary", "요약"],
-  ["compete", "경쟁 구도"],
-  ["diagnose", "질문·모델 진단"],
-  ["sources", "출처"],
-  ["evidence", "원문 증거"],
-  ["method", "방법론"],
-  ["run", "측정 실행"],
-  ["settings", "설정"],
+  ["summary", "요약", "측정 결과", "브랜드 이름을 감춘 질문에 AI가 답할 때 이 브랜드가 어디쯤 나오는지를 한 화면에 모았습니다."],
+  ["compete", "경쟁 구도", "측정 결과", "자리를 대신 차지한 브랜드와 늘 함께 불리는 브랜드를 집계했습니다."],
+  ["diagnose", "질문·모델 진단", "측정 결과", "어떤 질문에서, 어떤 모델에서 약한지를 밀도로 짚습니다."],
+  ["sources", "출처", "측정 결과", "답변에 붙은 출처 도메인과 그중 자사 콘텐츠의 몫입니다."],
+  ["evidence", "원문 증거", "측정 결과", "회차별 응답 원문이 어디에 남아 있는지에 대한 색인입니다."],
+  ["method", "방법론", "측정 설계", "질문·모델·계산 규칙, 그리고 이 측정이 말할 수 없는 것들."],
+  ["run", "측정 실행", "도구", "브랜드와 질문을 넣으면 이 브라우저가 직접 AI에 물어봅니다."],
+  ["settings", "설정", "도구", "API 키와 이 브라우저에 저장된 측정 결과를 관리합니다."],
 ]
 
 let DATA = null
@@ -35,7 +36,7 @@ let BRAND = null
 // ---------- 차트 (SVG 직접 생성, 라이브러리 없음) ----------
 function sparkline(points, { w = 640, h = 140 } = {}) {
   if (!points.length) return el("p", { class: "empty" }, "표시할 측정 시점이 없습니다.")
-  const pad = { l: 34, r: 12, t: 12, b: 34 }
+  const pad = { l: 40, r: 40, t: 16, b: 34 }
   const iw = w - pad.l - pad.r
   const ih = h - pad.t - pad.b
   const n = points.length
@@ -51,55 +52,222 @@ function sparkline(points, { w = 640, h = 140 } = {}) {
   })
   if (cur.length) segments.push(cur)
 
+  const mono = `font-family="IBM Plex Mono, monospace"`
+  const areas = segments
+    .filter((seg) => seg.length > 1)
+    .map((seg) => {
+      const line = seg.map((i, k) => `${k ? "L" : "M"}${x(i).toFixed(1)},${y(points[i].movingRate).toFixed(1)}`).join("")
+      const base = `L${x(seg.at(-1)).toFixed(1)},${(pad.t + ih).toFixed(1)}L${x(seg[0]).toFixed(1)},${(pad.t + ih).toFixed(1)}Z`
+      return `<path d="${line}${base}" fill="url(#gpFade)"/>`
+    }).join("")
+
   const paths = segments
     .filter((seg) => seg.length > 1)
-    .map((seg) => `<path d="${seg.map((i, k) => `${k ? "L" : "M"}${x(i).toFixed(1)},${y(points[i].movingRate).toFixed(1)}`).join("")}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>`)
+    .map((seg) => `<path d="${seg.map((i, k) => `${k ? "L" : "M"}${x(i).toFixed(1)},${y(points[i].movingRate).toFixed(1)}`).join("")}" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>`)
     .join("")
 
   const breaks = points
     .map((p, i) => (p.protocolStart && i > 0
-      ? `<line x1="${((x(i - 1) + x(i)) / 2).toFixed(1)}" x2="${((x(i - 1) + x(i)) / 2).toFixed(1)}" y1="${pad.t}" y2="${pad.t + ih}" stroke="var(--warn)" stroke-width="1" stroke-dasharray="3 3"/>`
+      ? `<line x1="${((x(i - 1) + x(i)) / 2).toFixed(1)}" x2="${((x(i - 1) + x(i)) / 2).toFixed(1)}" y1="${pad.t - 4}" y2="${pad.t + ih}" stroke="var(--line-strong)" stroke-width="1" stroke-dasharray="2 3"/>` +
+        `<text x="${((x(i - 1) + x(i)) / 2 + 4).toFixed(1)}" y="${pad.t + 2}" fill="var(--dim2)" font-size="8.5" ${mono} letter-spacing=".08em">질문 세트 교체</text>`
       : "")).join("")
 
   const svg = [
     `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" aria-label="언급률 추세">`,
+    `<defs><linearGradient id="gpFade" x1="0" y1="0" x2="0" y2="1">` +
+      `<stop offset="0%" stop-color="var(--ink)" stop-opacity=".16"/>` +
+      `<stop offset="100%" stop-color="var(--ink)" stop-opacity="0"/></linearGradient></defs>`,
     [0, 50, 100].map((g) =>
-      `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(g)}" y2="${y(g)}" stroke="var(--line)" stroke-width="1"/>` +
-      `<text x="4" y="${y(g) + 4}" fill="var(--dim2)" font-size="10" font-family="monospace">${g}%</text>`).join(""),
+      `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(g)}" y2="${y(g)}" stroke="var(--line)" stroke-width="1" ${g ? "" : 'stroke-opacity="1"'}/>` +
+      `<text x="2" y="${y(g) + 3.5}" fill="var(--dim2)" font-size="9" ${mono} letter-spacing=".06em">${String(g).padStart(3)}%</text>`).join(""),
+    areas,
     breaks,
     paths,
     points.map((p, i) =>
-      `<circle cx="${x(i)}" cy="${y(p.rate)}" r="3" fill="var(--dim2)" opacity=".55"/>` +
-      `<circle cx="${x(i)}" cy="${y(p.movingRate)}" r="4" fill="var(--accent)"/>` +
+      `<circle cx="${x(i)}" cy="${y(p.rate)}" r="2.6" fill="none" stroke="var(--dim2)" stroke-width="1"/>` +
+      `<circle cx="${x(i)}" cy="${y(p.movingRate)}" r="3.6" fill="var(--ink)"/>` +
       `<title>${p.run_id} · 원값 ${p.mentions}/${p.V} (${p.rate}%) · ${p.movingLabel} · 질문 세트 ${p.protocol}</title>` +
-      `<text x="${x(i)}" y="${h - 20}" fill="var(--dim2)" font-size="10" font-family="monospace" text-anchor="middle">${String(p.run_id).slice(0, 10)}</text>` +
-      `<text x="${x(i)}" y="${h - 8}" fill="var(--dim2)" font-size="9" font-family="monospace" text-anchor="middle" opacity=".7">${p.protocol}</text>`).join(""),
+      `<text x="${x(i)}" y="${h - 18}" fill="var(--dim)" font-size="9.5" ${mono} text-anchor="${i === 0 ? "start" : i === n - 1 ? "end" : "middle"}">${String(p.run_id).slice(0, 10)}</text>` +
+      `<text x="${x(i)}" y="${h - 7}" fill="var(--dim2)" font-size="8.5" ${mono} text-anchor="${i === 0 ? "start" : i === n - 1 ? "end" : "middle"}">${p.protocol}</text>`).join(""),
     `</svg>`,
   ].join("")
 
   const protos = [...new Set(points.map((p) => p.protocol))]
-  const notes = ["진한 점과 실선은 이동평균, 흐린 점은 회차별 값입니다. 표본이 작아 회차별 값의 변동이 큽니다."]
+  const notes = ["채운 점과 실선은 이동평균, 빈 점은 회차별 값입니다. 표본이 작아 회차별 값의 변동이 큽니다."]
   if (protos.length > 1) {
     notes.push("점선은 <b>질문 세트가 바뀐 지점</b>입니다. 그 앞뒤는 서로 다른 질문으로 잰 값이라 선을 잇지 않았고, 직접 비교해서도 안 됩니다.")
   } else if (points.length < 2) {
     notes.push("현재 측정 시점이 1개입니다. 추세선은 다음 측정부터 그려집니다.")
   }
-  return el("div", {}, el("div", { html: svg }), el("p", { class: "note", html: notes.join(" " ) }))
+  return el("div", {}, el("div", { class: "chart", html: svg }), el("p", { class: "note", html: notes.join(" ") }))
 }
 
-function distBars(dist) {
-  const order = (k) => (k.endsWith("위") ? Number(k) : k === "언급(순위없음)" ? 90 : 99)
+// 순위 분포 — 하나의 가로 막대에 쌓는다. 표로 나열하면 "미언급이 얼마나 큰 덩어리인가"가
+// 눈에 안 들어온다. 미언급은 옅은 농도가 아니라 해치로 칠해 0건과 저빈도를 구분한다.
+function rankStack(dist) {
+  // Number("1위")는 NaN이라 그냥 Number(k)로 정렬하면 순위가 전혀 정렬되지 않는다. 숫자만 뽑아 쓴다.
+  const order = (k) => (k.endsWith("위") ? Number(k.replace(/[^\d.]/g, "")) : k === "언급(순위없음)" ? 90 : 99)
   const keys = Object.keys(dist).sort((a, b) => order(a) - order(b))
-  const max = Math.max(...keys.map((k) => dist[k]), 1)
-  return el("table", {}, el("tbody", {},
-    keys.map((k) => el("tr", {},
-      el("td", { style: "width:110px;color:var(--dim)" }, k),
-      el("td", {}, el("span", {
-        class: "bar",
-        style: `width:${(dist[k] / max) * 100}%;background:${k === "미언급" ? "var(--bad)" : "var(--accent)"}`,
-      })),
-      el("td", { class: "n", style: "width:52px" }, dist[k]),
-    ))))
+  const total = keys.reduce((s, k) => s + dist[k], 0) || 1
+  const ranked = keys.filter((k) => k !== "미언급")
+
+  const seg = (k, i) => {
+    const pct = (dist[k] / total) * 100
+    const miss = k === "미언급"
+    // 앞 순위일수록 진하게. 순위 자체가 농도로 읽히게 한다.
+    const a = miss ? 0 : 0.95 - (i / Math.max(ranked.length, 1)) * 0.68
+    return el("span", {
+      class: miss ? "miss" : null,
+      style: `flex:${dist[k]} 1 0;background:${miss ? "" : `rgba(var(--ink-rgb),${a.toFixed(3)})`};` +
+        `color:${miss ? "var(--dim2)" : a > 0.58 ? "var(--on-ink)" : "var(--tx)"}`,
+      title: `${k} · ${dist[k]}건 (${Math.round(pct)}%)`,
+    }, pct >= 7 ? String(dist[k]) : "")
+  }
+
+  return el("div", {},
+    el("div", { class: "stack" }, ranked.map(seg), dist["미언급"] ? seg("미언급", 0) : null),
+    el("div", { class: "stack-key" },
+      ranked.map((k, i) => el("span", {},
+        el("i", { style: `background:rgba(var(--ink-rgb),${(0.95 - (i / Math.max(ranked.length, 1)) * 0.68).toFixed(3)})` }),
+        `${k} ${dist[k]}`)),
+      dist["미언급"] ? el("span", {}, el("i", { class: "miss" }), `미언급 ${dist["미언급"]}`) : null),
+  )
+}
+
+// ---------- 밀도 매트릭스 ----------
+// 값 = 잉크 농도. 0건은 옅은 회색이 아니라 해치. (0건과 저빈도는 다른 사실이다)
+const inkA = (rate) => 0.1 + (Math.max(0, Math.min(100, rate)) / 100) * 0.85
+
+function densityCell(c) {
+  if (!c) return el("div", { class: "cellwrap miss" }, el("div", { class: "hatch" }),
+    el("div", { class: "txt" }, el("span", { class: "r" }, "—")))
+  if (!c.mentions) {
+    return el("div", { class: "cellwrap miss", title: `미언급 0/${c.V}` },
+      el("div", { class: "hatch" }),
+      el("div", { class: "txt" },
+        el("span", { class: "r" }, "미언급"),
+        el("span", { class: "f" }, `0/${c.V}`)))
+  }
+  const a = inkA(c.mentionRate)
+  return el("div", {
+    class: `cellwrap ${a > 0.58 ? "on-ink" : "on-bg"}`,
+    title: `언급 ${c.mentionLabel} · Top3 ${c.top3Label} · 중위 ${c.medianRank === null ? "산출 불가" : c.medianRank + "위"} · 일관성 ${c.reproducibility}%`,
+  },
+    el("div", { class: "fill", style: `opacity:${a.toFixed(3)}` }),
+    el("div", { class: "txt" },
+      el("span", { class: "r" }, c.medianRank === null ? "언급" : `${c.medianRank}위`),
+      el("span", { class: "f" }, `${c.mentions}/${c.V}`)))
+}
+
+function densityMatrix(b) {
+  const models = [...new Set(b.matrix.map((c) => c.model))]
+  const questions = [...new Set(b.matrix.map((c) => c.question))]
+  const cellOf = (m, q) => b.matrix.find((c) => c.model === m && c.question === q)
+  const agg = (cells) => {
+    const V = cells.reduce((s, c) => s + (c?.V ?? 0), 0)
+    const n = cells.reduce((s, c) => s + (c?.mentions ?? 0), 0)
+    return { V, n, rate: V ? Math.round((n / V) * 100) : null }
+  }
+
+  const head = el("tr", {},
+    el("th", { class: "rowhead" }, "질문"),
+    models.map((m) => el("th", {}, modelLabel(m))),
+    el("th", {}, "질문 합계"))
+
+  const rows = questions.map((q) => {
+    const a = agg(models.map((m) => cellOf(m, q)))
+    return el("tr", {},
+      el("td", { class: "rowhead" },
+        el("span", { class: "qid" }, q.toUpperCase()),
+        questionShort(q)),
+      models.map((m) => el("td", {}, densityCell(cellOf(m, q)))),
+      el("td", { class: "marg" }, el("div", { class: "margcell" },
+        el("b", {}, a.rate === null ? "—" : `${a.rate}%`),
+        el("i", {}, `${a.n}/${a.V}`))))
+  })
+
+  const foot = el("tr", {},
+    el("td", { class: "rowhead" }, el("span", { class: "qid" }, "MODEL"), "모델 합계"),
+    models.map((m) => {
+      const a = agg(questions.map((q) => cellOf(m, q)))
+      return el("td", { class: "marg" }, el("div", { class: "margcell" },
+        el("b", {}, a.rate === null ? "—" : `${a.rate}%`),
+        el("i", {}, `${a.n}/${a.V}`)))
+    }),
+    el("td", {}))
+
+  return el("div", { class: "plate" },
+    el("table", { class: "mx" },
+      el("thead", {}, head),
+      el("tbody", {}, rows, foot)),
+    el("div", { class: "ramp" },
+      el("span", {}, "언급률"),
+      el("span", { class: "steps" },
+        [0, 20, 40, 60, 80, 100].map((r) => el("i", { style: `opacity:${inkA(r).toFixed(3)}`, title: `${r}%` }))),
+      el("span", {}, "0 → 100%"),
+      el("span", {}, el("i", { class: "sw" }), "미언급 (0건)"),
+      el("span", {}, "칸 안 숫자 = 언급 시 중위 순위 · 아래 = 언급/유효")),
+  )
+}
+
+// ---------- 트리맵 ----------
+// squarified treemap. 3ridge 마인드쉐어 분포와 같은 읽기법:
+// 면적 = 등장량, 농도 = 점유율. 자사 타일만 이중 링으로 표시한다.
+function squarify(items, x, y, w, h, out = []) {
+  if (!items.length) return out
+  if (items.length === 1) { out.push({ ...items[0], x, y, w, h }); return out }
+  const total = items.reduce((s, i) => s + i.value, 0)
+  const horiz = w >= h
+  const side = horiz ? h : w
+  const worst = (row, len) => {
+    const s = row.reduce((a, i) => a + i.value, 0)
+    if (!s) return Infinity
+    const rw = (s / total) * (horiz ? w : h)
+    return Math.max(...row.map((i) => {
+      const l = (i.value / s) * side
+      return Math.max(rw / l, l / rw)
+    }))
+  }
+  const row = [items[0]]
+  let i = 1
+  while (i < items.length && worst([...row, items[i]], side) <= worst(row, side)) row.push(items[i++])
+  const rest = items.slice(i)
+  const rowSum = row.reduce((a, it) => a + it.value, 0)
+  const frac = rowSum / total
+  if (horiz) {
+    const rw = w * frac
+    let cy = y
+    for (const it of row) { const ih = h * (it.value / rowSum); out.push({ ...it, x, y: cy, w: rw, h: ih }); cy += ih }
+    return squarify(rest, x + rw, y, w - rw, h, out)
+  }
+  const rh = h * frac
+  let cx = x
+  for (const it of row) { const iw = w * (it.value / rowSum); out.push({ ...it, x: cx, y, w: iw, h: rh }); cx += iw }
+  return squarify(rest, x, y + rh, w, h - rh, out)
+}
+
+function treemap(items, { me, label } = {}) {
+  const clean = items.filter((i) => i.value > 0)
+  if (!clean.length) return el("p", { class: "empty" }, "표시할 데이터가 없습니다.")
+  const maxV = Math.max(...clean.map((i) => i.value))
+  const laid = squarify([...clean].sort((a, b) => b.value - a.value), 0, 0, 100, 100)
+
+  return el("div", { class: "tree" }, laid.map((t) => {
+    const a = 0.12 + (t.value / maxV) * 0.83
+    const mine = t.name === me
+    const tiny = t.w < 11 || t.h < 18
+    return el("div", {
+      class: `tile ${a > 0.58 || mine ? "on-ink" : "on-bg"}${mine ? " me" : ""}${tiny ? " tiny" : ""}`,
+      style: `left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%`,
+      title: t.title ?? t.name,
+    }, el("div", {
+      class: "box",
+      style: `background:rgba(var(--ink-rgb),${(mine ? Math.max(a, 0.9) : a).toFixed(3)})`,
+    },
+      mine ? el("div", { class: "own" }, "자사") : null,
+      el("div", { class: "nm" }, t.name),
+      el("div", { class: "vl" }, label ? label(t) : t.value)))
+  }))
 }
 
 
@@ -164,10 +332,10 @@ function intro(b) {
   const kr = "한국어 로컬 질문"
   return el("div", { class: "intro" },
     el("p", { class: "lead" },
-      "생성형 AI에게 브랜드 이름을 감추고 질문했을 때, 그 브랜드가 답변에 등장하는지를 반복 측정한 기록입니다."),
+      "한 번 물어보고 캡처하는 것은 관찰입니다. 여기 있는 숫자는 측정입니다."),
     el("p", {},
-      "AI는 같은 질문에도 매번 다르게 답합니다. 그래서 한 번 물어보고 캡처하는 것은 관찰이지 측정이 아닙니다. " +
-      "여기서는 같은 질문을 여러 번 반복해 우연과 경향을 가르고, 응답에 함께 등장한 경쟁사까지 집계했습니다."),
+      "AI는 같은 질문에도 매번 다르게 답합니다. 그래서 같은 질문을 여러 번 반복해 우연과 경향을 가르고, " +
+      "브랜드 이름은 질문에서 감춰 두었습니다. 응답에 함께 등장한 경쟁사까지 같이 집계했습니다."),
     el("p", {},
       "측정 도구는 직접 만들었고 코드와 응답 원문을 모두 공개합니다. " +
       "숫자가 어떻게 나왔는지 직접 확인할 수 있습니다."),
@@ -198,30 +366,36 @@ function viewSummary(b) {
 
     el("h2", {}, "핵심 지표"),
     el("div", { class: "cards" },
-      card("추천 언급률", dash(v.mentionRate, "%"), v.mentionLabel),
-      card("Top 3 추천률", dash(v.top3Rate, "%"), v.top3Label),
+      card("추천 언급률", dash(v.mentionRate, "%"), v.mentionLabel, false, v.mentionRate),
+      card("Top 3 추천률", dash(v.top3Rate, "%"), v.top3Label, false, v.top3Rate),
       card("언급 시 중위 순위", v.medianRank === null ? "-" : `${v.medianRank}위`,
         v.rankedN ? `${v.rankedN}건 기준 · 미언급 제외` : "산출 불가"),
-      card("응답 점유율", dash(mySov?.sov, "%"), "추적 질문군 내"),
-      card("결과 일관성", dash(v.reproducibility, "%"), "같은 결과가 반복된 정도"),
-      card("측정 완결성", dash(c.validRate, "%"), c.validLabel, c.warn),
+      card("응답 점유율", dash(mySov?.sov, "%"), "추적 질문군 내", false, mySov?.sov),
+      card("결과 일관성", dash(v.reproducibility, "%"), "같은 결과가 반복된 정도", false, v.reproducibility),
+      card("측정 완결성", dash(c.validRate, "%"), c.validLabel, c.warn, c.validRate),
     ),
+
+    el("h2", {}, "밀도 매트릭스", el("small", {}, "농도가 높을수록 자주 불립니다")),
+    densityMatrix(b),
+    el("p", { class: "note" },
+      "농도가 높은 칸일수록 그 질문·모델 조합에서 브랜드가 자주 불렸다는 뜻이고, 빗금 친 칸은 한 번도 불리지 않았다는 뜻입니다. " +
+      "옅은 칸과 빗금 칸은 다른 사실이라 다르게 칠했습니다. 모델마다 웹 검색 조건이 달라 열끼리 우열을 매기지 않습니다."),
 
     el("h2", {}, "언급률 추세", el("small", {}, "회차별 값과 이동평균")),
     sparkline(b.trend),
 
     el("h2", {}, "순위 분포", el("small", {}, "중위값 뒤에 가려지는 변동까지")),
-    distBars(v.rankDistribution),
+    rankStack(v.rankDistribution),
 
     el("h2", {}, "우선 점검할 질문", el("small", {}, "언급률이 낮고 대체 경쟁사가 반복되는 순")),
     b.priorities.slice(0, 3).map((p, i) => el("div", { class: "prio" },
-      el("div", { class: "rank" }, i + 1),
+      el("div", { class: "rank" }, String(i + 1).padStart(2, "0")),
       el("div", { class: "body" },
         el("div", { class: "q" }, questionLabel(p.question)),
-        el("div", { class: "why" },
-          `언급 ${p.mentionLabel}`,
-          p.medianRank !== null ? ` · 중위 ${p.medianRank}위` : "",
-          p.topSubstitute ? ` · 이 질문에서 자리를 대신 차지한 1위: ${p.topSubstitute.name} (${p.topSubstitute.rate}%)` : ""),
+        el("div", { class: "why", html:
+          `언급 <b>${p.mentionLabel}</b>` +
+          (p.medianRank !== null ? ` · 중위 ${p.medianRank}위` : "") +
+          (p.topSubstitute ? ` · 이 자리를 대신 차지한 1위는 <b>${p.topSubstitute.name}</b>입니다 (${p.topSubstitute.rate}%)` : "") }),
       ),
     )),
   )
@@ -235,7 +409,28 @@ function viewCompete(b) {
     style: `width:${(r.appearances / max) * 100}%;background:${isMe(r) ? "var(--accent)" : "var(--dim2)"}`,
   })
 
+  // 상위만 그린다. "그 외" 합계 타일을 넣으면 그게 최대 면적이 되어 1위 브랜드보다 진해지고,
+  // 실제로 가장 큰 경쟁자가 누구인지가 그림에서 사라진다.
+  const TOP = 14
+  const top = b.shareOfVoice.slice(0, TOP)
+  const allN = b.shareOfVoice.reduce((s, r) => s + r.appearances, 0)
+  const shown = top.reduce((s, r) => s + r.appearances, 0)
+  const meIn = top.some((r) => r.name === b.brand)
+  const meRow = b.shareOfVoice.find((r) => r.name === b.brand)
+  const tiles = (meIn || !meRow ? top : [...top.slice(0, TOP - 1), meRow]).map((r) => ({
+    name: r.name, value: r.appearances, sov: r.sov, rate: r.mentionRate, rank: r.medianRank,
+    title: `${r.name} · 등장 ${r.appearances}회 · 점유율 ${r.sov}% · 언급률 ${r.mentionRate}%` +
+      (r.medianRank === null ? "" : ` · 중위 ${r.medianRank}위`),
+  }))
+
   return el("div", {},
+    el("h2", {}, "점유율 분포", el("small", {}, "면적 = 등장 횟수 · 농도 = 점유율")),
+    treemap(tiles, { me: b.brand, label: (t) => `${t.sov}% · ${t.value}회` }),
+    el("p", { class: "note", html:
+      `「자사」 표시가 붙은 칸이 <b>${b.brand}</b>입니다. 등장이 많은 상위 ${tiles.length}곳만 그렸고, ` +
+      `이 그림이 덮는 범위는 전체 등장 ${allN}회 중 ${Math.round((shown / allN) * 100)}%입니다. ` +
+      "추적한 질문 안에서 답변에 등장한 횟수의 비율일 뿐, <b>실제 시장 점유율이 아닙니다.</b>" }),
+
     el("h2", {}, "추적 질문군 내 응답 점유율", el("small", {}, "실제 시장 점유율이 아닙니다")),
     sortableTable("sov", [
       { key: "name", label: "브랜드" },
@@ -270,29 +465,30 @@ function viewCompete(b) {
 }
 
 function viewDiagnose(b) {
-  const models = [...new Set(b.matrix.map((c) => c.model))]
-  const questions = [...new Set(b.matrix.map((c) => c.question))]
-  const cellOf = (m, q) => b.matrix.find((c) => c.model === m && c.question === q)
+  const rows = [...b.matrix].sort((x, y) => x.mentionRate - y.mentionRate)
+  const weak = rows.filter((c) => c.mentionRate < 50)
+
   return el("div", {},
-    el("h2", {}, "질문 × 모델", el("small", {}, "실제 값으로 우선순위를 찾는 화면")),
-    el("div", { class: "scroll" }, el("table", {},
-      el("thead", {}, el("tr", {}, el("th", {}, "질문"), models.map((m) => el("th", {}, modelLabel(m))))),
-      el("tbody", {}, questions.map((q) => el("tr", {},
-        el("td", {}, questionLabel(q)),
-        models.map((m) => {
-          const c = cellOf(m, q)
-          if (!c) return el("td", { class: "cell" }, "-")
-          if (!c.mentions) return el("td", { class: "cell miss" }, el("span", { class: "r" }, "미언급"),
-            el("span", { class: "f" }, ` 0/${c.V}`))
-          return el("td", { class: "cell" },
-            el("span", { class: "r" }, c.medianRank === null ? "언급" : `${c.medianRank}위`),
-            el("span", { class: "f" }, ` ${c.mentions}/${c.V}`))
-        }),
-      )))),
-    ),
-    el("p", { class: "note" },
-      "각 셀은 언급 횟수와, 언급된 응답의 최초 순위 중위값입니다. 모델마다 웹 검색 조건이 달라 " +
-      "모델 간 절대 우열로 비교하지 않습니다."),
+    el("h2", {}, "밀도 매트릭스", el("small", {}, "질문 × 모델 · 농도가 높을수록 자주 불립니다")),
+    densityMatrix(b),
+    el("p", { class: "note", html:
+      "칸 안의 큰 숫자는 <b>언급됐을 때의 중위 순위</b>, 작은 숫자는 <b>언급 횟수 / 유효 응답</b>입니다. " +
+      "빗금 칸은 한 번도 불리지 않은 조합이라 순위 자체가 없습니다. " +
+      "가장자리 점선 칸은 그 줄과 열의 합계입니다. 모델마다 웹 검색 조건이 달라 모델 간 절대 우열로 비교하지 않습니다." }),
+
+    el("h2", {}, "약한 조합", el("small", {}, `언급률 50% 미만 ${weak.length}개`)),
+    weak.length
+      ? sortableTable("weak", [
+          { key: "question", label: "질문", render: (c) => questionLabel(c.question) },
+          { key: "model", label: "모델", render: (c) => modelLabel(c.model) },
+          { key: "mentionRate", label: "언급률", cls: "n", num: true, render: (c) => `${c.mentionRate}%` },
+          { key: "_bar", label: "", sortable: false, render: (c) => el("span", {
+              class: "bar", style: `width:${Math.max(3, c.mentionRate)}%;opacity:${inkA(c.mentionRate).toFixed(3)}` }) },
+          { key: "mentions", label: "언급/유효", cls: "n", num: true, render: (c) => `${c.mentions}/${c.V}` },
+          { key: "medianRank", label: "중위 순위", cls: "n", num: true, bestLow: true,
+            render: (c) => (c.medianRank === null ? "—" : `${c.medianRank}위`) },
+        ], weak, { initial: { key: "mentionRate", dir: "asc" } })
+      : el("p", { class: "empty" }, "모든 조합에서 절반 이상 언급됐습니다."),
   )
 }
 
@@ -682,9 +878,10 @@ function viewSettings() {
   return box
 }
 
-const btnStyle = (bg) => `background:${bg};color:${bg === "transparent" ? "var(--dim)" : "#08131f"};` +
-  `border:1px solid ${bg === "transparent" ? "var(--line)" : bg};border-radius:9px;` +
-  `padding:10px 16px;font:inherit;font-size:13px;font-weight:${bg === "transparent" ? 400 : 600};cursor:pointer`
+const btnStyle = (bg) => `background:${bg};color:${bg === "transparent" ? "var(--dim)" : "var(--on-ink)"};` +
+  `border:1px solid ${bg === "transparent" ? "var(--line)" : "var(--ink)"};border-radius:9px;` +
+  `padding:10px 17px;font:inherit;font-size:13px;letter-spacing:-.01em;` +
+  `font-weight:${bg === "transparent" ? 500 : 650};cursor:pointer`
 
 // ---------- 화면 설명 ----------
 // 각 화면이 무엇에 답하는지를 처음 보는 사람도 알 수 있게. 평소엔 접혀 있다.
@@ -771,10 +968,17 @@ function viewHelp(key) {
 }
 
 // ---------- 조각 ----------
-const card = (k, v, n, flag) => el("div", { class: `card${flag ? " flag" : ""}` },
-  el("div", { class: "k" }, k), el("div", { class: "v" }, v), n ? el("div", { class: "n" }, n) : null)
+const card = (k, v, n, flag, gauge) => el("div", { class: `card${flag ? " flag" : ""}` },
+  el("div", { class: "k" }, k), el("div", { class: "v" }, v), n ? el("div", { class: "n" }, n) : null,
+  typeof gauge === "number"
+    ? el("div", { class: "gauge" }, el("i", { style: `width:${Math.max(1.5, Math.min(100, gauge))}%` }))
+    : null)
 const quad = (k, v) => el("div", {}, el("div", { class: "qv" }, v), el("div", { class: "qk" }, k))
 
+const questionShort = (id) => {
+  const q = DATA?.methodology?.questions?.find((x) => x.id === id)
+  return q ? (q.short ?? q.prompt.slice(0, 26)) : id
+}
 const questionLabel = (id) => {
   const q = DATA?.methodology?.questions?.find((x) => x.id === id)
   return q ? `${id.toUpperCase()} · ${q.short ?? q.prompt.slice(0, 24)}` : id
@@ -786,12 +990,20 @@ const RENDER = { summary: viewSummary, compete: viewCompete, diagnose: viewDiagn
 let CURRENT = null
 function show(key) {
   CURRENT = key
+  const meta = VIEWS.find(([k]) => k === key)
+  if (meta) {
+    $("#pageEyebrow").textContent = meta[2]
+    $("#pageTitle").textContent = meta[1]
+    $("#pageSub").textContent = meta[3]
+  }
   const app = $("#app")
   app.innerHTML = ""
   const help = viewHelp(key)
   if (help) app.append(help)
   app.append(RENDER[key](BRAND))
-  for (const btn of $("#nav").children) btn.setAttribute("aria-selected", String(btn.dataset.k === key))
+  for (const btn of $("#nav").querySelectorAll("button")) {
+    btn.setAttribute("aria-selected", String(btn.dataset.k === key))
+  }
   if (location.hash.slice(1) !== key) history.pushState(null, "", `#${key}`)
   window.scrollTo({ top: 0 })
 }
@@ -812,13 +1024,21 @@ async function boot() {
 
   $("#brandName").textContent = BRAND.brand
   const last = BRAND.trend.at(-1)
-  $("#stamp").textContent = `최근 측정 ${last?.run_id ?? "-"} · 생성 ${String(DATA.generatedAt).slice(0, 16).replace("T", " ")}`
+  const m = DATA.methodology
+  $("#runStamp").textContent =
+    `모델 ${m.models.length} · 질문 ${m.questions.length} · n=${m.repeats} · 유효 ${BRAND.completeness.valid}회`
+  $("#stamp").innerHTML =
+    `<b>최근 측정 ${last?.run_id ?? "-"}</b>생성 ${String(DATA.generatedAt).slice(0, 16).replace("T", " ")}`
 
   const nav = $("#nav")
   // 측정 실행·설정은 로컬 서버에서만 동작한다. 배포판에서도 탭은 보여주고
   // 화면 안에서 이유를 설명한다(숨기면 그런 기능이 있다는 것 자체가 안 보인다).
-  for (const [k, label] of VIEWS) {
-    nav.append(el("button", { "data-k": k, type: "button" }, label))
+  let group = null
+  let ix = 0
+  for (const [k, label, grp] of VIEWS) {
+    if (grp !== group) { nav.append(el("div", { class: "grp" }, grp)); group = grp }
+    nav.append(el("button", { "data-k": k, type: "button" },
+      el("span", { class: "ix" }, String(++ix).padStart(2, "0")), label))
   }
   nav.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.k) })
   document.addEventListener("click", (e) => {

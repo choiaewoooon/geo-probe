@@ -319,7 +319,7 @@ function treemap(items, { me, label, density } = {}) {
 // 헤더를 누르면 그 열로 정렬하고, 다시 누르면 방향이 바뀐다.
 let SORT = {}   // 표별 정렬 상태 (표 id -> {key, dir})
 
-function sortableTable(id, cols, rows, { highlight, initial } = {}) {
+function sortableTable(id, cols, rows, { highlight, initial, rowAttrs } = {}) {
   const st = SORT[id] ?? (SORT[id] = initial ?? { key: null, dir: "desc" })
 
   const sorted = [...rows]
@@ -348,7 +348,7 @@ function sortableTable(id, cols, rows, { highlight, initial } = {}) {
     }, c.label, el("span", { class: "sort-ind" }, on ? (st.dir === "asc" ? " ▲" : " ▼") : ""))
   }))
 
-  const body = el("tbody", {}, sorted.map((r) => el("tr", { class: highlight?.(r) ? "me" : null },
+  const body = el("tbody", {}, sorted.map((r) => el("tr", { class: highlight?.(r) ? "me" : null, ...(rowAttrs?.(r) ?? {}) },
     cols.map((c) => el("td", { class: c.cls }, c.render ? c.render(r) : (r[c.key] ?? "-"))))))
 
   const table = el("table", {}, el("thead", {}, head), body)
@@ -386,16 +386,20 @@ function viewSummary(b) {
       el("span", { class: `pill ${cls[st.direction] ?? ""}` }, "방향 ", el("b", {}, st.direction)),
     ),
 
+    // 카드 6장이 500px 를 쓰면서 숫자 6개를 담고 있었다. 한 줄로 줄이고 세부는 title 로.
     el("h2", {}, "핵심 지표"),
-    el("div", { class: "cards" },
-      card("추천 언급률", dash(v.mentionRate, "%"), v.mentionLabel, false, v.mentionRate),
-      card("Top 3 추천률", dash(v.top3Rate, "%"), v.top3Label, false, v.top3Rate),
-      card("언급 시 중위 순위", v.medianRank === null ? "-" : `${v.medianRank}위`,
-        v.rankedN ? `${v.rankedN}건 기준 · 미언급 제외` : "산출 불가"),
-      card("응답 점유율", dash(mySov?.sov, "%"), "추적 질문군 내", false, mySov?.sov),
-      card("결과 일관성", dash(v.reproducibility, "%"), "같은 결과가 반복된 정도", false, v.reproducibility),
-      card("측정 완결성", dash(c.validRate, "%"), c.validLabel, c.warn, c.validRate),
-    ),
+    el("div", { class: "statbar" }, [
+      ["언급률", dash(v.mentionRate, "%"), v.mentionLabel],
+      ["Top 3", dash(v.top3Rate, "%"), v.top3Label],
+      ["중위 순위", v.medianRank === null ? "—" : `${v.medianRank}위`,
+        v.rankedN ? `${v.rankedN}건 기준 · 미언급 제외` : "산출 불가"],
+      ["응답 점유율", dash(mySov?.sov, "%"), "추적 질문군 내"],
+      ["결과 일관성", dash(v.reproducibility, "%"), "같은 조건 반복 시 같은 결과가 나온 비율"],
+      ["측정 완결성", dash(c.validRate, "%"), c.validLabel],
+    ].map(([k, val, hint]) => el("div", { class: "stat", title: `${k} · ${hint}` },
+      el("span", { class: "sk" }, k),
+      el("b", {}, val),
+      el("span", { class: "sh" }, hint)))),
 
     el("h2", {}, "밀도 매트릭스", el("small", {}, "칸이 짙을수록 자주 불립니다")),
     densityMatrix(b),
@@ -1225,42 +1229,39 @@ function viewCategory(id) {
       ? treemap(tiles, { label: (t) => `1순위 ${t.value}회 · 언급 ${t.rate}%` })
       : el("p", { class: "empty" }, "1순위를 가져간 이름이 없습니다."),
 
-    el("h2", {}, "순위표", el("small", {}, "1순위 점유율 순")),
-    el("div", { class: "scroll" }, (() => {
-      const table = el("table", {},
-        el("thead", {}, el("tr", {},
-          el("th", {}, "#"), el("th", {}, "브랜드"),
-          el("th", { class: "n" }, "1순위"),
-          el("th", {}, ""),
-          el("th", { class: "n" }, "언급률"),
-          el("th", { class: "n" }, "중위 순위"),
-          el("th", {}, models.map((m) => m.name).join(" · ")))),
-        el("tbody", {}, c.entities.map((e, i) => el("tr", {
-          "data-brand": ALL.some((b) => b.brand === e.name) ? e.name : null,
-          style: ALL.some((b) => b.brand === e.name) ? "cursor:pointer" : null,
-          title: ALL.some((b) => b.brand === e.name) ? `${e.name} 프로필 보기` : "추적 목록에 없는 브랜드입니다",
-        },
-          el("td", { class: "n", style: "color:var(--dim2);font-family:var(--mono)" }, i + 1),
-          el("td", {}, named(e.name, "md", e.rate >= 60 && e.firstRate === 0
-            ? el("span", { class: "tag" }, "언급률 높음, 1순위 아님") : null)),
-          el("td", { class: "n" }, dash(e.firstRate, "%")),
-          el("td", { style: "width:110px" }, el("span", {
-            class: "bar",
-            style: `width:${Math.max(2, e.firstRate ?? 0)}%`,
-          })),
-          el("td", { class: "n", style: "color:var(--dim)" }, dash(e.rate, "%")),
-          el("td", { class: "n" }, e.medianRank === null ? "—" : `${e.medianRank}위`),
-          el("td", {}, el("span", { class: "strip" }, models.map((m) => {
-            const b = e.byModel[m.id]
-            return el("i", {
-              class: b.n ? null : "miss",
-              style: b.n ? `background:rgba(var(--ink-rgb),${inkA(b.rate).toFixed(3)})` : "",
-              title: `${m.name} · ${b.n}/${b.V}${b.firsts ? ` · 1순위 ${b.firsts}회` : ""}`,
-            })
-          }))),
-        ))))
-      return clickableRows(table, (tr) => { setBrand(tr.dataset.brand); show("summary") })
-    })()),
+    el("h2", {}, "순위표", el("small", {}, "열 제목을 누르면 정렬됩니다")),
+    (() => {
+      const tracked = (n) => ALL.some((b) => b.brand === n)
+      const t = sortableTable(`cat-${c.id}`, [
+        { key: "_rank", label: "#", cls: "n", num: true, bestLow: true },
+        { key: "name", label: "브랜드", render: (e) => named(e.name, "md",
+            e.rate >= 60 && e.firstRate === 0
+              ? el("span", { class: "tag" }, "언급률 높음, 1순위 아님") : null) },
+        { key: "firstRate", label: "1순위", cls: "n", num: true, render: (e) => dash(e.firstRate, "%") },
+        { key: "_bar", label: "", sortable: false, render: (e) => el("span", {
+            class: "bar", style: `width:${Math.max(2, e.firstRate ?? 0)}%` }) },
+        { key: "rate", label: "언급률", cls: "n", num: true, render: (e) => dash(e.rate, "%") },
+        { key: "medianRank", label: "중위 순위", cls: "n", num: true, bestLow: true,
+          render: (e) => (e.medianRank === null ? "—" : `${e.medianRank}위`) },
+        { key: "_m", label: models.map((m) => m.name).join(" · "), sortable: false,
+          render: (e) => el("span", { class: "strip", role: "img",
+            "aria-label": models.map((m) => `${m.name} ${e.byModel[m.id].rate}%`).join(", ") },
+            models.map((m) => {
+              const bm = e.byModel[m.id]
+              return el("i", {
+                class: bm.n ? null : "miss",
+                style: bm.n ? `background:rgba(var(--ink-rgb),${inkA(bm.rate).toFixed(3)})` : "",
+                title: `${m.name} · ${bm.n}/${bm.V}${bm.firsts ? ` · 1순위 ${bm.firsts}회` : ""}`,
+              })
+            })) },
+      ], c.entities.map((e, i) => ({ ...e, _rank: i + 1 })), {
+        initial: { key: "_rank", dir: "asc" },
+        rowAttrs: (e) => (tracked(e.name)
+          ? { "data-brand": e.name, title: `${e.name} 프로필 보기` }
+          : { title: "추적 목록에 없는 브랜드입니다" }),
+      })
+      return clickableRows(t, (tr) => { setBrand(tr.dataset.brand); show("summary") })
+    })(),
 
     el("h2", {}, "모델별 1등"),
     el("div", { class: "cards" }, models.map((m) => {

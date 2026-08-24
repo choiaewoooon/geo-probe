@@ -1,4 +1,5 @@
 import { keys as KEYS, store as STORE, runMeasurement, testKey, defaultConfig } from "./engine.js"
+import { inkA, squarify, perQuestion } from "./lib/viz.mjs"
 
 // AI 가시성 모니터 — summary.json 만 읽는 정적 대시보드. 빌드 스텝·외부 의존성 없음.
 // 표기 원칙(3에이전트 토론 확정): 소수점 금지 · k/N 병기 · 미언급은 순위 통계 제외 ·
@@ -164,7 +165,6 @@ function rankStack(dist) {
 
 // ---------- 밀도 매트릭스 ----------
 // 값 = 잉크 농도. 0건은 옅은 회색이 아니라 해치. (0건과 저빈도는 다른 사실이다)
-const inkA = (rate) => 0.1 + (Math.max(0, Math.min(100, rate)) / 100) * 0.85
 
 /**
  * 잉크 농도 a 위에 올릴 글자색. 임계값이 테마마다 다르다.
@@ -254,38 +254,6 @@ function densityMatrix(b) {
 // ---------- 트리맵 ----------
 // squarified treemap. 3ridge 마인드쉐어 분포와 같은 읽기법:
 // 면적 = 등장량, 농도 = 점유율. 자사 타일만 이중 링으로 표시한다.
-function squarify(items, x, y, w, h, out = []) {
-  if (!items.length) return out
-  if (items.length === 1) { out.push({ ...items[0], x, y, w, h }); return out }
-  const total = items.reduce((s, i) => s + i.value, 0)
-  const horiz = w >= h
-  const side = horiz ? h : w
-  const worst = (row, len) => {
-    const s = row.reduce((a, i) => a + i.value, 0)
-    if (!s) return Infinity
-    const rw = (s / total) * (horiz ? w : h)
-    return Math.max(...row.map((i) => {
-      const l = (i.value / s) * side
-      return Math.max(rw / l, l / rw)
-    }))
-  }
-  const row = [items[0]]
-  let i = 1
-  while (i < items.length && worst([...row, items[i]], side) <= worst(row, side)) row.push(items[i++])
-  const rest = items.slice(i)
-  const rowSum = row.reduce((a, it) => a + it.value, 0)
-  const frac = rowSum / total
-  if (horiz) {
-    const rw = w * frac
-    let cy = y
-    for (const it of row) { const ih = h * (it.value / rowSum); out.push({ ...it, x, y: cy, w: rw, h: ih }); cy += ih }
-    return squarify(rest, x + rw, y, w - rw, h, out)
-  }
-  const rh = h * frac
-  let cx = x
-  for (const it of row) { const iw = w * (it.value / rowSum); out.push({ ...it, x: cx, y, w: iw, h: rh }); cx += iw }
-  return squarify(rest, x, y + rh, w, h - rh, out)
-}
 
 function treemap(items, { me, label, density } = {}) {
   const clean = items.filter((i) => i.value > 0)
@@ -1301,20 +1269,6 @@ function modelStrip(b, models) {
 }
 
 /** 브랜드의 질문별 집계. 판세 표와 밀도판이 같은 수를 쓰게 한다. */
-function perQuestion(b) {
-  const questions = [...new Set(b.matrix.map((c) => c.question))]
-  return questions.map((q) => {
-    const cells = b.matrix.filter((c) => c.question === q)
-    const V = cells.reduce((s, c) => s + c.V, 0)
-    const n = cells.reduce((s, c) => s + c.mentions, 0)
-    const ranks = cells.filter((c) => c.medianRank !== null).map((c) => c.medianRank).sort((x, y) => x - y)
-    return {
-      q, V, mentions: n,
-      rate: V ? Math.round((n / V) * 100) : 0,
-      medianRank: ranks.length ? ranks[Math.floor(ranks.length / 2)] : null,
-    }
-  })
-}
 
 function viewField() {
   const list = [...ALL].sort((a, b) => (b.visibility.mentionRate ?? 0) - (a.visibility.mentionRate ?? 0))

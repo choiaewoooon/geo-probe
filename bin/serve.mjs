@@ -185,6 +185,18 @@ function json(res, body, status = 200) {
   res.end(s)
 }
 
+/**
+ * 이 서버는 인증이 없다. 브라우저가 켜져 있는 동안 사용자가 방문한 아무 사이트나
+ * fetch 로 /api/keys 를 때려 .env 를 덮어쓰거나 /api/run 으로 유료 호출을 시작시킬 수 있다.
+ * Content-Type: text/plain 이면 preflight 도 없어서 그냥 통과한다.
+ * 응답은 CORS 가 막아 못 읽지만, 파괴와 과금은 그대로 일어난다.
+ */
+function sameOrigin(req) {
+  const o = req.headers.origin
+  if (!o) return true // curl·수동 호출은 CSRF 가 아니다
+  return o === `http://localhost:${PORT}` || o === `http://127.0.0.1:${PORT}`
+}
+
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`)
 
@@ -203,6 +215,10 @@ const server = http.createServer((req, res) => {
     clients.add(res)
     req.on("close", () => clients.delete(res))
     return
+  }
+
+  if (req.method === "POST" && !sameOrigin(req)) {
+    return json(res, { error: "cross-origin 요청은 받지 않습니다." }, 403)
   }
 
   if (url.pathname === "/api/keys" && req.method === "POST") {
@@ -233,7 +249,7 @@ const server = http.createServer((req, res) => {
   // 정적 파일
   const rel = url.pathname === "/" ? "index.html" : decodeURIComponent(url.pathname).replace(/^\/+/, "")
   const file = path.join(WEB, rel)
-  if (!file.startsWith(WEB)) { res.writeHead(403); return res.end("forbidden") }
+  if (!file.startsWith(WEB + path.sep) && file !== WEB) { res.writeHead(403); return res.end("forbidden") }
   fs.readFile(file, (err, buf) => {
     if (err) { res.writeHead(404, { "content-type": "text/plain; charset=utf-8" }); return res.end("not found") }
     res.writeHead(200, { "content-type": MIME[path.extname(file)] ?? "application/octet-stream", "cache-control": "no-store" })

@@ -26,12 +26,12 @@
   --bg:#ffffff; --bg-sunk:#f6f6f7;
   --panel:#ffffff; --panel2:#f7f7f8; --panel3:#efeff1;
   --line:#e5e5e8; --line-strong:#d2d2d7;
-  --tx:#0a0a0b; --dim:#5a5a64; --dim2:#8d8d97;
+  --tx:#0a0a0b; --dim:#5a5a64; --dim2:#6e6e78;
   --ink:#0a0a0b; --on-ink:#ffffff; --ink-rgb:10,10,11;
   --shadow:0 1px 2px rgba(10,10,11,.04), 0 8px 24px -16px rgba(10,10,11,.18);
   --shadow-lift:0 1px 2px rgba(10,10,11,.05), 0 16px 40px -22px rgba(10,10,11,.28);
   --grain:rgba(10,10,11,.045);
-  --accent:var(--ink); --good:var(--ink); --warn:var(--dim); --bad:var(--dim);
+  --accent:var(--ink); --good:var(--ink); --warn:var(--dim); --bad:var(--dim2);
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,
          "Apple SD Gothic Neo",system-ui,sans-serif;
@@ -44,7 +44,7 @@
     --bg:#08090a; --bg-sunk:#0c0d0f;
     --panel:#111214; --panel2:#161719; --panel3:#1d1f22;
     --line:#232528; --line-strong:#34373c;
-    --tx:#f3f3f5; --dim:#a0a0a9; --dim2:#6f6f79;
+    --tx:#f3f3f5; --dim:#a0a0a9; --dim2:#8a8a94;
     --ink:#ffffff; --on-ink:#08090a; --ink-rgb:255,255,255;
     --shadow:0 1px 0 rgba(255,255,255,.03), 0 12px 34px -22px rgba(0,0,0,.9);
     --shadow-lift:0 1px 0 rgba(255,255,255,.05), 0 22px 50px -26px rgba(0,0,0,1);
@@ -55,7 +55,7 @@
   --bg:#08090a; --bg-sunk:#0c0d0f;
   --panel:#111214; --panel2:#161719; --panel3:#1d1f22;
   --line:#232528; --line-strong:#34373c;
-  --tx:#f3f3f5; --dim:#a0a0a9; --dim2:#6f6f79;
+  --tx:#f3f3f5; --dim:#a0a0a9; --dim2:#8a8a94;
   --ink:#ffffff; --on-ink:#08090a; --ink-rgb:255,255,255;
   --shadow:0 1px 0 rgba(255,255,255,.03), 0 12px 34px -22px rgba(0,0,0,.9);
   --shadow-lift:0 1px 0 rgba(255,255,255,.05), 0 22px 50px -26px rgba(0,0,0,1);
@@ -165,10 +165,14 @@ h2 small{color:var(--dim2);font-weight:400;font-size:12px;letter-spacing:0}
 .pill{display:inline-flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--line);
       border-radius:999px;padding:5px 13px 5px 10px;font-size:12.5px;color:var(--dim);box-shadow:var(--shadow)}
 .pill b{font-weight:650;color:var(--tx);font-size:13px}
-.pill::before{content:"";width:7px;height:7px;border-radius:50%;flex:none;
+/* 색이 없으니 좋음·주의·나쁨은 형태로 가른다. 채움 / 테두리 / 빗금. */
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;flex:none;
   background:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--ink) 12%,transparent)}
-.pill.warn::before{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink)}
-.pill.bad::before{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line-strong)}
+.pill.warn::before{background:transparent;border-radius:2px;
+  box-shadow:inset 0 0 0 1.6px var(--ink)}
+.pill.bad::before{border-radius:0;background:transparent;
+  background-image:repeating-linear-gradient(135deg,transparent 0 2px,var(--ink) 2px 3px);
+  box-shadow:inset 0 0 0 1px var(--line-strong)}
 
 /* ── 주석 상자 ────────────────────────────────────────────── */
 .note{color:var(--dim);font-size:12.5px;line-height:1.72;background:var(--panel2);
@@ -195,7 +199,7 @@ tr.me td:first-child{font-weight:700}
 tr.me td:first-child::before{content:"▸ ";color:var(--tx);font-family:var(--mono)}
 .scroll table{min-width:560px}.scroll th,.scroll td{white-space:nowrap}
 .scroll th:first-child,.scroll td:first-child{white-space:normal;min-width:150px}
-.bar{height:6px;border-radius:3px;background:var(--ink);display:block;min-width:2px;opacity:.28}
+.bar{height:6px;border-radius:3px;background:var(--ink);display:block;min-width:2px;opacity:.62}
 tr.me .bar{opacity:1}
 th[data-sort]{cursor:pointer;user-select:none}
 th[data-sort]:hover{color:var(--tx)}
@@ -378,8 +382,11 @@ nav button[aria-selected=true] .lead1{color:var(--dim)}
 /* ── 순위 분포 (단일 스택 바) ─────────────────────────────── */
 .stack{display:flex;height:38px;border-radius:var(--r-sm);overflow:hidden;
   border:1px solid var(--line);background:var(--panel2)}
+/* 세그먼트는 테두리가 아니라 배경색 간격으로 가른다(2px). */
 .stack span{display:flex;align-items:center;justify-content:center;font-family:var(--mono);
-  font-size:10.5px;min-width:0;background:var(--ink);position:relative}
+  font-size:10.5px;min-width:0;background:var(--ink);position:relative;
+  box-shadow:2px 0 0 var(--panel2)}
+.stack span:last-child{box-shadow:none}
 .stack span.miss{background:transparent;
   background-image:repeating-linear-gradient(135deg,transparent 0 5px,color-mix(in srgb,var(--ink) 22%,transparent) 5px 6px);
   box-shadow:inset 1px 0 0 var(--line-strong)}
@@ -559,6 +566,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
   document.addEventListener("DOMContentLoaded",sync); sync();
 })();
 </script>
-<script type="module" src="./app.js?v=72"></script>
+<script type="module" src="./app.js?v=81"></script>
 </body>
 </html>

@@ -5,6 +5,8 @@
 // 행(row) 스키마 — data/history.jsonl 한 줄:
 //   { run_id, ts, brand, model, question, repeat, mentioned, rank, listed, entries[], citations[], web_search }
 
+import { entityKey } from "./parse.mjs"
+
 export function median(nums) {
   if (!nums.length) return null
   const s = [...nums].sort((a, b) => a - b)
@@ -19,6 +21,24 @@ export const pct = (num, den) => (den ? Math.round((num / den) * 100) : null)
 export const frac = (num, den) => (den ? `${num}/${den} · ${pct(num, den)}%` : "-")
 
 /** 유효 응답 = 파싱 대상이 된 응답(빈 응답 제외). rows는 이미 유효분만 담긴다. */
+/**
+ * 같은 모델 x 같은 질문을 n 회 반복했을 때 결과가 같게 나온 비율.
+ * 셀 안에서 5/5 또는 0/5 면 그 셀은 100%, 3/5 면 60%. 전체는 응답 수 가중 평균.
+ */
+export function cellConsistency(rows) {
+  if (!rows.length) return null
+  const cells = new Map()
+  for (const r of rows) {
+    const k = `${r.model}|${r.question}`
+    const c = cells.get(k) ?? { n: 0, m: 0 }
+    c.n += 1
+    if (r.mentioned) c.m += 1
+    cells.set(k, c)
+  }
+  const agree = [...cells.values()].reduce((s, c) => s + Math.max(c.m, c.n - c.m), 0)
+  return pct(agree, rows.length)
+}
+
 export function visibility(rows) {
   const V = rows.length
   const mentions = rows.filter((r) => r.mentioned).length
@@ -35,8 +55,15 @@ export function visibility(rows) {
     // 미언급을 최하위로 치환하지 않는다. 언급된 응답만으로 중위값.
     medianRank: median(ranked),
     rankedN: ranked.length,
-    // 결과 일관성 = 같은 결과가 반복된 비율. 5/5도 0/5도 100%(일정), 3/5는 60%(흔들림).
-    reproducibility: V ? pct(Math.max(mentions, V - mentions), V) : null,
+    // 결과 일관성 = 같은 조건(모델 x 질문)을 반복했을 때 같은 결과가 나온 비율.
+    //
+    // 🔒 전체 응답을 한 덩어리로 max(언급, 미언급)/V 로 재면 일관성이 아니라
+    // "언급률이 0% 나 100% 에서 얼마나 먼가"(희소성)를 잰다. 실측으로 라벨이 뒤집혔다 —
+    // KakaoMap 은 24셀 전부 5/5 또는 0/5 로 완벽히 결정적인데 71%(낮음)였고,
+    // 거의 등장하지 않는 Google Maps 가 99%(높음)였다. 반복은 셀 안에서만 의미가 있다.
+    reproducibility: cellConsistency(rows),
+    // 언급률이 양극단에서 얼마나 떨어져 있나. 옛 reproducibility 공식을 제 이름으로 남긴다.
+    spread: V ? pct(Math.max(mentions, V - mentions), V) : null,
     rankDistribution: rankDistribution(rows),
   }
 }
@@ -299,11 +326,16 @@ export function categories(rows, { questions = [], models = [] } = {}) {
     for (const r of rs) {
       const seen = new Set()
       for (const e of r.entriesWithRank ?? []) {
-        slots += 1
         // 한 응답에 같은 이름이 두 번 나와도 한 번으로 센다(등장 '응답 수'가 기준).
+        // slots 도 같은 규칙을 따라야 한다. dedup 앞에 두면 분모만 부풀어 sov 합계가 100% 에 못 미친다.
         if (seen.has(e.name)) continue
         seen.add(e.name)
-        const a = agg.get(e.name) ?? { n: 0, firsts: 0, ranks: [], byModel: new Map() }
+        slots += 1
+        // 별칭에 없는 이름은 원문 그대로 들어온다. 표기만 다른 같은 앱이 갈라지지 않게
+        // 집계 키를 정규화하고, 보여줄 이름은 그 키에 모인 표기 중 최빈값을 쓴다.
+        const ek = entityKey(e.name)
+        const a = agg.get(ek) ?? { n: 0, firsts: 0, ranks: [], byModel: new Map(), labels: new Map() }
+        a.labels.set(e.name, (a.labels.get(e.name) ?? 0) + 1)
         a.n += 1
         if (e.rank === 1) a.firsts += 1
         if (typeof e.rank === "number") a.ranks.push(e.rank)
@@ -311,7 +343,7 @@ export function categories(rows, { questions = [], models = [] } = {}) {
         bm.n += 1
         if (e.rank === 1) bm.firsts += 1
         a.byModel.set(r.model, bm)
-        agg.set(e.name, a)
+        agg.set(ek, a)
       }
     }
 
@@ -320,12 +352,16 @@ export function categories(rows, { questions = [], models = [] } = {}) {
     )
 
     const entities = [...agg.entries()]
-      .map(([name, a]) => ({
-        name,
+      .map(([, a]) => ({
+        name: [...a.labels.entries()].sort((x, y) => y[1] - x[1])[0][0],
         appearances: a.n,
         rate: pct(a.n, V),
         firsts: a.firsts,
         firstRate: pct(a.firsts, V),
+        // 1순위 분산은 사실상 모델 간에만 있다(같은 셀 5회는 24개 중 18개가 만장일치).
+        // 퍼센트 하나로 뭉개지 말고 모델별 득표를 그대로 들고 간다.
+        firstsByModel: Object.fromEntries(modelIds.map((m) =>
+          [m, (a.byModel.get(m) ?? { firsts: 0 }).firsts])),
         medianRank: median(a.ranks),
         sov: pct(a.n, slots),
         byModel: Object.fromEntries(modelIds.map((m) => {
@@ -343,14 +379,18 @@ export function categories(rows, { questions = [], models = [] } = {}) {
 
     // 모델마다 1등이 갈리는지 — 갈리면 "합의된 1등"이 없다는 뜻이다.
     const leaderByModel = Object.fromEntries(modelIds.map((m) => {
-      const best = entities
-        .filter((e) => e.byModel[m].n > 0)
-        .sort((a, b) => b.byModel[m].firsts - a.byModel[m].firsts
-          || b.byModel[m].n - a.byModel[m].n
-          || (a.medianRank ?? 99) - (b.medianRank ?? 99))[0]
-      return [m, best?.name ?? null]
+      const ranked = entities
+        .filter((e) => e.byModel[m].firsts > 0)
+        .sort((a, b) => b.byModel[m].firsts - a.byModel[m].firsts)
+      const topN = ranked[0]?.byModel[m].firsts ?? 0
+      // 동점을 조용히 깨면 "모델 분열"이 "합의"로 둔갑한다. 전부 남긴다.
+      const names = ranked.filter((e) => e.byModel[m].firsts === topN).map((e) => e.name)
+      return [m, { names, firsts: topN, tied: names.length > 1 }]
     }))
-    const agreed = [...new Set(Object.values(leaderByModel).filter(Boolean))]
+    const votes = Object.values(leaderByModel)
+    const decided = votes.filter((v) => v.names.length === 1).map((v) => v.names[0])
+    // 산출 실패나 동점이 하나라도 있으면 합의라고 말하지 않는다.
+    const agreed = decided.length === votes.length ? [...new Set(decided)] : []
 
     return {
       id,
@@ -364,7 +404,11 @@ export function categories(rows, { questions = [], models = [] } = {}) {
       leaderByModel,
       leaderAgreed: agreed.length === 1,
       // 상위 3곳이 얼마나 가져가는가. 높을수록 뚫고 들어갈 틈이 좁다.
-      concentration: pct(entities.slice(0, 3).reduce((s, e) => s + e.appearances, 0), slots),
+      // entities 는 1순위 점유율 순이라 그대로 slice 하면 '등장이 많은 3곳'이 아니다.
+      concentration: pct(
+        [...entities].sort((a, b) => b.appearances - a.appearances)
+          .slice(0, 3).reduce((s, e) => s + e.appearances, 0),
+        entities.reduce((s, e) => s + e.appearances, 0)),
       entities,
     }
   })

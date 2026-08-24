@@ -16,6 +16,11 @@ const el = (t, a = {}, ...kids) => {
   for (const c of kids.flat()) if (c != null) n.append(c.nodeType ? c : String(c))
   return n
 }
+// 브랜드명은 우리가 정한 값이 아니라 모델 응답에서 파싱된 임의 문자열이다.
+// 웹검색이 켜진 모델은 오염된 페이지를 읽을 수 있으므로 innerHTML 에 넣기 전에 반드시 통과시킨다.
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]))
+
 const dash = (v, suffix = "") => (v === null || v === undefined ? "-" : `${v}${suffix}`)
 
 // [키, 메뉴 라벨, 묶음, 화면 부제]
@@ -134,7 +139,7 @@ function rankStack(dist) {
     return el("span", {
       class: miss ? "miss" : null,
       style: `flex:${dist[k]} 1 0;background:${miss ? "" : `rgba(var(--ink-rgb),${a.toFixed(3)})`};` +
-        `color:${miss ? "var(--dim2)" : a > 0.58 ? "var(--on-ink)" : "var(--tx)"}`,
+        `color:${miss ? "var(--dim2)" : onInk(a) ? "var(--on-ink)" : "var(--tx)"}`,
       title: `${k} · ${dist[k]}건 (${Math.round(pct)}%)`,
     }, pct >= 7 ? String(dist[k]) : "")
   }
@@ -153,6 +158,19 @@ function rankStack(dist) {
 // 값 = 잉크 농도. 0건은 옅은 회색이 아니라 해치. (0건과 저빈도는 다른 사실이다)
 const inkA = (rate) => 0.1 + (Math.max(0, Math.min(100, rate)) / 100) * 0.85
 
+/**
+ * 잉크 농도 a 위에 올릴 글자색. 임계값이 테마마다 다르다.
+ * 라이트는 잉크가 검정이라 a가 높을수록 어두워지고, 다크는 흰색이라 반대로 밝아진다.
+ * 하나의 상수(0.58)를 양쪽에 쓰던 탓에 다크모드 농도 0.38~0.56 구간에서
+ * 밝은 배경 위 밝은 글자가 나왔다(실측 최악 2.64:1).
+ */
+const isDark = () => {
+  const t = document.documentElement.getAttribute("data-theme")
+  if (t) return t === "dark"
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
+}
+const onInk = (a) => a > (isDark() ? 0.44 : 0.56)
+
 function densityCell(c) {
   if (!c) return el("div", { class: "cellwrap miss" }, el("div", { class: "hatch" }),
     el("div", { class: "txt" }, el("span", { class: "r" }, "—")))
@@ -165,7 +183,7 @@ function densityCell(c) {
   }
   const a = inkA(c.mentionRate)
   return el("div", {
-    class: `cellwrap ${a > 0.58 ? "on-ink" : "on-bg"}`,
+    class: `cellwrap ${onInk(a) ? "on-ink" : "on-bg"}`,
     title: `언급 ${c.mentionLabel} · Top3 ${c.top3Label} · 중위 ${c.medianRank === null ? "산출 불가" : c.medianRank + "위"} · 일관성 ${c.reproducibility}%`,
   },
     el("div", { class: "fill", style: `opacity:${a.toFixed(3)}` }),
@@ -274,7 +292,7 @@ function treemap(items, { me, label, density } = {}) {
     const mine = t.name === me
     const tiny = t.w < 11 || t.h < 18
     return el("div", {
-      class: `tile ${a > 0.58 || mine ? "on-ink" : "on-bg"}${mine ? " me" : ""}${tiny ? " tiny" : ""}`,
+      class: `tile ${onInk(a) || mine ? "on-ink" : "on-bg"}${mine ? " me" : ""}${tiny ? " tiny" : ""}`,
       style: `left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%`,
       title: t.title ?? t.name,
     }, el("div", {
@@ -388,7 +406,7 @@ function viewSummary(b) {
         el("div", { class: "why", html:
           `언급 <b>${p.mentionLabel}</b>` +
           (p.medianRank !== null ? ` · 중위 ${p.medianRank}위` : "") +
-          (p.topSubstitute ? ` · 이 자리를 대신 차지한 1위는 <b>${p.topSubstitute.name}</b>입니다 (${p.topSubstitute.rate}%)` : "") }),
+          (p.topSubstitute ? ` · 이 자리를 대신 차지한 1위는 <b>${esc(p.topSubstitute.name)}</b>입니다 (${p.topSubstitute.rate}%)` : "") }),
       ),
     )),
   )
@@ -467,7 +485,7 @@ function viewDiagnose(b) {
           { key: "model", label: "모델", render: (c) => modelLabel(c.model) },
           { key: "mentionRate", label: "언급률", cls: "n", num: true, render: (c) => `${c.mentionRate}%` },
           { key: "_bar", label: "", sortable: false, render: (c) => el("span", {
-              class: "bar", style: `width:${Math.max(3, c.mentionRate)}%;opacity:${inkA(c.mentionRate).toFixed(3)}` }) },
+              class: "bar", style: `width:${Math.max(3, c.mentionRate)}%` }) },
           { key: "mentions", label: "언급/유효", cls: "n", num: true, render: (c) => `${c.mentions}/${c.V}` },
           { key: "medianRank", label: "중위 순위", cls: "n", num: true, bestLow: true,
             render: (c) => (c.medianRank === null ? "—" : `${c.medianRank}위`) },
@@ -1034,11 +1052,38 @@ const named = (name, size = "md", extra) =>
 
 const catOf = (id) => (DATA?.categories ?? []).find((c) => c.id === id)
 
+/**
+ * 카테고리 1위를 퍼센트가 아니라 모델 득표로 보여준다.
+ *
+ * 🔒 반복 5회는 독립 표본이 아니다. 같은 모델·같은 질문 5회에서 1위가 만장일치인 셀이
+ * 24개 중 18개다. 즉 1순위의 분산은 모델 사이에만 있고 반복 사이에는 거의 없다.
+ * 그래서 "1순위 47%"는 사실상 3개 모델의 투표를 퍼센트로 위장한 값이고,
+ * 모델을 클러스터로 본 95% CI 는 경합 카테고리 5개 전부 [0%, 100%]다.
+ * 없는 정밀도를 지우고 실제로 관측된 것(누가 몇 표를 받았나)만 남긴다.
+ */
+function modelVotes(e, c) {
+  const models = DATA?.methodology?.models ?? []
+  const won = models.filter((m) => (c.leaderByModel[m.id]?.names ?? []).includes(e.name)).length
+  const label = won === models.length ? "만장일치" : won > models.length / 2 ? "다수" : "분열"
+  return `모델 ${won}/${models.length} · ${label}`
+}
+
+/** 모델별 1위 셀. 동점을 조용히 깨지 않으므로 이름이 여럿일 수 있다. */
+function leaderCell(w) {
+  const names = w?.names ?? []
+  if (!names.length) return el("td", {}, "—")
+  return el("td", {}, el("span", { class: "nmrow" },
+    logo(names[0], "sm"),
+    el("span", { class: "t" }, names.join(" · ")),
+    w.tied ? el("span", { class: "tag" }, "동점") : null))
+}
+
 /** 카테고리 카드 한 장 = 그 판의 1등과 경쟁 밀도. */
 function catCard(c) {
   const L = c.leader
   const top = c.entities.slice(0, 5)
-  const maxF = Math.max(...top.map((e) => e.firstRate ?? 0), 1)
+  // 카드마다 정규화하면 8장을 나란히 놓은 의미가 없다. 척도는 전 카드 공통이어야 한다.
+  const maxF = 100
   return el("button", { class: "ccard", type: "button", "data-go": `cat:${c.id}` },
     el("div", { class: "ct" },
       el("span", { class: "cid" }, c.id.toUpperCase()),
@@ -1048,7 +1093,7 @@ function catCard(c) {
       L ? logo(L.name, "lg") : null,
       el("span", { class: "lw" },
         el("span", { class: "nm" }, L?.name ?? "—"),
-        el("span", { class: "pc" }, L ? `1순위 ${L.firstRate}%` : ""))),
+        el("span", { class: "pc" }, L ? modelVotes(L, c) : ""))),
     el("div", { class: "cfaces" }, c.entities.slice(1, 6).map((e) => logo(e.name, "sm"))),
     el("div", { class: "cbars" }, top.map((e) => el("span", {
       class: "cb", title: `${e.name} · 1순위 ${e.firstRate}% · 언급 ${e.rate}%`,
@@ -1079,8 +1124,7 @@ function viewHome() {
             DATA.methodology.models.map((m) => el("th", {}, m.name)))),
           el("tbody", {}, split.map((c) => el("tr", { "data-go": `cat:${c.id}`, style: "cursor:pointer" },
             el("td", {}, c.short),
-            DATA.methodology.models.map((m) => el("td", {},
-              c.leaderByModel[m.id] ? named(c.leaderByModel[m.id], "sm") : "—")))))))
+            DATA.methodology.models.map((m) => leaderCell(c.leaderByModel[m.id])))))))
       : el("p", { class: "empty" }, "모든 카테고리에서 세 모델이 같은 1등을 꼽았습니다."),
   )
 }
@@ -1105,7 +1149,10 @@ function viewCategory(id) {
         el("div", { class: "k" }, "1등"),
         el("div", { class: "mlead" }, L ? logo(L.name, "md") : null, el("b", {}, L?.name ?? "—")),
         el("div", { class: "n" }, L ? `1순위 ${L.firsts}회 / 응답 ${c.V}건` : "")),
-      card("1순위 점유율", dash(L?.firstRate, "%"), "1순위로 언급된 비율", false, L?.firstRate),
+      el("div", { class: "card" },
+        el("div", { class: "k" }, "모델 득표"),
+        el("div", { class: "v" }, L ? modelVotes(L, c).replace("모델 ", "") : "—"),
+        el("div", { class: "n" }, L ? `모델별 1순위 ${models.map((m) => (L.firstsByModel?.[m.id] ?? 0)).join(" · ")}회` : "")),
       card("경쟁 브랜드", c.contenders, `응답 ${c.V}건에 등장한 이름`),
       card("상위 3곳 집중도", dash(c.concentration, "%"), "높을수록 신규 진입이 어렵습니다", false, c.concentration),
     ),
@@ -1134,7 +1181,7 @@ function viewCategory(id) {
           el("td", { class: "n" }, dash(e.firstRate, "%")),
           el("td", { style: "width:110px" }, el("span", {
             class: "bar",
-            style: `width:${Math.max(2, e.firstRate ?? 0)}%;opacity:${inkA(e.firstRate ?? 0).toFixed(3)}`,
+            style: `width:${Math.max(2, e.firstRate ?? 0)}%`,
           })),
           el("td", { class: "n", style: "color:var(--dim)" }, dash(e.rate, "%")),
           el("td", { class: "n" }, e.medianRank === null ? "—" : `${e.medianRank}위`),
@@ -1157,10 +1204,14 @@ function viewCategory(id) {
     el("h2", {}, "모델별 1등"),
     el("div", { class: "cards" }, models.map((m) => {
       const w = c.leaderByModel[m.id]
+      const names = w?.names ?? []
       return el("div", { class: "card" },
         el("div", { class: "k" }, m.name),
-        el("div", { class: "mlead" }, w ? logo(w, "md") : null, el("b", {}, w ?? "—")),
-        el("div", { class: "n" }, m.webSearch ? "웹 검색 ON" : "웹 검색 OFF"))
+        el("div", { class: "mlead" },
+          names[0] ? logo(names[0], "md") : null,
+          el("b", {}, names.length ? names.join(" · ") : "—")),
+        el("div", { class: "n" },
+          (w?.tied ? "동점 · " : "") + (m.webSearch ? "웹 검색 ON" : "웹 검색 OFF")))
     })),
   )
 }
@@ -1230,7 +1281,7 @@ function viewField() {
             el("td", { class: "n" }, best ? `${best.q.toUpperCase()} ${best.rate}%` : "—"),
             el("td", { style: "width:110px" }, el("span", {
               class: "bar",
-              style: `width:${Math.max(2, best?.rate ?? 0)}%;opacity:${inkA(best?.rate ?? 0).toFixed(3)}`,
+              style: `width:${Math.max(2, best?.rate ?? 0)}%`,
             })),
             el("td", { class: "n" }, v.medianRank === null ? "—" : `${v.medianRank}위`),
             el("td", { class: "n", style: "color:var(--dim)" }, dash(v.mentionRate, "%")),
@@ -1238,7 +1289,7 @@ function viewField() {
         })))
       table.addEventListener("click", (e) => {
         const tr = e.target.closest("tr[data-brand]")
-        if (tr) setBrand(tr.dataset.brand)
+        if (tr) { setBrand(tr.dataset.brand); show("summary") }
       })
       return table
     })()),
@@ -1320,8 +1371,11 @@ function show(key) {
   CURRENT = key
   const meta = VIEWS.find(([k]) => k === key)
   if (meta) {
-    $("#pageEyebrow").textContent = meta[2]
-    $("#pageTitle").textContent = meta[1]
+    // 브랜드 스코프 화면은 제목이 "요약"이면 누구 이야기인지 화면에 안 남는다.
+    // 스크린샷을 떠서 공유하면 어느 브랜드인지 알 방법이 없었다.
+    const brandScoped = ["summary", "compete", "diagnose", "sources", "evidence"].includes(key)
+    $("#pageEyebrow").textContent = brandScoped ? `브랜드 · ${meta[1]}` : meta[2]
+    $("#pageTitle").textContent = brandScoped && BRAND ? BRAND.brand : meta[1]
     $("#pageSub").textContent = meta[3]
   }
   const app = $("#app")
@@ -1343,7 +1397,7 @@ async function boot() {
     if (!res.ok) throw new Error(`summary.json ${res.status}`)
     DATA = await res.json()
   } catch (e) {
-    $("#app").innerHTML = `<p class="note">데이터를 불러오지 못했습니다 (${e.message}).<br>
+    $("#app").innerHTML = `<p class="note">데이터를 불러오지 못했습니다 (${esc(e.message)}).<br>
       저장소에서 <span class="cell">node bin/geo-probe.mjs export</span> 를 실행하면 생성됩니다.</p>`
     return
   }

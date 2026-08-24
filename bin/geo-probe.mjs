@@ -57,6 +57,9 @@ const sleep = (ms) => (ms > 0 ? new Promise((r) => setTimeout(r, ms)) : Promise.
 const stamp = () => new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-")
 
 async function probe(config, runDir) {
+  let firstError = null
+  let failed = 0
+  let ok = 0
   const suffix = config.rankedListSuffix ?? '\n\n가장 적합한 순서대로 회사 5곳만, 다른 설명 없이 "1. 이름" 형식의 번호 목록으로만 답해줘.'
   const N = config.repeats ?? 5
   for (const model of config.models) {
@@ -73,16 +76,23 @@ async function probe(config, runDir) {
             fs.writeFileSync(path.join(dir, `${q.id}-run${r}.cite.json`), JSON.stringify(citations, null, 1))
           }
           process.stdout.write(text.trim() ? "." : "·")
+          ok += 1
         } catch (e) {
           fs.writeFileSync(path.join(dir, `${q.id}-run${r}.txt`), "")
           process.stdout.write("x")
-          if (process.env.GEO_DEBUG) console.error(`\n    ${e.message}`)
+          // 첫 실패 원인은 GEO_DEBUG 없이도 알려준다. 키가 없는 채로 6분을 기다린 뒤
+          // "완결성 0%" 리포트만 받는 게 지금까지의 동작이었다.
+          if (!firstError) { firstError = e.message; console.error(`\n    ${e.message}`) }
+          else if (process.env.GEO_DEBUG) console.error(`\n    ${e.message}`)
+          failed += 1
+          continue // 실패한 호출에는 rate-limit 간격을 지킬 이유가 없다
         }
         if (r < N) await sleep(config.spacingMs ?? 8000)
       }
       process.stdout.write(` ${N}\n`)
     }
   }
+  return { ok, failed, firstError }
 }
 
 function doAnalyze(config, runDir, { append = true } = {}) {
@@ -169,9 +179,29 @@ function doTrend(config) {
   }
 }
 
+const HELP = `geo-probe — 생성형 AI 답변에서 카테고리별 마인드쉐어를 측정한다.
+
+  geo-probe run [--quick] [--config p]   측정 + 분석 (기본)
+  geo-probe probe                        측정만 (원문 저장)
+  geo-probe analyze <results/디렉터리>    저장된 원문 → 지표
+  geo-probe trend                        data/history.jsonl → 추세 요약
+  geo-probe export                       대시보드용 web/public/summary.json 생성
+
+  --config <경로>   설정 파일 (기본 geo.config.json, 환경변수 GEO_CONFIG)
+  --quick           1모델 × 2질문 × n=2 스모크 테스트. 이력에 쌓지 않는다
+  --help            이 도움말
+
+환경변수: GEO_DEBUG=1 로 호출 실패 원인 출력, PORT 로 serve 포트 변경.
+대시보드가 읽는 데이터는 results/ 가 아니라 data/history.jsonl 이다.`
+
 async function main() {
+  // --help 를 loadConfig 뒤에 두면 설정이 없는 신규 사용자가 도움말조차 못 본다.
+  // 그리고 "--" 로 시작하는 인자를 전부 run 으로 해석하던 탓에 --help 가 유료 측정을 시작했다.
+  if (has("help") || has("h") || process.argv[2] === "help") { console.log(HELP); return }
+
   loadEnv()
-  const cmd = process.argv[2]?.startsWith("--") ? "run" : process.argv[2] ?? "run"
+  const first = process.argv[2]
+  const cmd = !first || first.startsWith("--") ? "run" : first
   let config = loadConfig()
   if (has("quick")) config = applyQuick(config)
 
@@ -179,7 +209,13 @@ async function main() {
     const runDir = path.join(process.cwd(), "results", stamp())
     fs.mkdirSync(runDir, { recursive: true })
     console.log(`\ngeo-probe · ${config.brand} · ${config.models.length}모델 × ${config.questions.length}질문 × ${config.repeats ?? 5}회${config._quick ? " (퀵모드)" : ""}`)
-    await probe(config, runDir)
+    const res = await probe(config, runDir)
+    if (!res.ok) {
+      console.error(`\n[geo-probe] 유효한 응답을 하나도 받지 못했습니다 (${res.failed}회 전부 실패).`)
+      if (res.firstError) console.error(`  첫 실패 원인: ${res.firstError}`)
+      process.exitCode = 1
+      return
+    }
     if (cmd === "run") doAnalyze(config, runDir)
     else console.log(`\n원문 저장: ${path.relative(process.cwd(), runDir)}`)
     return

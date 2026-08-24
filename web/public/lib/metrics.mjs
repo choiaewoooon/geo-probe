@@ -5,6 +5,8 @@
 // 행(row) 스키마 — data/history.jsonl 한 줄:
 //   { run_id, ts, brand, model, question, repeat, mentioned, rank, listed, entries[], citations[], web_search }
 
+import { entityKey } from "./parse.mjs"
+
 export function median(nums) {
   if (!nums.length) return null
   const s = [...nums].sort((a, b) => a - b)
@@ -19,6 +21,24 @@ export const pct = (num, den) => (den ? Math.round((num / den) * 100) : null)
 export const frac = (num, den) => (den ? `${num}/${den} · ${pct(num, den)}%` : "-")
 
 /** 유효 응답 = 파싱 대상이 된 응답(빈 응답 제외). rows는 이미 유효분만 담긴다. */
+/**
+ * 같은 모델 x 같은 질문을 n 회 반복했을 때 결과가 같게 나온 비율.
+ * 셀 안에서 5/5 또는 0/5 면 그 셀은 100%, 3/5 면 60%. 전체는 응답 수 가중 평균.
+ */
+export function cellConsistency(rows) {
+  if (!rows.length) return null
+  const cells = new Map()
+  for (const r of rows) {
+    const k = `${r.model}|${r.question}`
+    const c = cells.get(k) ?? { n: 0, m: 0 }
+    c.n += 1
+    if (r.mentioned) c.m += 1
+    cells.set(k, c)
+  }
+  const agree = [...cells.values()].reduce((s, c) => s + Math.max(c.m, c.n - c.m), 0)
+  return pct(agree, rows.length)
+}
+
 export function visibility(rows) {
   const V = rows.length
   const mentions = rows.filter((r) => r.mentioned).length
@@ -35,8 +55,15 @@ export function visibility(rows) {
     // 미언급을 최하위로 치환하지 않는다. 언급된 응답만으로 중위값.
     medianRank: median(ranked),
     rankedN: ranked.length,
-    // 결과 일관성 = 같은 결과가 반복된 비율. 5/5도 0/5도 100%(일정), 3/5는 60%(흔들림).
-    reproducibility: V ? pct(Math.max(mentions, V - mentions), V) : null,
+    // 결과 일관성 = 같은 조건(모델 x 질문)을 반복했을 때 같은 결과가 나온 비율.
+    //
+    // 🔒 전체 응답을 한 덩어리로 max(언급, 미언급)/V 로 재면 일관성이 아니라
+    // "언급률이 0% 나 100% 에서 얼마나 먼가"(희소성)를 잰다. 실측으로 라벨이 뒤집혔다 —
+    // KakaoMap 은 24셀 전부 5/5 또는 0/5 로 완벽히 결정적인데 71%(낮음)였고,
+    // 거의 등장하지 않는 Google Maps 가 99%(높음)였다. 반복은 셀 안에서만 의미가 있다.
+    reproducibility: cellConsistency(rows),
+    // 언급률이 양극단에서 얼마나 떨어져 있나. 옛 reproducibility 공식을 제 이름으로 남긴다.
+    spread: V ? pct(Math.max(mentions, V - mentions), V) : null,
     rankDistribution: rankDistribution(rows),
   }
 }
@@ -200,8 +227,27 @@ export function trend(rows, window = 4) {
 }
 
 /** 종합 점수 대신 쓰는 상태 라벨. 근거 없는 숫자를 만들지 않으면서 헤드라인 역할을 한다. */
-export function statusLabels(vis, trendPoints = []) {
-  const rate = vis.mentionRate ?? 0
+/**
+ * 상태 라벨.
+ *
+ * 🔒 가시성은 브랜드가 실제로 뛰는 판에서만 판정한다.
+ * 전체 응답 언급률로 재면 배달앱이 지도·번역·택시 질문에 안 나오는 것까지 분모에
+ * 들어간다. 실측에서 배민은 배달 카테고리 100% 인데 전체 13% 라 "낮음"이 찍혔고,
+ * 14개 브랜드 중 "높음" 이 하나도 없었다. 자기 판을 완전히 장악한 6개가 전부 "낮음"이었다.
+ */
+/** 브랜드가 실제로 등장한 질문들만 모은 언급률. 안 뛰는 판을 분모에서 뺀다. */
+export function homeRate(rows) {
+  const byQ = new Map()
+  for (const r of rows) {
+    if (!byQ.has(r.question)) byQ.set(r.question, [])
+    byQ.get(r.question).push(r)
+  }
+  const home = [...byQ.values()].filter((rs) => rs.some((r) => r.mentioned)).flat()
+  return home.length ? pct(home.filter((r) => r.mentioned).length, home.length) : null
+}
+
+export function statusLabels(vis, trendPoints = [], homeRate = null) {
+  const rate = homeRate ?? vis.mentionRate ?? 0
   const visibility_ = rate >= 70 ? "높음" : rate >= 35 ? "중간" : "낮음"
   const repro = vis.reproducibility === null ? "-" : vis.reproducibility >= 80 ? "높음" : "낮음"
   // 방향은 같은 질문 세트끼리만 비교한다. 세트가 바뀐 구간을 이어 비교하면
@@ -239,6 +285,11 @@ export function priorities(rows, brand) {
     byQ.get(r.question).push(r)
   }
   return [...byQ.entries()]
+    // 🔒 그 브랜드가 한 번도 등장하지 않은 카테고리는 개선 대상이 아니라 남의 판이다.
+    // 이 필터가 없어서 점수가 100 + 50 = 150 에서 포화됐고, 무관한 카테고리가 전부
+    // 동점이 되어 설정의 질문 순서대로 정렬됐다. 그 결과 배달앱에게 "지도·택시·번역을
+    // 먼저 손보라"고 말하고 있었다.
+    .filter(([, rs]) => rs.some((r) => r.mentioned))
     .map(([question, rs]) => {
       const v = visibility(rs)
       const sub = substitution(rs, brand)
@@ -248,11 +299,11 @@ export function priorities(rows, brand) {
         mentionLabel: v.mentionLabel,
         medianRank: v.medianRank,
         topSubstitute: sub.brands[0] ?? null,
-        // 낮은 언급률 + 반복적 대체 경쟁사 = 최우선
+        // 발판이 있는 판에서, 언급률이 낮고 같은 경쟁사가 반복해서 자리를 가져간 순서.
         score: (100 - (v.mentionRate ?? 0)) + (sub.brands[0]?.rate ?? 0) / 2,
       }
     })
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => b.score - a.score || a.question.localeCompare(b.question))
 }
 
 /** 대시보드가 읽는 단일 산출물. */
@@ -262,7 +313,8 @@ export function summarize(rows, { brand, expected, ownDomains = [] } = {}) {
   return {
     brand,
     visibility: vis,
-    status: statusLabels(vis, tr),
+    // 브랜드가 한 번이라도 등장한 질문들만 모아 낸 언급률. 이게 그 브랜드의 판이다.
+    status: statusLabels(vis, tr, homeRate(rows)),
     completeness: completeness(rows, expected),
     shareOfVoice: shareOfVoice(rows),
     substitution: substitution(rows, brand),
@@ -272,4 +324,117 @@ export function summarize(rows, { brand, expected, ownDomains = [] } = {}) {
     matrix: matrix(rows),
     priorities: priorities(rows, brand),
   }
+}
+
+/**
+ * 카테고리(질문) 단위 마인드쉐어.
+ *
+ * 시선이 반대다. summarize() 는 "우리가 몇 등인가"를 보지만 여기서는
+ * "이 카테고리는 지금 누가 먹고 있나"를 본다. 자사 개념이 없다.
+ *
+ * 응답 1건을 1표로 세야 하므로 브랜드별로 복제된 행을 그대로 쓰면 안 된다.
+ * 호출부가 한 브랜드 몫(= 응답 전체와 1:1)만 넘긴다.
+ */
+export function categories(rows, { questions = [], models = [] } = {}) {
+  const qMeta = new Map(questions.map((q) => [q.id, q]))
+  const qIds = questions.length
+    ? questions.map((q) => q.id)
+    : [...new Set(rows.map((r) => r.question))]
+  const modelIds = models.length ? models.map((m) => m.id) : [...new Set(rows.map((r) => r.model))]
+
+  return qIds.map((id) => {
+    const rs = rows.filter((r) => r.question === id)
+    const V = rs.length
+    const agg = new Map() // name -> { n, firsts, ranks[], byModel: Map }
+
+    let slots = 0
+    for (const r of rs) {
+      const seen = new Set()
+      for (const e of r.entriesWithRank ?? []) {
+        // 한 응답에 같은 이름이 두 번 나와도 한 번으로 센다(등장 '응답 수'가 기준).
+        // slots 도 같은 규칙을 따라야 한다. dedup 앞에 두면 분모만 부풀어 sov 합계가 100% 에 못 미친다.
+        if (seen.has(e.name)) continue
+        seen.add(e.name)
+        slots += 1
+        // 별칭에 없는 이름은 원문 그대로 들어온다. 표기만 다른 같은 앱이 갈라지지 않게
+        // 집계 키를 정규화하고, 보여줄 이름은 그 키에 모인 표기 중 최빈값을 쓴다.
+        const ek = entityKey(e.name)
+        const a = agg.get(ek) ?? { n: 0, firsts: 0, ranks: [], byModel: new Map(), labels: new Map() }
+        a.labels.set(e.name, (a.labels.get(e.name) ?? 0) + 1)
+        a.n += 1
+        if (e.rank === 1) a.firsts += 1
+        if (typeof e.rank === "number") a.ranks.push(e.rank)
+        const bm = a.byModel.get(r.model) ?? { n: 0, firsts: 0 }
+        bm.n += 1
+        if (e.rank === 1) bm.firsts += 1
+        a.byModel.set(r.model, bm)
+        agg.set(ek, a)
+      }
+    }
+
+    const perModelV = Object.fromEntries(
+      modelIds.map((m) => [m, rs.filter((r) => r.model === m).length]),
+    )
+
+    const entities = [...agg.entries()]
+      .map(([, a]) => ({
+        name: [...a.labels.entries()].sort((x, y) => y[1] - x[1])[0][0],
+        appearances: a.n,
+        rate: pct(a.n, V),
+        firsts: a.firsts,
+        firstRate: pct(a.firsts, V),
+        // 1순위 분산은 사실상 모델 간에만 있다(같은 셀 5회는 24개 중 18개가 만장일치).
+        // 퍼센트 하나로 뭉개지 말고 모델별 득표를 그대로 들고 간다.
+        firstsByModel: Object.fromEntries(modelIds.map((m) =>
+          [m, (a.byModel.get(m) ?? { firsts: 0 }).firsts])),
+        medianRank: median(a.ranks),
+        sov: pct(a.n, slots),
+        byModel: Object.fromEntries(modelIds.map((m) => {
+          const mv = perModelV[m] ?? 0
+          const bm = a.byModel.get(m) ?? { n: 0, firsts: 0 }
+          return [m, { n: bm.n, firsts: bm.firsts, V: mv, rate: pct(bm.n, mv) }]
+        })),
+      }))
+      // 카테고리의 주인은 '자주 불리는 쪽'이 아니라 '맨 앞에 불리는 쪽'이다.
+      // 실측: 결제 카테고리에서 KakaoPay 는 언급 73% 로 최다지만 1순위는 0% 였고,
+      // 1순위 47% 인 WOWPASS 가 실제로 그 자리를 쥐고 있었다. 언급률로 줄세우면 이걸 놓친다.
+      .sort((a, b) => (b.firstRate ?? 0) - (a.firstRate ?? 0)
+        || b.appearances - a.appearances
+        || (a.medianRank ?? 99) - (b.medianRank ?? 99))
+
+    // 모델마다 1등이 갈리는지 — 갈리면 "합의된 1등"이 없다는 뜻이다.
+    const leaderByModel = Object.fromEntries(modelIds.map((m) => {
+      const ranked = entities
+        .filter((e) => e.byModel[m].firsts > 0)
+        .sort((a, b) => b.byModel[m].firsts - a.byModel[m].firsts)
+      const topN = ranked[0]?.byModel[m].firsts ?? 0
+      // 동점을 조용히 깨면 "모델 분열"이 "합의"로 둔갑한다. 전부 남긴다.
+      const names = ranked.filter((e) => e.byModel[m].firsts === topN).map((e) => e.name)
+      return [m, { names, firsts: topN, tied: names.length > 1 }]
+    }))
+    const votes = Object.values(leaderByModel)
+    const decided = votes.filter((v) => v.names.length === 1).map((v) => v.names[0])
+    // 산출 실패나 동점이 하나라도 있으면 합의라고 말하지 않는다.
+    const agreed = decided.length === votes.length ? [...new Set(decided)] : []
+
+    return {
+      id,
+      short: qMeta.get(id)?.short ?? id,
+      prompt: qMeta.get(id)?.prompt ?? null,
+      V,
+      listed: rs.filter((r) => r.listed).length,
+      slots,
+      contenders: entities.length,
+      leader: entities[0] ?? null,
+      leaderByModel,
+      leaderAgreed: agreed.length === 1,
+      // 상위 3곳이 얼마나 가져가는가. 높을수록 뚫고 들어갈 틈이 좁다.
+      // entities 는 1순위 점유율 순이라 그대로 slice 하면 '등장이 많은 3곳'이 아니다.
+      concentration: pct(
+        [...entities].sort((a, b) => b.appearances - a.appearances)
+          .slice(0, 3).reduce((s, e) => s + e.appearances, 0),
+        entities.reduce((s, e) => s + e.appearances, 0)),
+      entities,
+    }
+  })
 }

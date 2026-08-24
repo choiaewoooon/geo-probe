@@ -201,6 +201,8 @@ tr.me td:first-child::before{content:"▸ ";color:var(--tx);font-family:var(--mo
 .scroll th:first-child,.scroll td:first-child{white-space:normal;min-width:150px}
 .bar{height:6px;border-radius:3px;background:var(--ink);display:block;min-width:2px;opacity:.62}
 tr.me .bar{opacity:1}
+tr[data-brand],tr[data-go]{cursor:pointer}
+tr[data-brand]:focus-visible,tr[data-go]:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
 th[data-sort]{cursor:pointer;user-select:none}
 th[data-sort]:hover{color:var(--tx)}
 .sort-ind{color:var(--tx);font-size:9px}
@@ -289,6 +291,30 @@ th[data-sort]:hover{color:var(--tx)}
 .tile.tiny .lg{display:none}
 
 nav button .lead1 .lg{opacity:.8}
+
+/* ── 커맨드 팔레트 ─────────────────────────────────────────── */
+.palbtn{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r-sm);
+  color:var(--dim);cursor:pointer;font:inherit;font-size:12.5px;padding:7px 10px;margin-bottom:14px}
+.palbtn:hover{color:var(--tx);border-color:var(--line-strong)}
+.palbtn kbd{font-family:var(--mono);font-size:10px;color:var(--dim2);border:1px solid var(--line);
+  border-radius:4px;padding:1px 5px}
+.pal{position:fixed;inset:0;z-index:50;background:color-mix(in srgb,var(--bg) 72%,transparent);
+  backdrop-filter:blur(2px);display:flex;justify-content:center;align-items:flex-start;padding:12vh 20px}
+.pal-box{width:100%;max-width:560px;background:var(--panel);border:1px solid var(--line-strong);
+  border-radius:var(--r-lg);box-shadow:var(--shadow-lift);overflow:hidden}
+.pal-box input{width:100%;background:none;border:0;border-bottom:1px solid var(--line);
+  color:var(--tx);font:inherit;font-size:15px;padding:15px 17px;outline:none}
+.pal-list{max-height:52vh;overflow-y:auto}
+.pal-row{display:flex;align-items:center;gap:9px;padding:9px 17px;cursor:pointer;font-size:13px}
+.pal-row.on{background:var(--panel3)}
+.pal-t{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--dim2);
+  border:1px solid var(--line);border-radius:3px;padding:1px 5px;flex:none;width:52px;text-align:center}
+.pal-l{font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pal-h{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--dim2);
+  white-space:nowrap;flex:none}
+.pal-empty{padding:18px 17px;color:var(--dim2);font-size:13px}
+@media (max-width:900px){.palbtn{margin-bottom:10px}.pal{padding:8vh 14px}}
 
 /* ── 브랜드 헤더 탭 ────────────────────────────────────────── */
 /* 브랜드 화면 5개는 사이드바의 최상위 목적지가 아니라 고른 브랜드의 하위 뷰다. */
@@ -511,6 +537,10 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
       <div class="rn" id="runStamp"></div>
     </div>
 
+    <button type="button" id="palBtn" class="palbtn">
+      <span>브랜드 · 카테고리 검색</span><kbd>⌘K</kbd>
+    </button>
+
     <nav id="nav"></nav>
 
     <div class="side-foot">
@@ -537,6 +567,9 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
         <div class="stamp" id="stamp"></div>
       </header>
 
+      <p id="routeLive" role="status" aria-live="polite"
+         style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"></p>
+
       <div id="brandTabs" hidden></div>
 
       <div id="app"><p class="empty">데이터를 불러오는 중…</p></div>
@@ -552,6 +585,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
 </div>
 
 <script src="./theme.js?v=1"></script>
-<script type="module" src="./app.js?v=92"></script>
+<script type="module" src="./app.js?v=94"></script>
 </body>
 </html>

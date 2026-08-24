@@ -341,7 +341,7 @@ function sortableTable(id, cols, rows, { highlight, initial } = {}) {
     if (c.sortable === false) return el("th", { class: c.cls }, c.label)
     const on = st.key === c.key
     return el("th", {
-      class: c.cls, "data-sort": c.key, tabindex: "0", role: "button",
+      class: c.cls, "data-sort": c.key, tabindex: "0",
       "aria-sort": on ? (st.dir === "asc" ? "ascending" : "descending") : "none",
       style: "cursor:pointer;user-select:none;white-space:nowrap",
       title: "눌러서 정렬",
@@ -1082,6 +1082,28 @@ function modelVotes(e, c) {
   return `모델 ${won}/${models.length} · ${label}`
 }
 
+/** 클릭으로 이동하는 표. 행이 마우스 전용이 되지 않게 키보드 경로를 같이 준다. */
+function clickableRows(table, onPick) {
+  for (const tr of table.querySelectorAll("tr[data-brand], tr[data-go]")) {
+    tr.tabIndex = 0
+    tr.setAttribute("role", "link")
+    const label = tr.cells[0]?.textContent?.trim()
+    if (label) tr.setAttribute("aria-label", `${label} 자세히 보기`)
+  }
+  const pick = (e) => {
+    const tr = e.target.closest("tr[data-brand], tr[data-go]")
+    if (!tr) return
+    if (e.type === "keydown") {
+      if (e.key !== "Enter" && e.key !== " ") return
+      e.preventDefault()
+    }
+    onPick(tr)
+  }
+  table.addEventListener("click", pick)
+  table.addEventListener("keydown", pick)
+  return table
+}
+
 /** 모델별 1위 셀. 동점을 조용히 깨지 않으므로 이름이 여럿일 수 있다. */
 function leaderCell(w) {
   const names = w?.names ?? []
@@ -1217,11 +1239,7 @@ function viewCategory(id) {
             })
           }))),
         ))))
-      table.addEventListener("click", (e) => {
-        const tr = e.target.closest("tr[data-brand]")
-        if (tr) { setBrand(tr.dataset.brand); show("summary") }
-      })
-      return table
+      return clickableRows(table, (tr) => { setBrand(tr.dataset.brand); show("summary") })
     })()),
 
     el("h2", {}, "모델별 1등"),
@@ -1243,17 +1261,22 @@ function viewCategory(id) {
 // 브랜드 하나를 깊게 보기 전에, 추적한 브랜드들이 서로 어떻게 갈리는지 먼저 본다.
 // 같은 응답을 브랜드마다 다시 채점한 결과라 한 판에 놓고 비교하는 것이 정당하다.
 function modelStrip(b, models) {
-  return el("span", { class: "strip" }, models.map((m) => {
+  // 빈 <i> + 배경색 + title 만으로는 접근성 트리에 아무것도 안 나타난다.
+  // 띠 전체를 하나의 이미지로 보고 요약 문장을 붙인다.
+  const parts = []
+  const marks = models.map((m) => {
     const cells = b.matrix.filter((c) => c.model === m)
     const V = cells.reduce((s, c) => s + c.V, 0)
     const n = cells.reduce((s, c) => s + c.mentions, 0)
     const rate = V ? Math.round((n / V) * 100) : 0
+    parts.push(`${modelLabel(m)} ${rate}%`)
     return el("i", {
       style: n ? `background:rgba(var(--ink-rgb),${inkA(rate).toFixed(3)})` : "",
       class: n ? null : "miss",
       title: `${modelLabel(m)} · ${n}/${V} (${rate}%)`,
     })
-  }))
+  })
+  return el("span", { class: "strip", role: "img", "aria-label": `모델별 언급률 ${parts.join(", ")}` }, marks)
 }
 
 /** 브랜드의 질문별 집계. 판세 표와 밀도판이 같은 수를 쓰게 한다. */
@@ -1310,11 +1333,7 @@ function viewField() {
             el("td", { class: "n", style: "color:var(--dim)" }, dash(v.mentionRate, "%")),
             el("td", {}, modelStrip(b, models)))
         })))
-      table.addEventListener("click", (e) => {
-        const tr = e.target.closest("tr[data-brand]")
-        if (tr) { setBrand(tr.dataset.brand); show("summary") }
-      })
-      return table
+      return clickableRows(table, (tr) => { setBrand(tr.dataset.brand); show("summary") })
     })()),
 
     el("h2", {}, "질문별 1순위 분포", el("small", {}, "브랜드 × 질문")),
@@ -1394,7 +1413,81 @@ function renderBrandTabs(active) {
   })
 }
 
+// ---------- 커맨드 팔레트 ----------
+// 앱 전체에 입력 필드가 0개였다. Toss 담당자가 자기 앱을 찾으려면 카테고리 8개를
+// 하나씩 열어 평균 10화면씩 스크롤해야 했다. 찾을 대상이 브랜드 63개와 카테고리 8개
+// 두 종류라 텍스트박스 하나로는 결과 타입이 섞여, 타입을 붙인 팔레트로 만든다.
+
+function paletteItems() {
+  const items = []
+  for (const c of DATA?.categories ?? []) {
+    items.push({ type: "카테고리", label: c.short, hint: `1위 ${c.leader?.name ?? "—"}`, go: `cat:${c.id}` })
+  }
+  const seen = new Set()
+  for (const c of DATA?.categories ?? []) {
+    for (const e of c.entities) {
+      if (seen.has(e.name)) continue
+      seen.add(e.name)
+      const tracked = ALL.some((b) => b.brand === e.name)
+      items.push({
+        type: "브랜드", label: e.name,
+        hint: `${c.short} ${e.rate}%${tracked ? "" : " · 프로필 없음"}`,
+        brand: tracked ? e.name : null, go: `cat:${c.id}`,
+      })
+    }
+  }
+  return items
+}
+
+function openPalette() {
+  if ($("#pal")) return
+  const items = paletteItems()
+  const input = el("input", { type: "text", placeholder: "브랜드나 카테고리 이름", "aria-label": "검색" })
+  const list = el("div", { class: "pal-list", role: "listbox" })
+  const box = el("div", { class: "pal-box" }, input, list)
+  const wrap = el("div", { id: "pal", class: "pal" }, box)
+  let cur = 0, shown = []
+
+  const render = () => {
+    const q = input.value.trim().toLowerCase()
+    shown = (q ? items.filter((i) => i.label.toLowerCase().includes(q)) : items).slice(0, 40)
+    if (cur >= shown.length) cur = 0
+    list.innerHTML = ""
+    if (!shown.length) { list.append(el("div", { class: "pal-empty" }, "결과가 없습니다.")); return }
+    shown.forEach((i, n) => list.append(el("div", {
+      class: `pal-row${n === cur ? " on" : ""}`, role: "option", "aria-selected": String(n === cur),
+      "data-n": n,
+    },
+      el("span", { class: "pal-t" }, i.type),
+      i.type === "브랜드" ? logo(i.label, "sm") : null,
+      el("span", { class: "pal-l" }, i.label),
+      el("span", { class: "pal-h" }, i.hint))))
+  }
+  const pick = (i) => {
+    close()
+    if (i.brand) { setBrand(i.brand); show("summary") } else show(i.go)
+  }
+  const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey, true) }
+  const onKey = (e) => {
+    if (e.key === "Escape") { e.preventDefault(); close() }
+    else if (e.key === "ArrowDown") { e.preventDefault(); cur = Math.min(cur + 1, shown.length - 1); render() }
+    else if (e.key === "ArrowUp") { e.preventDefault(); cur = Math.max(cur - 1, 0); render() }
+    else if (e.key === "Enter" && shown[cur]) { e.preventDefault(); pick(shown[cur]) }
+  }
+  input.addEventListener("input", () => { cur = 0; render() })
+  list.addEventListener("click", (e) => {
+    const r = e.target.closest(".pal-row")
+    if (r) pick(shown[Number(r.dataset.n)])
+  })
+  wrap.addEventListener("mousedown", (e) => { if (e.target === wrap) close() })
+  document.addEventListener("keydown", onKey, true)
+  document.body.append(wrap)
+  render()
+  input.focus()
+}
+
 let CURRENT = null
+let CURRENT_SET = false
 const renderFor = (key) => (key.startsWith("cat:") ? () => viewCategory(key.slice(4)) : RENDER[key])
 
 function show(key) {
@@ -1427,7 +1520,15 @@ function show(key) {
     btn.setAttribute("aria-current", on ? "page" : "false")
     btn.setAttribute("aria-selected", String(on))
   }
-  if (location.hash.slice(1) !== key) history.pushState(null, "", `#${key}`)
+  // 초기 렌더까지 pushState 하면 첫 뒤로가기가 아무 변화 없이 소모된다.
+  if (location.hash.slice(1) !== key) {
+    if (CURRENT_SET) history.pushState(null, "", `#${key}`)
+    else history.replaceState(null, "", `#${key}`)
+  }
+  CURRENT_SET = true
+  // H1 이 바뀌는데 공지가 없어 스크린리더가 화면 전환을 알 수 없었다.
+  const live = $("#routeLive")
+  if (live) live.textContent = `${$("#pageTitle").textContent} 화면`
   window.scrollTo({ top: 0 })
 }
 
@@ -1461,13 +1562,21 @@ async function boot() {
     if (grp !== group) { nav.append(el("div", { class: "grp" }, grp)); group = grp }
     const cat = k.startsWith("cat:") ? catOf(k.slice(4)) : null
     nav.append(el("button", { "data-k": k, type: "button" },
-      el("span", { class: "ix" }, String(++ix).padStart(2, "0")),
+      el("span", { class: "ix", "aria-hidden": "true" }, String(++ix).padStart(2, "0")),
       el("span", { class: "lb" }, label),
       // 메뉴에서 이미 1등이 보이면 목록 자체가 요약이 된다.
       cat?.leader ? el("span", { class: "lead1", title: `1위 ${cat.leader.name}` },
         logo(cat.leader.name, "sm")) : null))
   }
   nav.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.k) })
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); openPalette() }
+    else if (e.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) {
+      e.preventDefault(); openPalette()
+    }
+  })
+  $("#palBtn")?.addEventListener("click", openPalette)
   document.addEventListener("click", (e) => {
     const a = e.target.closest("[data-go]")
     if (a) { e.preventDefault(); show(a.dataset.go) }

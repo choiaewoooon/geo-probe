@@ -24,7 +24,7 @@ const BASE_VIEWS = [
   ["home", "카테고리 한눈에", "마인드쉐어", "카테고리마다 AI가 맨 앞에 부르는 이름을 모았습니다."],
   ["brands", "브랜드 프로필", "브랜드", "고른 브랜드가 어느 카테고리에 있고 어디가 비었는지."],
   ["summary", "요약", "브랜드", "고른 브랜드의 등장 빈도와 순위를 한 화면에 모았습니다."],
-  ["compete", "경쟁 구도", "브랜드", "자리를 대신 차지한 브랜드와 늘 함께 불리는 브랜드입니다."],
+  ["compete", "경쟁 구도", "브랜드", "1순위를 대신 차지한 브랜드와 함께 언급되는 브랜드입니다."],
   ["diagnose", "질문·모델 진단", "브랜드", "카테고리와 모델별로 어디가 약한지 밀도로 표시합니다."],
   ["sources", "출처", "브랜드", "답변에 붙은 출처 도메인입니다."],
   ["evidence", "원문 증거", "브랜드", "회차별 응답 원문의 저장 위치 색인."],
@@ -37,7 +37,7 @@ const BASE_VIEWS = [
 function allViews() {
   const cats = (DATA?.categories ?? []).map((c) => [
     `cat:${c.id}`, c.short, "카테고리",
-    `이 질문 하나를 두고 ${c.contenders}개 이름이 겹칩니다. 맨 앞자리를 누가 가져갔는지 봅니다.`,
+    `이 질문 하나에 ${c.contenders}개 이름이 등장했습니다. 1순위를 누가 차지했는지 봅니다.`,
   ])
   const [home, ...rest] = BASE_VIEWS
   return [home, ...cats, ...rest]
@@ -107,14 +107,14 @@ function sparkline(points, { w = 640, h = 140 } = {}) {
     `</svg>`,
   ].join("")
 
+  // 범례로 끝낸다. 문단 설명은 화면 아래 도움말이 담당한다.
   const protos = [...new Set(points.map((p) => p.protocol))]
-  const notes = ["채운 점과 실선은 이동평균, 빈 점은 회차별 값. 표본이 작아 회차별 변동이 큽니다."]
-  if (protos.length > 1) {
-    notes.push("점선은 <b>질문 세트가 바뀐 지점</b>. 앞뒤가 서로 다른 질문으로 잰 값이라 선을 잇지 않았습니다.")
-  } else if (points.length < 2) {
-    notes.push("현재 측정 시점이 1개입니다. 추세선은 다음 측정부터 그려집니다.")
-  }
-  return el("div", {}, el("div", { class: "chart", html: svg }), el("p", { class: "note", html: notes.join(" ") }))
+  const legend = el("div", { class: "ramp" },
+    el("span", {}, "● 이동평균"),
+    el("span", {}, "○ 회차별 값"),
+    protos.length > 1 ? el("span", {}, "┆ 질문 세트 교체") : null,
+    points.length < 2 ? el("span", {}, "측정 시점 1개 · 추세선은 다음 회차부터") : null)
+  return el("div", {}, el("div", { class: "chart", html: svg }), legend)
 }
 
 // 순위 분포 — 하나의 가로 막대에 쌓는다. 표로 나열하면 "미언급이 얼마나 큰 덩어리인가"가
@@ -345,22 +345,6 @@ function sortableTable(id, cols, rows, { highlight, initial } = {}) {
 }
 
 // ---------- 뷰 ----------
-function intro(b) {
-  const kr = "한국어 로컬 질문"
-  return el("div", { class: "intro" },
-    el("p", { class: "lead" },
-      "같은 질문을 여러 번 반복해서 모은 숫자입니다."),
-    el("p", {},
-      "AI는 같은 질문에도 매번 다르게 답합니다. 반복해서 물어야 우연과 경향이 갈립니다. " +
-      "질문에는 브랜드 이름을 넣지 않았고, 응답에 등장한 브랜드를 모두 집계했습니다."),
-    el("p", {},
-      "측정 도구는 직접 만들었고 코드와 응답 원문을 전부 공개합니다. 숫자가 어디서 나왔는지 직접 확인할 수 있습니다."),
-    el("p", { class: "byline" },
-      "최재원 · 측정 도구 ", el("a", { href: "https://github.com/choiaewoooon/geo-probe", target: "_blank", rel: "noopener" }, "geo-probe"),
-      " · 자세한 계산 규칙과 한계는 ", el("a", { href: "#", "data-go": "method" }, "방법론"), " 참조"),
-  )
-}
-
 function viewSummary(b) {
   const v = b.visibility
   const c = b.completeness
@@ -369,15 +353,12 @@ function viewSummary(b) {
   const cls = { 높음: "good", 중간: "warn", 낮음: "bad", 상승: "good", 하락: "bad" }
 
   return el("div", {},
-    intro(b),
     sourceSwitch(),
     el("div", { class: "pills" },
       el("span", { class: `pill ${cls[st.visibility] ?? ""}` }, "가시성 ", el("b", {}, st.visibility)),
       el("span", { class: `pill ${st.reproducibility === "높음" ? "good" : "warn"}` }, "결과 일관성 ", el("b", {}, st.reproducibility)),
       el("span", { class: `pill ${cls[st.direction] ?? ""}` }, "방향 ", el("b", {}, st.direction)),
     ),
-    el("p", { class: "note" },
-      "언급률·순위·점유율을 임의 가중치로 합치면 근거 없이 정밀해 보입니다. 그래서 종합 점수 대신 위 라벨만 둡니다."),
 
     el("h2", {}, "핵심 지표"),
     el("div", { class: "cards" },
@@ -438,10 +419,6 @@ function viewCompete(b) {
   return el("div", {},
     el("h2", {}, "점유율 분포", el("small", {}, "면적 = 등장 횟수 · 농도 = 점유율")),
     treemap(tiles, { me: b.brand, label: (t) => `${t.sov}% · ${t.value}회` }),
-    el("p", { class: "note", html:
-      `「자사」 표시가 붙은 칸이 <b>${b.brand}</b>. 등장이 많은 상위 ${tiles.length}곳만 그렸고, ` +
-      `전체 등장 ${allN}회 중 ${Math.round((shown / allN) * 100)}%를 덮습니다. ` +
-      "추적 질문 안에서 답변에 등장한 비율이며, <b>실제 시장 점유율과는 다릅니다.</b>" }),
 
     el("h2", {}, "추적 질문군 내 응답 점유율", el("small", {}, "실제 시장 점유율이 아닙니다")),
     sortableTable("sov", [
@@ -453,7 +430,6 @@ function viewCompete(b) {
       { key: "medianRank", label: "중위 순위", cls: "n", num: true, bestLow: true,
         render: (r) => (r.medianRank === null ? "-" : `${r.medianRank}위`) },
     ], b.shareOfVoice.slice(0, 20), { highlight: isMe, initial: { key: "appearances", dir: "desc" } }),
-    el("p", { class: "note" }, "열 제목을 누르면 그 기준으로 정렬됩니다. 한 번 더 누르면 방향이 바뀝니다."),
 
     el("h2", {}, "선택한 브랜드가 빠졌을 때 등장한 브랜드",
       el("small", {}, `${b.substitution.missedN}건 기준 · 한 응답에 여러 곳이 나와 합계는 100%를 넘을 수 있음`)),
@@ -483,9 +459,6 @@ function viewDiagnose(b) {
   return el("div", {},
     el("h2", {}, "밀도 매트릭스", el("small", {}, "질문 × 모델")),
     densityMatrix(b),
-    el("p", { class: "note", html:
-      "큰 숫자는 <b>언급됐을 때의 중위 순위</b>, 작은 숫자는 <b>언급 횟수 / 유효 응답</b>입니다. " +
-      "가장자리 점선 칸은 줄과 열의 합계입니다. 모델마다 검색 조건이 달라 열끼리 우열은 매기지 않습니다." }),
 
     el("h2", {}, "약한 조합", el("small", {}, `언급률 50% 미만 ${weak.length}개`)),
     weak.length
@@ -513,9 +486,7 @@ function viewSources(b) {
         html: "이번 측정에서는 어떤 모델도 응답에 출처 URL을 달지 않았습니다. " +
           "출처가 없으니 자사 도메인 인용률은 <b>측정 불가</b>로 적습니다. " +
           "출처를 주지 않은 것과 자사가 인용되지 않은 것은 서로 다른 사실입니다.",
-      }),
-      el("p", { class: "note" },
-        "출처를 재려면 웹 검색과 인용을 켠 모델 설정이 필요합니다. 자세한 조건은 방법론에."))
+      }),)
   }
   const q = c.quadrant
   return el("div", {},
@@ -534,8 +505,6 @@ function viewSources(b) {
       quad("외부 인식 중심 노출", q.외부인식_중심노출),
       quad("콘텐츠만 인용, 브랜드 연결 약함", q.콘텐츠만_사용),
       quad("미노출", q.미노출)),
-    el("p", { class: "note" },
-      "인용은 응답에 표시된 출처를 가리킵니다. 그 출처가 노출의 원인이라고 단정하지는 않습니다."),
   )
 }
 
@@ -901,19 +870,19 @@ const VIEW_HELP = {
     q: "이 화면은 무엇을 보여주나요?",
     body: [
       ["묻는 것", "<b>카테고리마다 AI가 누구를 맨 앞에 부르는지</b> 봅니다. 특정 브랜드를 기준으로 삼지 않습니다."],
-      ["1등의 기준", "목록 <b>맨 앞</b>에 불린 비율입니다. 사람은 대개 첫 줄만 읽으니까요."],
-      ["모델 분열", "세 모델이 서로 다른 1등을 꼽았습니다. <b>그 자리가 아직 비어 있다</b>는 신호입니다."],
-      ["브랜드 이름을 감춘 질문", "질문에 앱 이름을 하나도 넣지 않았습니다. 이름을 대고 물으면 모델이 그냥 설명해 주니까요."],
+      ["1등의 기준", "목록 <b>1순위</b>로 언급된 비율입니다. 첫 줄만 읽고 넘어가는 사용자가 많습니다."],
+      ["모델 분열", "세 모델이 서로 다른 1위를 꼽았습니다. <b>1위가 아직 고정되지 않았다</b>는 신호입니다."],
+      ["브랜드 이름을 감춘 질문", "질문에 앱 이름을 하나도 넣지 않았습니다. 이름을 대고 물으면 모델이 그대로 설명해 줍니다."],
     ],
   },
   category: {
     q: "이 카테고리는 어떻게 읽나요?",
     body: [
-      ["1순위 점유율", "<b>목록 맨 앞</b>에 불린 비율입니다. 이 카테고리의 주인을 가리는 값입니다."],
+      ["1순위 점유율", "<b>목록 1순위</b>로 언급된 비율입니다. 카테고리 1위를 가리는 기준입니다."],
       ["언급률", "목록 <b>어디에든</b> 이름이 오른 비율입니다. 1순위와는 다른 값이라 둘을 같이 봐야 합니다."],
-      ["마인드쉐어 분포", "면적은 등장 횟수, 농도는 맨 앞에 온 횟수입니다. <b>크고 옅은 타일</b>이 늘 불리지만 1등은 못 되는 브랜드입니다."],
-      ["상위 3곳 집중도", "상위 3곳이 가져간 몫입니다. 높을수록 새 이름이 끼기 어렵습니다."],
-      ["모델별 1등", "1등이 갈리는지 자체가 신호입니다. 갈렸다면 그 카테고리는 아직 비어 있습니다."],
+      ["마인드쉐어 분포", "면적은 등장 횟수, 농도는 1순위 횟수입니다. <b>크고 옅은 타일</b>은 자주 언급되지만 1순위는 아닌 브랜드입니다."],
+      ["상위 3곳 집중도", "상위 3곳이 차지한 비중입니다. 높을수록 신규 진입이 어렵습니다."],
+      ["모델별 1등", "1위가 갈리는지 자체가 신호입니다. 갈렸다면 아직 고정되지 않은 카테고리입니다."],
     ],
   },
   field: {
@@ -921,7 +890,7 @@ const VIEW_HELP = {
     body: [
       ["한 번의 측정, 여러 브랜드", "질문에 브랜드 이름이 없으니 같은 응답을 브랜드만 바꿔 다시 채점할 수 있습니다. 여기 숫자는 전부 <b>같은 표본</b>에서 나왔습니다."],
       ["폭과 깊이를 왜 나누나요", "전체 언급률 하나로 줄세우면 한 주제만 담당하는 브랜드가 손해를 봅니다. <b>등장 질문 수</b>가 폭, <b>가장 센 질문의 언급률</b>이 깊이입니다."],
-      ["밀도판 읽는 법", "가로로 빗금이 이어지면 한 주제에서만 사는 브랜드입니다. 좁은 것과 약한 것은 손볼 방법이 다릅니다."],
+      ["밀도판 읽는 법", "가로로 빗금이 이어지면 한 질문에서만 등장하는 브랜드입니다. 노출 범위가 좁은 것과 노출 강도가 약한 것은 원인이 다릅니다."],
       ["줄을 누르면", "그 브랜드로 나머지 화면이 전환됩니다. 요약·경쟁 구도·진단이 선택한 브랜드 기준으로 다시 그려집니다."],
     ],
   },
@@ -935,7 +904,7 @@ const VIEW_HELP = {
       ["결과 일관성", "같은 질문을 반복했을 때 결과가 얼마나 일정한지 봅니다. 5번 모두 나오거나 모두 안 나오면 100%, 3번이면 60%입니다."],
       ["측정 완결성", "재려던 횟수 중 실제로 쓸 만한 응답이 온 비율입니다. 빈 응답을 빼고 계산하면 나머지 숫자가 부풀려집니다."],
       ["순위 분포", "가운데 값 하나로는 보이지 않는 흔들림입니다. 1위도 있고 미언급도 있는지 그대로 펼쳐 보여줍니다."],
-      ["우선 점검할 질문", "언급률이 낮고 같은 경쟁사가 반복해서 그 자리를 가져간 질문 순입니다. 여기부터 손보시면 됩니다."],
+      ["우선 점검할 질문", "언급률이 낮고 같은 경쟁사가 반복해서 1순위를 차지한 질문 순입니다. 개선 우선순위로 보시면 됩니다."],
     ],
   },
   compete: {
@@ -959,7 +928,7 @@ const VIEW_HELP = {
     body: [
       ["인용 도메인", "AI 답변에 표시된 출처 도메인을 보여줍니다. 선택한 브랜드의 도메인과 외부 도메인을 나눠 볼 수 있습니다."],
       ["자사 도메인 인용률", "출처가 표시된 응답 중 그 브랜드의 도메인이 포함된 비율입니다. 출처가 아예 없는 모델은 0%가 아니라 <b>측정 불가</b>로 표시합니다."],
-      ["노출 × 자사 출처", "브랜드 언급 여부와 자사 도메인 인용 여부를 조합한 네 칸입니다. <b>브랜드는 안 불리는데 콘텐츠만 인용된 칸</b>은 정보가 브랜드로 연결되지 않는다는 신호입니다."],
+      ["노출 × 자사 출처", "브랜드 언급 여부와 자사 도메인 인용 여부를 조합한 네 칸입니다. <b>브랜드는 언급되지 않고 콘텐츠만 인용된 칸</b>은 정보가 브랜드로 연결되지 않는다는 신호입니다."],
       ["한계", "여기서 인용은 응답에 표시된 출처일 뿐, 노출의 원인은 아닙니다."],
     ],
   },
@@ -1098,18 +1067,6 @@ function viewHome() {
   const split = cats.filter((c) => !c.leaderAgreed)
   const ds = DATA.dataset
   return el("div", {},
-    el("div", { class: "intro" },
-      el("p", { class: "lead" },
-        "AI에게 카테고리를 물으면 목록이 하나 나옵니다. 그 맨 앞자리를 누가 가져가는지 셌습니다."),
-      el("p", {},
-        `${ds ? `이 데이터셋은 ${ds.name}입니다. ` : ""}` +
-        `질문 ${cats.length}개를 모델 ${DATA.methodology.models.length}개에 각각 ` +
-        `${DATA.methodology.repeats}번씩 던져 ${cats.reduce((s, c) => s + c.V, 0)}건의 답변을 모았고, ` +
-        "응답에 등장한 이름을 모두 집계했습니다. 특정 브랜드를 기준으로 삼지 않습니다."),
-      el("p", { class: "byline" },
-        "카드를 누르면 그 카테고리 순위표로 이동 · 측정 도구 ",
-        el("a", { href: "https://github.com/choiaewoooon/geo-probe", target: "_blank", rel: "noopener" }, "geo-probe")),
-    ),
 
     el("h2", {}, "카테고리", el("small", {}, "큰 이름이 그 카테고리 1등입니다")),
     el("div", { class: "cgrid" }, cats.map(catCard)),
@@ -1125,8 +1082,6 @@ function viewHome() {
             DATA.methodology.models.map((m) => el("td", {},
               c.leaderByModel[m.id] ? named(c.leaderByModel[m.id], "sm") : "—")))))))
       : el("p", { class: "empty" }, "모든 카테고리에서 세 모델이 같은 1등을 꼽았습니다."),
-    el("p", { class: "note" },
-      "1등이 갈렸다는 건 아직 그 자리가 비어 있다는 뜻입니다. 모델마다 웹 검색 조건이 다른 탓도 섞여 있습니다."),
   )
 }
 
@@ -1144,21 +1099,21 @@ function viewCategory(id) {
   return el("div", {},
     el("p", { class: "prompt" }, el("span", {}, "실제로 던진 질문"), c.prompt ?? c.short),
 
-    el("h2", {}, "이 판의 주인"),
+    el("h2", {}, "카테고리 1위"),
     el("div", { class: "cards k4" },
       el("div", { class: "card" },
         el("div", { class: "k" }, "1등"),
         el("div", { class: "mlead" }, L ? logo(L.name, "md") : null, el("b", {}, L?.name ?? "—")),
-        el("div", { class: "n" }, L ? `맨 앞에 불린 횟수 ${L.firsts}/${c.V}` : "")),
-      card("1순위 점유율", dash(L?.firstRate, "%"), "목록 맨 앞에 불린 비율", false, L?.firstRate),
+        el("div", { class: "n" }, L ? `1순위 ${L.firsts}회 / 응답 ${c.V}건` : "")),
+      card("1순위 점유율", dash(L?.firstRate, "%"), "1순위로 언급된 비율", false, L?.firstRate),
       card("경쟁 브랜드", c.contenders, `응답 ${c.V}건에 등장한 이름`),
-      card("상위 3곳 집중도", dash(c.concentration, "%"), "높을수록 새 이름이 끼기 어렵습니다", false, c.concentration),
+      card("상위 3곳 집중도", dash(c.concentration, "%"), "높을수록 신규 진입이 어렵습니다", false, c.concentration),
     ),
 
     el("h2", {}, "마인드쉐어 분포", el("small", {}, "면적 = 등장 횟수 · 농도 = 1순위 점유율")),
     treemap(tiles, { density: (t) => t.firstRate, label: (t) => `1순위 ${t.firstRate}% · ${t.value}회` }),
 
-    el("h2", {}, "순위표", el("small", {}, "맨 앞에 불린 비율 순")),
+    el("h2", {}, "순위표", el("small", {}, "1순위 점유율 순")),
     el("div", { class: "scroll" }, (() => {
       const table = el("table", {},
         el("thead", {}, el("tr", {},
@@ -1175,7 +1130,7 @@ function viewCategory(id) {
         },
           el("td", { class: "n", style: "color:var(--dim2);font-family:var(--mono)" }, i + 1),
           el("td", {}, named(e.name, "md", e.rate >= 60 && e.firstRate === 0
-            ? el("span", { class: "tag" }, "늘 불리지만 1등은 아님") : null)),
+            ? el("span", { class: "tag" }, "언급률 높음, 1순위 아님") : null)),
           el("td", { class: "n" }, dash(e.firstRate, "%")),
           el("td", { style: "width:110px" }, el("span", {
             class: "bar",
@@ -1198,9 +1153,6 @@ function viewCategory(id) {
       })
       return table
     })()),
-    el("p", { class: "note", html:
-      "언급률이 높은데 1순위가 0%면 후보에는 꾸준히 오르지만 첫 자리는 못 잡고 있다는 뜻입니다. " +
-      "추적 중인 브랜드는 줄을 누르면 프로필이 열립니다." }),
 
     el("h2", {}, "모델별 1등"),
     el("div", { class: "cards" }, models.map((m) => {
@@ -1210,10 +1162,6 @@ function viewCategory(id) {
         el("div", { class: "mlead" }, w ? logo(w, "md") : null, el("b", {}, w ?? "—")),
         el("div", { class: "n" }, m.webSearch ? "웹 검색 ON" : "웹 검색 OFF"))
     })),
-    el("p", { class: "note" },
-      c.leaderAgreed
-        ? "세 모델이 같은 이름을 맨 앞에 놓았습니다. 여기는 이미 자리가 굳었습니다."
-        : "모델마다 맨 앞에 놓는 이름이 다릅니다. 검색 조건도 제각각이라 어느 쪽이 맞다고 읽지는 않습니다."),
   )
 }
 
@@ -1255,10 +1203,6 @@ function viewField() {
   const models = [...new Set(list[0]?.matrix.map((c) => c.model) ?? [])]
 
   return el("div", {},
-    el("p", { class: "note", html:
-      `같은 응답 묶음을 브랜드마다 다시 채점했습니다. 질문에 <b>브랜드 이름을 넣지 않았기</b> 때문에, ` +
-      `${list.length}개 브랜드가 같은 ${list[0]?.visibility.V ?? 0}건의 답변 위에서 비교됩니다. ` +
-      `줄을 누르면 그 브랜드로 나머지 화면이 바뀝니다.` }),
 
     el("h2", {}, "브랜드별 가시성", el("small", {}, "폭과 깊이를 따로 봅니다")),
     el("div", { class: "scroll" }, (() => {
@@ -1299,14 +1243,8 @@ function viewField() {
       return table
     })()),
 
-    el("p", { class: "note", html:
-      "한 주제만 담당하는 앱은 전체 언급률이 낮게 나옵니다. 8개 질문 중 하나를 다 가져가도 13%가 끝입니다. " +
-      "그래서 <b>등장 질문 수</b>와 <b>가장 센 질문의 언급률</b>을 앞에 두고 전체 언급률은 뒤로 뺐습니다." }),
-
-    el("h2", {}, "질문별로 누가 불리는가", el("small", {}, "브랜드 × 질문")),
+    el("h2", {}, "질문별 1순위 분포", el("small", {}, "브랜드 × 질문")),
     fieldMatrix(list),
-    el("p", { class: "note" },
-      "가로로 빗금이 이어지면 그 브랜드는 한 주제에서만 삽니다. 세로로 이어지면 그 질문에 답이 몰려 있습니다."),
   )
 }
 
@@ -1388,9 +1326,10 @@ function show(key) {
   }
   const app = $("#app")
   app.innerHTML = ""
+  // 데이터가 먼저다. 설명은 화면 맨 아래에 접어 둔다.
+  app.append(renderFor(key)(BRAND))
   const help = viewHelp(key)
   if (help) app.append(help)
-  app.append(renderFor(key)(BRAND))
   for (const btn of $("#nav").querySelectorAll("button")) {
     btn.setAttribute("aria-selected", String(btn.dataset.k === key))
   }

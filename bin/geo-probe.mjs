@@ -9,7 +9,7 @@ import fs from "node:fs"
 import path from "node:path"
 import { ask } from "../src/providers.mjs"
 import {
-  collectRows, expectedCount, appendHistory, readHistory, toCsv, report,
+  collectRows, expectedCount, appendHistory, readHistory, toCsv, report, trackTargets,
 } from "../src/analyze.mjs"
 import { summarize } from "../src/metrics.mjs"
 
@@ -87,14 +87,28 @@ async function probe(config, runDir) {
 
 function doAnalyze(config, runDir, { append = true } = {}) {
   const run_id = path.basename(runDir)
-  const rows = collectRows(runDir, config, { run_id, ts: new Date().toISOString() })
-  fs.writeFileSync(path.join(runDir, "measurements.csv"), toCsv(rows))
-  fs.writeFileSync(path.join(runDir, "report.md"), report(config, runDir, rows))
-  if (append && !config._quick) appendHistory(HISTORY, rows)
+  const ts = new Date().toISOString()
+  const targets = trackTargets(config)
+
+  // 리포트와 CSV 는 대표 브랜드(첫 대상) 기준으로 남긴다. 이력에는 전부 쌓는다.
+  let primary = null
+  for (const cfg of targets) {
+    const rows = collectRows(runDir, cfg, { run_id, ts })
+    if (!primary) {
+      primary = rows
+      fs.writeFileSync(path.join(runDir, "measurements.csv"), toCsv(rows))
+      fs.writeFileSync(path.join(runDir, "report.md"), report(cfg, runDir, rows))
+    }
+    if (append && !config._quick) appendHistory(HISTORY, rows)
+  }
+
   console.log(`\n분석 완료 → ${path.relative(process.cwd(), runDir)}/report.md`)
+  if (targets.length > 1) {
+    console.log(`추적 브랜드 ${targets.length}개를 같은 응답으로 채점했습니다: ${targets.map((t) => t.brand).join(", ")}`)
+  }
   console.log(fs.readFileSync(path.join(runDir, "report.md"), "utf8"))
   if (config._quick) console.log("※ 퀵모드 결과는 history.jsonl 에 누적하지 않습니다(표본이 작아 추세를 왜곡).")
-  return rows
+  return primary
 }
 
 /** 대시보드가 읽는 정적 산출물. 브랜드별로 요약을 굽는다. */

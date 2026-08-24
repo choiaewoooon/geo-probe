@@ -13,6 +13,8 @@ node_modules/
 # 어떤 회사를 언제 쟀는지가 그대로 드러나고, 지원 중인 건이 섞인다.
 # 엔진과 스키마는 geo.config.example.json · SPEC-v2.md 가 문서화한다.
 geo.config.json
-configs/
+configs/*
+# 단 공개 쇼케이스 설정은 커밋한다 — 회사 건이 아니라 README 가 참조하는 재현용 설정이다.
+!configs/korea-apps.json
 data/
 .claude/

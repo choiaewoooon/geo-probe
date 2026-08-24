@@ -72,6 +72,24 @@ export function collectRows(runDir, config, meta = {}) {
 }
 
 /** 예정 응답 수 — 측정 완결성의 분모. */
+/**
+ * 추적할 브랜드 목록. `trackBrands` 가 있으면 그 목록을, 없으면 config.brand 하나를 본다.
+ * 별칭은 competitorAliases 에서 가져오므로 브랜드마다 설정을 복제할 필요가 없다.
+ *
+ * 질문은 애초에 브랜드명을 감추고 던지므로, 같은 응답 묶음을 브랜드만 바꿔 다시 채점하는 것이
+ * 정당하다. 프로브를 브랜드 수만큼 반복하지 않아도 판 전체를 같은 표본 위에서 비교할 수 있다.
+ */
+export function trackTargets(config) {
+  const names = config.trackBrands?.length ? config.trackBrands : [config.brand]
+  return names.map((name) => ({
+    ...config,
+    brand: name,
+    brandAliases: name === config.brand
+      ? (config.brandAliases ?? config.competitorAliases?.[name] ?? [])
+      : (config.competitorAliases?.[name] ?? []),
+  }))
+}
+
 export function expectedCount(config) {
   return config.models.length * config.questions.length * (config.repeats ?? 5)
 }

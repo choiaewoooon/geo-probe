@@ -248,6 +248,31 @@ th[data-sort]:hover{color:var(--tx)}
   background:repeating-linear-gradient(135deg,transparent 0 5px,color-mix(in srgb,var(--ink) 22%,transparent) 5px 6px);
   box-shadow:inset 0 0 0 1px var(--line-strong)}
 
+/* ── 브랜드 전환기 ─────────────────────────────────────────── */
+.pick{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.pick select{width:100%;background:var(--panel2);color:var(--tx);border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:6px 8px;font:inherit;font-size:12.5px;cursor:pointer}
+.pick select:hover{border-color:var(--line-strong)}
+.pick .hint{display:block;font-family:var(--mono);font-size:9.5px;color:var(--dim2);
+  letter-spacing:.06em;margin-top:5px}
+
+/* ── 판세 ─────────────────────────────────────────────────── */
+.strip{display:inline-flex;gap:3px;vertical-align:-1px}
+.strip i{width:16px;height:11px;border-radius:2px;background:var(--ink);display:block}
+.strip i.miss{background:transparent;
+  background-image:repeating-linear-gradient(135deg,transparent 0 4px,color-mix(in srgb,var(--ink) 22%,transparent) 4px 5px);
+  box-shadow:inset 0 0 0 1px var(--line-strong)}
+.mx.field th.rowhead,.mx.field td.rowhead{width:16%}
+.mx.field th:last-child,.mx.field td:last-child{width:auto;padding-left:0;border-left:0}
+.mx.field td.rowhead{font-weight:600;font-size:12.5px;min-width:104px}
+.mx.field tbody tr:last-child td{padding-top:0;border-top:0}
+.mx.field tbody tr.on td.rowhead{position:relative}
+.mx.field tbody tr.on td.rowhead::before{content:"";position:absolute;left:-6px;top:16px;bottom:16px;
+  width:2px;background:var(--ink);border-radius:2px}
+.mx.field .cellwrap{height:44px}
+.mx.field .cellwrap .r{font-size:12.5px}
+.mx.field .cellwrap.miss .r{font-size:10px}
+
 /* ── 트리맵 ───────────────────────────────────────────────── */
 .tree{position:relative;width:100%;aspect-ratio:16/7;min-height:260px;
   border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
@@ -385,6 +410,7 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
       <div class="lb">측정 대상</div>
       <div class="nm" id="brandName">—</div>
       <div class="rn" id="runStamp"></div>
+      <div class="pick" id="brandPick" hidden></div>
     </div>
 
     <nav id="nav"></nav>
@@ -455,6 +481,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
   document.addEventListener("DOMContentLoaded",sync); sync();
 })();
 </script>
-<script type="module" src="./app.js?v=30"></script>
+<script type="module" src="./app.js?v=42"></script>
 </body>
 </html>

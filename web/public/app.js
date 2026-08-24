@@ -20,6 +20,7 @@ const dash = (v, suffix = "") => (v === null || v === undefined ? "-" : `${v}${s
 
 // [키, 메뉴 라벨, 묶음, 화면 부제]
 const VIEWS = [
+  ["field", "판세", "측정 결과", "추적한 브랜드가 서로 어떻게 갈리는지를 한 판에 놓고 봅니다. 여기서 하나를 고르면 나머지 화면이 그 브랜드를 봅니다."],
   ["summary", "요약", "측정 결과", "브랜드 이름을 감춘 질문에 AI가 답할 때 이 브랜드가 어디쯤 나오는지를 한 화면에 모았습니다."],
   ["compete", "경쟁 구도", "측정 결과", "자리를 대신 차지한 브랜드와 늘 함께 불리는 브랜드를 집계했습니다."],
   ["diagnose", "질문·모델 진단", "측정 결과", "어떤 질문에서, 어떤 모델에서 약한지를 밀도로 짚습니다."],
@@ -31,7 +32,8 @@ const VIEWS = [
 ]
 
 let DATA = null
-let BRAND = null
+let ALL = []      // 측정된 브랜드 전부 (같은 응답을 브랜드마다 다시 채점한 결과)
+let BRAND = null  // 지금 보고 있는 브랜드
 
 // ---------- 차트 (SVG 직접 생성, 라이브러리 없음) ----------
 function sparkline(points, { w = 640, h = 140 } = {}) {
@@ -769,7 +771,8 @@ function sourceSwitch() {
     if (!b) return
     SOURCE = b.dataset.src
     BRAND = SOURCE === "own" ? OWN : DATA.brands[0]
-    $("#brandName").textContent = BRAND.brand
+    ALL = SOURCE === "own" ? [OWN] : DATA.brands
+    renderSubject()
     show(CURRENT)
   })
   return wrap
@@ -886,6 +889,15 @@ const btnStyle = (bg) => `background:${bg};color:${bg === "transparent" ? "var(-
 // ---------- 화면 설명 ----------
 // 각 화면이 무엇에 답하는지를 처음 보는 사람도 알 수 있게. 평소엔 접혀 있다.
 const VIEW_HELP = {
+  field: {
+    q: "이 카테고리는 누가 나눠 갖고 있나요?",
+    body: [
+      ["한 번의 측정, 여러 브랜드", "질문에 브랜드 이름을 넣지 않았기 때문에, 같은 응답 묶음을 브랜드만 바꿔 다시 채점할 수 있습니다. 그래서 여기 있는 브랜드는 전부 <b>같은 표본</b> 위에 있습니다. 각자 따로 잰 숫자를 나란히 붙인 것이 아닙니다."],
+      ["폭과 깊이를 왜 나누나요", "전체 언급률 하나로 줄세우면 한 주제만 담당하는 브랜드가 무조건 손해를 봅니다. 8개 질문 중 1개를 완전히 지배해도 13%가 최대입니다. <b>등장 질문 수</b>가 폭, <b>가장 센 질문의 언급률</b>이 깊이입니다."],
+      ["밀도판 읽는 법", "가로로 빗금이 이어지면 그 브랜드는 특정 주제에서만 존재한다는 뜻입니다. 좁은 것과 약한 것은 다른 문제이고, 손볼 방법도 다릅니다."],
+      ["줄을 누르면", "그 브랜드로 나머지 화면이 전환됩니다. 요약·경쟁 구도·진단이 모두 선택한 브랜드를 기준으로 다시 그려집니다."],
+    ],
+  },
   summary: {
     q: "지금 우리 브랜드는 AI 답변에서 어떤 상태인가요?",
     body: [
@@ -985,7 +997,161 @@ const questionLabel = (id) => {
 }
 const modelLabel = (id) => DATA?.methodology?.models?.find((x) => x.id === id)?.name ?? id
 
-const RENDER = { summary: viewSummary, compete: viewCompete, diagnose: viewDiagnose, sources: viewSources, evidence: viewEvidence, method: viewMethod, run: viewRun, settings: viewSettings }
+// ---------- 판세 ----------
+// 브랜드 하나를 깊게 보기 전에, 추적한 브랜드들이 서로 어떻게 갈리는지 먼저 본다.
+// 같은 응답을 브랜드마다 다시 채점한 결과라 한 판에 놓고 비교하는 것이 정당하다.
+function modelStrip(b, models) {
+  return el("span", { class: "strip" }, models.map((m) => {
+    const cells = b.matrix.filter((c) => c.model === m)
+    const V = cells.reduce((s, c) => s + c.V, 0)
+    const n = cells.reduce((s, c) => s + c.mentions, 0)
+    const rate = V ? Math.round((n / V) * 100) : 0
+    return el("i", {
+      style: n ? `background:rgba(var(--ink-rgb),${inkA(rate).toFixed(3)})` : "",
+      class: n ? null : "miss",
+      title: `${modelLabel(m)} · ${n}/${V} (${rate}%)`,
+    })
+  }))
+}
+
+/** 브랜드의 질문별 집계. 판세 표와 밀도판이 같은 수를 쓰게 한다. */
+function perQuestion(b) {
+  const questions = [...new Set(b.matrix.map((c) => c.question))]
+  return questions.map((q) => {
+    const cells = b.matrix.filter((c) => c.question === q)
+    const V = cells.reduce((s, c) => s + c.V, 0)
+    const n = cells.reduce((s, c) => s + c.mentions, 0)
+    const ranks = cells.filter((c) => c.medianRank !== null).map((c) => c.medianRank).sort((x, y) => x - y)
+    return {
+      q, V, mentions: n,
+      rate: V ? Math.round((n / V) * 100) : 0,
+      medianRank: ranks.length ? ranks[Math.floor(ranks.length / 2)] : null,
+    }
+  })
+}
+
+function viewField() {
+  const list = [...ALL].sort((a, b) => (b.visibility.mentionRate ?? 0) - (a.visibility.mentionRate ?? 0))
+  const models = [...new Set(list[0]?.matrix.map((c) => c.model) ?? [])]
+
+  return el("div", {},
+    el("p", { class: "note", html:
+      `같은 응답 묶음을 브랜드마다 다시 채점한 결과입니다. 질문은 <b>브랜드 이름을 감춘 채</b> 던졌고, ` +
+      `${list.length}개 브랜드가 같은 ${list[0]?.visibility.V ?? 0}건의 답변 안에서 서로 자리를 다툰 셈입니다. ` +
+      `줄을 누르면 그 브랜드로 나머지 화면이 바뀝니다.` }),
+
+    el("h2", {}, "브랜드별 가시성", el("small", {}, "폭과 깊이를 따로 봅니다")),
+    el("div", { class: "scroll" }, (() => {
+      const table = el("table", {},
+        el("thead", {}, el("tr", {},
+          el("th", {}, "브랜드"),
+          el("th", { class: "n" }, "등장 질문"),
+          el("th", { class: "n" }, "가장 센 질문"),
+          el("th", {}, ""),
+          el("th", { class: "n" }, "중위 순위"),
+          el("th", { class: "n" }, "전체 언급률"),
+          el("th", {}, models.map((m) => modelLabel(m)).join(" · ")))),
+        el("tbody", {}, list.map((b) => {
+          const v = b.visibility
+          const per = perQuestion(b)
+          const hit = per.filter((p) => p.mentions > 0)
+          const best = hit.slice().sort((a, c) => c.rate - a.rate)[0]
+          return el("tr", {
+            class: b.brand === BRAND.brand ? "me" : null,
+            "data-brand": b.brand, style: "cursor:pointer",
+            title: `${b.brand} 로 전환`,
+          },
+            el("td", {}, b.brand),
+            el("td", { class: "n" }, `${hit.length}/${per.length}`),
+            el("td", { class: "n" }, best ? `${best.q.toUpperCase()} ${best.rate}%` : "—"),
+            el("td", { style: "width:110px" }, el("span", {
+              class: "bar",
+              style: `width:${Math.max(2, best?.rate ?? 0)}%;opacity:${inkA(best?.rate ?? 0).toFixed(3)}`,
+            })),
+            el("td", { class: "n" }, v.medianRank === null ? "—" : `${v.medianRank}위`),
+            el("td", { class: "n", style: "color:var(--dim)" }, dash(v.mentionRate, "%")),
+            el("td", {}, modelStrip(b, models)))
+        })))
+      table.addEventListener("click", (e) => {
+        const tr = e.target.closest("tr[data-brand]")
+        if (tr) setBrand(tr.dataset.brand)
+      })
+      return table
+    })()),
+
+    el("p", { class: "note", html:
+      "<b>전체 언급률로 앱을 줄세우지 않습니다.</b> 8개 질문 전체에 대한 비율이라, 한 주제만 담당하는 앱은 " +
+      "그 주제를 완전히 지배해도 최대 13%까지만 오릅니다. 그래서 <b>등장 질문 수(폭)</b>와 " +
+      "<b>가장 센 질문의 언급률(깊이)</b>을 따로 놓고, 전체 언급률은 참고값으로 뒤에 뒀습니다. " +
+      "같은 이유로 일관성 지표도 뺐습니다 — 한 번도 안 불린 앱이 '일관성 96%'로 잡혀 좋아 보이기 때문입니다." }),
+
+    el("h2", {}, "질문별로 누가 불리는가", el("small", {}, "브랜드 × 질문 · 농도가 높을수록 자주 불립니다")),
+    fieldMatrix(list),
+    el("p", { class: "note" },
+      "빗금은 그 질문에서 한 번도 불리지 않았다는 뜻입니다. 가로로 빗금이 이어지는 줄은 " +
+      "그 브랜드가 특정 주제에서만 존재한다는 뜻이고, 세로로 이어지는 칸은 그 질문에 답이 몰려 있다는 뜻입니다."),
+  )
+}
+
+/** 브랜드 × 질문 밀도판. densityMatrix 와 읽는 법은 같고 축만 다르다. */
+function fieldMatrix(list) {
+  const questions = [...new Set(list[0]?.matrix.map((c) => c.question) ?? [])]
+  const cellFor = (b, q) => {
+    const p = perQuestion(b).find((x) => x.q === q)
+    if (!p) return null
+    return { V: p.V, mentions: p.mentions, mentionRate: p.rate, medianRank: p.medianRank,
+      mentionLabel: `${p.mentions}/${p.V}`, top3Label: "-", reproducibility: 0 }
+  }
+  return el("div", { class: "plate" },
+    el("table", { class: "mx field" },
+      el("thead", {}, el("tr", {},
+        el("th", { class: "rowhead" }, "브랜드"),
+        questions.map((q) => el("th", {}, q.toUpperCase())))),
+      el("tbody", {}, list.map((b) => el("tr", { class: b.brand === BRAND.brand ? "on" : null },
+        el("td", { class: "rowhead" }, b.brand),
+        questions.map((q) => el("td", {}, densityCell(cellFor(b, q)))))))),
+    el("div", { class: "ramp" },
+      el("span", {}, "언급률"),
+      el("span", { class: "steps" },
+        [0, 20, 40, 60, 80, 100].map((r) => el("i", { style: `opacity:${inkA(r).toFixed(3)}`, title: `${r}%` }))),
+      el("span", {}, "0 → 100%"),
+      el("span", {}, el("i", { class: "sw" }), "미언급 (0건)"),
+      el("span", {}, questions.map((q) => `${q.toUpperCase()} ${questionShort(q)}`).join(" · "))),
+  )
+}
+
+const RENDER = { field: viewField, summary: viewSummary, compete: viewCompete, diagnose: viewDiagnose, sources: viewSources, evidence: viewEvidence, method: viewMethod, run: viewRun, settings: viewSettings }
+
+/** 사이드바 "측정 대상" 카드. 브랜드가 여럿이면 전환기가 된다. */
+function renderSubject() {
+  const m = DATA?.methodology
+  $("#brandName").textContent = BRAND.brand
+  $("#runStamp").textContent = m
+    ? `모델 ${m.models.length} · 질문 ${m.questions.length} · n=${m.repeats} · 유효 ${BRAND.completeness.valid}회`
+    : ""
+
+  const host = $("#brandPick")
+  if (!host) return
+  host.innerHTML = ""
+  if (ALL.length < 2) { host.hidden = true; return }
+  host.hidden = false
+
+  const list = [...ALL].sort((a, b) => (b.visibility.mentionRate ?? 0) - (a.visibility.mentionRate ?? 0))
+  host.append(el("select", { "aria-label": "측정 대상 브랜드" },
+    list.map((b) => el("option", {
+      value: b.brand, selected: b.brand === BRAND.brand,
+    }, `${b.brand} · ${dash(b.visibility.mentionRate, "%")}`))))
+  host.append(el("span", { class: "hint" }, `추적 ${ALL.length}개 · 판세에서 비교`))
+  host.querySelector("select").addEventListener("change", (e) => setBrand(e.target.value))
+}
+
+function setBrand(name) {
+  const b = ALL.find((x) => x.brand === name)
+  if (!b || b === BRAND) return
+  BRAND = b
+  renderSubject()
+  show(CURRENT)
+}
 
 let CURRENT = null
 function show(key) {
@@ -1019,14 +1185,12 @@ async function boot() {
     return
   }
   await loadOwnData()
+  ALL = DATA.brands
   BRAND = DATA.brands[0]
   if (!BRAND) { $("#app").innerHTML = `<p class="note">측정된 브랜드가 없습니다.</p>`; return }
 
-  $("#brandName").textContent = BRAND.brand
+  renderSubject()
   const last = BRAND.trend.at(-1)
-  const m = DATA.methodology
-  $("#runStamp").textContent =
-    `모델 ${m.models.length} · 질문 ${m.questions.length} · n=${m.repeats} · 유효 ${BRAND.completeness.valid}회`
   $("#stamp").innerHTML =
     `<b>최근 측정 ${last?.run_id ?? "-"}</b>생성 ${String(DATA.generatedAt).slice(0, 16).replace("T", " ")}`
 

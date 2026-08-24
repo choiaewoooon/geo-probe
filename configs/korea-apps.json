@@ -1,0 +1,281 @@
+{
+  "brand": "Naver Map",
+  "brandAliases": [
+    "네이버 지도",
+    "네이버지도",
+    "Naver Maps",
+    "NaverMap",
+    "Naver Map Korea"
+  ],
+  "market": "English · foreigners visiting or living in Korea",
+  "repeats": 5,
+  "spacingMs": 0,
+  "rankedListSuffix": "\n\nAnswer with only the 5 most suitable apps, in order, as a numbered list in the format \"1. AppName\". No explanation, no other text.",
+  "models": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "provider": "command",
+      "command": [
+        "cdx"
+      ],
+      "webSearch": true,
+      "collectedVia": "cdx (OpenAI Codex CLI) · web search on",
+      "timeoutMs": 90000
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "provider": "command",
+      "command": [
+        "gemq",
+        "pro"
+      ],
+      "webSearch": false,
+      "collectedVia": "gemq (Gemini CLI) · no web search",
+      "timeoutMs": 90000
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "provider": "command",
+      "command": [
+        "claude",
+        "-p"
+      ],
+      "webSearch": false,
+      "collectedVia": "claude CLI (headless) · defaults",
+      "timeoutMs": 90000
+    }
+  ],
+  "ownDomains": [],
+  "questions": [
+    {
+      "id": "q1",
+      "short": "Maps & navigation",
+      "prompt": "I'm a foreigner visiting South Korea. Google Maps reportedly doesn't work well there. Which map and navigation apps should I use?"
+    },
+    {
+      "id": "q2",
+      "short": "Hailing a taxi",
+      "prompt": "What app do foreigners in South Korea use to hail a taxi?"
+    },
+    {
+      "id": "q3",
+      "short": "Translation",
+      "prompt": "Which translation app works best for Korean while travelling in South Korea?"
+    },
+    {
+      "id": "q4",
+      "short": "Food delivery",
+      "prompt": "I don't speak Korean. Which food delivery apps can I actually use in South Korea?"
+    },
+    {
+      "id": "q5",
+      "short": "Paying & transit fares",
+      "prompt": "Which apps should a foreigner in South Korea use to pay for things and for subway and bus fares?"
+    },
+    {
+      "id": "q6",
+      "short": "Finding restaurants",
+      "prompt": "Which apps do people use to find and book good restaurants in South Korea?"
+    },
+    {
+      "id": "q7",
+      "short": "Intercity travel",
+      "prompt": "Which apps should I use to book KTX trains and intercity buses in South Korea as a foreigner?"
+    },
+    {
+      "id": "q8",
+      "short": "Essential apps",
+      "prompt": "Which apps should I install before travelling to South Korea?"
+    }
+  ],
+  "competitorAliases": {
+    "Naver Map": [
+      "네이버 지도",
+      "네이버지도",
+      "Naver Maps",
+      "NaverMap"
+    ],
+    "KakaoMap": [
+      "카카오맵",
+      "카카오 맵",
+      "Kakao Map",
+      "Daum Map",
+      "다음 지도"
+    ],
+    "Google Maps": [
+      "구글 지도",
+      "구글지도",
+      "Google Map"
+    ],
+    "Kakao T": [
+      "카카오T",
+      "카카오 T",
+      "Kakao Taxi",
+      "카카오택시",
+      "KakaoTaxi"
+    ],
+    "Uber": [
+      "우버",
+      "UT",
+      "Uber Taxi"
+    ],
+    "Tada": [
+      "타다"
+    ],
+    "Papago": [
+      "파파고",
+      "Naver Papago"
+    ],
+    "Google Translate": [
+      "구글 번역",
+      "구글번역",
+      "Google Translator"
+    ],
+    "DeepL": [
+      "딥엘",
+      "Deepl"
+    ],
+    "Naver Dictionary": [
+      "네이버 사전",
+      "Naver Dict",
+      "Papago Dictionary"
+    ],
+    "Baemin": [
+      "배달의민족",
+      "배민",
+      "Baedal Minjok",
+      "Baedalminjok",
+      "Baemin Delivery"
+    ],
+    "Coupang Eats": [
+      "쿠팡이츠",
+      "쿠팡 이츠",
+      "CoupangEats"
+    ],
+    "Yogiyo": [
+      "요기요"
+    ],
+    "Shuttle": [
+      "셔틀",
+      "Shuttle Delivery"
+    ],
+    "KakaoTalk": [
+      "카카오톡",
+      "카톡",
+      "Kakao Talk"
+    ],
+    "KakaoPay": [
+      "카카오페이",
+      "Kakao Pay"
+    ],
+    "Naver Pay": [
+      "네이버페이",
+      "네이버 페이",
+      "NaverPay"
+    ],
+    "Toss": [
+      "토스",
+      "Toss Bank",
+      "비바리퍼블리카"
+    ],
+    "Samsung Pay": [
+      "삼성페이",
+      "삼성 페이",
+      "SamsungPay"
+    ],
+    "WOWPASS": [
+      "와우패스",
+      "Wow Pass",
+      "Wowpass"
+    ],
+    "T-money": [
+      "티머니",
+      "T-money GO",
+      "티머니GO",
+      "Tmoney",
+      "T money"
+    ],
+    "Subway Korea": [
+      "지하철 종결자",
+      "Subway Korea App",
+      "KakaoMetro",
+      "Naver Metro"
+    ],
+    "KorailTalk": [
+      "코레일톡",
+      "Korail Talk",
+      "Korail",
+      "코레일"
+    ],
+    "Kobus": [
+      "코버스",
+      "고속버스티머니",
+      "Bustago",
+      "버스타고"
+    ],
+    "Creatrip": [
+      "크리에이트립"
+    ],
+    "Klook": [
+      "클룩"
+    ],
+    "Trazy": [
+      "트래지"
+    ],
+    "Visit Korea": [
+      "대한민국 구석구석",
+      "VisitKorea",
+      "Korea Tourism Organization"
+    ],
+    "Coupang": [
+      "쿠팡"
+    ],
+    "MangoPlate": [
+      "망고플레이트"
+    ],
+    "Catch Table": [
+      "캐치테이블",
+      "CatchTable"
+    ],
+    "Diningcode": [
+      "다이닝코드",
+      "Dining Code"
+    ],
+    "TMAP": [
+      "티맵",
+      "T맵",
+      "T-map",
+      "Tmap",
+      "티맵 대중교통"
+    ],
+    "k.ride": [
+      "케이라이드",
+      "K.ride",
+      "K ride"
+    ],
+    "TABA": [
+      "타바"
+    ]
+  },
+  "protocol": "v3-korea-apps-2026-08-24",
+  "trackBrands": [
+    "Naver Map",
+    "KakaoMap",
+    "Google Maps",
+    "Kakao T",
+    "TMAP",
+    "Papago",
+    "Google Translate",
+    "KakaoTalk",
+    "Coupang Eats",
+    "Baemin",
+    "Naver Pay",
+    "T-money",
+    "KorailTalk",
+    "Toss"
+  ],
+  "_comment": "README 의 쇼케이스 런에 쓴 설정. provider=command 라 API 키 없이 로컬 CLI 래퍼(cdx·gemq·claude)로 수집했다. trackBrands 덕분에 한 번의 프로브를 14개 앱으로 채점한다."
+}

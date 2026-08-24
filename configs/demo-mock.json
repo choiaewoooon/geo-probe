@@ -1,61 +1,50 @@
 {
-  "_comment": "README 의 쇼케이스 런에 쓴 설정. provider=command 라 API 키 없이 로컬 CLI 래퍼(cdx·gemq·claude)로 수집했다. trackBrands 덕분에 한 번의 프로브를 14개 앱으로 채점한다.",
+  "_comment": "API 키 없이 파이프라인 전 구간을 확인하는 설정. 가짜 모델(scripts/mock-model.sh)이 응답을 만든다. node bin/geo-probe.mjs run --config configs/demo-mock.json",
   "dataset": {
-    "name": "한국 · 외국인이 쓸 앱",
-    "nameEn": "Apps for foreigners in Korea",
-    "note": "외국인 관점의 영어 질문 8개. 어떤 앱도 '자사'가 아니다."
+    "name": "데모 · 가짜 모델",
+    "nameEn": "Demo (mock model)",
+    "note": "실측이 아니다. 화면과 파이프라인 확인용."
   },
-  "historyFile": "data/history-korea-apps.jsonl",
+  "historyFile": "data/history-demo.jsonl",
   "brand": "Naver Map",
-  "brandAliases": [
-    "네이버 지도",
-    "네이버지도",
-    "Naver Maps",
-    "NaverMap",
-    "Naver Map Korea"
+  "trackBrands": [
+    "Naver Map",
+    "KakaoMap",
+    "Kakao T",
+    "Papago",
+    "WOWPASS",
+    "Shuttle",
+    "KorailTalk"
   ],
-  "market": "English · foreigners visiting or living in Korea",
-  "repeats": 5,
+  "repeats": 3,
   "spacingMs": 0,
   "rankedListSuffix": "\n\nAnswer with only the 5 most suitable apps, in order, as a numbered list in the format \"1. AppName\". No explanation, no other text.",
   "models": [
     {
-      "id": "chatgpt",
-      "name": "ChatGPT",
+      "id": "mock-a",
+      "name": "Mock A",
       "provider": "command",
       "command": [
-        "cdx"
+        "sh",
+        "scripts/mock-model.sh"
+      ],
+      "webSearch": false,
+      "collectedVia": "가짜 모델",
+      "timeoutMs": 10000
+    },
+    {
+      "id": "mock-b",
+      "name": "Mock B",
+      "provider": "command",
+      "command": [
+        "sh",
+        "scripts/mock-model.sh"
       ],
       "webSearch": true,
-      "collectedVia": "cdx (OpenAI Codex CLI) · web search on",
-      "timeoutMs": 90000
-    },
-    {
-      "id": "gemini",
-      "name": "Gemini",
-      "provider": "command",
-      "command": [
-        "gemq",
-        "pro"
-      ],
-      "webSearch": false,
-      "collectedVia": "gemq (Gemini CLI) · no web search",
-      "timeoutMs": 90000
-    },
-    {
-      "id": "claude",
-      "name": "Claude",
-      "provider": "command",
-      "command": [
-        "claude",
-        "-p"
-      ],
-      "webSearch": false,
-      "collectedVia": "claude CLI (headless) · defaults",
-      "timeoutMs": 90000
+      "collectedVia": "가짜 모델",
+      "timeoutMs": 10000
     }
   ],
-  "ownDomains": [],
   "questions": [
     {
       "id": "q1",
@@ -267,28 +256,5 @@
       "타바"
     ]
   },
-  "protocol": "v3-korea-apps-2026-08-24",
-  "trackBrands": [
-    "Baemin",
-    "Catch Table",
-    "Coupang Eats",
-    "Google Maps",
-    "Google Translate",
-    "Kakao T",
-    "KakaoMap",
-    "KakaoTalk",
-    "Klook",
-    "KorailTalk",
-    "Naver Map",
-    "Naver Pay",
-    "Papago",
-    "Shuttle",
-    "T-money",
-    "TMAP",
-    "Toss",
-    "Trip.PASS",
-    "Uber",
-    "WOWPASS",
-    "k.ride"
-  ]
+  "protocol": "demo-mock"
 }

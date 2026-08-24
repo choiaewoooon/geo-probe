@@ -1,0 +1,33 @@
+name: weekly probe
+
+# 스냅샷 하나로는 아무 말도 못 한다. 이 도구가 파는 값은 추세이고,
+# 추세는 회차가 쌓여야 생긴다. 주 1회 재서 data/history.jsonl 에 append 한다.
+on:
+  schedule:
+    - cron: "0 18 * * 0" # 매주 월요일 03:00 KST
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 측정 + 집계
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEO_CONFIG: configs/korea-apps.json
+        run: |
+          node bin/geo-probe.mjs run
+          node bin/geo-probe.mjs export
+      - name: 결과 커밋
+        run: |
+          git config user.name  "geo-probe bot"
+          git config user.email "noreply@github.com"
+          git add data/history-korea-apps.jsonl web/public/summary.json
+          git diff --cached --quiet || git commit -m "chore: 주간 측정 $(date -u +%Y-%m-%d)"
+          git push

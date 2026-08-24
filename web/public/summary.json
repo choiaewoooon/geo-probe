@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T06:52:49.648Z",
+  "generatedAt": "2026-08-24T08:56:46.571Z",
   "dataset": {
     "name": "한국 · 외국인이 쓸 앱",
     "nameEn": "Apps for foreigners in Korea",
@@ -3492,6 +3492,7 @@
       ]
     }
   ],
+  "categoryTrend": null,
   "brands": [
     {
       "brand": "Naver Map",

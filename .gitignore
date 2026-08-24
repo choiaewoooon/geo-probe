@@ -17,5 +17,9 @@ configs/*
 # 단 공개 쇼케이스 설정은 커밋한다 — 회사 건이 아니라 README 가 참조하는 재현용 설정이다.
 !configs/korea-apps.json
 !configs/logo-overrides.json
-data/
+!configs/demo-mock.json
+data/*
+# 공개 쇼케이스 데이터셋의 이력만 추적한다. 회사별 측정은 각자 다른 이력 파일을
+# 쓰므로(설정의 historyFile) 여기 섞이지 않는다. CI 가 회차를 쌓으려면 필요하다.
+!data/history-korea-apps.jsonl
 .claude/

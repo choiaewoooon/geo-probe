@@ -335,6 +335,36 @@ export function summarize(rows, { brand, expected, ownDomains = [] } = {}) {
  * 응답 1건을 1표로 세야 하므로 브랜드별로 복제된 행을 그대로 쓰면 안 된다.
  * 호출부가 한 브랜드 몫(= 응답 전체와 1:1)만 넘긴다.
  */
+/**
+ * 회차별 카테고리 스냅샷 + 직전 회차 대비 1위 변동.
+ *
+ * 🔒 categories() 를 전체 이력에 한 번 돌리면 홈 숫자가 전 기간 누적 평균이 된다.
+ * 최신 회차에서 1위가 바뀌어도 화면은 서서히 흐려질 뿐 변화가 드러나지 않는다.
+ * 브랜드 화면에는 trend() 가 있는데 정작 메인인 카테고리에는 시간 축이 없었다.
+ */
+export function categoryTrend(rows, opts = {}) {
+  const runs = [...new Set(rows.map((r) => r.run_id))].sort()
+  if (runs.length < 2) return null
+  const snap = (id) => categories(rows.filter((r) => r.run_id === id), opts)
+  const latest = snap(runs.at(-1))
+  const prev = snap(runs.at(-2))
+  return {
+    runs,
+    latestRun: runs.at(-1),
+    prevRun: runs.at(-2),
+    // 카테고리별 1위가 직전 회차와 같은가. 바뀌었다면 그게 이 화면의 뉴스다.
+    changes: latest.map((c) => {
+      const p = prev.find((x) => x.id === c.id)
+      return {
+        id: c.id, short: c.short,
+        now: c.leader?.name ?? null,
+        was: p?.leader?.name ?? null,
+        changed: Boolean(p && c.leader && p.leader && c.leader.name !== p.leader.name),
+      }
+    }),
+  }
+}
+
 export function categories(rows, { questions = [], models = [] } = {}) {
   const qMeta = new Map(questions.map((q) => [q.id, q]))
   const qIds = questions.length

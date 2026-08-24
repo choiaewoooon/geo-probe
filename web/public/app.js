@@ -1152,6 +1152,26 @@ function viewHome() {
     el("h2", {}, "카테고리", el("small", {}, "큰 이름이 그 카테고리 1등입니다")),
     el("div", { class: "cgrid" }, cats.map(catCard)),
 
+    ...(() => {
+      // 회차가 쌓이기 전에는 없는 섹션이다. 빈 자리를 남기지 않는다.
+      const ct = DATA.categoryTrend
+      const moved = ct?.changes.filter((x) => x.changed) ?? []
+      if (!ct) return []
+      return [
+        el("h2", {}, "직전 회차 대비 1위 변동",
+          el("small", {}, `${ct.prevRun} → ${ct.latestRun}`)),
+        moved.length
+          ? el("div", { class: "scroll" }, el("table", {},
+              el("thead", {}, el("tr", {},
+                el("th", {}, "카테고리"), el("th", {}, "직전"), el("th", {}, "이번"))),
+              el("tbody", {}, moved.map((x) => el("tr", { "data-go": `cat:${x.id}` },
+                el("td", {}, x.short),
+                el("td", {}, x.was ? named(x.was, "sm") : "—"),
+                el("td", {}, x.now ? named(x.now, "sm") : "—"))))))
+          : el("p", { class: "empty" }, "1위가 바뀐 카테고리가 없습니다."),
+      ]
+    })(),
+
     el("h2", {}, "모델이 갈리는 카테고리", el("small", {}, `${split.length}/${cats.length}개`)),
     split.length
       ? el("div", { class: "scroll" }, el("table", {},

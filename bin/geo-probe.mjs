@@ -11,15 +11,28 @@ import { ask } from "../src/providers.mjs"
 import {
   collectRows, expectedCount, appendHistory, readHistory, toCsv, report, trackTargets,
 } from "../src/analyze.mjs"
-import { summarize, categories } from "../src/metrics.mjs"
+import { summarize, categories, categoryTrend } from "../src/metrics.mjs"
 
-const HISTORY = path.join(process.cwd(), "data", "history.jsonl")
+/**
+ * 이력 파일. 데이터셋마다 분리할 수 있다.
+ *
+ * 🔒 하나에 몰아 쓰면 공개 쇼케이스 측정과 지원 중인 회사 측정이 같은 파일에 섞인다.
+ * .gitignore 가 data/ 를 통째로 막고 있는 이유가 그것인데, 그러면 CI 가 회차를
+ * 쌓을 수가 없다. 설정에 historyFile 을 두면 공개 데이터셋만 추적 대상으로
+ * 열어 둘 수 있다.
+ */
+const historyPath = (config) => path.resolve(
+  flagStr("history") ?? process.env.GEO_HISTORY
+  ?? (config?.historyFile ? path.join(process.cwd(), config.historyFile)
+      : path.join(process.cwd(), "data", "history.jsonl")),
+)
 
 function flag(name) {
   const i = process.argv.indexOf(`--${name}`)
   return i === -1 ? null : (process.argv[i + 1]?.startsWith("--") ? true : process.argv[i + 1] ?? true)
 }
 const has = (name) => process.argv.includes(`--${name}`)
+const flagStr = (name) => { const v = flag(name); return typeof v === "string" ? v : null }
 
 function loadEnv() {
   const p = path.join(process.cwd(), ".env")
@@ -54,7 +67,9 @@ function applyQuick(config) {
 }
 
 const sleep = (ms) => (ms > 0 ? new Promise((r) => setTimeout(r, ms)) : Promise.resolve())
-const stamp = () => new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-")
+// 분 단위였을 때 같은 분에 두 번 돌리면 run_id 가 겹쳐 두 번째 회차가 통째로
+// dedup 에 걸려 사라졌다(rowKey 에 run_id 가 들어간다). 초까지 쓴다.
+const stamp = () => new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")
 
 async function probe(config, runDir) {
   let firstError = null
@@ -109,7 +124,7 @@ function doAnalyze(config, runDir, { append = true } = {}) {
       fs.writeFileSync(path.join(runDir, "measurements.csv"), toCsv(rows))
       fs.writeFileSync(path.join(runDir, "report.md"), report(cfg, runDir, rows))
     }
-    if (append && !config._quick) appendHistory(HISTORY, rows)
+    if (append && !config._quick) appendHistory(historyPath(config), rows)
   }
 
   console.log(`\n분석 완료 → ${path.relative(process.cwd(), runDir)}/report.md`)
@@ -123,17 +138,25 @@ function doAnalyze(config, runDir, { append = true } = {}) {
 
 /** 대시보드가 읽는 정적 산출물. 브랜드별로 요약을 굽는다. */
 function doExport(config) {
-  const all = readHistory(HISTORY)
-  if (!all.length) throw new Error(`${path.relative(process.cwd(), HISTORY)} 가 비어 있습니다. 먼저 run 하세요.`)
+  const HIST = historyPath(config)
+  const all = readHistory(HIST)
+  if (!all.length) throw new Error(`${path.relative(process.cwd(), HIST)} 가 비어 있습니다. 먼저 run 하세요.`)
   const brands = [...new Set(all.map((r) => r.brand))]
   // 카테고리 집계는 응답 1건 = 1표다. 브랜드별로 복제된 행을 다 넣으면 N배로 부풀려지므로
   // 한 브랜드 몫(응답 전체와 1:1)만 넘긴다.
   const oneBrand = all.filter((r) => r.brand === brands[0])
+  const latestRun = [...new Set(oneBrand.map((r) => r.run_id))].sort().at(-1)
+  const latestRows = oneBrand.filter((r) => r.run_id === latestRun)
 
   const out = {
     generatedAt: new Date().toISOString(),
     dataset: config.dataset ?? null,
-    categories: categories(oneBrand, {
+    // 카테고리 숫자는 최신 회차 기준이다. 전 이력을 합치면 최신 변화가 묻힌다.
+    categories: categories(latestRows, {
+      questions: config.questions,
+      models: config.models,
+    }),
+    categoryTrend: categoryTrend(oneBrand, {
       questions: config.questions,
       models: config.models,
     }),
@@ -167,8 +190,8 @@ function doExport(config) {
 }
 
 function doTrend(config) {
-  const all = readHistory(HISTORY)
-  if (!all.length) return console.log("history.jsonl 이 비어 있습니다.")
+  const all = readHistory(historyPath(config))
+  if (!all.length) return console.log("이력 파일이 비어 있습니다.")
   for (const b of [...new Set(all.map((r) => r.brand))]) {
     const rows = all.filter((r) => r.brand === b)
     const s = summarize(rows, { brand: b, expected: rows.length, ownDomains: config.ownDomains ?? [] })
@@ -192,7 +215,8 @@ const HELP = `geo-probe — 생성형 AI 답변에서 카테고리별 마인드�
   --help            이 도움말
 
 환경변수: GEO_DEBUG=1 로 호출 실패 원인 출력, PORT 로 serve 포트 변경.
-대시보드가 읽는 데이터는 results/ 가 아니라 data/history.jsonl 이다.`
+대시보드가 읽는 데이터는 results/ 가 아니라 이력 파일(기본 data/history.jsonl)이다.
+  --history <경로> 또는 설정의 historyFile 로 데이터셋마다 분리할 수 있다.`
 
 async function main() {
   // --help 를 loadConfig 뒤에 두면 설정이 없는 신규 사용자가 도움말조차 못 본다.

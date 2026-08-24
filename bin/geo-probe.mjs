@@ -11,7 +11,7 @@ import { ask } from "../src/providers.mjs"
 import {
   collectRows, expectedCount, appendHistory, readHistory, toCsv, report, trackTargets,
 } from "../src/analyze.mjs"
-import { summarize } from "../src/metrics.mjs"
+import { summarize, categories } from "../src/metrics.mjs"
 
 const HISTORY = path.join(process.cwd(), "data", "history.jsonl")
 
@@ -116,8 +116,17 @@ function doExport(config) {
   const all = readHistory(HISTORY)
   if (!all.length) throw new Error(`${path.relative(process.cwd(), HISTORY)} 가 비어 있습니다. 먼저 run 하세요.`)
   const brands = [...new Set(all.map((r) => r.brand))]
+  // 카테고리 집계는 응답 1건 = 1표다. 브랜드별로 복제된 행을 다 넣으면 N배로 부풀려지므로
+  // 한 브랜드 몫(응답 전체와 1:1)만 넘긴다.
+  const oneBrand = all.filter((r) => r.brand === brands[0])
+
   const out = {
     generatedAt: new Date().toISOString(),
+    dataset: config.dataset ?? null,
+    categories: categories(oneBrand, {
+      questions: config.questions,
+      models: config.models,
+    }),
     brands: brands.map((b) => {
       const rows = all.filter((r) => r.brand === b)
       const runs = new Set(rows.map((r) => r.run_id)).size
@@ -144,7 +153,7 @@ function doExport(config) {
   const dest = path.join(process.cwd(), "web", "public", "summary.json")
   fs.mkdirSync(path.dirname(dest), { recursive: true })
   fs.writeFileSync(dest, JSON.stringify(out, null, 2))
-  console.log(`대시보드 데이터 생성 → ${path.relative(process.cwd(), dest)} (브랜드 ${brands.length}, 행 ${all.length})`)
+  console.log(`대시보드 데이터 생성 → ${path.relative(process.cwd(), dest)} (카테고리 ${out.categories.length}, 브랜드 ${brands.length}, 행 ${all.length})`)
 }
 
 function doTrend(config) {

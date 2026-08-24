@@ -1,0 +1,42 @@
+{
+  "_comment": "iTunes 검색이 엉뚱한 앱을 물어오는 이름을 바로잡는다. 값이 null 이면 로고를 붙이지 않는다.",
+  "MangoPlate": null,
+  "Google Maps": {
+    "term": "Google Maps",
+    "country": "us"
+  },
+  "Apple Maps": {
+    "term": "Apple Maps",
+    "country": "us"
+  },
+  "Citymapper": {
+    "term": "Citymapper",
+    "country": "us"
+  },
+  "Kakao Navi": {
+    "term": "카카오내비",
+    "country": "kr"
+  },
+  "i.M Taxi": {
+    "term": "i.M 아이엠 택시",
+    "country": "kr"
+  },
+  "i.M": null,
+  "Onda Taxi": {
+    "term": "온다택시",
+    "country": "kr"
+  },
+  "HANPASS": {
+    "term": "한패스 Hanpass",
+    "country": "kr"
+  },
+  "GoHanpass": null,
+  "Korea Tour Card": null,
+  "BeDar": null,
+  "ChatGPT": {
+    "term": "ChatGPT",
+    "country": "us"
+  },
+  "Naver Order": null,
+  "KOREA TOUR CARD": null
+}

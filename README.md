@@ -2,10 +2,10 @@
 
 # 🛰️ geo-probe
 
-### Measure how discoverable a brand is *inside AI answers.*
+### Who does AI name **first** in your category?
 
-When people ask ChatGPT, Gemini, or Claude for **"the best app for X"** — does your product come up? How often, and how high?
-`geo-probe` measures it. **Repeated. Brand-blind. Honest.**
+Ask ChatGPT, Gemini, or Claude *"which app should I use for X"* and one name comes out on top.
+`geo-probe` measures which one, how reliably, and who is quietly losing the spot. **Repeated. Brand-blind. Honest.**
 
 <br>
 
@@ -18,88 +18,66 @@ When people ask ChatGPT, Gemini, or Claude for **"the best app for X"** — does
 
 **[Open the live dashboard →](https://ai-visibility-monitor-psi.vercel.app)**
 <br>
-<sub>A real 120-response run across 3 models, with the raw numbers behind every cell.</sub>
+<sub>8 categories · 120 answers · every name that came up, counted.</sub>
 
 </div>
 
 <br>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/field-dark.png">
-  <img alt="The field: 14 Korean apps scored against the same 120 AI answers, laid out as a brand-by-question density grid" src="docs/screenshots/field-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/home-dark.png">
+  <img alt="Category grid: eight categories, each showing which app generative AI names first" src="docs/screenshots/home-light.png">
 </picture>
 
 <div align="center">
-<sub><b>The field.</b> 14 apps, scored against the <i>same</i> 120 answers. Ink density is how often an app was named for that question; <b>hatched cells were never named at all</b> — <code>0/15</code> is a different fact from <i>“rarely,”</i> so it gets a different mark, not a lighter shade.
+<sub>One card per category. The big name is whoever generative AI puts <b>at the top of the list</b> — not whoever gets mentioned most.
 <br>
 <sub>The dashboard UI is Korean; the questions the models were asked are in English, below.</sub></sub>
 </div>
 
 ---
 
-## Why this exists
+## This is not a brand dashboard
 
-Search is moving from *ten blue links* to *one generated answer*. If an AI assistant never names your product when a customer asks a category question, you're invisible — no matter how good your SEO is. That's the problem **GEO (Generative Engine Optimization)** tackles.
+Most AI-visibility tools start by asking *"what's your brand?"* and then tell you where you rank. That's useful if you already know you're a contender. It tells you nothing about the category.
 
-Most "GEO checks" ask the model *once* and eyeball the result. That's noise. `geo-probe` treats it as a **measurement problem**:
+`geo-probe` starts from the other end. **There is no "your brand" here.** You define a category question, it asks the models over and over, and it counts every name that comes back. The output is a standings table for the category:
 
-- 🕵️ **Brand-blind** — it never names your product in the question. It asks the category question your customer would ask.
-- 🔁 **Repeated (n≥5)** — same question, many independent runs → a **mention rate** and a **median rank**, not a lucky single shot.
-- 🧾 **Honest by design** — it records the exact model, web-search state, and date, and never inflates a single snapshot into an absolute ranking.
+| Category | Who AI names first | 1st-place share | Runner-up | Model consensus |
+|---|---|:---:|---|:---:|
+| Maps & navigation | **Naver Map** | 100% | KakaoMap (0%) | ✓ |
+| Hailing a taxi | **Kakao T** | 60% | k.ride (33%) | **split** |
+| Translation | **Papago** | 100% | Google Translate (0%) | ✓ |
+| Food delivery | **Shuttle** | 47% | Coupang Eats (40%) | **split** |
+| Paying & transit fares | **WOWPASS** | 47% | Naver Pay (33%) | **split** |
+| Finding restaurants | **Naver Map** | 67% | Catch Table (33%) | **split** |
+| Intercity travel | **KorailTalk** | 73% | Klook (27%) | **split** |
+| Essential apps | **Naver Map** | 100% | Papago (0%) | ✓ |
 
----
-
-## What you get
-
-A reproducible matrix. Here's a real run: **"which apps should a foreigner use in South Korea?"**, asked 8 different ways, 3 models, `n=5` — **120 answers, all 120 parsed.**
-
-| App | Maps | Taxi | Translate | Delivery | Pay | Dining | Rail | Essentials |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Naver Map** | **100%** | — | — | — | 33% | **100%** | 27% | **100%** |
-| **Kakao T** | **80%** | **100%** | — | — | 33% | — | 53% | **87%** |
-| **KakaoMap** | **100%** | — | — | — | 33% | **100%** | — | — |
-| **Papago** | 20% | — | **100%** | — | — | — | — | **100%** |
-| **Coupang Eats** | — | — | — | **100%** | — | — | — | 33% |
-| **Baemin** | — | — | — | **100%** | — | — | — | — |
-| **KorailTalk** | 13% | — | — | — | — | — | **100%** | 33% |
-| **Toss** | — | — | — | — | 33% | — | — | — |
-| **Google Maps** | 7% | — | — | — | — | — | — | — |
-
-> **Read it:** each number is the share of answers to that question that named the app. `—` means it was never named, not once.
-
-Three things fall out of the data that a single query would not have told you:
-
-- **Google Maps has effectively no presence.** The world's default map app is named in **1% of all answers** — and its only appearance is on the one question that *explicitly told the model Google Maps works poorly in Korea*. Ask about restaurants, transit, or what to install before you fly, and it does not come up at all.
-- **KakaoMap and Naver Map tie where you'd expect and split where it matters.** Both hit 100% on maps and on restaurants. But on *"what should I install before travelling?"* — the question that decides what a first-time visitor actually downloads — Naver Map is named in **every** answer and KakaoMap in **none**. Same category, same capability, opposite outcome in the moment of choice.
-- **Most apps own exactly one column.** Baemin, Google Translate, and Toss each appear for a single question and vanish everywhere else. That is not weak visibility; it is *narrow* visibility, and the two need different fixes.
-
-That last point is why the dashboard **does not rank apps by overall mention rate.** Across 8 questions, an app that completely dominates one topic still tops out near 13%. Breadth and depth are shown as separate columns.
+> Real run: *"which apps should a foreigner use in South Korea?"* asked 8 ways × 3 models × `n=5` = **120 answers, all 120 parsed**, 66 distinct app names counted.
 
 ---
 
-## Who is taking your spot
+## Why "first" and not "mentioned"
 
-When your product *doesn't* show up, something else does. 66 distinct app names appeared across these answers; the dashboard lays them on one plate — area is how often it appeared, ink density is its share.
+Being in the list and being at the top of it are different outcomes, and conflating them hides the interesting cases.
+
+In the **payments** category, `KakaoPay` is named in **73%** of answers — more than anyone. It is *never* named first: **0%**. The app that actually owns the slot is `WOWPASS`, a foreigner-only prepaid card, at 47% first-place share on a lower 67% mention rate.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/treemap-dark.png">
-  <img alt="Share-of-voice treemap: every app that appeared in the same answers, sized by appearances" src="docs/screenshots/treemap-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/cat-dark.png">
+  <img alt="Category detail: mindshare treemap and standings table for the payments category" src="docs/screenshots/cat-light.png">
 </picture>
 
-This is **share of the answers you tracked**, not market share — the dashboard says so on the same screen, every time.
+Read the treemap: **area is how often a name appeared, ink density is how often it came first.** The biggest tile is also the palest one — that is KakaoPay, permanently a candidate and never the default. The dashboard tags that state explicitly rather than letting a single ranking hide it.
 
 ---
 
-## Where one product is weak
+## What the data said
 
-Pick any tracked brand and the rest of the dashboard follows it: the same grid, now split by **model** instead of by competitor.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/choiaewoooon/geo-probe/main/docs/screenshots/matrix-dark.png">
-  <img alt="Density matrix for a single app: questions as rows, models as columns" src="docs/screenshots/matrix-light.png">
-</picture>
-
-Rows are questions, columns are models, and the number inside each cell is the median rank when the app was named. Hatched rows are your optimization backlog, in priority order.
+- **The world's default can be absent.** `Google Maps` appears in **1%** of all answers, and only on the one question that explicitly told the model Google Maps works poorly in Korea. Ask about restaurants, transit, or what to install before flying, and it never comes up.
+- **Niche beats incumbent when the question changes.** For *"I don't speak Korean, which delivery app can I use?"*, the winner is `Shuttle` — a small English-first service — ahead of `Coupang Eats` and `Baemin`, the actual market leaders. The category question, not market share, decides the answer.
+- **Five of eight categories have no agreed winner.** Different models put different names first. That isn't one model being wrong; it means the category has no settled default yet — which is exactly where a new entrant can still take the slot.
 
 ---
 
@@ -107,19 +85,19 @@ Rows are questions, columns are models, and the number inside each cell is the m
 
 ```mermaid
 flowchart LR
-  A["geo.config.json<br/>questions · models · trackBrands"] --> B["probe<br/>model × question × n runs"]
+  A["geo.config.json<br/>category questions · models"] --> B["probe<br/>model × question × n runs"]
   B --> C["raw responses<br/>results/*/raw/"]
-  C --> D["analyze<br/>score every tracked brand"]
-  D --> E["mention rate<br/>+ median rank"]
-  E --> F["report.md · measurements.csv<br/>summary.json"]
+  C --> D["count every name<br/>+ where it ranked"]
+  D --> E["category standings<br/>1st-place share · mention rate"]
+  E --> F["summary.json<br/>report.md · measurements.csv"]
   F -. "re-run monthly" .-> B
 ```
 
 1. **probe** — for every model × question, ask *n* times in a fresh call, forcing a ranked-list answer, and save every raw response.
-2. **analyze** — find each tracked brand's first position in each list → **mention rate** and **median rank** per cell.
-3. **report** — write a Markdown matrix + a long-format `measurements.csv` (one row per run) you can append to month over month.
+2. **analyze** — parse each list and count every name that appears, with the position it appeared at.
+3. **export** — build per-category standings, plus an optional per-brand profile for names you want to track over time.
 
-Because the questions never name a brand, **one probe run scores every brand you track.** 14 apps above came out of a single 120-call run, not 14 of them.
+The questions never contain a brand name, so **one run scores the whole category at once** — the 66 names above came from a single 120-call run.
 
 ---
 
@@ -129,82 +107,67 @@ Because the questions never name a brand, **one probe run scores every brand you
 git clone https://github.com/choiaewoooon/geo-probe.git
 cd geo-probe
 
-# 1. configure your target
-cp geo.config.example.json geo.config.json     # edit questions · models · trackBrands
+cp geo.config.example.json geo.config.json   # write your category questions
+cp .env.example .env                          # OPENAI_API_KEY / GEMINI_API_KEY / ANTHROPIC_API_KEY
 
-# 2. add the API keys for the models you use
-cp .env.example .env                            # fill OPENAI_API_KEY / GEMINI_API_KEY / ANTHROPIC_API_KEY
-
-# 3. run (probe + analyze)
-npm run run
+npm run run                                   # probe + analyze
+npm run export && npm run serve               # → http://localhost:4178
 ```
 
-No build step, **zero dependencies** (Node 18+ `fetch` only). Output lands in `results/<timestamp>/report.md`.
+No build step, **zero dependencies** (Node 18+ `fetch` only).
 
-Then open the dashboard:
+Optional — cache App Store icons so the dashboard shows real app logos:
 
 ```bash
-npm run export && npm run serve      # → http://localhost:4178
+node scripts/fetch-logos.mjs
 ```
 
-> Don't want to use API keys? Point a model at your own local CLI instead — see [`examples/command-adapter.config.json`](examples/command-adapter.config.json). Any executable that takes a prompt as its last argument works. The run above was collected that way.
+> No API keys? Point each model at a local CLI instead — see [`examples/command-adapter.config.json`](examples/command-adapter.config.json). The run above was collected that way.
 
 ---
 
 ## The dashboard
 
-`npm run serve` opens a static, dependency-free dashboard over `summary.json`. It is two-tone on purpose: **value is carried by ink density, never by colour**, so the same plate reads identically in print, in a screenshot, and to a colour-blind reader.
+Two-tone on purpose: **value is carried by ink density, never by colour**, so a plate reads the same in print, in a screenshot, and to a colour-blind reader. App icons are rendered in greyscale for the same reason.
 
 | Screen | What it answers |
 |---|---|
-| **판세** Field | How the tracked brands split the category, and which one to look at next |
-| **요약** Summary | Where the selected brand stands — rate, top-3 rate, median rank, consistency, completeness |
-| **경쟁 구도** Competition | Who took the spot when it didn't show up, and who it's always named alongside |
-| **질문·모델 진단** Diagnosis | Which exact question and model it's weak in |
-| **출처** Sources | Which domains the answers cited, and how much of that was the brand's own |
-| **원문 증거** Evidence | Where every raw response is stored, per run |
-| **측정 실행** Run | Run a measurement from the browser; keys and results never leave it |
+| **카테고리 한눈에** Categories | Who leads every category, and where the models disagree |
+| **카테고리 상세** Category | Standings, mindshare treemap, and the leader per model |
+| **브랜드 프로필** Brand profile | Optional drill-down: where one name lives across categories |
+| **방법론** Method | Questions, models, calculation rules, and the limits |
+| **측정 실행** Run | Run a measurement from the browser; keys never leave it |
 
-Four things the dashboard refuses to do, deliberately:
+Four things it refuses to do:
 
-- **No single composite score.** Blending mention rate, rank, and share under invented weights manufactures false precision. It shows status labels instead.
-- **No 0% for "unmeasurable."** If no model returned a citation, own-domain citation rate is reported as *not measurable* — not as `0%`. Those are different facts.
-- **No ranking by overall mention rate.** It penalises narrow-but-dominant products, so breadth and depth get their own columns.
-- **No consistency score in the field view.** A product that is never named scores 96% "consistent," which looks like praise. It's dropped where it would mislead.
+- **No single composite score.** Blending mention rate, rank, and share under invented weights manufactures false precision.
+- **No 0% for "unmeasurable."** If no model returned a citation, that's reported as *not measurable*, not as `0%`.
+- **No ranking by overall mention rate.** Across 8 questions a category-owning app still tops out near 13%, so breadth and depth are separate columns.
+- **No consistency score where it misleads.** A name that never appears scores 96% "consistent," which reads like praise.
 
 ---
 
 ## Configure
 
-Everything lives in one `geo.config.json`:
-
 ```jsonc
 {
-  "brand": "Naver Map",                        // the default subject
-  "trackBrands": ["Naver Map", "KakaoMap",     // …and everyone else scored from the same answers
-                  "Kakao T", "Papago", "Toss"],
-  "repeats": 5,                                // runs per model × question
-  "spacingMs": 8000,                           // gap between calls (rate-limit friendly)
-  "rankedListSuffix": "\n\nAnswer with only the 5 most suitable apps, as a numbered list…",
-  "models": [
-    { "id": "chatgpt", "name": "ChatGPT", "provider": "openai",    "model": "gpt-4o",            "webSearch": false },
-    { "id": "gemini",  "name": "Gemini",  "provider": "gemini",    "model": "gemini-1.5-pro",    "webSearch": false },
-    { "id": "claude",  "name": "Claude",  "provider": "anthropic", "model": "claude-sonnet-4-5", "webSearch": false }
-  ],
-  "questions": [
+  "dataset": { "name": "Apps for foreigners in Korea" },
+  "repeats": 5,
+  "questions": [                                 // one question = one category
     { "id": "q1", "short": "Maps & navigation",
       "prompt": "I'm a foreigner visiting South Korea. Which map and navigation apps should I use?" }
   ],
-  "competitorAliases": {                       // aliases are shared, not duplicated per brand
-    "KakaoMap": ["카카오맵", "Kakao Map", "Daum Map"],
-    "Papago":   ["파파고", "Naver Papago"]
-  }
+  "trackBrands": ["Naver Map", "KakaoMap"],      // optional per-brand profiles
+  "competitorAliases": {                         // same name, different spellings
+    "KakaoMap": ["카카오맵", "Kakao Map", "Daum Map"]
+  },
+  "models": [
+    { "id": "chatgpt", "name": "ChatGPT", "provider": "openai", "model": "gpt-4o", "webSearch": false }
+  ]
 }
 ```
 
-`trackBrands` is the one to know: list the names you care about and every one of them is scored against the same responses, pulling aliases from `competitorAliases`. Leave it out and the tool behaves exactly as before, measuring `brand` alone.
-
-Providers: `openai` · `gemini` · `anthropic` · `command` (your own CLI). The full config behind the run above is [`configs/korea-apps.json`](configs/korea-apps.json).
+Only `questions` and `models` are required — category standings need no brand list at all. `trackBrands` is opt-in, for names you want a time series on. Providers: `openai` · `gemini` · `anthropic` · `command` (your own CLI). Full config behind the run above: [`configs/korea-apps.json`](configs/korea-apps.json).
 
 ---
 
@@ -217,29 +180,29 @@ results/2026-08-24-03-17/
 └── report.md                           # the matrix + a one-line summary
 ```
 
-`measurements.csv` is intentionally **long-format** — one row per run — so appending next month's run turns it straight into a time series.
+`measurements.csv` is **long-format** — one row per run — so appending next month's run turns it into a time series.
 
 ---
 
 ## Methodology & honesty
 
-This tool is opinionated about *not lying with data*:
+- **Conditions are recorded, not hidden.** Web-search state and model id travel with every result, and the dashboard refuses to rank models against each other because of it.
+- **The median ignores non-mentions.** A rank is the median *of the runs that named it*, shown next to the count.
+- **Ranks come only from what the model returned.** Not a ranked list → scored mentioned / not-mentioned, with no invented position.
+- **Changing the questions breaks the line.** Trend charts won't connect points measured with different question sets.
+- **A snapshot is a snapshot.** Results shift with model versions and search indexes. This is a repeatable observation, not a market-share claim.
 
-- **Conditions are recorded, not hidden.** Web-search state and model id travel with every result. Different conditions → reported as such, never as an absolute comparison.
-- **The median ignores non-mentions.** A cell shows the median rank *of the runs that named the brand*, plus the count — so a high rank on 1/5 runs can't masquerade as consistent.
-- **Ranks come only from what the model actually returned.** If a response isn't a ranked list, the run is scored *mentioned / not-mentioned* with no invented position.
-- **Changing the questions breaks the line.** The trend chart refuses to connect points measured with different question sets, because a redesign would otherwise look like progress.
-- **A snapshot is a snapshot.** Results shift with model versions, search indexes, and time. `geo-probe` gives you a repeatable observation, not a market-share claim.
+App icons come from the public iTunes Search API and are shown only to identify which app a row refers to. They belong to their respective owners.
 
 ---
 
 ## Use it as a Claude Code skill
 
-Drop this repo where your Claude Code skills live (or install it as a plugin). [`SKILL.md`](SKILL.md) lets you just say:
+Drop this repo where your Claude Code skills live. [`SKILL.md`](SKILL.md) lets you say:
 
-> *"Measure how discoverable Acme is in AI answers for the cloud-security category."*
+> *"Find out which vendor AI recommends first for cloud security."*
 
-…and Claude will configure, run, and interpret the probe for you — following the same brand-blind, repeated, honest method.
+…and Claude will write the questions, run the probe, and read the standings back to you.
 
 ---
 
@@ -247,6 +210,6 @@ Drop this repo where your Claude Code skills live (or install it as a plugin). [
 
 Built by [Jaewon Choi](https://jaewon-choi.vercel.app). MIT licensed.
 <br>
-<sub>If a customer can't find you in the answer, you're not in the market. Measure it.</sub>
+<sub>Search returns a list. AI returns one answer. Measure who that answer is.</sub>
 
 </div>

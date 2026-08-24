@@ -16,5 +16,6 @@ geo.config.json
 configs/*
 # 단 공개 쇼케이스 설정은 커밋한다 — 회사 건이 아니라 README 가 참조하는 재현용 설정이다.
 !configs/korea-apps.json
+!configs/logo-overrides.json
 data/
 .claude/

@@ -1,5 +1,2969 @@
 {
-  "generatedAt": "2026-08-24T03:44:57.925Z",
+  "generatedAt": "2026-08-24T04:21:07.181Z",
+  "dataset": {
+    "name": "한국 · 외국인이 쓸 앱",
+    "nameEn": "Apps for foreigners in Korea",
+    "note": "외국인 관점의 영어 질문 8개. 어떤 앱도 '자사'가 아니다."
+  },
+  "categories": [
+    {
+      "id": "q1",
+      "short": "Maps & navigation",
+      "prompt": "I'm a foreigner visiting South Korea. Google Maps reportedly doesn't work well there. Which map and navigation apps should I use?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 12,
+      "leader": {
+        "name": "Naver Map",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 15,
+        "firstRate": 100,
+        "medianRank": 1,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "Naver Map",
+        "gemini": "Naver Map",
+        "claude": "Naver Map"
+      },
+      "leaderAgreed": true,
+      "concentration": 60,
+      "entities": [
+        {
+          "name": "Naver Map",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 15,
+          "firstRate": 100,
+          "medianRank": 1,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "KakaoMap",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Subway Korea",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Kakao T",
+          "appearances": 12,
+          "rate": 80,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 16,
+          "byModel": {
+            "chatgpt": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            },
+            "gemini": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "TMAP",
+          "appearances": 7,
+          "rate": 47,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 9,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Papago",
+          "appearances": 3,
+          "rate": 20,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 4,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            }
+          }
+        },
+        {
+          "name": "k.ride",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "KorailTalk",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Citymapper",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Google Maps",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Kakao Navi",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Apple Maps",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "short": "Hailing a taxi",
+      "prompt": "What app do foreigners in South Korea use to hail a taxi?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 9,
+      "leader": {
+        "name": "Kakao T",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 9,
+        "firstRate": 60,
+        "medianRank": 1,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 0,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 4,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "k.ride",
+        "gemini": "Kakao T",
+        "claude": "Kakao T"
+      },
+      "leaderAgreed": false,
+      "concentration": 53,
+      "entities": [
+        {
+          "name": "Kakao T",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 9,
+          "firstRate": 60,
+          "medianRank": 1,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 4,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "k.ride",
+          "appearances": 10,
+          "rate": 67,
+          "firsts": 5,
+          "firstRate": 33,
+          "medianRank": 2,
+          "sov": 13,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Uber",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 1,
+          "firstRate": 7,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 1,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Tada",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "TABA",
+          "appearances": 7,
+          "rate": 47,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 9,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "iM Taxi",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Onda Taxi",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4.5,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            }
+          }
+        },
+        {
+          "name": "i.M Taxi",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "i.M",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "short": "Translation",
+      "prompt": "Which translation app works best for Korean while travelling in South Korea?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 9,
+      "leader": {
+        "name": "Papago",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 15,
+        "firstRate": 100,
+        "medianRank": 1,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "Papago",
+        "gemini": "Papago",
+        "claude": "Papago"
+      },
+      "leaderAgreed": true,
+      "concentration": 60,
+      "entities": [
+        {
+          "name": "Papago",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 15,
+          "firstRate": 100,
+          "medianRank": 1,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Google Translate",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "DeepL",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Microsoft Translator",
+          "appearances": 14,
+          "rate": 93,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 19,
+          "byModel": {
+            "chatgpt": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Naver Dictionary",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Flitto",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Apple Translate",
+          "appearances": 4,
+          "rate": 27,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4.5,
+          "sov": 5,
+          "byModel": {
+            "chatgpt": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "ChatGPT",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "iTranslate",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "short": "Food delivery",
+      "prompt": "I don't speak Korean. Which food delivery apps can I actually use in South Korea?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 14,
+      "leader": {
+        "name": "Shuttle",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 7,
+        "firstRate": 47,
+        "medianRank": 2,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 3,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 3,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 1,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "Shuttle",
+        "gemini": "Shuttle",
+        "claude": "Coupang Eats"
+      },
+      "leaderAgreed": false,
+      "concentration": 60,
+      "entities": [
+        {
+          "name": "Shuttle",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 7,
+          "firstRate": 47,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 3,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 3,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 1,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Coupang Eats",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 6,
+          "firstRate": 40,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 2,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 4,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Baemin",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 2,
+          "firstRate": 13,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 2,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Yogiyo",
+          "appearances": 12,
+          "rate": 80,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 16,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Creatrip",
+          "appearances": 6,
+          "rate": 40,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 8,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "WOWPASS",
+          "appearances": 3,
+          "rate": 20,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 4,
+          "byModel": {
+            "chatgpt": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "BeDar",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Delivery K",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "McDelivery",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "McDelivery Korea",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Domino's Korea",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Uber",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Ddangyo",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Naver Order",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "short": "Paying & transit fares",
+      "prompt": "Which apps should a foreigner in South Korea use to pay for things and for subway and bus fares?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 14,
+      "leader": {
+        "name": "WOWPASS",
+        "appearances": 10,
+        "rate": 67,
+        "firsts": 7,
+        "firstRate": 47,
+        "medianRank": 1,
+        "sov": 13,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 2,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 0,
+            "firsts": 0,
+            "V": 5,
+            "rate": 0
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "WOWPASS",
+        "gemini": "WOWPASS",
+        "claude": "Naver Pay"
+      },
+      "leaderAgreed": false,
+      "concentration": 32,
+      "entities": [
+        {
+          "name": "WOWPASS",
+          "appearances": 10,
+          "rate": 67,
+          "firsts": 7,
+          "firstRate": 47,
+          "medianRank": 1,
+          "sov": 13,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 2,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Naver Pay",
+          "appearances": 8,
+          "rate": 53,
+          "firsts": 5,
+          "firstRate": 33,
+          "medianRank": 1,
+          "sov": 11,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "T-money",
+          "appearances": 6,
+          "rate": 40,
+          "firsts": 2,
+          "firstRate": 13,
+          "medianRank": 3.5,
+          "sov": 8,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 2,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Trip.PASS",
+          "appearances": 4,
+          "rate": 27,
+          "firsts": 1,
+          "firstRate": 7,
+          "medianRank": 2.5,
+          "sov": 5,
+          "byModel": {
+            "chatgpt": {
+              "n": 4,
+              "firsts": 1,
+              "V": 5,
+              "rate": 80
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "KakaoPay",
+          "appearances": 11,
+          "rate": 73,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 15,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "NAMANE",
+          "appearances": 10,
+          "rate": 67,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 13,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Kakao T",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Naver Map",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "KakaoMap",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Toss",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Korea Tour Card",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "GoHanpass",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "KOREA TOUR CARD",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "EZL",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "short": "Finding restaurants",
+      "prompt": "Which apps do people use to find and book good restaurants in South Korea?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 9,
+      "leader": {
+        "name": "Naver Map",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 10,
+        "firstRate": 67,
+        "medianRank": 1,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 0,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "Naver Map",
+        "gemini": "Catch Table",
+        "claude": "Naver Map"
+      },
+      "leaderAgreed": false,
+      "concentration": 60,
+      "entities": [
+        {
+          "name": "Naver Map",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 10,
+          "firstRate": 67,
+          "medianRank": 1,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Catch Table",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 5,
+          "firstRate": 33,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "KakaoMap",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Diningcode",
+          "appearances": 13,
+          "rate": 87,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 17,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            }
+          }
+        },
+        {
+          "name": "Tabling",
+          "appearances": 9,
+          "rate": 60,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 12,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "MangoPlate",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Tableing",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "네이버 앱",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "네이버",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "short": "Intercity travel",
+      "prompt": "Which apps should I use to book KTX trains and intercity buses in South Korea as a foreigner?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 11,
+      "leader": {
+        "name": "KorailTalk",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 11,
+        "firstRate": 73,
+        "medianRank": 1,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 1,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "Klook",
+        "gemini": "KorailTalk",
+        "claude": "KorailTalk"
+      },
+      "leaderAgreed": false,
+      "concentration": 53,
+      "entities": [
+        {
+          "name": "KorailTalk",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 11,
+          "firstRate": 73,
+          "medianRank": 1,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 1,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Klook",
+          "appearances": 12,
+          "rate": 80,
+          "firsts": 4,
+          "firstRate": 27,
+          "medianRank": 3,
+          "sov": 16,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 4,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            }
+          }
+        },
+        {
+          "name": "Trip.com",
+          "appearances": 13,
+          "rate": 87,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 17,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            }
+          }
+        },
+        {
+          "name": "Kobus",
+          "appearances": 10,
+          "rate": 67,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 13,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "claude": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            }
+          }
+        },
+        {
+          "name": "Kakao T",
+          "appearances": 8,
+          "rate": 53,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 11,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 3,
+              "firsts": 0,
+              "V": 5,
+              "rate": 60
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "T-money",
+          "appearances": 7,
+          "rate": 47,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 9,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Naver Map",
+          "appearances": 4,
+          "rate": 27,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 5,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            }
+          }
+        },
+        {
+          "name": "HANPASS",
+          "appearances": 2,
+          "rate": 13,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 3,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "GoHanpass",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "KTX Korea Rail Pass",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "Hanpass",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "short": "Essential apps",
+      "prompt": "Which apps should I install before travelling to South Korea?",
+      "V": 15,
+      "listed": 15,
+      "slots": 75,
+      "contenders": 11,
+      "leader": {
+        "name": "Naver Map",
+        "appearances": 15,
+        "rate": 100,
+        "firsts": 15,
+        "firstRate": 100,
+        "medianRank": 1,
+        "sov": 20,
+        "byModel": {
+          "chatgpt": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "gemini": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          },
+          "claude": {
+            "n": 5,
+            "firsts": 5,
+            "V": 5,
+            "rate": 100
+          }
+        }
+      },
+      "leaderByModel": {
+        "chatgpt": "Naver Map",
+        "gemini": "Naver Map",
+        "claude": "Naver Map"
+      },
+      "leaderAgreed": true,
+      "concentration": 57,
+      "entities": [
+        {
+          "name": "Naver Map",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 15,
+          "firstRate": 100,
+          "medianRank": 1,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 5,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Papago",
+          "appearances": 15,
+          "rate": 100,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 2,
+          "sov": 20,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Kakao T",
+          "appearances": 13,
+          "rate": 87,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 17,
+          "byModel": {
+            "chatgpt": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 4,
+              "firsts": 0,
+              "V": 5,
+              "rate": 80
+            }
+          }
+        },
+        {
+          "name": "KakaoTalk",
+          "appearances": 11,
+          "rate": 73,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 15,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "KorailTalk",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "WOWPASS",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Coupang Eats",
+          "appearances": 5,
+          "rate": 33,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 7,
+          "byModel": {
+            "chatgpt": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 5,
+              "firsts": 0,
+              "V": 5,
+              "rate": 100
+            }
+          }
+        },
+        {
+          "name": "Subway Korea",
+          "appearances": 3,
+          "rate": 20,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 4,
+          "sov": 4,
+          "byModel": {
+            "chatgpt": {
+              "n": 2,
+              "firsts": 0,
+              "V": 5,
+              "rate": 40
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            }
+          }
+        },
+        {
+          "name": "k.ride",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 3,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Emergency Ready App",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        },
+        {
+          "name": "Visit Korea",
+          "appearances": 1,
+          "rate": 7,
+          "firsts": 0,
+          "firstRate": 0,
+          "medianRank": 5,
+          "sov": 1,
+          "byModel": {
+            "chatgpt": {
+              "n": 1,
+              "firsts": 0,
+              "V": 5,
+              "rate": 20
+            },
+            "gemini": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            },
+            "claude": {
+              "n": 0,
+              "firsts": 0,
+              "V": 5,
+              "rate": 0
+            }
+          }
+        }
+      ]
+    }
+  ],
   "brands": [
     {
       "brand": "Naver Map",

@@ -273,3 +273,99 @@ export function summarize(rows, { brand, expected, ownDomains = [] } = {}) {
     priorities: priorities(rows, brand),
   }
 }
+
+/**
+ * 카테고리(질문) 단위 마인드쉐어.
+ *
+ * 시선이 반대다. summarize() 는 "우리가 몇 등인가"를 보지만 여기서는
+ * "이 카테고리는 지금 누가 먹고 있나"를 본다. 자사 개념이 없다.
+ *
+ * 응답 1건을 1표로 세야 하므로 브랜드별로 복제된 행을 그대로 쓰면 안 된다.
+ * 호출부가 한 브랜드 몫(= 응답 전체와 1:1)만 넘긴다.
+ */
+export function categories(rows, { questions = [], models = [] } = {}) {
+  const qMeta = new Map(questions.map((q) => [q.id, q]))
+  const qIds = questions.length
+    ? questions.map((q) => q.id)
+    : [...new Set(rows.map((r) => r.question))]
+  const modelIds = models.length ? models.map((m) => m.id) : [...new Set(rows.map((r) => r.model))]
+
+  return qIds.map((id) => {
+    const rs = rows.filter((r) => r.question === id)
+    const V = rs.length
+    const agg = new Map() // name -> { n, firsts, ranks[], byModel: Map }
+
+    let slots = 0
+    for (const r of rs) {
+      const seen = new Set()
+      for (const e of r.entriesWithRank ?? []) {
+        slots += 1
+        // 한 응답에 같은 이름이 두 번 나와도 한 번으로 센다(등장 '응답 수'가 기준).
+        if (seen.has(e.name)) continue
+        seen.add(e.name)
+        const a = agg.get(e.name) ?? { n: 0, firsts: 0, ranks: [], byModel: new Map() }
+        a.n += 1
+        if (e.rank === 1) a.firsts += 1
+        if (typeof e.rank === "number") a.ranks.push(e.rank)
+        const bm = a.byModel.get(r.model) ?? { n: 0, firsts: 0 }
+        bm.n += 1
+        if (e.rank === 1) bm.firsts += 1
+        a.byModel.set(r.model, bm)
+        agg.set(e.name, a)
+      }
+    }
+
+    const perModelV = Object.fromEntries(
+      modelIds.map((m) => [m, rs.filter((r) => r.model === m).length]),
+    )
+
+    const entities = [...agg.entries()]
+      .map(([name, a]) => ({
+        name,
+        appearances: a.n,
+        rate: pct(a.n, V),
+        firsts: a.firsts,
+        firstRate: pct(a.firsts, V),
+        medianRank: median(a.ranks),
+        sov: pct(a.n, slots),
+        byModel: Object.fromEntries(modelIds.map((m) => {
+          const mv = perModelV[m] ?? 0
+          const bm = a.byModel.get(m) ?? { n: 0, firsts: 0 }
+          return [m, { n: bm.n, firsts: bm.firsts, V: mv, rate: pct(bm.n, mv) }]
+        })),
+      }))
+      // 카테고리의 주인은 '자주 불리는 쪽'이 아니라 '맨 앞에 불리는 쪽'이다.
+      // 실측: 결제 카테고리에서 KakaoPay 는 언급 73% 로 최다지만 1순위는 0% 였고,
+      // 1순위 47% 인 WOWPASS 가 실제로 그 자리를 쥐고 있었다. 언급률로 줄세우면 이걸 놓친다.
+      .sort((a, b) => (b.firstRate ?? 0) - (a.firstRate ?? 0)
+        || b.appearances - a.appearances
+        || (a.medianRank ?? 99) - (b.medianRank ?? 99))
+
+    // 모델마다 1등이 갈리는지 — 갈리면 "합의된 1등"이 없다는 뜻이다.
+    const leaderByModel = Object.fromEntries(modelIds.map((m) => {
+      const best = entities
+        .filter((e) => e.byModel[m].n > 0)
+        .sort((a, b) => b.byModel[m].firsts - a.byModel[m].firsts
+          || b.byModel[m].n - a.byModel[m].n
+          || (a.medianRank ?? 99) - (b.medianRank ?? 99))[0]
+      return [m, best?.name ?? null]
+    }))
+    const agreed = [...new Set(Object.values(leaderByModel).filter(Boolean))]
+
+    return {
+      id,
+      short: qMeta.get(id)?.short ?? id,
+      prompt: qMeta.get(id)?.prompt ?? null,
+      V,
+      listed: rs.filter((r) => r.listed).length,
+      slots,
+      contenders: entities.length,
+      leader: entities[0] ?? null,
+      leaderByModel,
+      leaderAgreed: agreed.length === 1,
+      // 상위 3곳이 얼마나 가져가는가. 높을수록 뚫고 들어갈 틈이 좁다.
+      concentration: pct(entities.slice(0, 3).reduce((s, e) => s + e.appearances, 0), slots),
+      entities,
+    }
+  })
+}

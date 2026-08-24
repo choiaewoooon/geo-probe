@@ -1,4 +1,10 @@
 {
+  "_comment": "README 의 쇼케이스 런에 쓴 설정. provider=command 라 API 키 없이 로컬 CLI 래퍼(cdx·gemq·claude)로 수집했다. trackBrands 덕분에 한 번의 프로브를 14개 앱으로 채점한다.",
+  "dataset": {
+    "name": "한국 · 외국인이 쓸 앱",
+    "nameEn": "Apps for foreigners in Korea",
+    "note": "외국인 관점의 영어 질문 8개. 어떤 앱도 '자사'가 아니다."
+  },
   "brand": "Naver Map",
   "brandAliases": [
     "네이버 지도",
@@ -276,6 +282,5 @@
     "T-money",
     "KorailTalk",
     "Toss"
-  ],
-  "_comment": "README 의 쇼케이스 런에 쓴 설정. provider=command 라 API 키 없이 로컬 CLI 래퍼(cdx·gemq·claude)로 수집했다. trackBrands 덕분에 한 번의 프로브를 14개 앱으로 채점한다."
+  ]
 }

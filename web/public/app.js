@@ -19,18 +19,31 @@ const el = (t, a = {}, ...kids) => {
 const dash = (v, suffix = "") => (v === null || v === undefined ? "-" : `${v}${suffix}`)
 
 // [키, 메뉴 라벨, 묶음, 화면 부제]
-const VIEWS = [
-  ["field", "판세", "측정 결과", "추적한 브랜드가 서로 어떻게 갈리는지를 한 판에 놓고 봅니다. 여기서 하나를 고르면 나머지 화면이 그 브랜드를 봅니다."],
-  ["summary", "요약", "측정 결과", "브랜드 이름을 감춘 질문에 AI가 답할 때 이 브랜드가 어디쯤 나오는지를 한 화면에 모았습니다."],
-  ["compete", "경쟁 구도", "측정 결과", "자리를 대신 차지한 브랜드와 늘 함께 불리는 브랜드를 집계했습니다."],
-  ["diagnose", "질문·모델 진단", "측정 결과", "어떤 질문에서, 어떤 모델에서 약한지를 밀도로 짚습니다."],
-  ["sources", "출처", "측정 결과", "답변에 붙은 출처 도메인과 그중 자사 콘텐츠의 몫입니다."],
-  ["evidence", "원문 증거", "측정 결과", "회차별 응답 원문이 어디에 남아 있는지에 대한 색인입니다."],
+// 카테고리가 1급이다. 브랜드 화면은 카테고리에서 이름을 눌러 들어가는 드릴다운.
+const BASE_VIEWS = [
+  ["home", "카테고리 한눈에", "마인드쉐어", "카테고리마다 생성형 AI가 누구를 맨 앞에 부르는지 모아 봅니다."],
+  ["brands", "브랜드 프로필", "브랜드", "고른 브랜드가 어느 카테고리에 살고 어디에서 비는지 봅니다."],
+  ["summary", "요약", "브랜드", "고른 브랜드의 등장 빈도와 순위를 한 화면에 모았습니다."],
+  ["compete", "경쟁 구도", "브랜드", "자리를 대신 차지한 브랜드와 늘 함께 불리는 브랜드입니다."],
+  ["diagnose", "질문·모델 진단", "브랜드", "어느 카테고리에서, 어느 모델에서 약한지를 밀도로 짚습니다."],
+  ["sources", "출처", "브랜드", "답변에 붙은 출처 도메인입니다."],
+  ["evidence", "원문 증거", "브랜드", "회차별 응답 원문이 어디에 남아 있는지에 대한 색인입니다."],
   ["method", "방법론", "측정 설계", "질문·모델·계산 규칙, 그리고 이 측정이 말할 수 없는 것들."],
-  ["run", "측정 실행", "도구", "브랜드와 질문을 넣으면 이 브라우저가 직접 AI에 물어봅니다."],
+  ["run", "측정 실행", "도구", "질문만 넣으면 이 브라우저가 직접 AI에 물어봅니다."],
   ["settings", "설정", "도구", "API 키와 이 브라우저에 저장된 측정 결과를 관리합니다."],
 ]
 
+/** 카테고리는 데이터에서 나온다. 질문 세트가 바뀌면 메뉴도 따라 바뀐다. */
+function allViews() {
+  const cats = (DATA?.categories ?? []).map((c) => [
+    `cat:${c.id}`, c.short, "카테고리",
+    c.prompt ? `AI에게 실제로 던진 질문 — “${c.prompt}”` : c.short,
+  ])
+  const [home, ...rest] = BASE_VIEWS
+  return [home, ...cats, ...rest]
+}
+
+let VIEWS = []
 let DATA = null
 let ALL = []      // 측정된 브랜드 전부 (같은 응답을 브랜드마다 다시 채점한 결과)
 let BRAND = null  // 지금 보고 있는 브랜드
@@ -248,14 +261,16 @@ function squarify(items, x, y, w, h, out = []) {
   return squarify(rest, x, y + rh, w, h - rh, out)
 }
 
-function treemap(items, { me, label } = {}) {
+function treemap(items, { me, label, density } = {}) {
   const clean = items.filter((i) => i.value > 0)
   if (!clean.length) return el("p", { class: "empty" }, "표시할 데이터가 없습니다.")
   const maxV = Math.max(...clean.map((i) => i.value))
+  // 면적과 농도를 다른 변수로 쓸 수 있게 한다. density 를 안 주면 예전처럼 면적=농도.
+  const maxD = density ? Math.max(...clean.map((i) => density(i) ?? 0), 1) : maxV
   const laid = squarify([...clean].sort((a, b) => b.value - a.value), 0, 0, 100, 100)
 
   return el("div", { class: "tree" }, laid.map((t) => {
-    const a = 0.12 + (t.value / maxV) * 0.83
+    const a = 0.12 + ((density ? (density(t) ?? 0) : t.value) / maxD) * 0.83
     const mine = t.name === me
     const tiny = t.w < 11 || t.h < 18
     return el("div", {
@@ -267,7 +282,7 @@ function treemap(items, { me, label } = {}) {
       style: `background:rgba(var(--ink-rgb),${(mine ? Math.max(a, 0.9) : a).toFixed(3)})`,
     },
       mine ? el("div", { class: "own" }, "자사") : null,
-      el("div", { class: "nm" }, t.name),
+      el("div", { class: "nm" }, logo(t.name, "sm"), el("span", {}, t.name)),
       el("div", { class: "vl" }, label ? label(t) : t.value)))
   }))
 }
@@ -889,6 +904,25 @@ const btnStyle = (bg) => `background:${bg};color:${bg === "transparent" ? "var(-
 // ---------- 화면 설명 ----------
 // 각 화면이 무엇에 답하는지를 처음 보는 사람도 알 수 있게. 평소엔 접혀 있다.
 const VIEW_HELP = {
+  home: {
+    q: "이 화면은 무엇을 보여주나요?",
+    body: [
+      ["묻는 것", "특정 회사가 잘 나오는지가 아니라, <b>카테고리마다 생성형 AI가 누구를 맨 앞에 부르는지</b>를 봅니다. 자사 개념이 없습니다."],
+      ["1등의 기준", "목록 <b>맨 앞</b>에 불린 비율입니다. 사람은 대개 첫 줄만 읽기 때문에, 이름이 어딘가 끼어 있는 것과 맨 앞에 오는 것은 전혀 다른 결과입니다."],
+      ["모델 분열", "세 모델이 서로 다른 1등을 꼽은 카테고리입니다. 어느 모델이 틀렸다는 뜻이 아니라 <b>그 판에 아직 정해진 기본값이 없다</b>는 뜻이고, 새로 들어갈 틈은 대개 여기입니다."],
+      ["브랜드 이름을 감춘 질문", "질문에 어떤 앱 이름도 넣지 않았습니다. 이름을 대고 물으면 대부분의 모델이 그냥 설명해 주기 때문에, 감춘 질문에서 누가 떠오르는지가 진짜 결과입니다."],
+    ],
+  },
+  category: {
+    q: "이 카테고리는 어떻게 읽나요?",
+    body: [
+      ["1순위 점유율", "그 브랜드가 <b>목록 맨 앞</b>에 불린 비율입니다. 이 카테고리의 주인을 정하는 값입니다."],
+      ["언급률", "목록 <b>어디에든</b> 이름이 오른 비율입니다. 1순위와 다릅니다 — 언급률이 높은데 1순위가 0%면, 후보로는 인정받지만 기본값은 아니라는 뜻입니다."],
+      ["마인드쉐어 분포", "면적은 몇 번 등장했는지, 농도는 몇 번 맨 앞에 왔는지입니다. <b>크고 옅은 타일</b>이 바로 그 '늘 불리지만 1등은 아닌' 상태입니다."],
+      ["상위 3곳 집중도", "상위 3곳이 전체 언급 자리 중 얼마나 가져갔는지입니다. 높을수록 새 이름이 끼어들 틈이 좁습니다."],
+      ["모델별 1등", "모델마다 웹 검색 조건이 달라 절대 우열로 비교하지 않습니다. 다만 1등이 갈리는지 여부는 그 자체로 신호입니다."],
+    ],
+  },
   field: {
     q: "이 카테고리는 누가 나눠 갖고 있나요?",
     body: [
@@ -970,7 +1004,8 @@ const VIEW_HELP = {
 }
 
 function viewHelp(key) {
-  const h = VIEW_HELP[key]
+  // 카테고리 화면은 8개지만 읽는 법은 하나다.
+  const h = VIEW_HELP[key.startsWith("cat:") ? "category" : key === "brands" ? "field" : key]
   if (!h) return null
   return el("details", { class: "help" },
     el("summary", {}, el("span", {}, h.q), el("span", { class: "cell f toggle" }, "")),
@@ -996,6 +1031,200 @@ const questionLabel = (id) => {
   return q ? `${id.toUpperCase()} · ${q.short ?? q.prompt.slice(0, 24)}` : id
 }
 const modelLabel = (id) => DATA?.methodology?.models?.find((x) => x.id === id)?.name ?? id
+
+// ---------- 로고 ----------
+// App Store 아이콘을 web/public/logos/ 에 캐시해 둔다(scripts/fetch-logos.mjs).
+// 컬러 아이콘을 그대로 쓰면 2톤 원칙이 깨지므로 화면에서는 흑백으로 렌더한다.
+// 없으면 이름 첫 글자 모노그램으로 떨어진다 — 로고 유무가 레이아웃을 흔들지 않게.
+let LOGOS = {}
+
+async function loadLogos() {
+  try {
+    const res = await fetch("./logos/index.json", { cache: "no-store" })
+    if (res.ok) LOGOS = await res.json()
+  } catch { /* 로고는 있으면 좋고 없어도 되는 자산이다 */ }
+}
+
+const monogram = (name) => {
+  const m = String(name).match(/[A-Za-z0-9가-힣]/u)
+  return m ? m[0].toUpperCase() : "?"
+}
+
+/** size: sm(20) · md(28) · lg(40) */
+function logo(name, size = "md") {
+  const hit = LOGOS[name]
+  const box = el("span", { class: `lg lg-${size}`, title: name })
+  if (hit?.file) {
+    box.append(el("img", { src: `./${hit.file}`, alt: "", loading: "lazy", decoding: "async" }))
+  } else {
+    box.classList.add("mono")
+    box.append(el("span", {}, monogram(name)))
+  }
+  return box
+}
+
+/** 로고 + 이름 한 덩어리. 표·카드·타일이 같은 조합을 쓰게 한다. */
+const named = (name, size = "md", extra) =>
+  el("span", { class: "nmrow" }, logo(name, size), el("span", { class: "t" }, name), extra ?? null)
+
+// ---------- 카테고리 마인드쉐어 ----------
+// 이 화면들에는 '자사'가 없다. 묻는 것은 하나다 — 이 카테고리는 지금 누가 먹고 있나.
+
+const catOf = (id) => (DATA?.categories ?? []).find((c) => c.id === id)
+
+/** 카테고리 카드 한 장 = 그 판의 1등과 경쟁 밀도. */
+function catCard(c) {
+  const L = c.leader
+  const top = c.entities.slice(0, 5)
+  const maxF = Math.max(...top.map((e) => e.firstRate ?? 0), 1)
+  return el("button", { class: "ccard", type: "button", "data-go": `cat:${c.id}` },
+    el("div", { class: "ct" },
+      el("span", { class: "cid" }, c.id.toUpperCase()),
+      el("span", { class: "cq" }, c.short),
+      el("span", { class: "cgo" }, "→")),
+    el("div", { class: "clead" },
+      L ? logo(L.name, "lg") : null,
+      el("span", { class: "lw" },
+        el("span", { class: "nm" }, L?.name ?? "—"),
+        el("span", { class: "pc" }, L ? `1순위 ${L.firstRate}%` : ""))),
+    el("div", { class: "cfaces" }, c.entities.slice(1, 6).map((e) => logo(e.name, "sm"))),
+    el("div", { class: "cbars" }, top.map((e) => el("span", {
+      class: "cb", title: `${e.name} · 1순위 ${e.firstRate}% · 언급 ${e.rate}%`,
+    },
+      el("i", { style: `height:${Math.max(6, ((e.firstRate ?? 0) / maxF) * 100)}%;` +
+        `opacity:${inkA(e.firstRate ?? 0).toFixed(3)}` })))),
+    el("div", { class: "cfoot" },
+      `경쟁 ${c.contenders}곳`,
+      el("span", { class: c.leaderAgreed ? "ok" : "split" },
+        c.leaderAgreed ? "모델 합의" : "모델 분열")),
+  )
+}
+
+function viewHome() {
+  const cats = DATA.categories ?? []
+  const split = cats.filter((c) => !c.leaderAgreed)
+  const ds = DATA.dataset
+  return el("div", {},
+    el("div", { class: "intro" },
+      el("p", { class: "lead" },
+        "생성형 AI에게 카테고리 질문을 던졌을 때, 맨 앞에 불리는 이름이 그 카테고리의 주인입니다."),
+      el("p", {},
+        `${ds ? `이 데이터셋은 ${ds.name}입니다. ` : ""}` +
+        `질문 ${cats.length}개를 모델 ${DATA.methodology.models.length}개에 각각 ` +
+        `${DATA.methodology.repeats}번씩 던져 ${cats.reduce((s, c) => s + c.V, 0)}건의 답변을 모았고, ` +
+        "거기에 등장한 모든 이름을 세었습니다. 특정 회사를 위한 화면이 아니라 판 전체를 보는 화면입니다."),
+      el("p", { class: "byline" },
+        "카드를 누르면 그 카테고리의 순위표로 들어갑니다 · 측정 도구 ",
+        el("a", { href: "https://github.com/choiaewoooon/geo-probe", target: "_blank", rel: "noopener" }, "geo-probe")),
+    ),
+
+    el("h2", {}, "카테고리", el("small", {}, "각 카드의 큰 이름이 그 판의 1등입니다")),
+    el("div", { class: "cgrid" }, cats.map(catCard)),
+
+    el("h2", {}, "모델이 갈리는 카테고리", el("small", {}, `${split.length}/${cats.length}개`)),
+    split.length
+      ? el("div", { class: "scroll" }, el("table", {},
+          el("thead", {}, el("tr", {},
+            el("th", {}, "카테고리"),
+            DATA.methodology.models.map((m) => el("th", {}, m.name)))),
+          el("tbody", {}, split.map((c) => el("tr", { "data-go": `cat:${c.id}`, style: "cursor:pointer" },
+            el("td", {}, c.short),
+            DATA.methodology.models.map((m) => el("td", {},
+              c.leaderByModel[m.id] ? named(c.leaderByModel[m.id], "sm") : "—")))))))
+      : el("p", { class: "empty" }, "모든 카테고리에서 모델이 같은 1등을 꼽았습니다."),
+    el("p", { class: "note" },
+      "모델마다 웹 검색 조건이 다릅니다. 1등이 갈린다는 것은 어느 모델이 틀렸다는 뜻이 아니라, " +
+      "그 카테고리에 아직 합의된 기본값이 없다는 뜻입니다. 뚫고 들어갈 틈은 대개 여기입니다."),
+  )
+}
+
+function viewCategory(id) {
+  const c = catOf(id)
+  if (!c) return el("p", { class: "empty" }, "카테고리를 찾을 수 없습니다.")
+  const L = c.leader
+  const models = DATA.methodology.models
+
+  const tiles = c.entities.slice(0, 14).map((e) => ({
+    name: e.name, value: e.appearances, firstRate: e.firstRate, rate: e.rate,
+    title: `${e.name} · 1순위 ${e.firstRate}% · 언급 ${e.rate}% · 중위 ${e.medianRank ?? "—"}위`,
+  }))
+
+  return el("div", {},
+    el("p", { class: "prompt" }, el("span", {}, "AI에게 던진 질문"), c.prompt ?? c.short),
+
+    el("h2", {}, "이 판의 주인"),
+    el("div", { class: "cards k4" },
+      el("div", { class: "card" },
+        el("div", { class: "k" }, "1등"),
+        el("div", { class: "mlead" }, L ? logo(L.name, "md") : null, el("b", {}, L?.name ?? "—")),
+        el("div", { class: "n" }, L ? `맨 앞에 불린 횟수 ${L.firsts}/${c.V}` : "")),
+      card("1순위 점유율", dash(L?.firstRate, "%"), "맨 앞에 불린 비율", false, L?.firstRate),
+      card("경쟁 브랜드", c.contenders, `응답 ${c.V}건에 등장한 이름`),
+      card("상위 3곳 집중도", dash(c.concentration, "%"), "높을수록 틈이 좁습니다", false, c.concentration),
+    ),
+
+    el("h2", {}, "마인드쉐어 분포", el("small", {}, "면적 = 등장 횟수 · 농도 = 1순위 점유율")),
+    treemap(tiles, { density: (t) => t.firstRate, label: (t) => `1순위 ${t.firstRate}% · ${t.value}회` }),
+
+    el("h2", {}, "순위표", el("small", {}, "맨 앞에 불린 비율 순")),
+    el("div", { class: "scroll" }, (() => {
+      const table = el("table", {},
+        el("thead", {}, el("tr", {},
+          el("th", {}, "#"), el("th", {}, "브랜드"),
+          el("th", { class: "n" }, "1순위"),
+          el("th", {}, ""),
+          el("th", { class: "n" }, "언급률"),
+          el("th", { class: "n" }, "중위 순위"),
+          el("th", {}, models.map((m) => m.name).join(" · ")))),
+        el("tbody", {}, c.entities.map((e, i) => el("tr", {
+          "data-brand": ALL.some((b) => b.brand === e.name) ? e.name : null,
+          style: ALL.some((b) => b.brand === e.name) ? "cursor:pointer" : null,
+          title: ALL.some((b) => b.brand === e.name) ? `${e.name} 프로필 보기` : "추적 대상이 아니라 프로필이 없습니다",
+        },
+          el("td", { class: "n", style: "color:var(--dim2);font-family:var(--mono)" }, i + 1),
+          el("td", {}, named(e.name, "md", e.rate >= 60 && e.firstRate === 0
+            ? el("span", { class: "tag" }, "늘 불리지만 1등은 아님") : null)),
+          el("td", { class: "n" }, dash(e.firstRate, "%")),
+          el("td", { style: "width:110px" }, el("span", {
+            class: "bar",
+            style: `width:${Math.max(2, e.firstRate ?? 0)}%;opacity:${inkA(e.firstRate ?? 0).toFixed(3)}`,
+          })),
+          el("td", { class: "n", style: "color:var(--dim)" }, dash(e.rate, "%")),
+          el("td", { class: "n" }, e.medianRank === null ? "—" : `${e.medianRank}위`),
+          el("td", {}, el("span", { class: "strip" }, models.map((m) => {
+            const b = e.byModel[m.id]
+            return el("i", {
+              class: b.n ? null : "miss",
+              style: b.n ? `background:rgba(var(--ink-rgb),${inkA(b.rate).toFixed(3)})` : "",
+              title: `${m.name} · ${b.n}/${b.V}${b.firsts ? ` · 1순위 ${b.firsts}회` : ""}`,
+            })
+          }))),
+        ))))
+      table.addEventListener("click", (e) => {
+        const tr = e.target.closest("tr[data-brand]")
+        if (tr) { setBrand(tr.dataset.brand); show("summary") }
+      })
+      return table
+    })()),
+    el("p", { class: "note", html:
+      "<b>1순위</b>는 그 브랜드가 목록 맨 앞에 불린 비율, <b>언급률</b>은 목록 어디에든 이름이 오른 비율입니다. " +
+      "둘은 다른 상태입니다 — 늘 불리는데 1순위가 0%면 후보로는 인정받지만 기본값은 아니라는 뜻입니다. " +
+      "추적 대상 브랜드는 줄을 누르면 프로필로 들어갑니다." }),
+
+    el("h2", {}, "모델별 1등"),
+    el("div", { class: "cards" }, models.map((m) => {
+      const w = c.leaderByModel[m.id]
+      return el("div", { class: "card" },
+        el("div", { class: "k" }, m.name),
+        el("div", { class: "mlead" }, w ? logo(w, "md") : null, el("b", {}, w ?? "—")),
+        el("div", { class: "n" }, m.webSearch ? "웹 검색 ON" : "웹 검색 OFF"))
+    })),
+    el("p", { class: "note" },
+      c.leaderAgreed
+        ? "세 모델이 같은 이름을 맨 앞에 놓았습니다. 이 카테고리에는 합의된 기본값이 있습니다."
+        : "모델마다 맨 앞에 놓는 이름이 다릅니다. 아직 합의된 기본값이 없다는 뜻이고, 검색 조건 차이도 섞여 있어 모델 간 우열로 읽지 않습니다."),
+  )
+}
 
 // ---------- 판세 ----------
 // 브랜드 하나를 깊게 보기 전에, 추적한 브랜드들이 서로 어떻게 갈리는지 먼저 본다.
@@ -1061,7 +1290,7 @@ function viewField() {
             "data-brand": b.brand, style: "cursor:pointer",
             title: `${b.brand} 로 전환`,
           },
-            el("td", {}, b.brand),
+            el("td", {}, named(b.brand)),
             el("td", { class: "n" }, `${hit.length}/${per.length}`),
             el("td", { class: "n" }, best ? `${best.q.toUpperCase()} ${best.rate}%` : "—"),
             el("td", { style: "width:110px" }, el("span", {
@@ -1120,14 +1349,17 @@ function fieldMatrix(list) {
   )
 }
 
-const RENDER = { field: viewField, summary: viewSummary, compete: viewCompete, diagnose: viewDiagnose, sources: viewSources, evidence: viewEvidence, method: viewMethod, run: viewRun, settings: viewSettings }
+const RENDER = { home: viewHome, brands: viewField, field: viewField, summary: viewSummary, compete: viewCompete, diagnose: viewDiagnose, sources: viewSources, evidence: viewEvidence, method: viewMethod, run: viewRun, settings: viewSettings }
 
 /** 사이드바 "측정 대상" 카드. 브랜드가 여럿이면 전환기가 된다. */
 function renderSubject() {
   const m = DATA?.methodology
-  $("#brandName").textContent = BRAND.brand
+  const ds = DATA?.dataset
+  const nm = $("#dsName")
+  if (nm) nm.textContent = ds?.name ?? "측정 데이터"
+  const cats = DATA?.categories ?? []
   $("#runStamp").textContent = m
-    ? `모델 ${m.models.length} · 질문 ${m.questions.length} · n=${m.repeats} · 유효 ${BRAND.completeness.valid}회`
+    ? `카테고리 ${cats.length} · 모델 ${m.models.length} · n=${m.repeats} · 응답 ${cats.reduce((s, c) => s + c.V, 0)}건`
     : ""
 
   const host = $("#brandPick")
@@ -1137,11 +1369,12 @@ function renderSubject() {
   host.hidden = false
 
   const list = [...ALL].sort((a, b) => (b.visibility.mentionRate ?? 0) - (a.visibility.mentionRate ?? 0))
-  host.append(el("select", { "aria-label": "측정 대상 브랜드" },
+  host.append(el("span", { class: "plb" }, "브랜드 프로필 대상"))
+  host.append(el("select", { "aria-label": "브랜드 프로필 대상" },
     list.map((b) => el("option", {
       value: b.brand, selected: b.brand === BRAND.brand,
-    }, `${b.brand} · ${dash(b.visibility.mentionRate, "%")}`))))
-  host.append(el("span", { class: "hint" }, `추적 ${ALL.length}개 · 판세에서 비교`))
+    }, b.brand))))
+  host.append(el("span", { class: "hint" }, `추적 ${ALL.length}개 · 순위표에서 이름을 눌러도 바뀝니다`))
   host.querySelector("select").addEventListener("change", (e) => setBrand(e.target.value))
 }
 
@@ -1154,7 +1387,10 @@ function setBrand(name) {
 }
 
 let CURRENT = null
+const renderFor = (key) => (key.startsWith("cat:") ? () => viewCategory(key.slice(4)) : RENDER[key])
+
 function show(key) {
+  if (!renderFor(key)) key = "home"
   CURRENT = key
   const meta = VIEWS.find(([k]) => k === key)
   if (meta) {
@@ -1166,7 +1402,7 @@ function show(key) {
   app.innerHTML = ""
   const help = viewHelp(key)
   if (help) app.append(help)
-  app.append(RENDER[key](BRAND))
+  app.append(renderFor(key)(BRAND))
   for (const btn of $("#nav").querySelectorAll("button")) {
     btn.setAttribute("aria-selected", String(btn.dataset.k === key))
   }
@@ -1184,7 +1420,8 @@ async function boot() {
       저장소에서 <span class="cell">node bin/geo-probe.mjs export</span> 를 실행하면 생성됩니다.</p>`
     return
   }
-  await loadOwnData()
+  await Promise.all([loadOwnData(), loadLogos()])
+  VIEWS = allViews()
   ALL = DATA.brands
   BRAND = DATA.brands[0]
   if (!BRAND) { $("#app").innerHTML = `<p class="note">측정된 브랜드가 없습니다.</p>`; return }
@@ -1201,8 +1438,13 @@ async function boot() {
   let ix = 0
   for (const [k, label, grp] of VIEWS) {
     if (grp !== group) { nav.append(el("div", { class: "grp" }, grp)); group = grp }
+    const cat = k.startsWith("cat:") ? catOf(k.slice(4)) : null
     nav.append(el("button", { "data-k": k, type: "button" },
-      el("span", { class: "ix" }, String(++ix).padStart(2, "0")), label))
+      el("span", { class: "ix" }, String(++ix).padStart(2, "0")),
+      el("span", { class: "lb" }, label),
+      // 메뉴에서 이미 1등이 보이면 목록 자체가 요약이 된다.
+      cat?.leader ? el("span", { class: "lead1", title: `1위 ${cat.leader.name}` },
+        logo(cat.leader.name, "sm")) : null))
   }
   nav.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.k) })
   document.addEventListener("click", (e) => {
@@ -1212,9 +1454,9 @@ async function boot() {
   // 주소창 해시·브라우저 뒤로가기로도 화면이 바뀌게 한다(탭 클릭만 되던 문제).
   window.addEventListener("hashchange", () => {
     const k = location.hash.slice(1)
-    if (RENDER[k] && k !== CURRENT) show(k)
+    if (renderFor(k) && k !== CURRENT) show(k)
   })
   const start = location.hash.slice(1)
-  show(RENDER[start] ? start : "summary")
+  show(renderFor(start) ? start : "home")
 }
 boot()

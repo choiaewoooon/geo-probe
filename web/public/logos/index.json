@@ -1,0 +1,338 @@
+{
+  "Naver Map": {
+    "file": "logos/naver-map.png",
+    "matched": "네이버지도 - 장소의 발견과 예약, 내비게이션",
+    "term": "Naver Map",
+    "country": "kr"
+  },
+  "Kakao T": {
+    "file": "logos/kakao-t.png",
+    "matched": "카카오 T - 택시, 세차, 주차, 바이크, 항공, 퀵",
+    "term": "Kakao T",
+    "country": "kr"
+  },
+  "KakaoMap": {
+    "file": "logos/kakaomap.png",
+    "matched": "카카오맵 - 대한민국 No.1 지도앱",
+    "term": "KakaoMap",
+    "country": "kr"
+  },
+  "Papago": {
+    "file": "logos/papago.png",
+    "matched": "네이버 파파고 - AI 통번역",
+    "term": "Papago",
+    "country": "kr"
+  },
+  "KorailTalk": {
+    "file": "logos/korailtalk.png",
+    "matched": "코레일+",
+    "term": "KorailTalk",
+    "country": "kr"
+  },
+  "Coupang Eats": {
+    "file": "logos/coupang-eats.png",
+    "matched": "쿠팡이츠 - 와우회원 배달비 0원",
+    "term": "Coupang Eats",
+    "country": "kr"
+  },
+  "Subway Korea": {
+    "file": "logos/subway-korea.png",
+    "matched": "Subway Korea",
+    "term": "Subway Korea",
+    "country": "kr"
+  },
+  "WOWPASS": {
+    "file": "logos/wowpass.png",
+    "matched": "WOWPASS: 외국인 관광객 전용 올인원 선불카드",
+    "term": "WOWPASS",
+    "country": "kr"
+  },
+  "Uber": {
+    "file": "logos/uber.png",
+    "matched": "Uber(우버) - 택시 호출 플랫폼",
+    "term": "Uber",
+    "country": "kr"
+  },
+  "Tada": {
+    "file": "logos/tada.png",
+    "matched": "TADA – Ride Hailing",
+    "term": "Tada",
+    "country": "kr"
+  },
+  "Google Translate": {
+    "file": "logos/google-translate.png",
+    "matched": "Google 번역",
+    "term": "Google Translate",
+    "country": "kr"
+  },
+  "DeepL": {
+    "file": "logos/deepl.png",
+    "matched": "DeepL 번역",
+    "term": "DeepL",
+    "country": "kr"
+  },
+  "Shuttle": {
+    "file": "logos/shuttle.png",
+    "matched": "Shuttle Delivery",
+    "term": "Shuttle",
+    "country": "kr"
+  },
+  "Baemin": {
+    "file": "logos/baemin.png",
+    "matched": "배달의민족 - 배달팁 무료 배민클럽",
+    "term": "Baemin",
+    "country": "kr"
+  },
+  "Catch Table": {
+    "file": "logos/catch-table.png",
+    "matched": "캐치테이블",
+    "term": "Catch Table",
+    "country": "kr"
+  },
+  "Microsoft Translator": {
+    "file": "logos/microsoft-translator.png",
+    "matched": "Microsoft Translator",
+    "term": "Microsoft Translator",
+    "country": "kr"
+  },
+  "k.ride": {
+    "file": "logos/k-ride.png",
+    "matched": "k.ride - taxi, cab, travel",
+    "term": "k.ride",
+    "country": "kr"
+  },
+  "T-money": {
+    "file": "logos/t-money.png",
+    "matched": "모바일티머니",
+    "term": "T-money",
+    "country": "kr"
+  },
+  "Diningcode": {
+    "file": "logos/diningcode.png",
+    "matched": "다이닝코드",
+    "term": "Diningcode",
+    "country": "kr"
+  },
+  "Trip.com": {
+    "file": "logos/trip-com.png",
+    "matched": "Trip.com 트립닷컴 - 여행 할인 예약",
+    "term": "Trip.com",
+    "country": "kr"
+  },
+  "Yogiyo": {
+    "file": "logos/yogiyo.png",
+    "matched": "요기요 - 배달할 때마다 포인트 적립",
+    "term": "Yogiyo",
+    "country": "kr"
+  },
+  "Klook": {
+    "file": "logos/klook.png",
+    "matched": "클룩 KLOOK: 액티비티, 투어, 렌터카 예약",
+    "term": "Klook",
+    "country": "kr"
+  },
+  "KakaoPay": {
+    "file": "logos/kakaopay.png",
+    "matched": "카카오페이",
+    "term": "KakaoPay",
+    "country": "kr"
+  },
+  "KakaoTalk": {
+    "file": "logos/kakaotalk.png",
+    "matched": "카카오톡 KakaoTalk",
+    "term": "KakaoTalk",
+    "country": "kr"
+  },
+  "NAMANE": {
+    "file": "logos/namane.png",
+    "matched": "NAMANE: 페이와 교통, 올인원 나마네카드",
+    "term": "NAMANE",
+    "country": "kr"
+  },
+  "Kobus": {
+    "file": "logos/kobus.png",
+    "matched": "고속버스 티머니",
+    "term": "Kobus",
+    "country": "kr"
+  },
+  "Tabling": {
+    "file": "logos/tabling.png",
+    "matched": "테이블링",
+    "term": "Tabling",
+    "country": "kr"
+  },
+  "Naver Pay": {
+    "file": "logos/naver-pay.png",
+    "matched": "네이버페이",
+    "term": "Naver Pay",
+    "country": "kr"
+  },
+  "TMAP": {
+    "file": "logos/tmap.png",
+    "matched": "티맵 - 장소추천, 지도, 운전점수, 대중교통, 대리",
+    "term": "TMAP",
+    "country": "kr"
+  },
+  "TABA": {
+    "file": "logos/taba.png",
+    "matched": "TABA - Get a taxi in Korea",
+    "term": "TABA",
+    "country": "kr"
+  },
+  "Creatrip": {
+    "file": "logos/creatrip.png",
+    "matched": "Creatrip: Korea Travel App",
+    "term": "Creatrip",
+    "country": "kr"
+  },
+  "iM Taxi": {
+    "file": "logos/im-taxi.png",
+    "matched": "i.M(아이.엠)",
+    "term": "iM Taxi",
+    "country": "kr"
+  },
+  "Naver Dictionary": {
+    "file": "logos/naver-dictionary.png",
+    "matched": "네이버 사전",
+    "term": "Naver Dictionary",
+    "country": "kr"
+  },
+  "Flitto": {
+    "file": "logos/flitto.png",
+    "matched": "플리토(Flitto)-번역기, 외국어 리워드 앱",
+    "term": "Flitto",
+    "country": "kr"
+  },
+  "Toss": {
+    "file": "logos/toss.png",
+    "matched": "토스",
+    "term": "Toss",
+    "country": "kr"
+  },
+  "Apple Translate": {
+    "file": "logos/apple-translate.png",
+    "matched": "번역",
+    "term": "Apple Translate",
+    "country": "kr"
+  },
+  "Trip.PASS": {
+    "file": "logos/trip-pass.png",
+    "matched": "Trip.PASS",
+    "term": "Trip.PASS",
+    "country": "kr"
+  },
+  "Onda Taxi": {
+    "file": "logos/onda-taxi.png",
+    "matched": "티머니GO - 택시 고속시외 따릉이 킥보드",
+    "term": "온다택시",
+    "country": "kr"
+  },
+  "i.M Taxi": {
+    "file": "logos/i-m-taxi.png",
+    "matched": "i.M(아이.엠)",
+    "term": "i.M 아이엠 택시",
+    "country": "kr"
+  },
+  "HANPASS": {
+    "file": "logos/hanpass.png",
+    "matched": "한패스(hanpass) - 해외송금",
+    "term": "한패스 Hanpass",
+    "country": "kr"
+  },
+  "Citymapper": {
+    "file": "logos/citymapper.png",
+    "matched": "Citymapper: All Live Transit",
+    "term": "Citymapper",
+    "country": "us"
+  },
+  "Google Maps": {
+    "file": "logos/google-maps.png",
+    "matched": "Google Maps",
+    "term": "Google Maps",
+    "country": "us"
+  },
+  "Kakao Navi": {
+    "file": "logos/kakao-navi.png",
+    "matched": "카카오내비 - 주차,발렛,전기차충전,세차,보험,중고차",
+    "term": "카카오내비",
+    "country": "kr"
+  },
+  "Apple Maps": {
+    "file": "logos/apple-maps.png",
+    "matched": "Apple Maps",
+    "term": "Apple Maps",
+    "country": "us"
+  },
+  "ChatGPT": {
+    "file": "logos/chatgpt.png",
+    "matched": "ChatGPT",
+    "term": "ChatGPT",
+    "country": "us"
+  },
+  "iTranslate": {
+    "file": "logos/itranslate.png",
+    "matched": "iTranslate 번역: 음성, 사진, 텍스트 번역기",
+    "term": "iTranslate",
+    "country": "kr"
+  },
+  "Delivery K": {
+    "file": "logos/delivery-k.png",
+    "matched": "배달K",
+    "term": "Delivery K",
+    "country": "kr"
+  },
+  "McDelivery": {
+    "file": "logos/mcdelivery.png",
+    "matched": "맥도날드",
+    "term": "McDelivery",
+    "country": "kr"
+  },
+  "McDelivery Korea": {
+    "file": "logos/mcdelivery-korea.png",
+    "matched": "McDonald’s",
+    "term": "McDelivery Korea",
+    "country": "kr"
+  },
+  "Domino's Korea": {
+    "file": "logos/domino-s-korea.png",
+    "matched": "도미노피자 - Domino's Pizza",
+    "term": "Domino's Korea",
+    "country": "kr"
+  },
+  "EZL": {
+    "file": "logos/ezl.png",
+    "matched": "이즐충전소: K패스, 교통카드 충전의 모든 것",
+    "term": "EZL",
+    "country": "kr"
+  },
+  "Tableing": {
+    "file": "logos/tableing.png",
+    "matched": "테이블링",
+    "term": "Tableing",
+    "country": "kr"
+  },
+  "KTX Korea Rail Pass": {
+    "file": "logos/ktx-korea-rail-pass.png",
+    "matched": "코레일+",
+    "term": "KTX Korea Rail Pass",
+    "country": "kr"
+  },
+  "Hanpass": {
+    "file": "logos/hanpass.png",
+    "matched": "한패스(hanpass) - 해외송금",
+    "term": "Hanpass",
+    "country": "kr"
+  },
+  "Emergency Ready App": {
+    "file": "logos/emergency-ready-app.png",
+    "matched": "Emergency Ready App",
+    "term": "Emergency Ready App",
+    "country": "kr"
+  },
+  "Visit Korea": {
+    "file": "logos/visit-korea.png",
+    "matched": "VISITKOREA",
+    "term": "Visit Korea",
+    "country": "kr"
+  }
+}

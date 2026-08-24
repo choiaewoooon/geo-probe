@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI 가시성 모니터 · geo-probe</title>
+<title>AI 마인드쉐어 · geo-probe</title>
 <meta name="robots" content="noindex, nofollow" />
-<meta name="description" content="생성형 AI 답변에서 브랜드가 어떻게 등장하는지를 반복 측정해 추세로 추적하는 공개 대시보드." />
+<meta name="description" content="생성형 AI가 카테고리마다 어떤 이름을 맨 앞에 부르는지 반복 측정해 순위로 보여주는 공개 대시보드." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230a0a0b'/><rect x='6' y='19' width='4' height='7' fill='%23fff' opacity='.25'/><rect x='12' y='14' width='4' height='12' fill='%23fff' opacity='.5'/><rect x='18' y='9' width='4' height='17' fill='%23fff' opacity='.75'/><rect x='24' y='6' width='2' height='20' fill='%23fff'/></svg>" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,6 +144,8 @@ h2 small{color:var(--dim2);font-weight:400;font-size:12px;letter-spacing:0}
 
 /* ── 카드 ─────────────────────────────────────────────────── */
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cards.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.cards.k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:1120px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.cards{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);
@@ -247,6 +249,82 @@ th[data-sort]:hover{color:var(--tx)}
 .ramp .sw{width:18px;height:11px;border-radius:2px;display:inline-block;vertical-align:-1px;margin-right:5px;
   background:repeating-linear-gradient(135deg,transparent 0 5px,color-mix(in srgb,var(--ink) 22%,transparent) 5px 6px);
   box-shadow:inset 0 0 0 1px var(--line-strong)}
+
+/* ── 로고 ─────────────────────────────────────────────────── */
+/* 컬러 아이콘을 그대로 쓰면 2톤이 깨진다. 흑백으로 눌러서 쓴다. */
+.lg{display:inline-flex;align-items:center;justify-content:center;flex:none;
+  border-radius:5px;overflow:hidden;background:var(--panel3);
+  box-shadow:inset 0 0 0 1px var(--line);vertical-align:-3px}
+.lg img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:grayscale(1) contrast(1.08);opacity:.92}
+:root[data-theme="dark"] .lg img{opacity:.88}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lg img{opacity:.88}}
+.lg.mono{font-family:var(--mono);font-weight:600;color:var(--dim);background:var(--panel2)}
+.lg-sm{width:18px;height:18px;border-radius:4px;font-size:9px}
+.lg-md{width:26px;height:26px;font-size:11px}
+.lg-lg{width:40px;height:40px;border-radius:9px;font-size:15px}
+
+.nmrow{display:inline-flex;align-items:center;gap:9px;min-width:0}
+.nmrow .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mlead{display:flex;align-items:center;gap:9px;margin-top:2px}
+.mlead b{font-size:17px;font-weight:700;letter-spacing:-.025em;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* 카테고리 카드 — 1등 로고를 크게, 나머지는 작은 얼굴로 줄세운다 */
+.ccard .clead{align-items:center;gap:11px}
+.ccard .clead .lw{display:flex;flex-direction:column;min-width:0}
+.ccard .clead .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccard .cfaces{display:flex;gap:5px;align-items:center}
+.ccard .cfaces .lg{opacity:.75}
+.ccard:hover .cfaces .lg{opacity:1}
+
+/* 트리맵 타일 이름 = 로고 + 텍스트 */
+.tile .nm{display:flex;align-items:center;gap:6px}
+.tile .nm>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile.on-ink .lg{box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.tile.tiny .lg{display:none}
+
+nav button .lead1 .lg{opacity:.8}
+
+/* ── 카테고리 카드 ─────────────────────────────────────────── */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:10px}
+.ccard{display:flex;flex-direction:column;gap:11px;text-align:left;font:inherit;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:14px 15px 13px;box-shadow:var(--shadow);color:var(--tx);
+  transition:transform .12s,box-shadow .12s,border-color .12s}
+.ccard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift);border-color:var(--line-strong)}
+.ccard .ct{display:flex;align-items:center;gap:8px}
+.ccard .cid{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--dim2)}
+.ccard .cq{font-size:12px;color:var(--dim);flex:1;min-width:0;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.ccard .cgo{font-family:var(--mono);font-size:12px;color:var(--dim2)}
+.ccard:hover .cgo{color:var(--tx)}
+.ccard .clead{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ccard .clead .nm{font-size:19px;font-weight:750;letter-spacing:-.03em;line-height:1.15}
+.ccard .clead .pc{font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+.ccard .cbars{display:flex;align-items:flex-end;gap:4px;height:34px}
+.ccard .cb{flex:1;height:100%;display:flex;align-items:flex-end}
+.ccard .cb i{display:block;width:100%;background:var(--ink);border-radius:2px 2px 0 0;min-height:3px}
+.ccard .cfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--dim2);
+  border-top:1px solid var(--line);padding-top:9px}
+.ccard .cfoot .split{color:var(--tx);border:1px solid var(--line-strong);border-radius:4px;padding:1px 5px}
+.ccard .cfoot .ok{opacity:.7}
+
+/* 실제로 던진 질문 — 카테고리 화면의 근거 */
+.prompt{background:var(--panel2);border:1px solid var(--line);border-left:2px solid var(--ink);
+  border-radius:0 var(--r) var(--r) 0;padding:13px 16px;margin:0 0 4px;
+  font-size:14px;line-height:1.6;color:var(--tx)}
+.prompt span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
+
+/* 메뉴에 1등 이름을 곁들이면 목록 자체가 요약이 된다 */
+nav button .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav button .lead1{font-family:var(--mono);font-size:9.5px;color:var(--dim2);
+  max-width:74px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:none}
+nav button[aria-selected=true] .lead1{color:var(--dim)}
+.pick .plb{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
 
 /* ── 브랜드 전환기 ─────────────────────────────────────────── */
 .pick{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
@@ -403,12 +481,12 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
         <rect x="12" y="6" width="4" height="20" rx="1" fill="currentColor" opacity=".7"/>
         <rect x="18" y="0" width="4" height="26" rx="1" fill="currentColor"/>
       </svg>
-      <div class="wm">GEO·PROBE<i>AI 가시성 모니터</i></div>
+      <div class="wm">GEO·PROBE<i>AI 마인드쉐어</i></div>
     </div>
 
     <div class="subject">
-      <div class="lb">측정 대상</div>
-      <div class="nm" id="brandName">—</div>
+      <div class="lb">데이터셋</div>
+      <div class="nm" id="dsName">—</div>
       <div class="rn" id="runStamp"></div>
       <div class="pick" id="brandPick" hidden></div>
     </div>
@@ -442,7 +520,7 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
       <div id="app"><p class="empty">데이터를 불러오는 중…</p></div>
 
       <footer>
-        생성형 AI 답변 내 브랜드 가시성을 반복 측정하는 오픈소스 도구
+        생성형 AI 답변 속 카테고리별 마인드쉐어를 반복 측정하는 오픈소스 도구
         <a href="https://github.com/choiaewoooon/geo-probe" target="_blank" rel="noopener">geo-probe</a>로 수집·집계했습니다.
         측정 조건과 한계는 <a href="#" data-go="method">방법론</a>에 있습니다.
       </footer>
@@ -481,6 +559,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
   document.addEventListener("DOMContentLoaded",sync); sync();
 })();
 </script>
-<script type="module" src="./app.js?v=42"></script>
+<script type="module" src="./app.js?v=55"></script>
 </body>
 </html>

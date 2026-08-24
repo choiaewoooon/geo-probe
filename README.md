@@ -18,7 +18,7 @@ Ask ChatGPT, Gemini, or Claude *"which app should I use for X"* and one name com
 
 **[Open the live dashboard →](https://ai-visibility-monitor-psi.vercel.app)**
 <br>
-<sub>8 categories · 120 answers · every name that came up, counted.</sub>
+<sub>8 categories · 120 answers · every name that came up, counted. Press <kbd>⌘K</kbd> to search.</sub>
 
 </div>
 
@@ -43,18 +43,20 @@ Most AI-visibility tools start by asking *"what's your brand?"* and then tell yo
 
 `geo-probe` starts from the other end. **There is no "your brand" here.** You define a category question, it asks the models over and over, and it counts every name that comes back. The output is a standings table for the category:
 
-| Category | Who AI names first | 1st-place share | Runner-up | Model consensus |
-|---|---|:---:|---|:---:|
-| Maps & navigation | **Naver Map** | 100% | KakaoMap (0%) | ✓ |
-| Hailing a taxi | **Kakao T** | 60% | k.ride (33%) | **split** |
-| Translation | **Papago** | 100% | Google Translate (0%) | ✓ |
-| Food delivery | **Shuttle** | 47% | Coupang Eats (40%) | **split** |
-| Paying & transit fares | **WOWPASS** | 47% | Naver Pay (33%) | **split** |
-| Finding restaurants | **Naver Map** | 67% | Catch Table (33%) | **split** |
-| Intercity travel | **KorailTalk** | 73% | Klook (27%) | **split** |
-| Essential apps | **Naver Map** | 100% | Papago (0%) | ✓ |
+| Category | Who AI names first | Model votes | Runner-up |
+|---|---|:---:|---|
+| Maps & navigation | **Naver Map** | **unanimous** | KakaoMap |
+| Hailing a taxi | **Kakao T** | 2/3 | k.ride |
+| Translation | **Papago** | **unanimous** | Google Translate |
+| Food delivery | **Shuttle** | 2/3 | Coupang Eats |
+| Paying & transit fares | **WOWPASS** | 2/3 | Naver Pay |
+| Finding restaurants | **Naver Map** | 2/3 | Catch Table |
+| Intercity travel | **KorailTalk** | 2/3 | Klook |
+| Essential apps | **Naver Map** | **unanimous** | Papago |
 
-> Real run: *"which apps should a foreigner use in South Korea?"* asked 8 ways × 3 models × `n=5` = **120 answers, all 120 parsed**, 66 distinct app names counted.
+> Real run: *"which apps should a foreigner use in South Korea?"* asked 8 ways × 3 models × `n=5` = **120 answers, all 120 parsed**, 63 distinct app names counted.
+
+**Why votes and not a percentage.** Repeating the same prompt is not an independent sample. In 18 of 24 model×question cells, all five repeats returned the *same* first-place name — the variance lives between models, not between repeats. So a headline like "47% first-place share" is really "1.4 of 3 models," and treating models as clusters puts the 95% CI at [0%, 100%] for every contested category. The dashboard shows the votes it actually observed instead of a precision it does not have.
 
 ---
 
@@ -69,7 +71,9 @@ In the **payments** category, `KakaoPay` is named in **73%** of answers — more
   <img alt="Category detail: mindshare treemap and standings table for the payments category" src="docs/screenshots/cat-light.png">
 </picture>
 
-Read the treemap: **area is how often a name appeared, ink density is how often it came first.** The biggest tile is also the palest one — that is KakaoPay, permanently a candidate and never the default. The dashboard tags that state explicitly rather than letting a single ranking hide it.
+Read the treemap: **area is how many times a name was placed first.** Names that never took the top slot are absent from it — KakaoPay among them, despite leading on mentions. The standings table below carries the full list and tags that state explicitly, so a high mention rate with zero first places reads as what it is.
+
+An earlier version sized tiles by total appearances. That made KakaoPay the largest tile in a category it does not lead, and since the eye reads area first, the picture contradicted the headline directly above it.
 
 ---
 
@@ -97,7 +101,7 @@ flowchart LR
 2. **analyze** — parse each list and count every name that appears, with the position it appeared at.
 3. **export** — build per-category standings, plus an optional per-brand profile for names you want to track over time.
 
-The questions never contain a brand name, so **one run scores the whole category at once** — the 66 names above came from a single 120-call run.
+The questions never contain a brand name, so **one run scores the whole category at once** — the 63 names above came from a single 120-call run.
 
 ---
 
@@ -134,9 +138,10 @@ Two-tone on purpose: **value is carried by ink density, never by colour**, so a 
 |---|---|
 | **카테고리 한눈에** Categories | Who leads every category, and where the models disagree |
 | **카테고리 상세** Category | Standings, mindshare treemap, and the leader per model |
-| **브랜드 프로필** Brand profile | Optional drill-down: where one name lives across categories |
+| **브랜드 찾기** Brands | Every tracked name, side by side, by breadth and depth |
+| **브랜드 상세** Brand | Drill-down tabs: summary, competition, diagnosis, sources, evidence |
 | **방법론** Method | Questions, models, calculation rules, and the limits |
-| **측정 실행** Run | Run a measurement from the browser; keys never leave it |
+| **측정 실행** Run | Run a measurement from the browser; keys go only to the model you pick |
 
 Four things it refuses to do:
 

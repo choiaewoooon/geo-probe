@@ -51,7 +51,47 @@ function loadConfig() {
   if (!fs.existsSync(p)) {
     throw new Error(`${path.relative(process.cwd(), p)} 이 없습니다. geo.config.example.json 을 복사해 시작하세요.`)
   }
-  return JSON.parse(fs.readFileSync(p, "utf8"))
+  let cfg
+  try {
+    cfg = JSON.parse(fs.readFileSync(p, "utf8"))
+  } catch (e) {
+    throw new Error(`${path.relative(process.cwd(), p)} 을 읽지 못했습니다 (JSON 오류): ${e.message}`)
+  }
+  validateConfig(cfg, p)
+  return cfg
+}
+
+/**
+ * 설정 검증. 없으면 전부 "Cannot read properties of undefined (reading 'length')"
+ * 하나로 떨어져서 무엇이 빠졌는지 알 수 없었다.
+ */
+function validateConfig(c, p) {
+  const where = path.relative(process.cwd(), p)
+  const bad = []
+  if (!Array.isArray(c.questions) || !c.questions.length) bad.push("questions: 질문을 최소 하나 넣으세요")
+  else {
+    c.questions.forEach((q, i) => {
+      if (!q?.id) bad.push(`questions[${i}].id 가 없습니다`)
+      if (!q?.prompt) bad.push(`questions[${i}].prompt 가 없습니다`)
+    })
+  }
+  if (!Array.isArray(c.models) || !c.models.length) bad.push("models: 모델을 최소 하나 넣으세요")
+  else {
+    c.models.forEach((m, i) => {
+      if (!m?.id) bad.push(`models[${i}].id 가 없습니다`)
+      if (!m?.provider) bad.push(`models[${i}].provider 가 없습니다 (openai · gemini · anthropic · command)`)
+      if (m?.provider === "command" && !Array.isArray(m.command)) {
+        bad.push(`models[${i}].command 는 배열이어야 합니다 (예: ["sh", "scripts/mock-model.sh"])`)
+      }
+    })
+  }
+  // brand 는 trackBrands 가 있으면 없어도 된다. 둘 다 없으면 무엇을 채점할지 모른다.
+  if (!c.brand && !(Array.isArray(c.trackBrands) && c.trackBrands.length)) {
+    bad.push("brand 또는 trackBrands 중 하나는 있어야 채점 대상이 정해집니다")
+  }
+  if (bad.length) {
+    throw new Error(`${where} 설정에 문제가 있습니다.\n  - ${bad.join("\n  - ")}`)
+  }
 }
 
 // 퀵모드: 1모델 · 2질문 · n=2 · 간격 0 → 30초 내. 데모/스모크 테스트용.

@@ -126,7 +126,22 @@ Optional — cache App Store icons so the dashboard shows real app logos:
 node scripts/fetch-logos.mjs
 ```
 
-> No API keys? Point each model at a local CLI instead — see [`examples/command-adapter.config.json`](examples/command-adapter.config.json). The run above was collected that way.
+**No API keys?** Two options.
+
+```bash
+# 1. Run the whole pipeline against a mock model — no calls, no cost
+node bin/geo-probe.mjs run --config configs/demo-mock.json
+node bin/geo-probe.mjs export --config configs/demo-mock.json && npm run serve
+```
+
+```bash
+# 2. Point each model at a local CLI you already have
+#    see examples/command-adapter.config.json — the run above was collected this way
+```
+
+The dashboard reads the **history file**, not `results/`. `results/` keeps the raw
+responses; the history file is what accumulates across runs. Set `historyFile` per
+dataset so separate measurements never mix. Full notes in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
@@ -142,6 +157,8 @@ Two-tone on purpose: **value is carried by ink density, never by colour**, so a 
 | **브랜드 상세** Brand | Drill-down tabs: summary, competition, diagnosis, sources, evidence |
 | **방법론** Method | Questions, models, calculation rules, and the limits |
 | **측정 실행** Run | Run a measurement from the browser; keys go only to the model you pick |
+
+A weekly GitHub Action ([`probe.yml`](.github/workflows/probe.yml)) re-measures and commits the new run, so the trend accumulates without anyone remembering to do it.
 
 Four things it refuses to do:
 

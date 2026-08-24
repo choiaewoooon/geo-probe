@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T06:35:23.019Z",
+  "generatedAt": "2026-08-24T06:45:55.418Z",
   "dataset": {
     "name": "한국 · 외국인이 쓸 앱",
     "nameEn": "Apps for foreigners in Korea",
@@ -3516,7 +3516,7 @@
         }
       },
       "status": {
-        "visibility": "중간",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -4878,42 +4878,6 @@
       ],
       "priorities": [
         {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q7",
           "mentionRate": 27,
           "mentionLabel": "4/15 · 27%",
@@ -4986,7 +4950,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -6327,66 +6291,6 @@
         }
       ],
       "priorities": [
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
         {
           "question": "q5",
           "mentionRate": 33,
@@ -7757,78 +7661,6 @@
       ],
       "priorities": [
         {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q1",
           "mentionRate": 7,
           "mentionLabel": "1/15 · 7%",
@@ -7839,18 +7671,6 @@
             "rate": 100
           },
           "score": 143
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
         }
       ]
     },
@@ -7878,7 +7698,7 @@
         }
       },
       "status": {
-        "visibility": "중간",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -9284,42 +9104,6 @@
       ],
       "priorities": [
         {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q5",
           "mentionRate": 33,
           "mentionLabel": "5/15 · 33%",
@@ -9399,7 +9183,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -10722,90 +10506,6 @@
       ],
       "priorities": [
         {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q1",
           "mentionRate": 47,
           "mentionLabel": "7/15 · 47%",
@@ -10842,7 +10542,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -12182,66 +11882,6 @@
       ],
       "priorities": [
         {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q1",
           "mentionRate": 20,
           "mentionLabel": "3/15 · 20%",
@@ -12292,7 +11932,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -13597,90 +13237,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q3",
           "mentionRate": 100,
           "mentionLabel": "15/15 · 100%",
@@ -13711,7 +13267,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -15051,90 +14607,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q8",
           "mentionRate": 73,
           "mentionLabel": "11/15 · 73%",
@@ -15172,7 +14644,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -16509,78 +15981,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q8",
           "mentionRate": 33,
           "mentionLabel": "5/15 · 33%",
@@ -16624,7 +16024,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -17940,90 +17340,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q4",
           "mentionRate": 100,
           "mentionLabel": "15/15 · 100%",
@@ -18054,7 +17370,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -19384,90 +18700,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q5",
           "mentionRate": 53,
           "mentionLabel": "8/15 · 53%",
@@ -19504,7 +18736,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -20864,78 +20096,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q5",
           "mentionRate": 40,
           "mentionLabel": "6/15 · 40%",
@@ -20985,7 +20145,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -22333,54 +21493,6 @@
       ],
       "priorities": [
         {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q1",
           "mentionRate": 13,
           "mentionLabel": "2/15 · 13%",
@@ -22391,18 +21503,6 @@
             "rate": 100
           },
           "score": 137
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
         },
         {
           "question": "q8",
@@ -23769,90 +22869,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q5",
           "mentionRate": 33,
           "mentionLabel": "5/15 · 33%",
@@ -23888,7 +22904,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -25233,90 +24249,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q6",
           "mentionRate": 100,
           "mentionLabel": "15/15 · 100%",
@@ -25348,7 +24280,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -26721,90 +25653,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
-        {
           "question": "q7",
           "mentionRate": 80,
           "mentionLabel": "12/15 · 80%",
@@ -26841,7 +25689,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "높음",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -28190,90 +27038,6 @@
         }
       ],
       "priorities": [
-        {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
-        },
         {
           "question": "q4",
           "mentionRate": 100,
@@ -29671,90 +28435,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q5",
           "mentionRate": 27,
           "mentionLabel": "4/15 · 27%",
@@ -29790,7 +28470,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -31132,66 +29812,6 @@
       ],
       "priorities": [
         {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q8",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q4",
           "mentionRate": 7,
           "mentionLabel": "1/15 · 7%",
@@ -31202,18 +29822,6 @@
             "rate": 100
           },
           "score": 143
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
         },
         {
           "question": "q2",
@@ -31248,7 +29856,7 @@
         }
       },
       "status": {
-        "visibility": "낮음",
+        "visibility": "중간",
         "reproducibility": "높음",
         "direction": "-"
       },
@@ -32651,66 +31259,6 @@
         }
       ],
       "priorities": [
-        {
-          "question": "q1",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q2",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Uber",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
         {
           "question": "q4",
           "mentionRate": 20,
@@ -34152,54 +32700,6 @@
       ],
       "priorities": [
         {
-          "question": "q3",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Papago",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q4",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Shuttle",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q6",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "Naver Map",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
-          "question": "q7",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KorailTalk",
-            "n": 15,
-            "rate": 100
-          },
-          "score": 150
-        },
-        {
           "question": "q8",
           "mentionRate": 7,
           "mentionLabel": "1/15 · 7%",
@@ -34222,18 +32722,6 @@
             "rate": 100
           },
           "score": 137
-        },
-        {
-          "question": "q5",
-          "mentionRate": 0,
-          "mentionLabel": "0/15 · 0%",
-          "medianRank": null,
-          "topSubstitute": {
-            "name": "KakaoPay",
-            "n": 11,
-            "rate": 73
-          },
-          "score": 136.5
         },
         {
           "question": "q2",

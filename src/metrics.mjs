@@ -227,8 +227,27 @@ export function trend(rows, window = 4) {
 }
 
 /** 종합 점수 대신 쓰는 상태 라벨. 근거 없는 숫자를 만들지 않으면서 헤드라인 역할을 한다. */
-export function statusLabels(vis, trendPoints = []) {
-  const rate = vis.mentionRate ?? 0
+/**
+ * 상태 라벨.
+ *
+ * 🔒 가시성은 브랜드가 실제로 뛰는 판에서만 판정한다.
+ * 전체 응답 언급률로 재면 배달앱이 지도·번역·택시 질문에 안 나오는 것까지 분모에
+ * 들어간다. 실측에서 배민은 배달 카테고리 100% 인데 전체 13% 라 "낮음"이 찍혔고,
+ * 14개 브랜드 중 "높음" 이 하나도 없었다. 자기 판을 완전히 장악한 6개가 전부 "낮음"이었다.
+ */
+/** 브랜드가 실제로 등장한 질문들만 모은 언급률. 안 뛰는 판을 분모에서 뺀다. */
+export function homeRate(rows) {
+  const byQ = new Map()
+  for (const r of rows) {
+    if (!byQ.has(r.question)) byQ.set(r.question, [])
+    byQ.get(r.question).push(r)
+  }
+  const home = [...byQ.values()].filter((rs) => rs.some((r) => r.mentioned)).flat()
+  return home.length ? pct(home.filter((r) => r.mentioned).length, home.length) : null
+}
+
+export function statusLabels(vis, trendPoints = [], homeRate = null) {
+  const rate = homeRate ?? vis.mentionRate ?? 0
   const visibility_ = rate >= 70 ? "높음" : rate >= 35 ? "중간" : "낮음"
   const repro = vis.reproducibility === null ? "-" : vis.reproducibility >= 80 ? "높음" : "낮음"
   // 방향은 같은 질문 세트끼리만 비교한다. 세트가 바뀐 구간을 이어 비교하면
@@ -266,6 +285,11 @@ export function priorities(rows, brand) {
     byQ.get(r.question).push(r)
   }
   return [...byQ.entries()]
+    // 🔒 그 브랜드가 한 번도 등장하지 않은 카테고리는 개선 대상이 아니라 남의 판이다.
+    // 이 필터가 없어서 점수가 100 + 50 = 150 에서 포화됐고, 무관한 카테고리가 전부
+    // 동점이 되어 설정의 질문 순서대로 정렬됐다. 그 결과 배달앱에게 "지도·택시·번역을
+    // 먼저 손보라"고 말하고 있었다.
+    .filter(([, rs]) => rs.some((r) => r.mentioned))
     .map(([question, rs]) => {
       const v = visibility(rs)
       const sub = substitution(rs, brand)
@@ -275,11 +299,11 @@ export function priorities(rows, brand) {
         mentionLabel: v.mentionLabel,
         medianRank: v.medianRank,
         topSubstitute: sub.brands[0] ?? null,
-        // 낮은 언급률 + 반복적 대체 경쟁사 = 최우선
+        // 발판이 있는 판에서, 언급률이 낮고 같은 경쟁사가 반복해서 자리를 가져간 순서.
         score: (100 - (v.mentionRate ?? 0)) + (sub.brands[0]?.rate ?? 0) / 2,
       }
     })
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => b.score - a.score || a.question.localeCompare(b.question))
 }
 
 /** 대시보드가 읽는 단일 산출물. */
@@ -289,7 +313,8 @@ export function summarize(rows, { brand, expected, ownDomains = [] } = {}) {
   return {
     brand,
     visibility: vis,
-    status: statusLabels(vis, tr),
+    // 브랜드가 한 번이라도 등장한 질문들만 모아 낸 언급률. 이게 그 브랜드의 판이다.
+    status: statusLabels(vis, tr, homeRate(rows)),
     completeness: completeness(rows, expected),
     shareOfVoice: shareOfVoice(rows),
     substitution: substitution(rows, brand),

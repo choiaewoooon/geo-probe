@@ -27,16 +27,24 @@ const dash = (v, suffix = "") => (v === null || v === undefined ? "-" : `${v}${s
 // 카테고리가 1급이다. 브랜드 화면은 카테고리에서 이름을 눌러 들어가는 드릴다운.
 const BASE_VIEWS = [
   ["home", "카테고리 한눈에", "마인드쉐어", "카테고리마다 AI가 맨 앞에 부르는 이름을 모았습니다."],
-  ["brands", "브랜드 프로필", "브랜드", "고른 브랜드가 어느 카테고리에 있고 어디가 비었는지."],
-  ["summary", "요약", "브랜드", "고른 브랜드의 등장 빈도와 순위를 한 화면에 모았습니다."],
-  ["compete", "경쟁 구도", "브랜드", "1순위를 대신 차지한 브랜드와 함께 언급되는 브랜드입니다."],
-  ["diagnose", "질문·모델 진단", "브랜드", "카테고리와 모델별로 어디가 약한지 밀도로 표시합니다."],
-  ["sources", "출처", "브랜드", "답변에 붙은 출처 도메인입니다."],
-  ["evidence", "원문 증거", "브랜드", "회차별 응답 원문의 저장 위치 색인."],
+  ["brands", "브랜드 찾기", "브랜드", "추적 중인 브랜드를 폭과 깊이로 나란히 놓고 봅니다."],
   ["method", "방법론", "측정 설계", "질문, 모델, 계산 규칙, 그리고 이 측정의 한계."],
   ["run", "측정 실행", "도구", "질문만 넣으면 이 브라우저가 직접 AI에 물어봅니다."],
   ["settings", "설정", "도구", "API 키와 이 브라우저에 저장된 측정 결과를 관리합니다."],
 ]
+
+/**
+ * 브랜드에 종속된 화면들. 사이드바에 펴놓지 않고 브랜드 헤더의 탭으로 묶는다.
+ * 이 5개는 앱의 최상위 목적지가 아니라 "고른 브랜드"의 하위 뷰다.
+ */
+const BRAND_TABS = [
+  ["summary", "요약"],
+  ["compete", "경쟁 구도"],
+  ["diagnose", "질문·모델 진단"],
+  ["sources", "출처"],
+  ["evidence", "원문 증거"],
+]
+const BRAND_KEYS = BRAND_TABS.map(([k]) => k)
 
 /** 카테고리는 데이터에서 나온다. 질문 세트가 바뀌면 메뉴도 따라 바뀐다. */
 function allViews() {
@@ -299,7 +307,7 @@ function treemap(items, { me, label, density } = {}) {
       class: "box",
       style: `background:rgba(var(--ink-rgb),${(mine ? Math.max(a, 0.9) : a).toFixed(3)})`,
     },
-      mine ? el("div", { class: "own" }, "자사") : null,
+      mine ? el("div", { class: "own" }, "선택") : null,
       el("div", { class: "nm" }, logo(t.name, "sm"), el("span", {}, t.name)),
       el("div", { class: "vl" }, label ? label(t) : t.value)))
   }))
@@ -392,8 +400,9 @@ function viewSummary(b) {
     el("h2", {}, "밀도 매트릭스", el("small", {}, "칸이 짙을수록 자주 불립니다")),
     densityMatrix(b),
 
-    el("h2", {}, "언급률 추세", el("small", {}, "회차별 값과 이동평균")),
-    sparkline(b.trend),
+    // 회차가 하나뿐이면 그릴 추세가 없다. 빈 차트가 화면을 차지할 이유가 없다.
+    b.trend.length > 1 ? el("h2", {}, "언급률 추세", el("small", {}, "회차별 값과 이동평균")) : null,
+    b.trend.length > 1 ? sparkline(b.trend) : null,
 
     el("h2", {}, "순위 분포", el("small", {}, "중위값에 가려지는 변동까지")),
     rankStack(v.rankDistribution),
@@ -509,20 +518,25 @@ function viewSources(b) {
   const q = c.quadrant
   return el("div", {},
     el("h2", {}, "인용 도메인", el("small", {}, `출처가 제시된 응답 ${c.citedResponses}건 기준`)),
+    c.citedResponses < 5
+      ? el("p", { class: "note" },
+          `${DATA.categories.reduce((s2, x) => s2 + x.V, 0)}건 중 ${c.citedResponses}건만 출처를 제시했습니다. ` +
+          "표로 그리면 비중처럼 보이지만 통계로 쓸 수 있는 수가 아닙니다.")
+      : null,
     el("div", { class: "cards" },
-      card("자사 도메인 인용률", dash(c.ownCitationRate, "%"), "출처 제시 응답 중")),
+      card("이 브랜드 도메인 인용률", dash(c.ownCitationRate, "%"), "출처 제시 응답 중")),
     el("div", { style: "margin-top:12px" },
       sortableTable("dom", [
         { key: "domain", label: "도메인", render: (d) => el("span", {}, d.domain, d.own ? el("span", { class: "tag" }, "자사") : null) },
         { key: "n", label: "등장", cls: "n", num: true },
         { key: "share", label: "비중", cls: "n", num: true, render: (d) => `${d.share}%` },
       ], c.domains.slice(0, 20), { highlight: (d) => d.own, initial: { key: "n", dir: "desc" } })),
-    el("h2", {}, "브랜드 노출 × 자사 출처"),
-    el("div", { class: "quad" },
-      quad("자사 출처와 함께 언급", q.자사근거_동반노출),
+    c.citedResponses >= 5 ? el("h2", {}, "브랜드 노출 × 자체 도메인") : null,
+    c.citedResponses >= 5 ? el("div", { class: "quad" },
+      quad("자체 도메인과 함께 언급", q.자사근거_동반노출),
       quad("외부 인식 중심 노출", q.외부인식_중심노출),
       quad("콘텐츠만 인용, 브랜드 연결 약함", q.콘텐츠만_사용),
-      quad("미노출", q.미노출)),
+      quad("미노출", q.미노출)) : null,
   )
 }
 
@@ -946,7 +960,7 @@ const VIEW_HELP = {
     body: [
       ["인용 도메인", "AI 답변에 표시된 출처 도메인을 보여줍니다. 선택한 브랜드의 도메인과 외부 도메인을 나눠 볼 수 있습니다."],
       ["자사 도메인 인용률", "출처가 표시된 응답 중 그 브랜드의 도메인이 포함된 비율입니다. 출처가 아예 없는 모델은 0%가 아니라 <b>측정 불가</b>로 표시합니다."],
-      ["노출 × 자사 출처", "브랜드 언급 여부와 자사 도메인 인용 여부를 조합한 네 칸입니다. <b>브랜드는 언급되지 않고 콘텐츠만 인용된 칸</b>은 정보가 브랜드로 연결되지 않는다는 신호입니다."],
+      ["노출 × 자체 도메인", "브랜드 언급 여부와 자체 도메인 인용 여부를 조합한 네 칸입니다. <b>브랜드는 언급되지 않고 콘텐츠만 인용된 칸</b>은 정보가 브랜드로 연결되지 않는다는 신호입니다."],
       ["한계", "여기서 인용은 응답에 표시된 출처일 뿐, 노출의 원인은 아닙니다."],
     ],
   },
@@ -1135,9 +1149,15 @@ function viewCategory(id) {
   const L = c.leader
   const models = DATA.methodology.models
 
-  const tiles = c.entities.slice(0, 14).map((e) => ({
-    name: e.name, value: e.appearances, firstRate: e.firstRate, rate: e.rate,
-    title: `${e.name} · 1순위 ${e.firstRate}% · 언급 ${e.rate}% · 중위 ${e.medianRank ?? "—"}위`,
+  // 🔒 면적을 등장 횟수로 두면 그림이 헤드라인을 반박한다.
+  // 실측: 결제 카테고리의 가장 큰 타일이 1순위 0% 인 KakaoPay 였다. 사람 눈은 면적을
+  // 먼저 읽으므로 "이 판의 주인은 KakaoPay" 로 읽히는데, 바로 위 카드는 WOWPASS 라고
+  // 적혀 있었다. 이 화면 제목이 마인드쉐어이고 마인드쉐어는 맨 앞에 불리는 것이니,
+  // 면적도 1순위 획득 횟수여야 한다. 1순위가 0인 이름은 이 그림에서 빠지는 게 맞다.
+  const contenders = c.entities.filter((e) => e.firsts > 0)
+  const tiles = contenders.slice(0, 14).map((e) => ({
+    name: e.name, value: e.firsts, firstRate: e.firstRate, rate: e.rate,
+    title: `${e.name} · 1순위 ${e.firsts}회 (${e.firstRate}%) · 언급 ${e.rate}% · 중위 ${e.medianRank ?? "—"}위`,
   }))
 
   return el("div", {},
@@ -1157,8 +1177,11 @@ function viewCategory(id) {
       card("상위 3곳 집중도", dash(c.concentration, "%"), "높을수록 신규 진입이 어렵습니다", false, c.concentration),
     ),
 
-    el("h2", {}, "마인드쉐어 분포", el("small", {}, "면적 = 등장 횟수 · 농도 = 1순위 점유율")),
-    treemap(tiles, { density: (t) => t.firstRate, label: (t) => `1순위 ${t.firstRate}% · ${t.value}회` }),
+    el("h2", {}, "마인드쉐어 분포",
+      el("small", {}, `면적 = 1순위 획득 횟수 · 1순위를 한 번이라도 가져간 ${contenders.length}곳`)),
+    tiles.length
+      ? treemap(tiles, { label: (t) => `1순위 ${t.value}회 · 언급 ${t.rate}%` })
+      : el("p", { class: "empty" }, "1순위를 가져간 이름이 없습니다."),
 
     el("h2", {}, "순위표", el("small", {}, "1순위 점유율 순")),
     el("div", { class: "scroll" }, (() => {
@@ -1338,21 +1361,6 @@ function renderSubject() {
   $("#runStamp").textContent = m
     ? `카테고리 ${cats.length} · 모델 ${m.models.length} · n=${m.repeats} · 응답 ${cats.reduce((s, c) => s + c.V, 0)}건`
     : ""
-
-  const host = $("#brandPick")
-  if (!host) return
-  host.innerHTML = ""
-  if (ALL.length < 2) { host.hidden = true; return }
-  host.hidden = false
-
-  const list = [...ALL].sort((a, b) => (b.visibility.mentionRate ?? 0) - (a.visibility.mentionRate ?? 0))
-  host.append(el("span", { class: "plb" }, "브랜드 프로필 대상"))
-  host.append(el("select", { "aria-label": "브랜드 프로필 대상" },
-    list.map((b) => el("option", {
-      value: b.brand, selected: b.brand === BRAND.brand,
-    }, b.brand))))
-  host.append(el("span", { class: "hint" }, `추적 ${ALL.length}개 · 순위표에서 이름을 눌러도 바뀝니다`))
-  host.querySelector("select").addEventListener("change", (e) => setBrand(e.target.value))
 }
 
 function setBrand(name) {
@@ -1363,21 +1371,50 @@ function setBrand(name) {
   show(CURRENT)
 }
 
+/** 브랜드 헤더 아래 탭. 브랜드 스코프 화면에서만 나타난다. */
+function renderBrandTabs(active) {
+  const host = $("#brandTabs")
+  if (!host) return
+  host.innerHTML = ""
+  if (!active || !BRAND) { host.hidden = true; return }
+  host.hidden = false
+  host.append(el("div", { class: "bsel" },
+    el("select", { "aria-label": "브랜드 선택" },
+      [...ALL].sort((a, b) => a.brand.localeCompare(b.brand))
+        .map((b) => el("option", { value: b.brand, selected: b.brand === BRAND.brand }, b.brand)))))
+  host.append(el("div", { class: "btabs", role: "tablist" },
+    BRAND_TABS.map(([k, label]) => el("button", {
+      type: "button", role: "tab", "data-k": k,
+      "aria-selected": String(k === active),
+    }, label))))
+  host.querySelector("select").addEventListener("change", (e) => setBrand(e.target.value))
+  host.querySelector(".btabs").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-k]")
+    if (b) show(b.dataset.k)
+  })
+}
+
 let CURRENT = null
 const renderFor = (key) => (key.startsWith("cat:") ? () => viewCategory(key.slice(4)) : RENDER[key])
 
 function show(key) {
   if (!renderFor(key)) key = "home"
   CURRENT = key
+  const brandScoped = BRAND_KEYS.includes(key)
   const meta = VIEWS.find(([k]) => k === key)
-  if (meta) {
-    // 브랜드 스코프 화면은 제목이 "요약"이면 누구 이야기인지 화면에 안 남는다.
-    // 스크린샷을 떠서 공유하면 어느 브랜드인지 알 방법이 없었다.
-    const brandScoped = ["summary", "compete", "diagnose", "sources", "evidence"].includes(key)
-    $("#pageEyebrow").textContent = brandScoped ? `브랜드 · ${meta[1]}` : meta[2]
-    $("#pageTitle").textContent = brandScoped && BRAND ? BRAND.brand : meta[1]
+  if (brandScoped && BRAND) {
+    const per = perQuestion(BRAND)
+    const hit = per.filter((x) => x.mentions > 0).length
+    $("#pageEyebrow").textContent = "브랜드"
+    $("#pageTitle").textContent = BRAND.brand
+    $("#pageSub").textContent =
+      `${per.length}개 카테고리 중 ${hit}곳 등장 · 전체 언급률 ${dash(BRAND.visibility.mentionRate, "%")}`
+  } else if (meta) {
+    $("#pageEyebrow").textContent = meta[2]
+    $("#pageTitle").textContent = meta[1]
     $("#pageSub").textContent = meta[3]
   }
+  renderBrandTabs(brandScoped ? key : null)
   const app = $("#app")
   app.innerHTML = ""
   // 데이터가 먼저다. 설명은 화면 맨 아래에 접어 둔다.
@@ -1385,7 +1422,10 @@ function show(key) {
   const help = viewHelp(key)
   if (help) app.append(help)
   for (const btn of $("#nav").querySelectorAll("button")) {
-    btn.setAttribute("aria-selected", String(btn.dataset.k === key))
+    // 브랜드 화면에 있을 때는 사이드바의 "브랜드 찾기"를 현재 위치로 표시한다.
+    const on = btn.dataset.k === key || (brandScoped && btn.dataset.k === "brands")
+    btn.setAttribute("aria-current", on ? "page" : "false")
+    btn.setAttribute("aria-selected", String(on))
   }
   if (location.hash.slice(1) !== key) history.pushState(null, "", `#${key}`)
   window.scrollTo({ top: 0 })

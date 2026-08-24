@@ -290,6 +290,20 @@ th[data-sort]:hover{color:var(--tx)}
 
 nav button .lead1 .lg{opacity:.8}
 
+/* ── 브랜드 헤더 탭 ────────────────────────────────────────── */
+/* 브랜드 화면 5개는 사이드바의 최상위 목적지가 아니라 고른 브랜드의 하위 뷰다. */
+#brandTabs{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);margin:-14px 0 26px;padding-bottom:0}
+.bsel select{background:var(--panel);color:var(--tx);border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:5px 9px;font:inherit;font-size:12.5px;cursor:pointer}
+.bsel select:hover{border-color:var(--line-strong)}
+.btabs{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:-1px}
+.btabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--dim);
+  cursor:pointer;font:inherit;font-size:13px;padding:9px 12px;transition:color .12s,border-color .12s}
+.btabs button:hover{color:var(--tx)}
+.btabs button[aria-selected=true]{color:var(--tx);font-weight:650;border-bottom-color:var(--ink)}
+@media (max-width:900px){#brandTabs{margin-top:-4px}}
+
 /* ── 카테고리 카드 ─────────────────────────────────────────── */
 .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:10px}
 .ccard{display:flex;flex-direction:column;gap:11px;text-align:left;font:inherit;cursor:pointer;
@@ -495,7 +509,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
       <div class="lb">데이터셋</div>
       <div class="nm" id="dsName">—</div>
       <div class="rn" id="runStamp"></div>
-      <div class="pick" id="brandPick" hidden></div>
     </div>
 
     <nav id="nav"></nav>
@@ -524,6 +537,8 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
         <div class="stamp" id="stamp"></div>
       </header>
 
+      <div id="brandTabs" hidden></div>
+
       <div id="app"><p class="empty">데이터를 불러오는 중…</p></div>
 
       <footer>
@@ -537,6 +552,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
 </div>
 
 <script src="./theme.js?v=1"></script>
-<script type="module" src="./app.js?v=82"></script>
+<script type="module" src="./app.js?v=92"></script>
 </body>
 </html>

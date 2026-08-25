@@ -300,7 +300,11 @@ function sortableTable(id, cols, rows, { highlight, initial, rowAttrs } = {}) {
       if (an && bn) return 0
       if (an) return 1
       if (bn) return -1
-      const r = col?.num ? av - bv : String(av).localeCompare(String(bv), "ko")
+      // 🔒 num 플래그가 없다고 문자열로 비교하면 1, 10, 11, 2, 3 순으로 줄선다.
+      // 실제로 initial 이 가리키는 열 정의를 지웠을 때 이 경로로 빠져 표가 뒤죽박죽이 됐다.
+      // 열 설정이 아니라 값의 타입으로 판단한다.
+      const numeric = col?.num ?? (typeof av === "number" && typeof bv === "number")
+      const r = numeric ? av - bv : String(av).localeCompare(String(bv), "ko")
       return st.dir === "asc" ? r : -r
     })
   }
@@ -1201,10 +1205,10 @@ function viewCategory(id) {
     (() => {
       const tracked = (n) => ALL.some((b) => b.brand === n)
       const t = sortableTable(`cat-${c.id}`, [
-        // 행 번호는 값이 아니라 현재 보이는 순서다. 값으로 얼려 두면 다른 열로 정렬했을 때
-        // 1, 2, 6, 4, 7 처럼 튀어서 표가 고장난 것처럼 보인다.
-        { key: "_n", label: "#", cls: "n rownum", sortable: false, render: (e, i) => i + 1 },
-        { key: "name", label: "브랜드", render: (e) => named(e.name, "md",
+        // 🔒 행 번호 칸은 없앴다. 정렬 가능한 표에서 순번은 위치가 이미 말하는 걸 되풀이할
+        // 뿐이고, 순위처럼 읽히는 탓에 다른 열로 정렬하면 지표와 어긋나 보인다.
+        // 무엇으로 줄세웠는지는 헤더의 정렬 표시가 말한다.
+        { key: "name", label: "브랜드", render: (e) => named(e.name, "sm",
             e.rate >= 60 && e.firstRate === 0
               ? el("span", { class: "tag" }, "언급률 높음, 1순위 아님") : null) },
         // 막대를 별도 칸으로 두면 0% 인 행이 대부분인 카테고리에서 한 칸이 통째로 빈다.
@@ -1216,19 +1220,23 @@ function viewCategory(id) {
         { key: "rate", label: "언급률", cls: "n", num: true, render: (e) => dash(e.rate, "%") },
         { key: "medianRank", label: "중위 순위", cls: "n", num: true, bestLow: true,
           render: (e) => (e.medianRank === null ? "—" : `${e.medianRank}위`) },
-        { key: "_m", label: models.map((m) => m.name).join(" · "), sortable: false,
-          render: (e) => el("span", { class: "strip", role: "img",
-            "aria-label": models.map((m) => `${m.name} ${e.byModel[m.id].rate}%`).join(", ") },
-            models.map((m) => {
-              const bm = e.byModel[m.id]
-              return el("i", {
-                class: bm.n ? null : "miss",
-                style: bm.n ? `background:rgba(var(--ink-rgb),${inkA(bm.rate).toFixed(3)})` : "",
-                title: `${m.name} · ${bm.n}/${bm.V}${bm.firsts ? ` · 1순위 ${bm.firsts}회` : ""}`,
-              })
-            })) },
-      ], c.entities.map((e, i) => ({ ...e, _rank: i + 1 })), {
-        initial: { key: "_rank", dir: "asc" },
+        // 모델은 한 칸에 몰지 않고 각자 칸을 준다. 헤더 하나에 이름 셋을 이어 붙이면
+        // 아래 표식 셋과 가로 위치가 맞지 않아 어느 게 어느 모델인지 읽을 수 없다.
+        ...models.map((m) => ({
+          key: `_m_${m.id}`, label: m.name, cls: "mcell", sortable: false,
+          render: (e) => {
+            const bm = e.byModel[m.id]
+            return el("i", {
+              class: `mmark${bm.n ? "" : " miss"}`,
+              style: bm.n ? `background:rgba(var(--ink-rgb),${inkA(bm.rate).toFixed(3)})` : "",
+              role: "img",
+              "aria-label": `${m.name} ${bm.rate}%`,
+              title: `${m.name} · ${bm.n}/${bm.V}${bm.firsts ? ` · 1순위 ${bm.firsts}회` : ""}`,
+            })
+          },
+        })),
+      // entities 는 이미 1순위 → 등장 → 중위 순으로 정렬돼 들어온다. 초기 정렬을 다시 걸지 않는다.
+      ], c.entities, {
         rowAttrs: (e) => (tracked(e.name)
           ? { "data-brand": e.name, title: `${e.name} 프로필 보기` }
           : { title: "추적 목록에 없는 브랜드입니다" }),

@@ -213,14 +213,27 @@ tr.me td:first-child{font-weight:700}
 tr.me td:first-child::before{content:"▸ ";color:var(--tx);font-family:var(--mono)}
 .scroll table{min-width:560px}.scroll th,.scroll td{white-space:nowrap}
 .scroll th:first-child,.scroll td:first-child{white-space:normal;min-width:150px}
-/* 행 번호는 순서 표시일 뿐이라 값처럼 보이지 않게 눌러 둔다 */
-td.rownum{color:var(--dim2);font-family:var(--mono);width:38px}
 /* 게이지를 숫자 뒤에 깔아 칸 하나를 아낀다 */
-.gaugecell{width:96px}
+.gaugecell{width:88px}
 .gaugenum{position:relative;display:inline-flex;align-items:center;justify-content:flex-end;
-  width:100%;height:22px;padding:0 7px;border-radius:4px;background:var(--panel2);overflow:hidden}
-.gaugenum i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);opacity:.22;border-radius:4px}
+  width:100%;height:19px;padding:0 6px;border-radius:3px;background:var(--panel2);overflow:hidden}
+.gaugenum i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);opacity:.22;border-radius:3px}
 .gaugenum span{position:relative;font-variant-numeric:tabular-nums}
+
+/* 모델마다 자기 칸. 표식이 헤더 이름 바로 아래에 온다. */
+th.mcell,td.mcell{width:62px;text-align:center}
+.mmark{display:inline-block;width:20px;height:11px;border-radius:2px;background:var(--ink);
+  vertical-align:middle}
+.mmark.miss{background:transparent;
+  background-image:repeating-linear-gradient(135deg,transparent 0 4px,color-mix(in srgb,var(--ink) 22%,transparent) 4px 5px);
+  box-shadow:inset 0 0 0 1px var(--line-strong)}
+
+/* 순위표는 데스크톱에서 한눈에 들어와야 한다. 로고 + 이름 한 줄에 56px 는 과하다. */
+.scroll td{padding:5px 12px}
+.scroll th{padding:7px 12px}
+.scroll td .nmrow{gap:7px}
+.scroll td .nmrow .t{font-size:12.5px}
+.scroll td .tag{font-size:9.5px;padding:0 4px;margin-left:5px}
 .bar{height:6px;border-radius:3px;background:var(--ink);display:block;min-width:2px;opacity:.62}
 tr.me .bar{opacity:1}
 tr[data-brand],tr[data-go]{cursor:pointer}
@@ -607,6 +620,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
 </div>
 
 <script src="./theme.js?v=1"></script>
-<script type="module" src="./app.js?v=99"></script>
+<script type="module" src="./app.js?v=101"></script>
 </body>
 </html>

@@ -316,8 +316,8 @@ function sortableTable(id, cols, rows, { highlight, initial, rowAttrs } = {}) {
     }, c.label, el("span", { class: "sort-ind" }, on ? (st.dir === "asc" ? " ▲" : " ▼") : ""))
   }))
 
-  const body = el("tbody", {}, sorted.map((r) => el("tr", { class: highlight?.(r) ? "me" : null, ...(rowAttrs?.(r) ?? {}) },
-    cols.map((c) => el("td", { class: c.cls }, c.render ? c.render(r) : (r[c.key] ?? "-"))))))
+  const body = el("tbody", {}, sorted.map((r, i) => el("tr", { class: highlight?.(r) ? "me" : null, ...(rowAttrs?.(r) ?? {}) },
+    cols.map((c) => el("td", { class: c.cls }, c.render ? c.render(r, i) : (r[c.key] ?? "-"))))))
 
   const table = el("table", {}, el("thead", {}, head), body)
   table.addEventListener("click", (e) => {
@@ -1201,13 +1201,18 @@ function viewCategory(id) {
     (() => {
       const tracked = (n) => ALL.some((b) => b.brand === n)
       const t = sortableTable(`cat-${c.id}`, [
-        { key: "_rank", label: "#", cls: "n", num: true, bestLow: true },
+        // 행 번호는 값이 아니라 현재 보이는 순서다. 값으로 얼려 두면 다른 열로 정렬했을 때
+        // 1, 2, 6, 4, 7 처럼 튀어서 표가 고장난 것처럼 보인다.
+        { key: "_n", label: "#", cls: "n rownum", sortable: false, render: (e, i) => i + 1 },
         { key: "name", label: "브랜드", render: (e) => named(e.name, "md",
             e.rate >= 60 && e.firstRate === 0
               ? el("span", { class: "tag" }, "언급률 높음, 1순위 아님") : null) },
-        { key: "firstRate", label: "1순위", cls: "n", num: true, render: (e) => dash(e.firstRate, "%") },
-        { key: "_bar", label: "", sortable: false, render: (e) => el("span", {
-            class: "bar", style: `width:${Math.max(2, e.firstRate ?? 0)}%` }) },
+        // 막대를 별도 칸으로 두면 0% 인 행이 대부분인 카테고리에서 한 칸이 통째로 빈다.
+        // 숫자 뒤에 깔면 칸도 아끼고 0% 도 "비어 있음"으로 정직하게 읽힌다.
+        { key: "firstRate", label: "1순위", cls: "n gaugecell", num: true,
+          render: (e) => el("span", { class: "gaugenum" },
+            el("i", { style: `width:${e.firstRate ?? 0}%` }),
+            el("span", {}, dash(e.firstRate, "%"))) },
         { key: "rate", label: "언급률", cls: "n", num: true, render: (e) => dash(e.rate, "%") },
         { key: "medianRank", label: "중위 순위", cls: "n", num: true, bestLow: true,
           render: (e) => (e.medianRank === null ? "—" : `${e.medianRank}위`) },

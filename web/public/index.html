@@ -213,6 +213,14 @@ tr.me td:first-child{font-weight:700}
 tr.me td:first-child::before{content:"▸ ";color:var(--tx);font-family:var(--mono)}
 .scroll table{min-width:560px}.scroll th,.scroll td{white-space:nowrap}
 .scroll th:first-child,.scroll td:first-child{white-space:normal;min-width:150px}
+/* 행 번호는 순서 표시일 뿐이라 값처럼 보이지 않게 눌러 둔다 */
+td.rownum{color:var(--dim2);font-family:var(--mono);width:38px}
+/* 게이지를 숫자 뒤에 깔아 칸 하나를 아낀다 */
+.gaugecell{width:96px}
+.gaugenum{position:relative;display:inline-flex;align-items:center;justify-content:flex-end;
+  width:100%;height:22px;padding:0 7px;border-radius:4px;background:var(--panel2);overflow:hidden}
+.gaugenum i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);opacity:.22;border-radius:4px}
+.gaugenum span{position:relative;font-variant-numeric:tabular-nums}
 .bar{height:6px;border-radius:3px;background:var(--ink);display:block;min-width:2px;opacity:.62}
 tr.me .bar{opacity:1}
 tr[data-brand],tr[data-go]{cursor:pointer}
@@ -599,6 +607,6 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
 </div>
 
 <script src="./theme.js?v=1"></script>
-<script type="module" src="./app.js?v=98"></script>
+<script type="module" src="./app.js?v=99"></script>
 </body>
 </html>

@@ -55,3 +55,21 @@ node --test test/*.test.mjs
 `npm run serve` 는 개발용입니다. 인증이 없고, 같은 머신의 브라우저가 접근할 수
 있다는 전제로 만들어졌습니다. cross-origin POST 는 막아 두었지만
 공개 네트워크에 노출하지 마세요.
+
+## 배포
+
+**GitHub 에 push 해도 배포되지 않습니다.** Vercel 프로젝트(`ai-visibility-monitor`)는
+저장소에 연결돼 있지 않고(`link: null`), 지금까지의 배포는 전부 CLI 업로드였습니다.
+push 만 하고 라이브가 그대로라 헛기다린 적이 있어 적어 둡니다.
+
+```bash
+cd web/public && vercel --prod --yes
+```
+
+`web/public/` 이 배포 루트입니다(`.vercel/`·`.env.local` 은 gitignore 대상).
+주소가 `ai-visibility-monitor-psi` 로 접미사가 붙은 이유는 `ai-visibility-monitor`
+라는 이름을 다른 계정이 이미 쓰고 있기 때문입니다 — 그쪽은 남의 서비스입니다.
+
+주간 측정 워크플로(`.github/workflows/probe.yml`)는 현재 동작하지 않습니다.
+`provider: "command"` 설정이 로컬 CLI 래퍼(`cdx`·`gemq`)를 호출하는데 러너에는 없어
+`spawn cdx ENOENT` 로 죽습니다. 대시보드는 2026-08-24 단일 회차 데이터로 고정돼 있습니다.

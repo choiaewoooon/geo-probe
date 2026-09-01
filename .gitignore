@@ -23,3 +23,6 @@ data/*
 # 쓰므로(설정의 historyFile) 여기 섞이지 않는다. CI 가 회차를 쌓으려면 필요하다.
 !data/history-korea-apps.jsonl
 .claude/
+
+# Vercel CLI 링크 정보 (배포는 CLI로 한다 — GitHub 연동 아님)
+.vercel/

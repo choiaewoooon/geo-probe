@@ -550,6 +550,17 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
   .mx{min-width:420px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* 순위 가중 곡선 토글 */
+.curvebox{margin:14px 0 0;padding:11px 12px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel2)}
+.curvebox .ck{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2);margin-bottom:7px}
+.curve{display:flex;gap:3px}
+.curve button{flex:1;padding:5px 2px;font:inherit;font-size:11px;line-height:1.2;border:1px solid var(--line);border-radius:var(--r-sm);
+  background:transparent;color:var(--dim);cursor:pointer}
+.curve button:hover{border-color:var(--dim2);color:var(--tx)}
+.curve button[aria-pressed="true"]{background:rgba(var(--ink-rgb),.9);border-color:transparent;color:var(--on-ink);font-weight:600}
+.curve button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.curvebox .cf{margin-top:7px;font-size:10.5px;line-height:1.5;color:var(--dim2);font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -577,6 +588,13 @@ footer{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);margin-
     </button>
 
     <nav id="nav"></nav>
+
+    <!-- 순위 가중 곡선. 지표의 가정을 화면 안에서 직접 만져보게 한다. -->
+    <div class="curvebox">
+      <div class="ck">순위 가중</div>
+      <div class="curve" id="curve" role="group" aria-label="순위 가중 곡선"></div>
+      <div class="cf" id="curveNote"></div>
+    </div>
 
     <div class="side-foot">
       <a href="https://github.com/choiaewoooon/geo-probe" target="_blank" rel="noopener">GITHUB ↗</a>

@@ -1,9 +1,27 @@
 import { keys as KEYS, store as STORE, runMeasurement, testKey, defaultConfig } from "./engine.js"
 import { inkA, squarify, perQuestion } from "./lib/viz.mjs"
+import { RANK_CURVES, CURVE_IDS, DEFAULT_CURVE } from "./lib/metrics.mjs"
 
 // AI 가시성 모니터 — summary.json 만 읽는 정적 대시보드. 빌드 스텝·외부 의존성 없음.
 // 표기 원칙(3에이전트 토론 확정): 소수점 금지 · k/N 병기 · 미언급은 순위 통계 제외 ·
-// "시장 점유율" 금지 · 측정 불가는 0%가 아니라 '측정 불가' · 단일 종합 점수 안 만듦.
+// "시장 점유율" 금지 · 측정 불가는 0%가 아니라 '측정 불가' ·
+// 성질이 다른 지표를 섞은 종합 점수는 안 만듦(순위 한 축만 쓰는 가중 점수는 예외).
+
+// 순위 가중 곡선 — 화면 전체 공통 상태. 정본 정의는 lib/metrics.mjs.
+// 곡선을 고정하지 않고 토글로 둔 이유: 실측에서 선형·역순위는 Kakao T > Subway Korea 인데
+// 로그 곡선은 뒤집혔다. 상위권은 어느 곡선에서도 안 바뀌고 중위권만 흔들린다는 사실
+// 자체가 이 지표의 한계를 정직하게 드러낸다. 숨기지 말고 만져보게 한다.
+const CURVE_KEY = "geoprobe-curve"
+let CURVE = DEFAULT_CURVE
+try {
+  const saved = localStorage.getItem(CURVE_KEY)
+  if (saved && CURVE_IDS.includes(saved)) CURVE = saved
+} catch (e) { /* 프라이빗 모드 등 — 기본 곡선으로 간다 */ }
+
+/** 현재 곡선의 점수. 옛 summary.json(점수 없음)에서도 죽지 않게 한 단계 폴백을 둔다. */
+const curveScore = (x) => x?.scores?.[CURVE] ?? x?.score ?? null
+/** 정렬·게이지가 곡선을 따라가도록 score 를 현재 곡선 값으로 덮어쓴 사본. */
+const withCurve = (list) => list.map((e) => ({ ...e, score: curveScore(e) }))
 
 const $ = (s, r = document) => r.querySelector(s)
 const el = (t, a = {}, ...kids) => {
@@ -189,15 +207,18 @@ function densityCell(c) {
         el("span", { class: "r" }, "미언급"),
         el("span", { class: "f" }, `0/${c.V}`)))
   }
-  const a = inkA(c.mentionRate)
+  // 🔒 농도는 언급률이 아니라 순위 가중 점수다. 언급률로 칠했을 때 항상 1위인 앱과
+  // 항상 4~5위인 앱이 같은 검정으로 찍혔다(실측 8개 질문 중 6개, 18곳).
+  const sc = curveScore(c) ?? c.mentionRate
+  const a = inkA(sc)
   return el("div", {
     class: `cellwrap ${onInk(a) ? "on-ink" : "on-bg"}`,
-    title: `언급 ${c.mentionLabel} · Top3 ${c.top3Label} · 중위 ${c.medianRank === null ? "산출 불가" : c.medianRank + "위"} · 일관성 ${c.reproducibility}%`,
+    title: `점수 ${sc} (${RANK_CURVES[CURVE].label} ${RANK_CURVES[CURVE].formula}) · 언급 ${c.mentionLabel} · Top3 ${c.top3Label} · 중위 ${c.medianRank === null ? "산출 불가" : c.medianRank + "위"} · 일관성 ${c.reproducibility}%`,
   },
     el("div", { class: "fill", style: `opacity:${a.toFixed(3)}` }),
     el("div", { class: "txt" },
-      el("span", { class: "r" }, c.medianRank === null ? "언급" : `${c.medianRank}위`),
-      el("span", { class: "f" }, `${c.mentions}/${c.V}`)))
+      el("span", { class: "r" }, String(sc)),
+      el("span", { class: "f" }, `${c.medianRank === null ? "순위 미상" : c.medianRank + "위"} · ${c.mentions}/${c.V}`)))
 }
 
 function densityMatrix(b) {
@@ -242,12 +263,13 @@ function densityMatrix(b) {
       el("thead", {}, head),
       el("tbody", {}, rows, foot)),
     el("div", { class: "ramp" },
-      el("span", {}, "언급률"),
+      el("span", {}, "순위 가중 점수"),
       el("span", { class: "steps" },
-        [0, 20, 40, 60, 80, 100].map((r) => el("i", { style: `opacity:${inkA(r).toFixed(3)}`, title: `${r}%` }))),
-      el("span", {}, "0 → 100%"),
+        [0, 20, 40, 60, 80, 100].map((r) => el("i", { style: `opacity:${inkA(r).toFixed(3)}`, title: `${r}점` }))),
+      el("span", {}, "0 → 100"),
       el("span", {}, el("i", { class: "sw" }), "미언급 (0건)"),
-      el("span", {}, "칸 안 숫자 = 언급 시 중위 순위 · 아래 = 언급/유효")),
+      el("span", {}, `칸 안 숫자 = 점수 · 아래 = 중위 순위 · 언급/유효`),
+      el("span", {}, `100 = 유효 응답 전부에서 1위 · 현재 곡선 ${RANK_CURVES[CURVE].label}(${RANK_CURVES[CURVE].formula})`)),
   )
 }
 
@@ -1093,7 +1115,9 @@ function leaderCell(w) {
 /** 카테고리 카드 한 장 = 그 판의 1등과 경쟁 밀도. */
 function catCard(c) {
   const L = c.leader
-  const top = c.entities.slice(0, 5)
+  // 막대도 점수 기준이다. 1순위 비율로 그리면 8장 중 여러 장이 "첫 칸만 있고 나머지는 바닥"
+  // 이라 카드가 전부 같은 모양으로 보였다.
+  const top = withCurve(c.entities).sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).slice(0, 5)
   // 카드마다 정규화하면 8장을 나란히 놓은 의미가 없다. 척도는 전 카드 공통이어야 한다.
   const maxF = 100
   return el("button", { class: "ccard", type: "button", "data-go": `cat:${c.id}` },
@@ -1108,10 +1132,10 @@ function catCard(c) {
         el("span", { class: "pc" }, L ? modelVotes(L, c) : ""))),
     el("div", { class: "cfaces" }, c.entities.slice(1, 6).map((e) => logo(e.name, "sm"))),
     el("div", { class: "cbars" }, top.map((e) => el("span", {
-      class: "cb", title: `${e.name} · 1순위 ${e.firstRate}% · 언급 ${e.rate}%`,
+      class: "cb", title: `${e.name} · 점수 ${e.score} · 1순위 ${e.firstRate}% · 언급 ${e.rate}%`,
     },
-      el("i", { style: `height:${Math.max(6, ((e.firstRate ?? 0) / maxF) * 100)}%;` +
-        `opacity:${inkA(e.firstRate ?? 0).toFixed(3)}` })))),
+      el("i", { style: `height:${Math.max(6, ((e.score ?? 0) / maxF) * 100)}%;` +
+        `opacity:${inkA(e.score ?? 0).toFixed(3)}` })))),
     el("div", { class: "cfoot" },
       `경쟁 ${c.contenders}곳`,
       el("span", { class: c.leaderAgreed ? "ok" : "split" },
@@ -1170,12 +1194,23 @@ function viewCategory(id) {
   // 🔒 면적을 등장 횟수로 두면 그림이 헤드라인을 반박한다.
   // 실측: 결제 카테고리의 가장 큰 타일이 1순위 0% 인 KakaoPay 였다. 사람 눈은 면적을
   // 먼저 읽으므로 "이 판의 주인은 KakaoPay" 로 읽히는데, 바로 위 카드는 WOWPASS 라고
-  // 적혀 있었다. 이 화면 제목이 마인드쉐어이고 마인드쉐어는 맨 앞에 불리는 것이니,
-  // 면적도 1순위 획득 횟수여야 한다. 1순위가 0인 이름은 이 그림에서 빠지는 게 맞다.
+  // 적혀 있었다. 그래서 면적을 1순위 획득 횟수로 바꿨었다.
+  //
+  // 그 처방의 부작용이 컸다: 1순위가 0인 이름이 그림에서 통째로 사라졌다. q5 한 곳에서만
+  // 9곳이 증발했고 그중엔 2·3위 세력인 NAMANE(48점)·KakaoPay(40점)가 있었다. "누가 이 판을
+  // 나눠 갖고 있나"를 그리는 그림이 1등만 남기고 나머지를 지운 셈이다.
+  //
+  // 순위 가중 점수는 두 요구를 동시에 만족한다 — 1순위를 가장 무겁게 치면서도 2~5위를
+  // 0 으로 죽이지 않는다. 이번 회차 8개 카테고리에서는 점수 최대 = 1순위 1등으로 전부
+  // 일치했지만, 그건 이 데이터의 성질이지 구조적 보장이 아니다(반례는 rankscore.test.mjs).
+  // 그래서 일치를 가정하지 않고, 갈리면 갈렸다고 그림 옆에 적는다.
+  const scored = withCurve(c.entities).filter((e) => (e.score ?? 0) > 0)
+  const scoreTop = scored[0] ?? null
+  const splitTop = scoreTop && L && scoreTop.name !== L.name ? scoreTop : null
   const contenders = c.entities.filter((e) => e.firsts > 0)
-  const tiles = contenders.slice(0, 14).map((e) => ({
-    name: e.name, value: e.firsts, firstRate: e.firstRate, rate: e.rate,
-    title: `${e.name} · 1순위 ${e.firsts}회 (${e.firstRate}%) · 언급 ${e.rate}% · 중위 ${e.medianRank ?? "—"}위`,
+  const tiles = scored.slice(0, 14).map((e) => ({
+    name: e.name, value: e.score, firstRate: e.firstRate, rate: e.rate,
+    title: `${e.name} · 점수 ${e.score} · 1순위 ${e.firsts}회 (${e.firstRate}%) · 언급 ${e.rate}% · 중위 ${e.medianRank ?? "—"}위`,
   }))
 
   return el("div", {},
@@ -1196,10 +1231,16 @@ function viewCategory(id) {
     ),
 
     el("h2", {}, "마인드쉐어 분포",
-      el("small", {}, `면적 = 1순위 획득 횟수 · 1순위를 한 번이라도 가져간 ${contenders.length}곳`)),
+      el("small", {}, `면적 = 순위 가중 점수 · 점수를 얻은 ${scored.length}곳 (그중 1순위 경험 ${contenders.length}곳)`)),
+    // 가장 큰 타일과 헤드라인의 1등이 다르면 그건 결함이 아니라 사실이다. 숨기지 않는다.
+    splitTop
+      ? el("p", { class: "note split" },
+          `가장 큰 타일은 ${splitTop.name}(${splitTop.score}점)이지만 맨 앞에 가장 자주 불린 곳은 ${L.name}입니다. ` +
+          `${splitTop.name}는 1순위가 ${splitTop.firstRate}%인데도 꾸준히 상위에 붙어 누적 노출이 더 무겁습니다.`)
+      : null,
     tiles.length
-      ? treemap(tiles, { label: (t) => `1순위 ${t.value}회 · 언급 ${t.rate}%` })
-      : el("p", { class: "empty" }, "1순위를 가져간 이름이 없습니다."),
+      ? treemap(tiles, { label: (t) => `${t.value}점 · 언급 ${t.rate}%` })
+      : el("p", { class: "empty" }, "점수를 얻은 이름이 없습니다."),
 
     el("h2", {}, "순위표", el("small", {}, "열 제목을 누르면 정렬됩니다")),
     (() => {
@@ -1213,6 +1254,12 @@ function viewCategory(id) {
               ? el("span", { class: "tag" }, "언급률 높음, 1순위 아님") : null) },
         // 막대를 별도 칸으로 두면 0% 인 행이 대부분인 카테고리에서 한 칸이 통째로 빈다.
         // 숫자 뒤에 깔면 칸도 아끼고 0% 도 "비어 있음"으로 정직하게 읽힌다.
+        // 점수를 1순위 앞에 둔다. 1순위만 보면 "1순위 0%" 행이 전부 동점으로 눌려
+        // 2위 붙박이와 5위 붙박이가 구분되지 않는다(KakaoMap 80점 vs Subway Korea 35점).
+        { key: "score", label: "점수", cls: "n gaugecell", num: true,
+          render: (e) => el("span", { class: "gaugenum" },
+            el("i", { style: `width:${e.score ?? 0}%` }),
+            el("span", {}, dash(e.score))) },
         { key: "firstRate", label: "1순위", cls: "n gaugecell", num: true,
           render: (e) => el("span", { class: "gaugenum" },
             el("i", { style: `width:${e.firstRate ?? 0}%` }),
@@ -1235,8 +1282,10 @@ function viewCategory(id) {
             })
           },
         })),
-      // entities 는 이미 1순위 → 등장 → 중위 순으로 정렬돼 들어온다. 초기 정렬을 다시 걸지 않는다.
-      ], c.entities, {
+      // entities 는 1순위 → 등장 → 중위 순으로 들어오지만, 표의 기본 줄세우기는 점수로 한다.
+      // 1순위 순서는 동점이 너무 많아 "그 아래 서열"을 못 보여준다(위 점수 열 주석 참조).
+      ], withCurve(c.entities), {
+        initial: { key: "score", dir: "desc" },
         rowAttrs: (e) => (tracked(e.name)
           ? { "data-brand": e.name, title: `${e.name} 프로필 보기` }
           : { title: "추적 목록에 없는 브랜드입니다" }),
@@ -1557,6 +1606,32 @@ async function boot() {
         logo(cat.leader.name, "sm")) : null))
   }
   nav.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.k) })
+
+  // 곡선 토글. 곡선을 바꾸면 화면 전체(히트맵 농도 · 트리맵 면적 · 표 정렬)가 같이 움직인다.
+  const cbox = $("#curve")
+  if (cbox) {
+    for (const id of CURVE_IDS) {
+      const c = RANK_CURVES[id]
+      cbox.append(el("button", {
+        type: "button", "data-curve": id, title: `${c.label} · ${c.formula}`,
+        "aria-pressed": String(id === CURVE),
+      }, c.label))
+    }
+    const note = $("#curveNote")
+    const syncCurve = () => {
+      for (const b of cbox.querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.curve === CURVE))
+      if (note) note.textContent = `${RANK_CURVES[CURVE].formula} · 100 = 항상 1위`
+    }
+    cbox.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-curve]")
+      if (!b || b.dataset.curve === CURVE) return
+      CURVE = b.dataset.curve
+      try { localStorage.setItem(CURVE_KEY, CURVE) } catch (err) { /* 저장 못 해도 이번 세션은 동작한다 */ }
+      syncCurve()
+      show(CURRENT)
+    })
+    syncCurve()
+  }
 
   document.addEventListener("keydown", (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); openPalette() }

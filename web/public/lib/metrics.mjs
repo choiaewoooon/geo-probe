@@ -1,6 +1,12 @@
 // 지표 산출 — 3에이전트 토론(2026-07-26) 확정 정의.
-// 단일 종합 "가시성 점수"는 의도적으로 만들지 않는다: 가중치에 검증된 근거가 없어
-// 정밀해 보이는 만큼 오해를 키운다. 헤드라인이 필요하면 statusLabels()의 상태 라벨을 쓴다.
+//
+// 🔒 성질이 다른 지표(언급률 · 재현성 · 인용 · 점유율)를 임의 가중치로 섞은 단일 종합
+// "가시성 점수"는 여전히 만들지 않는다. 가중치에 검증된 근거가 없어 정밀해 보이는 만큼
+// 오해를 키운다. 헤드라인이 필요하면 statusLabels()의 상태 라벨을 쓴다.
+//
+// 단 순위 하나만 쓰는 단일 축 점수는 예외다(2026-09-01 추가, RANK_CURVES 참조).
+// 축이 하나뿐이라 "무엇을 섞었나"라는 질문 자체가 생기지 않고, 곡선을 바꿔도 결과가
+// 어떻게 흔들리는지 화면에서 직접 확인할 수 있게 3종을 함께 굽는다.
 //
 // 행(row) 스키마 — data/history.jsonl 한 줄:
 //   { run_id, ts, brand, model, question, repeat, mentioned, rank, listed, entries[], citations[], web_search }
@@ -19,6 +25,65 @@ export const pct = (num, den) => (den ? Math.round((num / den) * 100) : null)
 
 // k/N 병기 문자열. 표본 크기를 절대 숨기지 않는다.
 export const frac = (num, den) => (den ? `${num}/${den} · ${pct(num, den)}%` : "-")
+
+// ---------- 순위 가중 점수 ----------
+//
+// 왜 만들었나: 히트맵 농도가 언급률(나왔냐/안 나왔냐) 한 축이라, 15/15 로 항상 1위인
+// 앱과 항상 4~5위인 앱의 칸이 같은 농도로 찍혔다. 실측(korea-apps, 2026-08-24 회차)에서
+// 8개 질문 중 6개에 노출률 100% 인 앱이 2곳 이상 있었고 총 18곳이 같은 색이었다.
+// q1 이 극단이다 — Naver Map(15/15 전부 1위) · KakaoMap(1위 0회) · Subway Korea(4~5위)가
+// 전부 새까만 칸이었다. 카테고리에서 가장 중요한 사실이 화면에서 지워져 있었다.
+//
+// 🔒 여기에 재현성·인용을 곱하지 않는다. 그 순간 파일 상단이 금지한 그 종합 점수가 된다.
+// 재현성은 색이 아니라 별도 표식으로 보여준다.
+export const TOP_N = 5
+
+// 순위 → 가중치. 1위를 10 으로 고정해 세 곡선의 눈금을 맞춘다.
+export const RANK_CURVES = {
+  // 기본값. 방어 비용이 가장 싸다 — "1위 10점, 2위 8점"은 한 문장으로 끝난다.
+  linear: { id: "linear", label: "선형", formula: "10 · 8 · 6 · 4 · 2", weights: [10, 8, 6, 4, 2] },
+  // 검색·추천에서 쓰는 역순위(MRR). 1위 우대가 가장 강하다.
+  mrr: { id: "mrr", label: "역순위", formula: "10 ÷ 순위", weights: [1, 2, 3, 4, 5].map((r) => 10 / r) },
+  // 검색 랭킹 평가의 표준 감쇠(DCG). 선형과 역순위의 중간.
+  ndcg: { id: "ndcg", label: "로그", formula: "10 ÷ log₂(순위+1)", weights: [1, 2, 3, 4, 5].map((r) => 10 / Math.log2(r + 1)) },
+}
+export const CURVE_IDS = Object.keys(RANK_CURVES)
+export const DEFAULT_CURVE = "linear"
+
+// 언급은 됐는데 순위를 못 붙인 응답(목록 형식이 아니어서 파싱 실패). 0(미언급)과는
+// 다른 사실이므로 0 으로 죽이지 않되, 최하위인 5위(선형 2점)보다는 낮게 둔다.
+export const UNRANKED_WEIGHT = 1
+
+export function rankWeight(rank, curveId = DEFAULT_CURVE) {
+  const w = (RANK_CURVES[curveId] ?? RANK_CURVES[DEFAULT_CURVE]).weights
+  if (rank === null || rank === undefined) return UNRANKED_WEIGHT
+  if (!Number.isFinite(rank) || rank < 1) return 0
+  // 수집이 TOP_N 까지라 6위 이하는 "없다"가 아니라 "측정 범위 밖"이다. 화면 각주로 밝힌다.
+  return rank <= w.length ? w[rank - 1] : 0
+}
+
+/**
+ * 0~100 정규화 점수. 100 = 유효 응답 전부에서 1위.
+ * ranks 는 등장한 응답만 담는다(미언급은 항목 자체가 없다). 순위 미상은 null 로 넣는다.
+ * V 는 그 칸의 유효 응답 수 — 미언급이 분모에 그대로 남아야 0점으로 눌린다.
+ */
+export function rankScore(ranks, V, curveId = DEFAULT_CURVE) {
+  if (!V) return null
+  const max = rankWeight(1, curveId)
+  const got = ranks.reduce((s, r) => s + rankWeight(r, curveId), 0)
+  return Math.round((got / (V * max)) * 100)
+}
+
+/** 곡선 3종을 미리 굽는다. 화면의 곡선 토글이 재계산 없이 필드만 바꾸도록. */
+export function rankScores(ranks, V) {
+  return Object.fromEntries(CURVE_IDS.map((c) => [c, rankScore(ranks, V, c)]))
+}
+
+/** 등장 n 건 중 순위가 붙은 게 ranks 뿐일 때, 나머지를 순위 미상으로 채운 배열. */
+export function padUnranked(ranks, appearances) {
+  const miss = Math.max(0, appearances - ranks.length)
+  return [...ranks, ...Array(miss).fill(null)]
+}
 
 /** 유효 응답 = 파싱 대상이 된 응답(빈 응답 제외). rows는 이미 유효분만 담긴다. */
 /**
@@ -55,6 +120,8 @@ export function visibility(rows) {
     // 미언급을 최하위로 치환하지 않는다. 언급된 응답만으로 중위값.
     medianRank: median(ranked),
     rankedN: ranked.length,
+    // 순위 가중 점수 — 히트맵 농도의 근거. 미언급은 분모에 남아 0 으로 눌린다.
+    scores: rankScores(rows.filter((r) => r.mentioned).map((r) => r.rank ?? null), V),
     // 결과 일관성 = 같은 조건(모델 x 질문)을 반복했을 때 같은 결과가 나온 비율.
     //
     // 🔒 전체 응답을 한 덩어리로 max(언급, 미언급)/V 로 재면 일관성이 아니라
@@ -418,6 +485,9 @@ export function categories(rows, { questions = [], models = [] } = {}) {
         firstsByModel: Object.fromEntries(modelIds.map((m) =>
           [m, (a.byModel.get(m) ?? { firsts: 0 }).firsts])),
         medianRank: median(a.ranks),
+        // 곡선 3종을 모두 굽는다. 기본 곡선 값은 정렬·표에서 바로 쓰도록 score 로도 편다.
+        scores: rankScores(padUnranked(a.ranks, a.n), V),
+        score: rankScore(padUnranked(a.ranks, a.n), V),
         sov: pct(a.n, slots),
         byModel: Object.fromEntries(modelIds.map((m) => {
           const mv = perModelV[m] ?? 0

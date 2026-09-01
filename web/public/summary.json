@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T09:05:08.855Z",
+  "generatedAt": "2026-09-01T03:06:35.783Z",
   "dataset": {
     "name": "한국 · 외국인이 쓸 앱",
     "nameEn": "Apps for foreigners in Korea",
@@ -26,6 +26,12 @@
           "claude": 5
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 100,
+          "mrr": 100,
+          "ndcg": 100
+        },
+        "score": 100,
         "sov": 20,
         "byModel": {
           "chatgpt": {
@@ -86,6 +92,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
+          "score": 100,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -120,6 +132,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
+          "score": 80,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -154,6 +172,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 35,
+            "mrr": 24,
+            "ndcg": 42
+          },
+          "score": 35,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -188,6 +212,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 45,
+            "mrr": 26,
+            "ndcg": 39
+          },
+          "score": 45,
           "sov": 16,
           "byModel": {
             "chatgpt": {
@@ -222,6 +252,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 19,
+            "mrr": 12,
+            "ndcg": 21
+          },
+          "score": 19,
           "sov": 9,
           "byModel": {
             "chatgpt": {
@@ -256,6 +292,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 4,
+            "mrr": 4,
+            "ndcg": 8
+          },
+          "score": 4,
           "sov": 4,
           "byModel": {
             "chatgpt": {
@@ -290,6 +332,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 8,
+            "mrr": 4,
+            "ndcg": 7
+          },
+          "score": 8,
           "sov": 3,
           "byModel": {
             "chatgpt": {
@@ -324,6 +372,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 3,
+            "mrr": 3,
+            "ndcg": 5
+          },
+          "score": 3,
           "sov": 3,
           "byModel": {
             "chatgpt": {
@@ -358,6 +412,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 3,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 3,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -392,6 +452,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -426,6 +492,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -460,6 +532,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -504,6 +582,12 @@
           "claude": 5
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 85,
+          "mrr": 74,
+          "ndcg": 81
+        },
+        "score": 85,
         "sov": 21,
         "byModel": {
           "chatgpt": {
@@ -564,6 +648,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 85,
+            "mrr": 74,
+            "ndcg": 81
+          },
+          "score": 85,
           "sov": 21,
           "byModel": {
             "chatgpt": {
@@ -598,6 +688,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 53,
+            "mrr": 44,
+            "ndcg": 50
+          },
+          "score": 53,
           "sov": 14,
           "byModel": {
             "chatgpt": {
@@ -632,6 +728,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 81,
+            "mrr": 53,
+            "ndcg": 66
+          },
+          "score": 81,
           "sov": 21,
           "byModel": {
             "chatgpt": {
@@ -666,6 +768,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 33,
+            "mrr": 24,
+            "ndcg": 42
+          },
+          "score": 33,
           "sov": 21,
           "byModel": {
             "chatgpt": {
@@ -700,6 +808,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 17,
+            "mrr": 11,
+            "ndcg": 20
+          },
+          "score": 17,
           "sov": 10,
           "byModel": {
             "chatgpt": {
@@ -734,6 +848,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 12,
+            "mrr": 10,
+            "ndcg": 19
+          },
+          "score": 12,
           "sov": 10,
           "byModel": {
             "chatgpt": {
@@ -768,6 +888,12 @@
             "claude": 0
           },
           "medianRank": 4.5,
+          "scores": {
+            "linear": 4,
+            "mrr": 3,
+            "ndcg": 5
+          },
+          "score": 4,
           "sov": 3,
           "byModel": {
             "chatgpt": {
@@ -802,6 +928,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -846,6 +978,12 @@
           "claude": 5
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 100,
+          "mrr": 100,
+          "ndcg": 100
+        },
+        "score": 100,
         "sov": 20,
         "byModel": {
           "chatgpt": {
@@ -906,6 +1044,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
+          "score": 100,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -940,6 +1084,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 79,
+            "mrr": 49,
+            "ndcg": 62
+          },
+          "score": 79,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -974,6 +1124,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 52,
+            "mrr": 31,
+            "ndcg": 48
+          },
+          "score": 52,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -1008,6 +1164,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 27,
+            "mrr": 21,
+            "ndcg": 38
+          },
+          "score": 27,
           "sov": 19,
           "byModel": {
             "chatgpt": {
@@ -1042,6 +1204,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 20,
+            "mrr": 11,
+            "ndcg": 17
+          },
+          "score": 20,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -1076,6 +1244,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 9,
+            "mrr": 7,
+            "ndcg": 13
+          },
+          "score": 9,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -1110,6 +1284,12 @@
             "claude": 0
           },
           "medianRank": 4.5,
+          "scores": {
+            "linear": 8,
+            "mrr": 6,
+            "ndcg": 11
+          },
+          "score": 8,
           "sov": 5,
           "byModel": {
             "chatgpt": {
@@ -1144,6 +1324,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 4,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 4,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1178,6 +1364,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1222,6 +1414,12 @@
           "claude": 1
         },
         "medianRank": 2,
+        "scores": {
+          "linear": 83,
+          "mrr": 69,
+          "ndcg": 77
+        },
+        "score": 83,
         "sov": 20,
         "byModel": {
           "chatgpt": {
@@ -1282,6 +1480,12 @@
             "claude": 1
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 83,
+            "mrr": 69,
+            "ndcg": 77
+          },
+          "score": 83,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -1316,6 +1520,12 @@
             "claude": 4
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 80,
+            "mrr": 64,
+            "ndcg": 73
+          },
+          "score": 80,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -1350,6 +1560,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 73,
+            "mrr": 49,
+            "ndcg": 62
+          },
+          "score": 73,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -1384,6 +1600,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 33,
+            "mrr": 21,
+            "ndcg": 35
+          },
+          "score": 33,
           "sov": 16,
           "byModel": {
             "chatgpt": {
@@ -1418,6 +1640,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 8,
+            "mrr": 8,
+            "ndcg": 15
+          },
+          "score": 8,
           "sov": 8,
           "byModel": {
             "chatgpt": {
@@ -1452,6 +1680,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 7,
+            "mrr": 5,
+            "ndcg": 8
+          },
+          "score": 7,
           "sov": 4,
           "byModel": {
             "chatgpt": {
@@ -1486,6 +1720,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 5,
+            "mrr": 3,
+            "ndcg": 6
+          },
+          "score": 5,
           "sov": 3,
           "byModel": {
             "chatgpt": {
@@ -1520,6 +1760,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 3,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 3,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1554,6 +1800,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1588,6 +1840,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1622,6 +1880,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1656,6 +1920,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1690,6 +1960,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1724,6 +2000,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -1768,6 +2050,12 @@
           "claude": 0
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 61,
+          "mrr": 56,
+          "ndcg": 58
+        },
+        "score": 61,
         "sov": 14,
         "byModel": {
           "chatgpt": {
@@ -1829,6 +2117,12 @@
             "claude": 0
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 61,
+            "mrr": 56,
+            "ndcg": 58
+          },
+          "score": 61,
           "sov": 14,
           "byModel": {
             "chatgpt": {
@@ -1863,6 +2157,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 37,
+            "mrr": 37,
+            "ndcg": 41
+          },
+          "score": 37,
           "sov": 11,
           "byModel": {
             "chatgpt": {
@@ -1897,6 +2197,12 @@
             "claude": 0
           },
           "medianRank": 3.5,
+          "scores": {
+            "linear": 25,
+            "mrr": 21,
+            "ndcg": 25
+          },
+          "score": 25,
           "sov": 8,
           "byModel": {
             "chatgpt": {
@@ -1931,6 +2237,12 @@
             "claude": 0
           },
           "medianRank": 2.5,
+          "scores": {
+            "linear": 17,
+            "mrr": 14,
+            "ndcg": 17
+          },
+          "score": 17,
           "sov": 5,
           "byModel": {
             "chatgpt": {
@@ -1965,6 +2277,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 40,
+            "mrr": 26,
+            "ndcg": 38
+          },
+          "score": 40,
           "sov": 15,
           "byModel": {
             "chatgpt": {
@@ -1999,6 +2317,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 48,
+            "mrr": 29,
+            "ndcg": 39
+          },
+          "score": 48,
           "sov": 14,
           "byModel": {
             "chatgpt": {
@@ -2033,6 +2357,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 17,
+            "mrr": 10,
+            "ndcg": 16
+          },
+          "score": 17,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -2067,6 +2397,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 17,
+            "mrr": 10,
+            "ndcg": 16
+          },
+          "score": 17,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -2101,6 +2437,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 11,
+            "mrr": 8,
+            "ndcg": 14
+          },
+          "score": 11,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -2135,6 +2477,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 11,
+            "mrr": 7,
+            "ndcg": 12
+          },
+          "score": 11,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -2169,6 +2517,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 8,
+            "mrr": 5,
+            "ndcg": 9
+          },
+          "score": 8,
           "sov": 4,
           "byModel": {
             "chatgpt": {
@@ -2203,6 +2557,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 3,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 3,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -2237,6 +2597,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -2281,6 +2647,12 @@
           "claude": 5
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 93,
+          "mrr": 83,
+          "ndcg": 88
+        },
+        "score": 93,
         "sov": 20,
         "byModel": {
           "chatgpt": {
@@ -2341,6 +2713,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 93,
+            "mrr": 83,
+            "ndcg": 88
+          },
+          "score": 93,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -2375,6 +2753,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 80,
+            "mrr": 61,
+            "ndcg": 71
+          },
+          "score": 80,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -2409,6 +2793,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 56,
+            "mrr": 35,
+            "ndcg": 51
+          },
+          "score": 56,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -2443,6 +2833,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 20,
+            "mrr": 18,
+            "ndcg": 34
+          },
+          "score": 20,
           "sov": 17,
           "byModel": {
             "chatgpt": {
@@ -2477,6 +2873,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 31,
+            "mrr": 18,
+            "ndcg": 28
+          },
+          "score": 31,
           "sov": 12,
           "byModel": {
             "chatgpt": {
@@ -2511,6 +2913,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 12,
+            "mrr": 8,
+            "ndcg": 14
+          },
+          "score": 12,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -2545,6 +2953,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 4,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 4,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -2579,6 +2993,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 3,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 3,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -2613,6 +3033,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -2657,6 +3083,12 @@
           "claude": 5
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 92,
+          "mrr": 84,
+          "ndcg": 88
+        },
+        "score": 92,
         "sov": 20,
         "byModel": {
           "chatgpt": {
@@ -2717,6 +3149,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 92,
+            "mrr": 84,
+            "ndcg": 88
+          },
+          "score": 92,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -2751,6 +3189,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 55,
+            "mrr": 43,
+            "ndcg": 52
+          },
+          "score": 55,
           "sov": 16,
           "byModel": {
             "chatgpt": {
@@ -2785,6 +3229,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 52,
+            "mrr": 33,
+            "ndcg": 47
+          },
+          "score": 52,
           "sov": 18,
           "byModel": {
             "chatgpt": {
@@ -2819,6 +3269,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 19,
+            "mrr": 16,
+            "ndcg": 28
+          },
+          "score": 19,
           "sov": 14,
           "byModel": {
             "chatgpt": {
@@ -2853,6 +3309,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 31,
+            "mrr": 19,
+            "ndcg": 28
+          },
+          "score": 31,
           "sov": 11,
           "byModel": {
             "chatgpt": {
@@ -2887,6 +3349,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 15,
+            "mrr": 11,
+            "ndcg": 19
+          },
+          "score": 15,
           "sov": 9,
           "byModel": {
             "chatgpt": {
@@ -2921,6 +3389,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 15,
+            "mrr": 8,
+            "ndcg": 13
+          },
+          "score": 15,
           "sov": 5,
           "byModel": {
             "chatgpt": {
@@ -2955,6 +3429,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 8,
+            "mrr": 5,
+            "ndcg": 9
+          },
+          "score": 8,
           "sov": 4,
           "byModel": {
             "chatgpt": {
@@ -2989,6 +3469,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 5,
+            "mrr": 3,
+            "ndcg": 4
+          },
+          "score": 5,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -3023,6 +3509,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 5,
+            "mrr": 3,
+            "ndcg": 4
+          },
+          "score": 5,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -3067,6 +3559,12 @@
           "claude": 5
         },
         "medianRank": 1,
+        "scores": {
+          "linear": 100,
+          "mrr": 100,
+          "ndcg": 100
+        },
+        "score": 100,
         "sov": 20,
         "byModel": {
           "chatgpt": {
@@ -3127,6 +3625,12 @@
             "claude": 5
           },
           "medianRank": 1,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
+          "score": 100,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -3161,6 +3665,12 @@
             "claude": 0
           },
           "medianRank": 2,
+          "scores": {
+            "linear": 73,
+            "mrr": 44,
+            "ndcg": 59
+          },
+          "score": 73,
           "sov": 20,
           "byModel": {
             "chatgpt": {
@@ -3195,6 +3705,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 47,
+            "mrr": 27,
+            "ndcg": 41
+          },
+          "score": 47,
           "sov": 17,
           "byModel": {
             "chatgpt": {
@@ -3229,6 +3745,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 43,
+            "mrr": 27,
+            "ndcg": 38
+          },
+          "score": 43,
           "sov": 15,
           "byModel": {
             "chatgpt": {
@@ -3263,6 +3785,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 11,
+            "mrr": 8,
+            "ndcg": 14
+          },
+          "score": 11,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -3297,6 +3825,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 7,
+            "mrr": 7,
+            "ndcg": 13
+          },
+          "score": 7,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -3331,6 +3865,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 7,
+            "mrr": 7,
+            "ndcg": 13
+          },
+          "score": 7,
           "sov": 7,
           "byModel": {
             "chatgpt": {
@@ -3365,6 +3905,12 @@
             "claude": 0
           },
           "medianRank": 4,
+          "scores": {
+            "linear": 7,
+            "mrr": 5,
+            "ndcg": 8
+          },
+          "score": 7,
           "sov": 4,
           "byModel": {
             "chatgpt": {
@@ -3399,6 +3945,12 @@
             "claude": 0
           },
           "medianRank": 3,
+          "scores": {
+            "linear": 4,
+            "mrr": 2,
+            "ndcg": 3
+          },
+          "score": 4,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -3433,6 +3985,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -3467,6 +4025,12 @@
             "claude": 0
           },
           "medianRank": 5,
+          "scores": {
+            "linear": 1,
+            "mrr": 1,
+            "ndcg": 3
+          },
+          "score": 1,
           "sov": 1,
           "byModel": {
             "chatgpt": {
@@ -3506,6 +4070,11 @@
         "top3Label": "51/120 · 43%",
         "medianRank": 1,
         "rankedN": 54,
+        "scores": {
+          "linear": 41,
+          "mrr": 38,
+          "ndcg": 40
+        },
         "reproducibility": 99,
         "spread": 55,
         "rankDistribution": {
@@ -4453,6 +5022,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4471,6 +5045,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4489,6 +5068,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4507,6 +5091,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4525,6 +5114,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4543,6 +5137,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4561,6 +5160,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4579,6 +5183,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4597,6 +5206,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4615,6 +5229,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4633,6 +5252,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4651,6 +5275,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4669,6 +5298,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4687,6 +5321,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4705,6 +5344,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4723,6 +5367,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4741,6 +5390,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4759,6 +5413,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4777,6 +5436,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4795,6 +5459,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4813,6 +5482,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 52,
+            "mrr": 30,
+            "ndcg": 47
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4832,6 +5506,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4850,6 +5529,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 4,
+          "scores": {
+            "linear": 44,
+            "mrr": 25,
+            "ndcg": 39
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -4870,6 +5554,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -4940,6 +5629,11 @@
         "top3Label": "23/120 · 19%",
         "medianRank": 2,
         "rankedN": 35,
+        "scores": {
+          "linear": 18,
+          "mrr": 12,
+          "ndcg": 16
+        },
         "reproducibility": 100,
         "spread": 71,
         "rankDistribution": {
@@ -5867,6 +6561,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5885,6 +6584,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5903,6 +6607,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5921,6 +6630,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5939,6 +6653,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5957,6 +6676,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 48,
+            "mrr": 29,
+            "ndcg": 46
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5977,6 +6701,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -5995,6 +6724,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6013,6 +6747,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6031,6 +6770,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6049,6 +6793,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6067,6 +6816,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6085,6 +6839,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6103,6 +6862,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 5,
+          "scores": {
+            "linear": 40,
+            "mrr": 25,
+            "ndcg": 43
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6121,6 +6885,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6139,6 +6908,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6157,6 +6931,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6175,6 +6954,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6193,6 +6977,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6211,6 +7000,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6229,6 +7023,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 5,
+          "scores": {
+            "linear": 32,
+            "mrr": 23,
+            "ndcg": 41
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6248,6 +7047,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6266,6 +7070,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6284,6 +7093,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -6334,6 +7148,11 @@
         "top3Label": "0/120 · 0%",
         "medianRank": 5,
         "rankedN": 1,
+        "scores": {
+          "linear": 0,
+          "mrr": 0,
+          "ndcg": 0
+        },
         "reproducibility": 99,
         "spread": 99,
         "rankDistribution": {
@@ -7238,6 +8057,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 1,
+          "scores": {
+            "linear": 4,
+            "mrr": 4,
+            "ndcg": 8
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -7257,6 +8081,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7275,6 +8104,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7293,6 +8127,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7311,6 +8150,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7329,6 +8173,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7347,6 +8196,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7365,6 +8219,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7383,6 +8242,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7401,6 +8265,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7419,6 +8288,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7437,6 +8311,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7455,6 +8334,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7473,6 +8357,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7491,6 +8380,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7509,6 +8403,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7527,6 +8426,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7545,6 +8449,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7563,6 +8472,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7581,6 +8495,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7599,6 +8518,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7617,6 +8541,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7635,6 +8564,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7653,6 +8587,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -7687,6 +8626,11 @@
         "top3Label": "43/120 · 36%",
         "medianRank": 3,
         "rankedN": 53,
+        "scores": {
+          "linear": 28,
+          "mrr": 20,
+          "ndcg": 26
+        },
         "reproducibility": 94,
         "spread": 56,
         "rankDistribution": {
@@ -8670,6 +9614,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 3,
+          "scores": {
+            "linear": 36,
+            "mrr": 20,
+            "ndcg": 30
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -8689,6 +9638,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8707,6 +9661,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8725,6 +9684,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8743,6 +9707,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8761,6 +9730,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8779,6 +9753,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8797,6 +9776,11 @@
           "top3Label": "4/5 · 80%",
           "medianRank": 3,
           "rankedN": 4,
+          "scores": {
+            "linear": 48,
+            "mrr": 27,
+            "ndcg": 40
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -8816,6 +9800,11 @@
           "top3Label": "2/5 · 40%",
           "medianRank": 3.5,
           "rankedN": 4,
+          "scores": {
+            "linear": 40,
+            "mrr": 23,
+            "ndcg": 37
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -8836,6 +9825,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 96,
+            "mrr": 90,
+            "ndcg": 93
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8855,6 +9849,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8873,6 +9872,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8891,6 +9895,11 @@
           "top3Label": "4/5 · 80%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 52,
+            "mrr": 31,
+            "ndcg": 48
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8910,6 +9919,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8928,6 +9942,11 @@
           "top3Label": "1/5 · 20%",
           "medianRank": 4,
           "rankedN": 3,
+          "scores": {
+            "linear": 24,
+            "mrr": 16,
+            "ndcg": 26
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -8949,6 +9968,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8967,6 +9991,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -8985,6 +10014,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -9003,6 +10037,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -9021,6 +10060,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -9039,6 +10083,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -9057,6 +10106,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -9075,6 +10129,11 @@
           "top3Label": "4/5 · 80%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 68,
+            "mrr": 42,
+            "ndcg": 56
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -9095,6 +10154,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 4,
+          "scores": {
+            "linear": 32,
+            "mrr": 20,
+            "ndcg": 34
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -9174,6 +10238,11 @@
         "top3Label": "3/120 · 3%",
         "medianRank": 4,
         "rankedN": 7,
+        "scores": {
+          "linear": 2,
+          "mrr": 2,
+          "ndcg": 3
+        },
         "reproducibility": 98,
         "spread": 94,
         "rankDistribution": {
@@ -10080,6 +11149,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 1,
+          "scores": {
+            "linear": 4,
+            "mrr": 4,
+            "ndcg": 8
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -10099,6 +11173,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10117,6 +11196,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10135,6 +11219,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10153,6 +11242,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10171,6 +11265,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10189,6 +11288,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10207,6 +11311,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10225,6 +11334,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 48,
+            "mrr": 29,
+            "ndcg": 46
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10245,6 +11359,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10263,6 +11382,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10281,6 +11405,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10299,6 +11428,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10317,6 +11451,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10335,6 +11474,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10353,6 +11497,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10371,6 +11520,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 1,
+          "scores": {
+            "linear": 4,
+            "mrr": 4,
+            "ndcg": 8
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -10390,6 +11544,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10408,6 +11567,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10426,6 +11590,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10444,6 +11613,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10462,6 +11636,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10480,6 +11659,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10498,6 +11682,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -10532,6 +11721,11 @@
         "top3Label": "30/120 · 25%",
         "medianRank": 2,
         "rankedN": 33,
+        "scores": {
+          "linear": 22,
+          "mrr": 19,
+          "ndcg": 21
+        },
         "reproducibility": 98,
         "spread": 73,
         "rankDistribution": {
@@ -11459,6 +12653,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11477,6 +12676,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11495,6 +12699,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11513,6 +12722,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11531,6 +12745,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11549,6 +12768,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11567,6 +12791,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11585,6 +12814,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11603,6 +12837,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11621,6 +12860,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11639,6 +12883,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11657,6 +12906,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11675,6 +12929,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11693,6 +12952,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11711,6 +12975,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11729,6 +12998,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11747,6 +13021,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 3,
+          "scores": {
+            "linear": 12,
+            "mrr": 12,
+            "ndcg": 23
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -11766,6 +13045,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11784,6 +13068,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11802,6 +13091,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11820,6 +13114,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11838,6 +13137,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11856,6 +13160,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11874,6 +13183,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -11924,6 +13238,11 @@
         "top3Label": "15/120 · 13%",
         "medianRank": 2,
         "rankedN": 15,
+        "scores": {
+          "linear": 10,
+          "mrr": 6,
+          "ndcg": 8
+        },
         "reproducibility": 100,
         "spread": 88,
         "rankDistribution": {
@@ -12814,6 +14133,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12832,6 +14156,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12850,6 +14179,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12868,6 +14202,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12886,6 +14225,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12904,6 +14248,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12922,6 +14271,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12940,6 +14294,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12958,6 +14317,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12976,6 +14340,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -12994,6 +14363,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 76,
+            "mrr": 47,
+            "ndcg": 60
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13013,6 +14387,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13031,6 +14410,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13049,6 +14433,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13067,6 +14456,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13085,6 +14479,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13103,6 +14502,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13121,6 +14525,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13139,6 +14548,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13157,6 +14571,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13175,6 +14594,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13193,6 +14617,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13211,6 +14640,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13229,6 +14663,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -13259,6 +14698,11 @@
         "top3Label": "5/120 · 4%",
         "medianRank": 4,
         "rankedN": 11,
+        "scores": {
+          "linear": 5,
+          "mrr": 3,
+          "ndcg": 5
+        },
         "reproducibility": 99,
         "spread": 91,
         "rankDistribution": {
@@ -14184,6 +15628,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14202,6 +15651,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14220,6 +15674,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14238,6 +15697,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14256,6 +15720,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14274,6 +15743,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14292,6 +15766,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14310,6 +15789,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 1,
+          "scores": {
+            "linear": 8,
+            "mrr": 5,
+            "ndcg": 9
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -14329,6 +15813,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14347,6 +15836,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14365,6 +15859,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14383,6 +15882,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14401,6 +15905,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14419,6 +15928,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14437,6 +15951,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14455,6 +15974,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 5,
+          "scores": {
+            "linear": 40,
+            "mrr": 25,
+            "ndcg": 43
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14473,6 +15997,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14491,6 +16020,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14509,6 +16043,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14527,6 +16066,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14545,6 +16089,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14563,6 +16112,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14581,6 +16135,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14599,6 +16158,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -14633,6 +16197,11 @@
         "top3Label": "14/120 · 12%",
         "medianRank": 2.5,
         "rankedN": 20,
+        "scores": {
+          "linear": 11,
+          "mrr": 9,
+          "ndcg": 11
+        },
         "reproducibility": 100,
         "spread": 83,
         "rankDistribution": {
@@ -15556,6 +17125,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15574,6 +17148,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15592,6 +17171,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15610,6 +17194,11 @@
           "top3Label": "4/5 · 80%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 56,
+            "mrr": 32,
+            "ndcg": 49
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15629,6 +17218,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15647,6 +17241,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15665,6 +17264,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15683,6 +17287,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15701,6 +17310,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15719,6 +17333,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15737,6 +17356,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15755,6 +17379,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 88,
+            "mrr": 70,
+            "ndcg": 78
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15774,6 +17403,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15792,6 +17426,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15810,6 +17449,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15828,6 +17472,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15846,6 +17495,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15864,6 +17518,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15882,6 +17541,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15900,6 +17564,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 96,
+            "mrr": 90,
+            "ndcg": 93
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15919,6 +17588,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15937,6 +17611,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15955,6 +17634,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -15973,6 +17657,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 5,
+          "scores": {
+            "linear": 20,
+            "mrr": 20,
+            "ndcg": 39
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -16015,6 +17704,11 @@
         "top3Label": "15/120 · 13%",
         "medianRank": 2,
         "rankedN": 15,
+        "scores": {
+          "linear": 9,
+          "mrr": 6,
+          "ndcg": 8
+        },
         "reproducibility": 100,
         "spread": 88,
         "rankDistribution": {
@@ -16916,6 +18610,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -16934,6 +18633,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -16952,6 +18656,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -16970,6 +18679,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 88,
+            "mrr": 70,
+            "ndcg": 78
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -16989,6 +18703,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17007,6 +18726,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17025,6 +18749,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17043,6 +18772,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17061,6 +18795,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17079,6 +18818,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17097,6 +18841,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17115,6 +18864,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17133,6 +18887,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17151,6 +18910,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17169,6 +18933,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17187,6 +18956,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17205,6 +18979,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17223,6 +19002,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17241,6 +19025,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17259,6 +19048,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 72,
+            "mrr": 43,
+            "ndcg": 58
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17278,6 +19072,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17296,6 +19095,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17314,6 +19118,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17332,6 +19141,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -17362,6 +19176,11 @@
         "top3Label": "5/120 · 4%",
         "medianRank": 1,
         "rankedN": 8,
+        "scores": {
+          "linear": 5,
+          "mrr": 5,
+          "ndcg": 5
+        },
         "reproducibility": 98,
         "spread": 93,
         "rankDistribution": {
@@ -18277,6 +20096,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18295,6 +20119,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18313,6 +20142,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18331,6 +20165,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18349,6 +20188,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18367,6 +20211,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18385,6 +20234,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18403,6 +20257,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18421,6 +20280,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18439,6 +20303,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18457,6 +20326,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18475,6 +20349,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18493,6 +20372,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 3,
+          "scores": {
+            "linear": 12,
+            "mrr": 12,
+            "ndcg": 23
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -18512,6 +20396,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18530,6 +20419,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18548,6 +20442,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18566,6 +20465,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18584,6 +20488,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18602,6 +20511,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18620,6 +20534,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18638,6 +20557,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18656,6 +20580,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18674,6 +20603,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18692,6 +20626,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -18726,6 +20665,11 @@
         "top3Label": "3/120 · 3%",
         "medianRank": 4,
         "rankedN": 13,
+        "scores": {
+          "linear": 5,
+          "mrr": 4,
+          "ndcg": 6
+        },
         "reproducibility": 98,
         "spread": 89,
         "rankDistribution": {
@@ -19668,6 +21612,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19686,6 +21635,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19704,6 +21658,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19722,6 +21681,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19740,6 +21704,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 68,
+            "mrr": 57,
+            "ndcg": 67
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19760,6 +21729,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19778,6 +21752,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 1,
+          "scores": {
+            "linear": 8,
+            "mrr": 5,
+            "ndcg": 9
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -19797,6 +21776,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19815,6 +21799,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19833,6 +21822,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19851,6 +21845,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19869,6 +21868,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19887,6 +21891,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 1,
+          "scores": {
+            "linear": 8,
+            "mrr": 5,
+            "ndcg": 9
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -19906,6 +21915,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19924,6 +21938,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 5,
+          "scores": {
+            "linear": 32,
+            "mrr": 23,
+            "ndcg": 41
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19943,6 +21962,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19961,6 +21985,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19979,6 +22008,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -19997,6 +22031,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -20015,6 +22054,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -20033,6 +22077,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -20051,6 +22100,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -20069,6 +22123,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 1,
+          "scores": {
+            "linear": 4,
+            "mrr": 4,
+            "ndcg": 8
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -20088,6 +22147,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -20134,6 +22198,11 @@
         "top3Label": "15/120 · 13%",
         "medianRank": 1.5,
         "rankedN": 22,
+        "scores": {
+          "linear": 13,
+          "mrr": 12,
+          "ndcg": 13
+        },
         "reproducibility": 98,
         "spread": 82,
         "rankDistribution": {
@@ -21067,6 +23136,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 2,
+          "scores": {
+            "linear": 8,
+            "mrr": 8,
+            "ndcg": 15
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -21086,6 +23160,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21104,6 +23183,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21122,6 +23206,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21140,6 +23229,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21158,6 +23252,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21176,6 +23275,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 76,
+            "mrr": 53,
+            "ndcg": 65
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21196,6 +23300,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 5,
+          "scores": {
+            "linear": 32,
+            "mrr": 23,
+            "ndcg": 41
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21215,6 +23324,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21233,6 +23347,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21251,6 +23370,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21269,6 +23393,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21287,6 +23416,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21305,6 +23439,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21323,6 +23462,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21341,6 +23485,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21359,6 +23508,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21377,6 +23531,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21395,6 +23554,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21413,6 +23577,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21431,6 +23600,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21449,6 +23623,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21467,6 +23646,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21485,6 +23669,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -21539,6 +23728,11 @@
         "top3Label": "2/120 · 2%",
         "medianRank": 5,
         "rankedN": 5,
+        "scores": {
+          "linear": 1,
+          "mrr": 1,
+          "ndcg": 1
+        },
         "reproducibility": 100,
         "spread": 96,
         "rankDistribution": {
@@ -22445,6 +24639,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22463,6 +24662,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22481,6 +24685,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22499,6 +24708,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22517,6 +24731,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22535,6 +24754,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22553,6 +24777,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22571,6 +24800,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22589,6 +24823,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22607,6 +24846,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22625,6 +24869,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22643,6 +24892,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22661,6 +24915,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22679,6 +24938,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22697,6 +24961,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22715,6 +24984,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22733,6 +25007,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22751,6 +25030,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22769,6 +25053,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22787,6 +25076,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22805,6 +25099,11 @@
           "top3Label": "2/5 · 40%",
           "medianRank": 5,
           "rankedN": 5,
+          "scores": {
+            "linear": 32,
+            "mrr": 21,
+            "ndcg": 35
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22825,6 +25124,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22843,6 +25147,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22861,6 +25170,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -22895,6 +25209,11 @@
         "top3Label": "15/120 · 13%",
         "medianRank": 2,
         "rankedN": 15,
+        "scores": {
+          "linear": 10,
+          "mrr": 8,
+          "ndcg": 9
+        },
         "reproducibility": 100,
         "spread": 88,
         "rankDistribution": {
@@ -23827,6 +26146,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23845,6 +26169,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23863,6 +26192,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23881,6 +26215,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23899,6 +26238,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23917,6 +26261,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23935,6 +26284,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23953,6 +26307,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23971,6 +26330,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -23989,6 +26353,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24007,6 +26376,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24025,6 +26399,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24043,6 +26422,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24061,6 +26445,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24079,6 +26468,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24097,6 +26491,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24115,6 +26514,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24133,6 +26537,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24151,6 +26560,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24169,6 +26583,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24187,6 +26606,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24205,6 +26629,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24223,6 +26652,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24241,6 +26675,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -24271,6 +26710,11 @@
         "top3Label": "9/120 · 8%",
         "medianRank": 3,
         "rankedN": 12,
+        "scores": {
+          "linear": 7,
+          "mrr": 5,
+          "ndcg": 6
+        },
         "reproducibility": 98,
         "spread": 90,
         "rankDistribution": {
@@ -25228,6 +27672,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25246,6 +27695,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25264,6 +27718,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25282,6 +27741,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25300,6 +27764,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25318,6 +27787,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25336,6 +27810,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 92,
+            "mrr": 87,
+            "ndcg": 90
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25355,6 +27834,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25373,6 +27857,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25391,6 +27880,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25409,6 +27903,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25427,6 +27926,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25445,6 +27949,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25463,6 +27972,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25481,6 +27995,11 @@
           "top3Label": "4/5 · 80%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 56,
+            "mrr": 32,
+            "ndcg": 49
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25500,6 +28019,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25518,6 +28042,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25536,6 +28065,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25554,6 +28088,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25572,6 +28111,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25590,6 +28134,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25608,6 +28157,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25626,6 +28180,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 4,
           "rankedN": 2,
+          "scores": {
+            "linear": 16,
+            "mrr": 10,
+            "ndcg": 17
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -25645,6 +28204,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -25679,6 +28243,11 @@
         "top3Label": "13/120 · 11%",
         "medianRank": 2,
         "rankedN": 15,
+        "scores": {
+          "linear": 10,
+          "mrr": 9,
+          "ndcg": 10
+        },
         "reproducibility": 100,
         "spread": 88,
         "rankDistribution": {
@@ -26612,6 +29181,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26630,6 +29204,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26648,6 +29227,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26666,6 +29250,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 92,
+            "mrr": 80,
+            "ndcg": 85
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26685,6 +29274,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26703,6 +29297,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26721,6 +29320,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26739,6 +29343,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26757,6 +29366,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26775,6 +29389,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26793,6 +29412,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26811,6 +29435,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 92,
+            "mrr": 80,
+            "ndcg": 85
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26830,6 +29459,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26848,6 +29482,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26866,6 +29505,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26884,6 +29528,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26902,6 +29551,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26920,6 +29574,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26938,6 +29597,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26956,6 +29620,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 64,
+            "mrr": 47,
+            "ndcg": 60
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26977,6 +29646,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -26995,6 +29669,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -27013,6 +29692,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -27031,6 +29715,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -27061,6 +29750,11 @@
         "top3Label": "3/120 · 3%",
         "medianRank": 2.5,
         "rankedN": 4,
+        "scores": {
+          "linear": 2,
+          "mrr": 2,
+          "ndcg": 2
+        },
         "reproducibility": 99,
         "spread": 97,
         "rankDistribution": {
@@ -28009,6 +30703,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28027,6 +30726,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28045,6 +30749,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28063,6 +30772,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28081,6 +30795,11 @@
           "top3Label": "3/5 · 60%",
           "medianRank": 2.5,
           "rankedN": 4,
+          "scores": {
+            "linear": 52,
+            "mrr": 41,
+            "ndcg": 50
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -28103,6 +30822,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28121,6 +30845,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28139,6 +30868,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28157,6 +30891,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28175,6 +30914,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28193,6 +30937,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28211,6 +30960,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28229,6 +30983,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28247,6 +31006,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28265,6 +31029,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28283,6 +31052,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28301,6 +31075,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28319,6 +31098,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28337,6 +31121,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28355,6 +31144,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28373,6 +31167,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28391,6 +31190,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28409,6 +31213,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28427,6 +31236,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -28461,6 +31275,11 @@
         "top3Label": "15/120 · 13%",
         "medianRank": 2,
         "rankedN": 15,
+        "scores": {
+          "linear": 10,
+          "mrr": 7,
+          "ndcg": 8
+        },
         "reproducibility": 99,
         "spread": 87,
         "rankDistribution": {
@@ -29388,6 +32207,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29406,6 +32230,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29424,6 +32253,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29442,6 +32276,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29460,6 +32299,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29478,6 +32322,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29496,6 +32345,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29514,6 +32368,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29532,6 +32391,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29550,6 +32414,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 84,
+            "mrr": 60,
+            "ndcg": 70
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29569,6 +32438,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29587,6 +32461,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29605,6 +32484,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29623,6 +32507,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29641,6 +32530,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29659,6 +32553,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29677,6 +32576,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29695,6 +32599,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 80,
+            "mrr": 50,
+            "ndcg": 63
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29713,6 +32622,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29731,6 +32645,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 2,
+            "mrr": 2,
+            "ndcg": 2
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -29750,6 +32669,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29768,6 +32692,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29786,6 +32715,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29804,6 +32738,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -29846,6 +32785,11 @@
         "top3Label": "11/120 · 9%",
         "medianRank": 2.5,
         "rankedN": 18,
+        "scores": {
+          "linear": 9,
+          "mrr": 8,
+          "ndcg": 10
+        },
         "reproducibility": 98,
         "spread": 85,
         "rankDistribution": {
@@ -30834,6 +33778,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30852,6 +33801,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30870,6 +33824,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30888,6 +33847,11 @@
           "top3Label": "1/5 · 20%",
           "medianRank": 5,
           "rankedN": 3,
+          "scores": {
+            "linear": 20,
+            "mrr": 15,
+            "ndcg": 25
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -30908,6 +33872,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 2,
           "rankedN": 5,
+          "scores": {
+            "linear": 84,
+            "mrr": 67,
+            "ndcg": 75
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30928,6 +33897,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30946,6 +33920,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30964,6 +33943,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -30982,6 +33966,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31000,6 +33989,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31018,6 +34012,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31036,6 +34035,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31054,6 +34058,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31072,6 +34081,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31090,6 +34104,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31108,6 +34127,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": 5,
           "rankedN": 5,
+          "scores": {
+            "linear": 20,
+            "mrr": 20,
+            "ndcg": 39
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31126,6 +34150,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31144,6 +34173,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31162,6 +34196,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31180,6 +34219,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31198,6 +34242,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31216,6 +34265,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31234,6 +34288,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31252,6 +34311,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -31310,6 +34374,11 @@
         "top3Label": "13/120 · 11%",
         "medianRank": 3,
         "rankedN": 13,
+        "scores": {
+          "linear": 8,
+          "mrr": 6,
+          "ndcg": 8
+        },
         "reproducibility": 98,
         "spread": 89,
         "rankDistribution": {
@@ -32276,6 +35345,11 @@
           "top3Label": "2/5 · 40%",
           "medianRank": 3,
           "rankedN": 2,
+          "scores": {
+            "linear": 24,
+            "mrr": 13,
+            "ndcg": 20
+          },
           "reproducibility": 60,
           "spread": 60,
           "rankDistribution": {
@@ -32295,6 +35369,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 1,
           "rankedN": 5,
+          "scores": {
+            "linear": 100,
+            "mrr": 100,
+            "ndcg": 100
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32313,6 +35392,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32331,6 +35415,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32349,6 +35438,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32367,6 +35461,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32385,6 +35484,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32403,6 +35507,11 @@
           "top3Label": "1/5 · 20%",
           "medianRank": 3,
           "rankedN": 1,
+          "scores": {
+            "linear": 12,
+            "mrr": 7,
+            "ndcg": 10
+          },
           "reproducibility": 80,
           "spread": 80,
           "rankDistribution": {
@@ -32422,6 +35531,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32440,6 +35554,11 @@
           "top3Label": "5/5 · 100%",
           "medianRank": 3,
           "rankedN": 5,
+          "scores": {
+            "linear": 60,
+            "mrr": 33,
+            "ndcg": 50
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32458,6 +35577,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32476,6 +35600,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32494,6 +35623,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32512,6 +35646,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32530,6 +35669,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32548,6 +35692,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32566,6 +35715,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32584,6 +35738,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32602,6 +35761,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32620,6 +35784,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32638,6 +35807,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32656,6 +35830,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32674,6 +35853,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
@@ -32692,6 +35876,11 @@
           "top3Label": "0/5 · 0%",
           "medianRank": null,
           "rankedN": 0,
+          "scores": {
+            "linear": 0,
+            "mrr": 0,
+            "ndcg": 0
+          },
           "reproducibility": 100,
           "spread": 100,
           "rankDistribution": {
